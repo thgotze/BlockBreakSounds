@@ -29,7 +29,7 @@ import static com.gotze.blockBreakSounds.Utility.SmallFontConverter.convertToSma
 public class BlockBreakSoundsGUIListener implements Listener {
 
     private final Map<Player, Long> lastClickTime = new HashMap<>();
-    private static final long CLICK_DELAY = 100; // 100 milliseconds
+    private static final long CLICK_DELAY = 50; // 50 milliseconds
 
     private static final List<Float> VOLUME_LEVELS = Arrays.asList( // 21 levels
             0.00f, 0.05f, 0.10f, 0.15f, 0.20f, 0.25f, 0.30f, 0.35f, 0.40f, 0.45f, 0.50f,
@@ -75,9 +75,6 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
         switch (slot) {
             case 11: // Increase Volume
-                if (soundData == null) {
-                    return;
-                }
                 increaseVolume(player, soundData);
                 updateVolumeSlider(clickedInventory, soundData);
 
@@ -105,9 +102,6 @@ public class BlockBreakSoundsGUIListener implements Listener {
                 return;
 
             case 15: // Increase Pitch
-                if (soundData == null) {
-                    return;
-                }
                 increasePitch(player, soundData);
                 updatePitchSlider(clickedInventory, soundData);
                 clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
@@ -147,9 +141,6 @@ public class BlockBreakSoundsGUIListener implements Listener {
                 return;
 
             case 29: // Decrease Volume
-                if (soundData == null) {
-                    return;
-                }
                 decreaseVolume(player, soundData);
                 updateVolumeSlider(clickedInventory, soundData);
                 clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
@@ -162,9 +153,6 @@ public class BlockBreakSoundsGUIListener implements Listener {
                 return;
 
             case 33: // Decrease Pitch
-                if (soundData == null) {
-                    return;
-                }
                 decreasePitch(player, soundData);
                 updatePitchSlider(clickedInventory, soundData);
                 clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
@@ -660,12 +648,15 @@ public class BlockBreakSoundsGUIListener implements Listener {
         float currentVolume = soundData.getVolume();
         int currentIndex = VOLUME_LEVELS.indexOf(currentVolume);
 
-        if (currentIndex == 0 || currentIndex == 1) {
+        if (currentIndex == 0) {
             player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
-        } else {
-            float newVolume = VOLUME_LEVELS.get(currentIndex - 1);
-            soundData.setVolume(newVolume);
+            return;
+        } else if (currentIndex == 1) {
+            player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
         }
+        float newVolume = VOLUME_LEVELS.get(currentIndex - 1);
+        soundData.setVolume(newVolume);
+
         player.playSound(player, soundData.getSound(), soundData.getVolume(), soundData.getPitch());
     }
 

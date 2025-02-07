@@ -4,6 +4,7 @@ import com.gotze.blockBreakSounds.BlockBreakSoundsGUI.BlockBreakSoundsGUIListene
 import com.gotze.blockBreakSounds.Command.BlockBreakSoundsExecutor;
 import com.gotze.blockBreakSounds.Command.BlockBreakSoundsTabCompleter;
 import com.gotze.blockBreakSounds.FavoriteSoundsGUI.FavoriteSoundsGUIListener;
+import com.gotze.blockBreakSounds.PickSoundGUI.AllSoundsGUIListener;
 import com.gotze.blockBreakSounds.PickSoundGUI.PickSoundGUIListener;
 import com.gotze.blockBreakSounds.SettingsGUI.SettingsGUIListener;
 import com.gotze.blockBreakSounds.Utility.Listeners.BlockBreakListener;
@@ -32,6 +33,8 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PickSoundGUIListener(), this);
         getServer().getPluginManager().registerEvents(new SettingsGUIListener(), this);
         getServer().getPluginManager().registerEvents(new FavoriteSoundsGUIListener(), this);
+        getServer().getPluginManager().registerEvents(new AllSoundsGUIListener(), this);
+
     }
 
     private void registerCommands() {

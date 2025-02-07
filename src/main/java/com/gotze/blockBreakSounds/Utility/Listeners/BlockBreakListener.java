@@ -21,6 +21,7 @@ public class BlockBreakListener implements Listener {
         if (soundData == null) {
             return;
         }
+
         float randomPitchVariation = pitchVariations[random.nextInt(pitchVariations.length)];
         float finalPitch = soundData.getPitch() + randomPitchVariation;
 

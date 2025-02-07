@@ -33,6 +33,3 @@ public class PlayerJoinListener implements Listener {
         CurrentSoundData.playerSounds.put(player.getUniqueId(), soundData);
     }
 }
-
-
-

@@ -2,6 +2,7 @@ name: BlockBreakSounds
 version: '1.0'
 main: com.gotze.blockBreakSounds.Main
 api-version: '1.21.4'
+softdepend: [ ProtocolLib ]
 commands:
   blockbreaksounds:
     description: Set a sound to play whenever you break a block

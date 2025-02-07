@@ -18,7 +18,7 @@ import java.util.Map;
 public class FavoriteSoundsGUIListener implements Listener {
 
     private final Map<Player, Long> lastClickTime = new HashMap<>();
-    private static final long CLICK_DELAY = 100; // 100 milliseconds
+    private static final long CLICK_DELAY = 50; // 50 milliseconds
 
     public FavoriteSoundsGUIListener() {
     }
