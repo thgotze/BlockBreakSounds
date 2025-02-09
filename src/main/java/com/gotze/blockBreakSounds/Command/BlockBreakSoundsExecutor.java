@@ -33,8 +33,8 @@ public class BlockBreakSoundsExecutor implements CommandExecutor {
         // If the typed argument after /blockbreaksounds is a valid key, then set the sound to that sound
         else if (args.length == 1 && SoundMap.soundNames.containsKey(args[0])) {
             Sound selectedSound = SoundMap.soundNames.get(args[0]);
-            CurrentSoundData.playerSounds.put(
-                    player.getUniqueId(), new CurrentSoundData(player, selectedSound, CurrentSoundData.playerSounds.get(player.getUniqueId()).getVolume(), CurrentSoundData.playerSounds.get(player.getUniqueId()).getPitch()));
+            CurrentSoundData.currentSound.put(
+                    player.getUniqueId(), new CurrentSoundData(player, selectedSound, CurrentSoundData.currentSound.get(player.getUniqueId()).getVolume(), CurrentSoundData.currentSound.get(player.getUniqueId()).getPitch()));
 
             player.playSound(player, selectedSound, 0.5f, 1.0f);
             player.sendMessage("Block break sound set to: " + ChatColor.AQUA + args[0]);
@@ -50,14 +50,14 @@ public class BlockBreakSoundsExecutor implements CommandExecutor {
                         args[0].equalsIgnoreCase("nosound") ||
                         args[0].equalsIgnoreCase("0") ||
                         args[0].equalsIgnoreCase("null"))) {
-            CurrentSoundData.playerSounds.remove(player.getUniqueId());
+            CurrentSoundData.currentSound.remove(player.getUniqueId());
             player.sendMessage(ChatColor.RED + "Block break sound removed");
             return true;
         }
 
         // If the typed argument after /blockbreaksounds is info, message the player their sound, volume and pitch of current sound
         else if (args[0].equalsIgnoreCase("info")) {
-            CurrentSoundData soundData = CurrentSoundData.playerSounds.get(player.getUniqueId());
+            CurrentSoundData soundData = CurrentSoundData.currentSound.get(player.getUniqueId());
 
             if (soundData == null) {
                 player.sendMessage(ChatColor.RED + "No sound data found!");

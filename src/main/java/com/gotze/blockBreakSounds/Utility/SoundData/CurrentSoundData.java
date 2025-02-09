@@ -25,7 +25,7 @@ public class CurrentSoundData {
     private float pitch;
     private Player player;
 
-    public static final Map<UUID, CurrentSoundData> playerSounds = new HashMap<>();
+    public static final Map<UUID, CurrentSoundData> currentSound = new HashMap<>();
 
     public CurrentSoundData(Player player, Sound sound, float volume, float pitch) {
         this.player = player;
@@ -71,7 +71,7 @@ public class CurrentSoundData {
 
         if (originalSlot.getType() == Material.BARRIER) {
             player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
-            CurrentSoundData.playerSounds.remove(player.getUniqueId());
+            CurrentSoundData.currentSound.remove(player.getUniqueId());
             clickedInventory.setItem(slot, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
 
             if (slot == 13) {
@@ -88,7 +88,7 @@ public class CurrentSoundData {
         } else if (originalSlot.getType() == Material.GLASS_PANE) {
             player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
         } else {
-            ItemStack confirmClearSound = ButtonCreator.createButton(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴄᴏɴꜰɪʀᴍ");
+            ItemStack confirmClearSound = ButtonCreator.createButton(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴄʟᴇᴀʀ");
             clickedInventory.setItem(slot, confirmClearSound);
 
             new BukkitRunnable() {

@@ -16,9 +16,9 @@ public class CurrentSoundDisplayButton {
 
     public static ItemStack CurrentSoundDisplayButton(Player player) {
 
-        CurrentSoundData soundData = CurrentSoundData.playerSounds.get(player.getUniqueId());
+        CurrentSoundData currentSoundData = CurrentSoundData.currentSound.get(player.getUniqueId());
 
-        if (soundData == null) {
+        if (currentSoundData == null) {
             return createButton(
                     Material.GLASS_PANE,
                     ChatColor.GOLD + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7",
@@ -28,19 +28,17 @@ public class CurrentSoundDisplayButton {
             );
         }
 
-        Material material = SoundMap.getMaterialFromSound(soundData.getSound());
-
         return createButton(
-                material,
+                SoundMap.getMaterialFromSound(currentSoundData.getSound()),
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7",
                 Arrays.asList(
-                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.YELLOW + ChatColor.BOLD + convertToSmallFont(removeSpecialCharacters(soundData.getSound().name())),
-                        ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.YELLOW + ChatColor.BOLD + convertToSmallFont(String.format("%.0f%%", soundData.getVolume() * 100)),
-                        ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.YELLOW + ChatColor.BOLD + convertToSmallFont(String.format("%.2f", soundData.getPitch())),
+                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(removeSpecialCharacters(currentSoundData.getSound().name())),
+                        ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", currentSoundData.getVolume() * 100)),
+                        ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", currentSoundData.getPitch())),
                         "",
-                        ChatColor.GRAY + "ᴄʟɪᴄᴋ ᴛᴏ ᴘʟᴀʏᴛᴇѕᴛ ѕᴏᴜɴᴅ",
-                        ChatColor.GRAY + "ᴅʀᴏᴘ ɪᴛᴇᴍ ᴛᴏ ᴄʟᴇᴀʀ ѕᴏᴜɴᴅ",
-                        ChatColor.GRAY + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ ꜰᴀᴠᴏʀɪᴛᴇ"
+                        ChatColor.WHITE + "ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.AQUA + "ᴘʟᴀʏᴛᴇѕᴛ " + ChatColor.WHITE + "ѕᴏᴜɴᴅ",
+                        ChatColor.WHITE + "ᴅʀᴏᴘ ɪᴛᴇᴍ ᴛᴏ " + ChatColor.RED + "ᴄʟᴇᴀʀ " + ChatColor.WHITE + "ѕᴏᴜɴᴅ",
+                        ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.YELLOW + "ꜰᴀᴠᴏʀɪᴛᴇ ѕᴏᴜɴᴅ"
                 ),
                 true,
                 false,

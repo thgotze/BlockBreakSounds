@@ -5,6 +5,7 @@ import com.gotze.blockBreakSounds.FavoriteSoundsGUI.FavoriteSoundsGUI;
 import com.gotze.blockBreakSounds.Utility.LineHandlers.FavoritedSoundLineHandler;
 import com.gotze.blockBreakSounds.Utility.LineHandlers.PickedSoundLineHandler;
 import com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData;
+import com.gotze.blockBreakSounds.Utility.SoundData.FavoriteSoundsData;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -56,7 +57,11 @@ public class PickSoundGUIListener implements Listener {
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
         Sound selectedSound;
-        CurrentSoundData soundData = CurrentSoundData.playerSounds.get(player.getUniqueId());
+        CurrentSoundData currentSoundData = CurrentSoundData.currentSound.get(player.getUniqueId());
+
+        // Default volume and pitch levels
+        float volume = 0.50f;
+        float pitch = 1.00f;
 
         switch (slot) {
             case 4: // Current Sound
@@ -65,17 +70,19 @@ public class PickSoundGUIListener implements Listener {
                     return;
                 }
                 if (clickType == ClickType.SHIFT_RIGHT) {
-                    FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot);
+                    FavoriteSoundsData.addFavoriteSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
+                    FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
                     return;
                 }
-                if (soundData != null && clickedInventory.getItem(slot).getType() != Material.BARRIER) {
-                    player.playSound(player, soundData.getSound(), soundData.getVolume(), soundData.getPitch());
+                if (currentSoundData != null && clickedInventory.getItem(slot).getType() != Material.BARRIER) {
+                    player.playSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
                     return;
                 }
                 return;
 
             case 9: // Cling!
                 selectedSound = Sound.BLOCK_AMETHYST_BLOCK_BREAK;
+                pitch = 1.25f;
                 break;
 
             case 10: // Pickup!
@@ -84,6 +91,8 @@ public class PickSoundGUIListener implements Listener {
 
             case 11: // Ding!
                 selectedSound = Sound.ENTITY_EXPERIENCE_ORB_PICKUP;
+                volume = 0.10f;
+                pitch = 2.00f;
                 break;
 
             case 12: // Smack!
@@ -92,6 +101,8 @@ public class PickSoundGUIListener implements Listener {
 
             case 13: // Glimmer!
                 selectedSound = Sound.ENTITY_PLAYER_LEVELUP;
+                volume = 0.10f;
+                pitch = 2.00f;
                 break;
 
             case 14: // Brushplop!
@@ -172,6 +183,7 @@ public class PickSoundGUIListener implements Listener {
 
             case 33: // Pew!
                 selectedSound = Sound.ENTITY_VEX_HURT;
+                pitch = 1.50f;
                 break;
 
             case 34: // Monch!
@@ -184,54 +196,40 @@ public class PickSoundGUIListener implements Listener {
 
             case 36: // Return
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
+                // TODO: Change 2 lines
                 BlockBreakSoundsGUI blockBreakSoundsGUI = new BlockBreakSoundsGUI(player);
                 blockBreakSoundsGUI.openBlockBreakSoundsGUI(player);
                 return;
 
             case 40: // Favorite Sounds
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-                FavoriteSoundsGUI favoriteSoundsGUI = new FavoriteSoundsGUI();
-                favoriteSoundsGUI.openFavoriteSoundsGUI(player);
+                new FavoriteSoundsGUI().openFavoriteSoundsGUI(player);
                 return;
 
             case 44: // Pick From All Sounds
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-                AllSoundsGUI allSoundsGUI = new AllSoundsGUI();
-                allSoundsGUI.openAllSoundsGUI(player);
+                new AllSoundsGUI().openAllSoundsGUI(player);
                 return;
 
             default:
                 return;
         }
 
-        // Check if Shift Right click is pressed (Favoriting)
-        // Every other click picks the sound
-        if (clickType == (ClickType.SHIFT_RIGHT)) {
-            FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot);
-        } else {
+        if (clickType == (ClickType.SHIFT_RIGHT)) { // Favorite Sound
+            FavoriteSoundsData.addFavoriteSound(player, selectedSound, volume, pitch);
+            FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
+        } else { // Pick Sound
             PickedSoundLineHandler.handlePickedLineSound(clickedInventory, slot);
 
-            float volume = 0.5f;
-            float pitch = 1.0f;
-
-            if (selectedSound == Sound.BLOCK_AMETHYST_BLOCK_BREAK) {
-                pitch = 1.25f;
-            } else if (selectedSound == Sound.ENTITY_VEX_HURT) {
-                pitch = 1.5f;
-            } else if (selectedSound == Sound.ENTITY_EXPERIENCE_ORB_PICKUP || selectedSound == Sound.ENTITY_PLAYER_LEVELUP) {
-                pitch = 2.0f;
-                volume = 0.1f;
-            }
-
-            if (soundData == null) {
-                soundData = new CurrentSoundData(player, selectedSound, volume, pitch);
+            if (currentSoundData == null) {
+                currentSoundData = new CurrentSoundData(player, selectedSound, volume, pitch);
             } else {
-                soundData.setSound(selectedSound);
-                soundData.setVolume(volume);
-                soundData.setPitch(pitch);
+                currentSoundData.setSound(selectedSound);
+                currentSoundData.setVolume(volume);
+                currentSoundData.setPitch(pitch);
             }
-            CurrentSoundData.playerSounds.put(player.getUniqueId(), soundData);
-            player.playSound(player, soundData.getSound(), soundData.getVolume(), soundData.getPitch());
+            CurrentSoundData.currentSound.put(player.getUniqueId(), currentSoundData);
+            player.playSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
             clickedInventory.setItem(4, CurrentSoundDisplayButton(player));
         }
     }

@@ -108,7 +108,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Glimmer!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ᴇɴᴛɪᴛʏ ᴘʟᴀʏᴇʀ ʟᴇᴠᴇʟᴜᴘ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₁₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₂.₀₀",
                         "",
@@ -122,7 +121,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Clonk!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ᴅᴇᴄᴏʀᴀᴛᴇᴅ ᴘᴏᴛ ʙʀᴇᴀᴋ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -136,7 +134,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Cling!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ᴀᴍᴇᴛʜʏѕᴛ ʙʟᴏᴄᴋ ʙʀᴇᴀᴋ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₂₅",
                         "",
@@ -150,7 +147,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Chime!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ᴀᴍᴇᴛʜʏѕᴛ ʙʟᴏᴄᴋ ᴄʜɪᴍᴇ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -164,7 +160,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Plop!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ʙᴇᴇʜɪᴠᴇ ᴇхɪᴛ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -181,7 +176,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Smack!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ᴇɴᴛɪᴛʏ ɪᴛᴇᴍ ꜰʀᴀᴍᴇ ʀᴇᴍᴏᴠᴇ ɪᴛᴇᴍ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -195,7 +189,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Brushplop!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ᴇɴᴛɪᴛʏ ᴀʀᴍᴀᴅʟʟɪᴏ ʙʀᴜѕʜ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -210,7 +203,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Bamboo!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ʙᴀᴍʙᴏᴏ ʙʀᴇᴀᴋ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -224,7 +216,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Monch!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ᴇɴᴛɪᴛʏ ѕɴɪꜰꜰᴇʀ ᴇᴀᴛ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -240,7 +231,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Clank!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ɴᴇᴛʜᴇʀɪᴛᴇ ʙʟᴏᴄᴋ ʙʀᴇᴀᴋ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -254,7 +244,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Clatter!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ʙᴏɴᴇ ʙʟᴏᴄᴋ ʙʀᴇᴀᴋ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -268,7 +257,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Blip!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ʙᴜʙʙʟᴇ ᴄᴏʟᴜᴍɴ ʙᴜʙʙʟᴇ ᴘᴏᴘ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -282,7 +270,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Sizzle!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ʙᴜʙʙʟᴇ ᴄᴏʟᴜᴍɴ ᴜᴘᴡᴀʀᴅѕ ᴀᴍʙɪᴇɴᴛ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -298,7 +285,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Crumble!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ᴄᴀʟᴄɪᴛᴇ ʙʀᴇᴀᴋ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -312,7 +298,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Klink!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ᴄᴏᴘᴘᴇʀ ʙᴜʟʙ ᴘʟᴀᴄᴇ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -326,7 +311,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Whomp!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ᴇɴᴅ ᴘᴏʀᴛᴀʟ ꜰʀᴀᴍᴇ ꜰɪʟʟ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -340,7 +324,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Creak!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ꜰᴜɴɢᴜѕ ʙʀᴇᴀᴋ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -354,7 +337,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Bloop!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ʟᴀᴠᴀ ᴘᴏᴘ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -368,7 +350,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Snap!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ѕᴄᴀꜰꜰᴏʟᴅɪɴɢ ʙʀᴇᴀᴋ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -382,7 +363,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Quink!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ʟᴏᴅᴇѕᴛᴏɴᴇ ᴘʟᴀᴄᴇ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -396,7 +376,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Snow!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ѕɴᴏᴡ ʙʀᴇᴀᴋ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -410,7 +389,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Grumble!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ᴅᴇᴇᴘѕʟᴀᴛᴇ ʙʀᴇᴀᴋ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -424,7 +402,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Pew!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ᴇɴᴛɪᴛʏ ᴠᴇх ʜᴜʀᴛ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₅₀",
                         "",
@@ -438,7 +415,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Pop!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ᴅᴇᴄᴏʀᴀᴛᴇᴅ ᴘᴏᴛ ɪɴѕᴇʀᴛ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -452,7 +428,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Whoosh!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ᴇɴᴛɪᴛʏ ᴇɴᴅᴇʀ ᴇʏᴇ ᴅᴇᴀᴛʜ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -466,7 +441,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Pickup!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ᴇɴᴛɪᴛʏ ɪᴛᴇᴍ ᴘɪᴄᴋᴜᴘ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",
@@ -480,7 +454,6 @@ public class PickSoundGUI {
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Ding!",
                 Arrays.asList(
                         ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ᴇɴᴛɪᴛʏ ᴇхᴘᴇʀɪᴇɴᴄᴇ ᴏʀʙ ᴘɪᴄᴋᴜᴘ",
-                        "",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₁₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₂.₀₀",
                         "",

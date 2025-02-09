@@ -6,6 +6,7 @@ import com.gotze.blockBreakSounds.SettingsGUI.SettingsGUI;
 import com.gotze.blockBreakSounds.Utility.CurrentSoundDisplayButton;
 import com.gotze.blockBreakSounds.Utility.LineHandlers.FavoritedSoundLineHandler;
 import com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData;
+import com.gotze.blockBreakSounds.Utility.SoundData.FavoriteSoundsData;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -71,17 +72,13 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
-        CurrentSoundData soundData = CurrentSoundData.playerSounds.get(player.getUniqueId());
+        CurrentSoundData currentSoundData = CurrentSoundData.currentSound.get(player.getUniqueId());
 
         switch (slot) {
             case 11: // Increase Volume
-                increaseVolume(player, soundData);
-                updateVolumeSlider(clickedInventory, soundData);
-
-                clickedInventory.getItem(11).getItemMeta().setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "[" + ChatColor.YELLOW + "+" + ChatColor.GREEN + "] ɪɴᴄʀᴇᴀѕᴇ ᴠᴏʟᴜᴍᴇ");
-
-
-                clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
+                increaseVolume(player, currentSoundData);
+                updateVolumeSlider(clickedInventory, currentSoundData);
+                    clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
                 return;
 
             case 13: // Current Sound
@@ -90,31 +87,32 @@ public class BlockBreakSoundsGUIListener implements Listener {
                     return;
                 }
                 if (clickType == ClickType.SHIFT_RIGHT) {
-                    FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot);
+                    FavoriteSoundsData.addFavoriteSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
+                    FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
                     return;
                 }
-                if (soundData != null && clickedInventory.getItem(slot).getType() != Material.BARRIER) {
-                    player.playSound(player, soundData.getSound(), soundData.getVolume(), soundData.getPitch());
-                    updateVolumeSlider(clickedInventory, soundData);
-                    updatePitchSlider(clickedInventory, soundData);
+                if (currentSoundData != null && clickedInventory.getItem(slot).getType() != Material.BARRIER) {
+                    player.playSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
+                    updateVolumeSlider(clickedInventory, currentSoundData);
+                    updatePitchSlider(clickedInventory, currentSoundData);
                     return;
                 }
                 return;
 
             case 15: // Increase Pitch
-                increasePitch(player, soundData);
-                updatePitchSlider(clickedInventory, soundData);
+                increasePitch(player, currentSoundData);
+                updatePitchSlider(clickedInventory, currentSoundData);
                 clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
                 return;
 
             case 20: // Tweak Volume
                 if (clickType.isLeftClick()) {
-                    increaseVolume(player, soundData);
+                    increaseVolume(player, currentSoundData);
                 }
                 else if (clickType.isRightClick()) {
-                    decreaseVolume(player, soundData);
+                    decreaseVolume(player, currentSoundData);
                 }
-                updateVolumeSlider(clickedInventory, soundData);
+                updateVolumeSlider(clickedInventory, currentSoundData);
                 clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
                 return;
 
@@ -126,11 +124,11 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
             case 24: // Tweak Pitch
                 if (clickType.isLeftClick()) {
-                    increasePitch(player, soundData);
+                    increasePitch(player, currentSoundData);
                 } else if (clickType.isRightClick()) {
-                    decreasePitch(player, soundData);
+                    decreasePitch(player, currentSoundData);
                 }
-                updatePitchSlider(clickedInventory, soundData);
+                updatePitchSlider(clickedInventory, currentSoundData);
                 clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
                 return;
 
@@ -141,8 +139,8 @@ public class BlockBreakSoundsGUIListener implements Listener {
                 return;
 
             case 29: // Decrease Volume
-                decreaseVolume(player, soundData);
-                updateVolumeSlider(clickedInventory, soundData);
+                decreaseVolume(player, currentSoundData);
+                updateVolumeSlider(clickedInventory, currentSoundData);
                 clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
                 return;
 
@@ -153,8 +151,8 @@ public class BlockBreakSoundsGUIListener implements Listener {
                 return;
 
             case 33: // Decrease Pitch
-                decreasePitch(player, soundData);
-                updatePitchSlider(clickedInventory, soundData);
+                decreasePitch(player, currentSoundData);
+                updatePitchSlider(clickedInventory, currentSoundData);
                 clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
                 return;
 
@@ -681,10 +679,12 @@ public class BlockBreakSoundsGUIListener implements Listener {
             player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
             return;
         }
+        float currentVolume = soundData.getVolume();
         float currentPitch = soundData.getPitch();
+
         int currentIndex = PITCH_LEVELS.indexOf(currentPitch);
 
-        if (currentIndex == 0) {
+        if (currentIndex == 0 || currentVolume == 0.0f)  {
             player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
         } else {
             float newPitch = PITCH_LEVELS.get(currentIndex - 1);
@@ -701,8 +701,10 @@ public class BlockBreakSoundsGUIListener implements Listener {
         float currentPitch = soundData.getPitch();
         int currentIndex = PITCH_LEVELS.indexOf(currentPitch);
 
-        float newPitch = PITCH_LEVELS.get(currentIndex + 1);
-        soundData.setPitch(newPitch);
+        if (currentIndex != PITCH_LEVELS.size() -1) {
+            float newPitch = PITCH_LEVELS.get(currentIndex + 1);
+            soundData.setPitch(newPitch);
+        }
 
         player.playSound(player, soundData.getSound(), soundData.getVolume(), soundData.getPitch());
     }

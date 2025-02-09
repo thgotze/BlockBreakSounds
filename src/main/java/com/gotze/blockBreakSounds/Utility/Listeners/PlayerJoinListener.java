@@ -21,7 +21,7 @@ public class PlayerJoinListener implements Listener {
         if (!(container.has(new NamespacedKey(Main.INSTANCE, "sound")))) {
             return;
         }
-        CurrentSoundData soundData = CurrentSoundData.playerSounds.get(player.getUniqueId());
+        CurrentSoundData soundData = CurrentSoundData.currentSound.get(player.getUniqueId());
 
         if (soundData == null) {
             return;
@@ -30,6 +30,6 @@ public class PlayerJoinListener implements Listener {
         soundData.setVolume(container.get(new NamespacedKey(Main.INSTANCE, "volume"), PersistentDataType.FLOAT));
         soundData.setPitch(container.get(new NamespacedKey(Main.INSTANCE, "pitch"), PersistentDataType.FLOAT));
 
-        CurrentSoundData.playerSounds.put(player.getUniqueId(), soundData);
+        CurrentSoundData.currentSound.put(player.getUniqueId(), soundData);
     }
 }

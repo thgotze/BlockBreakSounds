@@ -50,7 +50,7 @@ public class AllSoundsGUIListener implements Listener {
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
-        CurrentSoundData soundData = CurrentSoundData.playerSounds.get(player.getUniqueId());
+        CurrentSoundData soundData = CurrentSoundData.currentSound.get(player.getUniqueId());
 
         switch (slot) {
             case 4: // Current Sound
@@ -59,7 +59,7 @@ public class AllSoundsGUIListener implements Listener {
                     return;
                 }
                 if (clickType == ClickType.SHIFT_RIGHT) {
-                    FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot);
+                    FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
                     return;
                 }
                 if (soundData != null && clickedInventory.getItem(slot).getType() != Material.BARRIER) {

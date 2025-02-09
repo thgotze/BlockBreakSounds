@@ -11,12 +11,11 @@ public class SoundMap {
     public static final Map<String, Sound> soundNames = new HashMap<>();
     public static final Map<Sound, Material> soundToMaterial = new HashMap<>();
 
-//    Sound Categories: (13 total)
-//    Break Block, Place Block, Step Block, Hit Block,
-//    Fall Block, Mob Sounds, Animal Sounds, Player Sounds,
+//    Sound Categories:
+//    Mob Sounds, Animal Sounds, Player Sounds,
 //    Ambient Sounds,  UI Sounds, Noteblocks, Music Discs,
 //    Miscellaneous
-// test test test
+
 //            Ambient Sounds
 //            "ambient.basalt_deltas.additions",
 //            "ambient.basalt_deltas.loop",

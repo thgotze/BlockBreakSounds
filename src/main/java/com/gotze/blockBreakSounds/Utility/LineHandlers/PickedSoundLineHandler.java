@@ -17,8 +17,17 @@ public class PickedSoundLineHandler {
         for (int i = 9; i <= 35; i++) {
 
             ItemStack item = clickedInventory.getItem(i);
+            if (item == null) {
+                return;
+            }
             ItemMeta itemMeta = item.getItemMeta();
+            if (itemMeta == null) {
+                return;
+            }
             List<String> lore = itemMeta.getLore();
+            if (lore == null) {
+                return;
+            }
 
             // For the slot picked replaces the "Click to pick sound" line and replaces it with the "Sound picked!" line
             if (i == slot) {
