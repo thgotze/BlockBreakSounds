@@ -63,11 +63,7 @@ public class CurrentSoundData {
     }
 
     public static void clearCurrentSound(Inventory clickedInventory, Player player, int slot) {
-
         ItemStack originalSlot = clickedInventory.getItem(slot);
-
-        ItemStack currentSoundDisplayButton = CurrentSoundDisplayButton.CurrentSoundDisplayButton(player);
-        clickedInventory.setItem(slot, currentSoundDisplayButton);
 
         if (originalSlot.getType() == Material.BARRIER) {
             player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
@@ -88,8 +84,8 @@ public class CurrentSoundData {
         } else if (originalSlot.getType() == Material.GLASS_PANE) {
             player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
         } else {
-            ItemStack confirmClearSound = ButtonCreator.createButton(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴄʟᴇᴀʀ");
-            clickedInventory.setItem(slot, confirmClearSound);
+            ItemStack confirmClearCurrentSound = ButtonCreator.createButton(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴄʟᴇᴀʀ");
+            clickedInventory.setItem(slot, confirmClearCurrentSound);
 
             new BukkitRunnable() {
                 @Override

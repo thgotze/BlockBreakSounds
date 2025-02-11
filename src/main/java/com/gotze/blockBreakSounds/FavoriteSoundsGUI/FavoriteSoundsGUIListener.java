@@ -100,12 +100,12 @@ public class FavoriteSoundsGUIListener implements Listener {
 
                     player.sendMessage("DEBUG: Clicked slot " + slot + " with " + clickedItem.getType());
 
-                    if (clickType == ClickType.SHIFT_RIGHT) {
+                    if (clickType == ClickType.DROP) {
                         int favoriteSlotIndex = slot - 9;
                         player.sendMessage("DEBUG: Removing favorite at index " + favoriteSlotIndex);
 
-                        FavoriteSoundsData.removeFavoriteSound(player, slot);
-                        FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot, true);
+                        FavoriteSoundsData.clearFavoriteSound(clickedInventory, player, slot);
+//                        FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot, true);
                         return;
                     }
 

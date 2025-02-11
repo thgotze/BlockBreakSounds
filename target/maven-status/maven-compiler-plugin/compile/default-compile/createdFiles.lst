@@ -17,6 +17,7 @@ com\gotze\blockBreakSounds\SettingsGUI\SettingsGUIListener.class
 com\gotze\blockBreakSounds\FavoriteSoundsGUI\FavoriteSoundsGUIListener.class
 com\gotze\blockBreakSounds\Utility\Listeners\PlayerJoinListener.class
 com\gotze\blockBreakSounds\Utility\SoundData\CurrentSoundData$1.class
+com\gotze\blockBreakSounds\Utility\SoundData\FavoriteSoundsData$1.class
 com\gotze\blockBreakSounds\PickSoundGUI\PickSoundGUI.class
 com\gotze\blockBreakSounds\FavoriteSoundsGUI\FavoriteSoundsGUI.class
 com\gotze\blockBreakSounds\Utility\SmallFontConverter.class
