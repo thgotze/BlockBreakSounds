@@ -32,24 +32,25 @@ public class FavoriteSoundsGUI {
         gui.setItem(4, CurrentSoundDisplayButton(player));
         gui.setItem(36, ReturnButton());
         gui.setItem(40, FavoriteSoundsInfoButton());
-        addFavoriteSoundsToGUI(player);
+        setFavoriteSoundsToGUI(player);
         if (gui.getItem(9) == null) {
             gui.setItem(22, NoSoundsFavoritedYetButton());
         }
     }
 
-    private void addFavoriteSoundsToGUI(Player player) {
+    public void setFavoriteSoundsToGUI(Player player) {
+        Inventory inventory = player.getOpenInventory().getTopInventory();
         List<FavoriteSoundsData> favorites = FavoriteSoundsData.getFavorites(player);
         int slot = 9;
-
         for (int i = 0; i < favorites.size(); i++) {
-            if (slot >= 36) break;
             FavoriteSoundsData favoriteSoundButton = favorites.get(i);
-            gui.setItem(slot, createFavoriteSoundButton(favoriteSoundButton, i));
+            inventory.setItem(slot, createFavoriteSoundButton(favoriteSoundButton, i));
             slot++;
         }
+        for (int i = favorites.size() + 9; i < 35; i ++) {
+            inventory.setItem(i, null);
+        }
     }
-
     public static ItemStack createFavoriteSoundButton(FavoriteSoundsData favoriteSoundsData, int index) {
         return createButton(
                 SoundMap.getMaterialFromSound(favoriteSoundsData.getSound()),
@@ -85,9 +86,9 @@ public class FavoriteSoundsGUI {
         return createButton(
                 Material.NETHER_STAR,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
-                Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.YELLOW + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ",
-                        "",
-                        ChatColor.GRAY + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ ꜰᴀᴠᴏʀɪᴛᴇ"
+                Arrays.asList(
+                        ChatColor.WHITE + "ᴅʀᴏᴘ ѕᴏᴜɴᴅѕ ᴛᴏ " + ChatColor.RED + "ᴜɴꜰᴀᴠᴏʀɪᴛᴇ",
+                        ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ " + ChatColor.YELLOW + "ꜰᴀᴠᴏʀɪᴛᴇ"
                 )
         );
     }
@@ -102,7 +103,7 @@ public class FavoriteSoundsGUI {
     public static ItemStack NoSoundsFavoritedYetButton() {
         return createButton(
                 Material.PAPER,
-                ChatColor.WHITE + "You have not favorited any sounds yet!");
+                ChatColor.WHITE + "ʏᴏᴜ ʜᴀᴠᴇ ɴᴏᴛ ꜰᴀᴠᴏʀɪᴛᴇᴅ ᴀɴʏ ѕᴏᴜɴᴅѕ ʏᴇᴛ!");
     }
 
 }

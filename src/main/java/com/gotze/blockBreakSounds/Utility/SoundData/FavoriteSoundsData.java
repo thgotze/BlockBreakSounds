@@ -1,5 +1,6 @@
 package com.gotze.blockBreakSounds.Utility.SoundData;
 
+import com.gotze.blockBreakSounds.FavoriteSoundsGUI.FavoriteSoundsGUI;
 import com.gotze.blockBreakSounds.Main;
 import com.gotze.blockBreakSounds.Utility.ButtonCreator;
 import org.bukkit.ChatColor;
@@ -53,52 +54,47 @@ public class FavoriteSoundsData {
 
         for (FavoriteSoundsData data : favorites) {
             if (data.getSound() == sound && data.getVolume() == volume && data.getPitch() == pitch) {
-                player.sendMessage("Sound already favorited!!!");
                 return;
             }
         }
         if (favorites.size() < 27) {
             favorites.add(new FavoriteSoundsData(sound, volume, pitch));
-            player.sendMessage("You have added " + sound.name() + " to your favorites!");
         } else {
-            player.sendMessage("You have reached the maximum of 27 favorite sounds!");
+            return;
         }
     }
 
-    public static void clearFavoriteSound(Inventory clickedInventory, Player player, int slot) {
-        ItemStack originalSlot = clickedInventory.getItem(slot);
+    public static void clearFavoriteSound(Inventory inventory, Player player, int slot) {
+        ItemStack originalSlotItem = inventory.getItem(slot);
 
-        player.sendMessage("Entered clearFavoriteSound method!");
+        if (originalSlotItem == null) {
+            return;
+        }
 
-        if (originalSlot.getType() == Material.BARRIER) {
-            player.sendMessage("It's a barrier type!");
-
+        if (originalSlotItem.getType() == Material.BARRIER) {
             player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
+            inventory.setItem(slot, null);
+
             List<FavoriteSoundsData> favorites = favoriteSounds.get(player.getUniqueId());
             int listIndex = slot - 9;
+            favorites.remove(listIndex);
 
-            if (favorites != null && listIndex >= 0 && listIndex < favorites.size()) {
+            FavoriteSoundsGUI favoriteSoundsGUI = new FavoriteSoundsGUI();
+            favoriteSoundsGUI.setFavoriteSoundsToGUI(player);
 
-                favorites.remove(listIndex);
-                player.sendMessage("You have removed a favorite sound from your list.");
         } else {
-                player.sendMessage("Will attempt to put barrier");
-                ItemStack confirmClearFavoriteSound = ButtonCreator.createButton(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴜɴꜰᴀᴠᴏʀɪᴛᴇ");
-                clickedInventory.setItem(slot, confirmClearFavoriteSound);
+            ItemStack confirmClearFavoriteSound = ButtonCreator.createButton(Material.BARRIER,  ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴜɴꜰᴀᴠᴏʀɪᴛᴇ");
 
-                player.sendMessage("Successfully put barrier type");
+            inventory.setItem(slot, confirmClearFavoriteSound);
 
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        if (clickedInventory.getItem(slot).getType() == Material.BARRIER) {
-                            clickedInventory.setItem(slot, originalSlot);
-                            player.sendMessage("Was barrier, so after 3 seconds put back");
-                        }
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if (inventory.getItem(slot).getType() == confirmClearFavoriteSound.getType()) {
+                        inventory.setItem(slot, originalSlotItem);
                     }
-                }.runTaskLater(Main.INSTANCE, 60L);
-
-            }
+                }
+            }.runTaskLater(Main.INSTANCE, 60L);
         }
     }
 

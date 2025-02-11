@@ -38,7 +38,7 @@ public class CurrentSoundDisplayButton {
                         "",
                         ChatColor.WHITE + "ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.AQUA + "ᴘʟᴀʏᴛᴇѕᴛ " + ChatColor.WHITE + "ѕᴏᴜɴᴅ",
                         ChatColor.WHITE + "ᴅʀᴏᴘ ɪᴛᴇᴍ ᴛᴏ " + ChatColor.RED + "ᴄʟᴇᴀʀ " + ChatColor.WHITE + "ѕᴏᴜɴᴅ",
-                        ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.YELLOW + "ꜰᴀᴠᴏʀɪᴛᴇ ѕᴏᴜɴᴅ"
+                        ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.YELLOW + "ꜰᴀᴠᴏʀɪᴛᴇ " + ChatColor.WHITE + "ѕᴏᴜɴᴅ"
                 ),
                 true,
                 false,
