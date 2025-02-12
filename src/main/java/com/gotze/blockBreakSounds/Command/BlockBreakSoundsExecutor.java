@@ -11,6 +11,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import static com.gotze.blockBreakSounds.Utility.SmallFontConverter.convertToSmallFont;
+import static com.gotze.blockBreakSounds.Utility.SmallFontConverter.removeSpecialCharacters;
+import static com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData.currentSound;
 
 public class BlockBreakSoundsExecutor implements CommandExecutor {
 
@@ -33,8 +35,7 @@ public class BlockBreakSoundsExecutor implements CommandExecutor {
         // If the typed argument after /blockbreaksounds is a valid key, then set the sound to that sound
         else if (args.length == 1 && SoundMap.soundNames.containsKey(args[0])) {
             Sound selectedSound = SoundMap.soundNames.get(args[0]);
-            CurrentSoundData.currentSound.put(
-                    player.getUniqueId(), new CurrentSoundData(player, selectedSound, CurrentSoundData.currentSound.get(player.getUniqueId()).getVolume(), CurrentSoundData.currentSound.get(player.getUniqueId()).getPitch()));
+            currentSound.put(player.getUniqueId(), new CurrentSoundData(player, selectedSound, 0.5f, 0.5f));
 
             player.playSound(player, selectedSound, 0.5f, 1.0f);
             player.sendMessage("Block break sound set to: " + ChatColor.AQUA + args[0]);
@@ -43,29 +44,27 @@ public class BlockBreakSoundsExecutor implements CommandExecutor {
 
         // If the typed argument after /blockbreaksounds is any cancelling key, then remove the sound
         else if (args.length == 1 && (
-                        args[0].equalsIgnoreCase("stop") ||
+                args[0].equalsIgnoreCase("stop") ||
                         args[0].equalsIgnoreCase("disable") ||
                         args[0].equalsIgnoreCase("none") ||
                         args[0].equalsIgnoreCase("off") ||
                         args[0].equalsIgnoreCase("nosound") ||
                         args[0].equalsIgnoreCase("0") ||
                         args[0].equalsIgnoreCase("null"))) {
-            CurrentSoundData.currentSound.remove(player.getUniqueId());
-            player.sendMessage(ChatColor.RED + "Block break sound removed");
+            currentSound.remove(player.getUniqueId());
             return true;
         }
 
         // If the typed argument after /blockbreaksounds is info, message the player their sound, volume and pitch of current sound
         else if (args[0].equalsIgnoreCase("info")) {
-            CurrentSoundData soundData = CurrentSoundData.currentSound.get(player.getUniqueId());
-
-            if (soundData == null) {
-                player.sendMessage(ChatColor.RED + "No sound data found!");
+            CurrentSoundData currentSoundData = currentSound.get(player.getUniqueId());
+            if (currentSoundData == null) {
+                return false;
             } else {
                 String message = ChatColor.GOLD + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7\n" +
-                                 ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.YELLOW + ChatColor.BOLD + convertToSmallFont(soundData.getSound().name()) + "\n" +
-                                 ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.YELLOW + ChatColor.BOLD + convertToSmallFont(String.format("%.0f%%", soundData.getVolume() * 100)) + "\n" +
-                                 ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.YELLOW + ChatColor.BOLD + convertToSmallFont(String.format("%.2f", soundData.getPitch()));
+                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(removeSpecialCharacters(currentSoundData.getSound().name())) +
+                        ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", currentSoundData.getVolume() * 100)) +
+                        ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", currentSoundData.getPitch()));
                 player.sendMessage(message);
                 return true;
             }
@@ -76,6 +75,5 @@ public class BlockBreakSoundsExecutor implements CommandExecutor {
             player.sendMessage(ChatColor.RED + "Use command: /blockbreaksound");
             return true;
         }
-        return false;
     }
 }

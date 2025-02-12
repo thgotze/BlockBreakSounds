@@ -47,7 +47,7 @@ public class FavoriteSoundsGUI {
             inventory.setItem(slot, createFavoriteSoundButton(favoriteSoundButton, i));
             slot++;
         }
-        for (int i = favorites.size() + 9; i < 35; i ++) {
+        for (int i = favorites.size() + 9; i < 36; i ++) {
             inventory.setItem(i, null);
         }
     }

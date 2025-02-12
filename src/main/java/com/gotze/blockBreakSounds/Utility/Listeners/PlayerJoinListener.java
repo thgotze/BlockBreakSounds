@@ -1,35 +1,26 @@
 package com.gotze.blockBreakSounds.Utility.Listeners;
 
-import com.gotze.blockBreakSounds.Main;
 import com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
 
 public class PlayerJoinListener implements Listener {
 
     @EventHandler
     public void onJoinEvent(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        PersistentDataContainer container = player.getPersistentDataContainer();
 
-        if (!(container.has(new NamespacedKey(Main.INSTANCE, "sound")))) {
-            return;
-        }
-        CurrentSoundData soundData = CurrentSoundData.currentSound.get(player.getUniqueId());
-
-        if (soundData == null) {
-            return;
-        }
-        soundData.setSound(Sound.valueOf(container.get(new NamespacedKey(Main.INSTANCE, "sound"), PersistentDataType.STRING)));
-        soundData.setVolume(container.get(new NamespacedKey(Main.INSTANCE, "volume"), PersistentDataType.FLOAT));
-        soundData.setPitch(container.get(new NamespacedKey(Main.INSTANCE, "pitch"), PersistentDataType.FLOAT));
-
-        CurrentSoundData.currentSound.put(player.getUniqueId(), soundData);
+        CurrentSoundData currentSoundData = CurrentSoundData.loadFromYAML(player);
+        CurrentSoundData.currentSound.put(player.getUniqueId(), currentSoundData);
     }
 }
+
+//        PersistentDataContainer playerPersistentDataContainer = player.getPersistentDataContainer();
+//        if (!(playerPersistentDataContainer.has(new NamespacedKey(Main.INSTANCE, "sound")))) {
+//            return;
+//        }
+//        soundData.setSound(Sound.valueOf(playerPersistentDataContainer.get(new NamespacedKey(Main.INSTANCE, "sound"), PersistentDataType.STRING)));
+//        soundData.setVolume(playerPersistentDataContainer.get(new NamespacedKey(Main.INSTANCE, "volume"), PersistentDataType.FLOAT));
+//        soundData.setPitch(playerPersistentDataContainer.get(new NamespacedKey(Main.INSTANCE, "pitch"), PersistentDataType.FLOAT));

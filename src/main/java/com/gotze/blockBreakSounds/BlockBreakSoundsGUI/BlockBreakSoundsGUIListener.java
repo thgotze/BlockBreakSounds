@@ -26,6 +26,7 @@ import java.util.Map;
 import static com.gotze.blockBreakSounds.Utility.ButtonCreator.createButton;
 import static com.gotze.blockBreakSounds.Utility.GUIUtils.Frame;
 import static com.gotze.blockBreakSounds.Utility.SmallFontConverter.convertToSmallFont;
+import static com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData.currentSound;
 
 public class BlockBreakSoundsGUIListener implements Listener {
 
@@ -72,7 +73,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
-        CurrentSoundData currentSoundData = CurrentSoundData.currentSound.get(player.getUniqueId());
+        CurrentSoundData currentSoundData = currentSound.get(player.getUniqueId());
 
         switch (slot) {
             case 11: // Increase Volume

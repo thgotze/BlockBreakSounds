@@ -55,7 +55,6 @@ public class FavoriteSoundsGUIListener implements Listener {
         int slot = event.getSlot();
 
         CurrentSoundData currentSoundData = CurrentSoundData.currentSound.get(player.getUniqueId());
-        FavoriteSoundsGUI favoriteSoundsGUI = new FavoriteSoundsGUI();
 
         switch (slot) {
             case 4: // Current Sound
@@ -119,7 +118,6 @@ public class FavoriteSoundsGUIListener implements Listener {
                     clickedInventory.setItem(4, CurrentSoundDisplayButton(player));
                 }
                 return;
-
         }
     }
 }
