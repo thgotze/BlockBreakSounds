@@ -6,19 +6,20 @@ import com.gotze.blockBreakSounds.Utility.ButtonCreator;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 public class FavoriteSoundsData {
-
-    private Sound sound;
-    private float volume;
-    private float pitch;
-    private boolean favorited;
+    private final Sound sound;
+    private final float volume;
+    private final float pitch;
 
     public static final Map<UUID, List<FavoriteSoundsData>> favoriteSounds = new HashMap<>();
 
@@ -26,7 +27,6 @@ public class FavoriteSoundsData {
         this.sound = sound;
         this.volume = volume;
         this.pitch = pitch;
-        this.favorited = true;
     }
 
     public Sound getSound() {
@@ -41,26 +41,73 @@ public class FavoriteSoundsData {
         return pitch;
     }
 
-    public boolean isFavorited() {
-        return favorited;
+    public static void saveFavoriteSoundsDataToYAML(Player player) {
+        File playerFile = new File(Main.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
+        YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(playerFile);
+        String path = "favorite-sounds";
+
+        List<Map<String, Object>> soundList = new ArrayList<>();
+
+        List<FavoriteSoundsData> favorites = favoriteSounds.getOrDefault(player.getUniqueId(), new ArrayList<>());
+
+        for (FavoriteSoundsData data : favorites) {
+            Map<String, Object> soundData = new HashMap<>();
+            soundData.put("sound", data.getSound().toString());
+            soundData.put("volume", data.getVolume());
+            soundData.put("pitch", data.getPitch());
+            soundList.add(soundData);
+        }
+
+        yamlConfiguration.set(path, soundList);
+
+        try {
+            yamlConfiguration.save(playerFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void toggleFavorite() {
-        this.favorited = !this.favorited;
+    public static void loadFavoriteSoundsDataFromYAML(Player player) {
+        File file = new File(Main.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
+        YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(file);
+        String path = "favorite-sounds";
+
+        if (!yamlConfiguration.contains(path)) {
+            return;
+        }
+        List<FavoriteSoundsData> favorites = new ArrayList<>();
+        List<Map<?, ?>> soundList = yamlConfiguration.getMapList(path);
+
+        for (Map<?, ?> soundData : soundList) {
+            try {
+                Sound sound = Sound.valueOf((String) soundData.get("sound"));
+                float volume = ((Number) soundData.get("volume")).floatValue();
+                float pitch = ((Number) soundData.get("pitch")).floatValue();
+                favorites.add(new FavoriteSoundsData(sound, volume, pitch));
+            } catch (Exception e) {
+                System.out.println("Failed to load a favorite sound for " + player.getName());
+            }
+        }
+        favoriteSounds.put(player.getUniqueId(), favorites);
     }
+
 
     public static void addFavoriteSound(Player player, Sound sound, float volume, float pitch) {
-        List<FavoriteSoundsData> favorites = favoriteSounds.computeIfAbsent(player.getUniqueId(), k -> new ArrayList<>());
+        List<FavoriteSoundsData> favorites = favoriteSounds.get(player.getUniqueId());
+
+        if (favorites == null) {
+            favorites = new ArrayList<>();
+            favoriteSounds.put(player.getUniqueId(), favorites);
+        }
 
         for (FavoriteSoundsData data : favorites) {
             if (data.getSound() == sound && data.getVolume() == volume && data.getPitch() == pitch) {
                 return;
             }
         }
-        if (favorites.size() < 27) {
+        if (favorites.size() < 27) { // You can only have 27 favorite sounds
             favorites.add(new FavoriteSoundsData(sound, volume, pitch));
-        } else {
-            return;
+            saveFavoriteSoundsDataToYAML(player);
         }
     }
 
@@ -78,6 +125,7 @@ public class FavoriteSoundsData {
             List<FavoriteSoundsData> favorites = favoriteSounds.get(player.getUniqueId());
             int listIndex = slot - 9;
             favorites.remove(listIndex);
+            saveFavoriteSoundsDataToYAML(player);
 
             FavoriteSoundsGUI favoriteSoundsGUI = new FavoriteSoundsGUI();
             favoriteSoundsGUI.setFavoriteSoundsToGUI(player);

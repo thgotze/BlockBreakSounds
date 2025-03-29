@@ -51,6 +51,7 @@ public class FavoriteSoundsGUI {
             inventory.setItem(i, null);
         }
     }
+
     public static ItemStack createFavoriteSoundButton(FavoriteSoundsData favoriteSoundsData, int index) {
         return createButton(
                 SoundMap.getMaterialFromSound(favoriteSoundsData.getSound()),

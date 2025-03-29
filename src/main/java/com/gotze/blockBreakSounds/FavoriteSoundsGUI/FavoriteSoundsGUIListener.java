@@ -117,7 +117,6 @@ public class FavoriteSoundsGUIListener implements Listener {
                     player.playSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
                     clickedInventory.setItem(4, CurrentSoundDisplayButton(player));
                 }
-                return;
         }
     }
 }

@@ -17,7 +17,6 @@ public class BlockBreakListener implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
         CurrentSoundData soundData = CurrentSoundData.currentSound.get(player.getUniqueId());
-
         if (soundData == null) {
             return;
         }

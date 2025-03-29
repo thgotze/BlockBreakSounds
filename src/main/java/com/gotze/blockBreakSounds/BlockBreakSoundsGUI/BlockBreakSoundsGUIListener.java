@@ -79,7 +79,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
             case 11: // Increase Volume
                 increaseVolume(player, currentSoundData);
                 updateVolumeSlider(clickedInventory, currentSoundData);
-                    clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
+                clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
                 return;
 
             case 13: // Current Sound
