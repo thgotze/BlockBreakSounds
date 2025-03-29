@@ -66,7 +66,7 @@ public class CurrentSoundData {
         String path = "current-sound";
 
         if (sound == null) {
-            yamlConfiguration.set(path, null);
+            yamlConfiguration.set(path, new HashMap<>());
         } else {
             yamlConfiguration.set(path + ".sound", sound.toString());
             yamlConfiguration.set(path + ".volume", volume);

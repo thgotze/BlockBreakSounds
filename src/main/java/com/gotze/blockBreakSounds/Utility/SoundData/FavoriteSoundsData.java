@@ -44,21 +44,29 @@ public class FavoriteSoundsData {
     public static void saveFavoriteSoundsDataToYAML(Player player) {
         File playerFile = new File(Main.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(playerFile);
-        String path = "favorite-sounds";
 
-        List<Map<String, Object>> soundList = new ArrayList<>();
-
-        List<FavoriteSoundsData> favorites = favoriteSounds.getOrDefault(player.getUniqueId(), new ArrayList<>());
-
-        for (FavoriteSoundsData data : favorites) {
-            Map<String, Object> soundData = new HashMap<>();
-            soundData.put("sound", data.getSound().toString());
-            soundData.put("volume", data.getVolume());
-            soundData.put("pitch", data.getPitch());
-            soundList.add(soundData);
+        String currentSoundPath = "current-sound";
+        if (CurrentSoundData.currentSound.get(player.getUniqueId()) == null) {
+            yamlConfiguration.set(currentSoundPath, new HashMap<>());
         }
 
-        yamlConfiguration.set(path, soundList);
+        String favoriteSoundsPath = "favorite-sounds";
+        if (favoriteSounds.isEmpty()) {
+            yamlConfiguration.set(favoriteSoundsPath, new ArrayList<>());
+        } else {
+            List<Map<String, Object>> soundList = new ArrayList<>();
+
+            List<FavoriteSoundsData> favorites = favoriteSounds.getOrDefault(player.getUniqueId(), new ArrayList<>());
+
+            for (FavoriteSoundsData data : favorites) {
+                Map<String, Object> soundData = new HashMap<>();
+                soundData.put("sound", data.getSound().toString());
+                soundData.put("volume", data.getVolume());
+                soundData.put("pitch", data.getPitch());
+                soundList.add(soundData);
+            }
+            yamlConfiguration.set(favoriteSoundsPath, soundList);
+        }
 
         try {
             yamlConfiguration.save(playerFile);
@@ -153,12 +161,9 @@ public class FavoriteSoundsData {
     public static FavoriteSoundsData getFavoriteSoundFromSlot(Player player, int slot) {
         List<FavoriteSoundsData> favorites = favoriteSounds.get(player.getUniqueId());
 
-        if (favorites != null && slot >= 9 && slot <= 35) {
-            int index = slot - 9; // Adjust for zero-indexing (slot 9 maps to index 0)
-
-            if (index < favorites.size()) {
-                return favorites.get(index);
-            }
+        int index = slot - 9; // Adjust for zero-indexing (slot 9 maps to index 0)
+        if (index < favorites.size()) {
+            return favorites.get(index);
         }
         return null;
     }
