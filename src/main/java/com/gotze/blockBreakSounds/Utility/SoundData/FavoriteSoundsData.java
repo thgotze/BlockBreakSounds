@@ -137,21 +137,25 @@ public class FavoriteSoundsData {
 
             FavoriteSoundsGUI favoriteSoundsGUI = new FavoriteSoundsGUI();
             favoriteSoundsGUI.setFavoriteSoundsToGUI(player);
-
-        } else {
-            ItemStack confirmClearFavoriteSound = ButtonCreator.createButton(Material.BARRIER,  ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴜɴꜰᴀᴠᴏʀɪᴛᴇ");
-
-            inventory.setItem(slot, confirmClearFavoriteSound);
-
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    if (inventory.getItem(slot).getType() == confirmClearFavoriteSound.getType()) {
-                        inventory.setItem(slot, originalSlotItem);
-                    }
-                }
-            }.runTaskLater(Main.INSTANCE, 60L);
+            return;
         }
+
+        ItemStack confirmClearFavoriteSound = ButtonCreator.createButton(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴜɴꜰᴀᴠᴏʀɪᴛᴇ");
+
+        inventory.setItem(slot, confirmClearFavoriteSound);
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                ItemStack itemAfterDelay = inventory.getItem(slot);
+                if (itemAfterDelay == null) {
+                    return;
+                }
+                if (itemAfterDelay.getType() == confirmClearFavoriteSound.getType()) {
+                    inventory.setItem(slot, originalSlotItem);
+                }
+            }
+        }.runTaskLater(Main.INSTANCE, 60L);
     }
 
     public static List<FavoriteSoundsData> getFavorites(Player player) {
