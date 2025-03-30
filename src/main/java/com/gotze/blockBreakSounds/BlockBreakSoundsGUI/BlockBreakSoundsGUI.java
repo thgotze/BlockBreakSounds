@@ -82,7 +82,7 @@ public class BlockBreakSoundsGUI {
                 Material.NOTE_BLOCK,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Pick Sound ♪",
                 Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ᴀ ѕᴏᴜɴᴅ ᴛᴏ ᴘʟᴀʏ",
-                        ChatColor.WHITE + "ᴡʜᴇɴ ʏᴏᴜ ʙʀᴇᴀᴋѕ ʙʟᴏᴄᴋѕ")
+                        ChatColor.WHITE + "ᴡʜᴇɴ ʏᴏᴜ ʙʀᴇᴀᴋ ʙʟᴏᴄᴋѕ")
         );
     }
 

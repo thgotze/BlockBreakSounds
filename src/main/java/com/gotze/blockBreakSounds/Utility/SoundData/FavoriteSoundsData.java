@@ -109,7 +109,7 @@ public class FavoriteSoundsData {
         }
     }
 
-    public static void unfavoriteSound(Inventory inventory, Player player, int slot) {
+    public static void removeFavoriteSound(Inventory inventory, Player player, int slot) {
         ItemStack originalSlotItem = inventory.getItem(slot);
 
         if (originalSlotItem == null) {

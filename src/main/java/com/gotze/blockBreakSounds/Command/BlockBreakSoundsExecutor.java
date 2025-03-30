@@ -56,7 +56,7 @@ public class BlockBreakSoundsExecutor implements CommandExecutor {
         }
 
         // If the typed argument after /blockbreaksounds is info, message the player their sound, volume and pitch of current sound
-        else if (args[0].equalsIgnoreCase("info")) {
+        else if (args[0].equalsIgnoreCase("info")) { // TODO: FIX info command formatting
             CurrentSoundData currentSoundData = currentSound.get(player.getUniqueId());
             if (currentSoundData == null) {
                 return false;
@@ -73,7 +73,7 @@ public class BlockBreakSoundsExecutor implements CommandExecutor {
         // If the player typed something that wasn't in the previous methods' parameters send a message saying how to use the command
         else {
             player.sendMessage(ChatColor.RED + "Use command: /blockbreaksound");
-            return true;
+            return false;
         }
     }
 }

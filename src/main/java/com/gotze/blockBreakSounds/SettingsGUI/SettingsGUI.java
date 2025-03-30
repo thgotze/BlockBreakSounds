@@ -27,14 +27,13 @@ public class SettingsGUI {
 
     private void setupGUI() {
         setFrames();
-        gui.setItem(19, MuteDefaultSoundButton());
         gui.setItem(20, PitchVariance());
         gui.setItem(21, ToolSpecificSoundsButton());
-        gui.setItem(22, ExplosiveSoundsButton());
+        gui.setItem(22, MultiSoundsButton());
         gui.setItem(23, CombinedSoundsButton());
-        gui.setItem(24, SelectiveBlockSoundsButton());
+        gui.setItem(24, SoundFilterButton());
 
-        gui.setItem(25, AdminSettingsButton());
+        gui.setItem(4, ToDoListButton());
 
         gui.setItem(36, ReturnButton());
     }
@@ -58,25 +57,14 @@ public class SettingsGUI {
 
     public static ItemStack ToolSpecificSoundsButton() {
         return createButton(
-                Material.DIAMOND_SHOVEL,
+                Material.GOLDEN_SHOVEL,
                 ChatColor.YELLOW + "" + ChatColor.BOLD + "Tool Specific Sounds",
-                Arrays.asList(ChatColor.WHITE + "ᴄʜᴏᴏѕᴇ ᴅɪꜰꜰᴇʀᴇɴᴛ ѕᴏᴜɴᴅѕ ꜰᴏʀ ʙʟᴏᴄᴋ ʙʀᴇᴀᴋɪɴɢ",
-                        ChatColor.WHITE + "ʙᴀѕᴇᴅ ᴏɴ ᴛʜᴇ ᴛᴏᴏʟ ʏᴏᴜ ᴜѕᴇ",
+                Arrays.asList(ChatColor.WHITE + "ᴄʜᴏᴏѕᴇ ѕᴘᴇᴄɪꜰɪᴄ ʙʟᴏᴄᴋ ʙʀᴇᴀᴋ ѕᴏᴜɴᴅѕ",
+                        ChatColor.WHITE + "ʙᴀѕᴇᴅ ᴏɴ ᴜѕᴇᴅ ᴛᴏᴏʟ",
                         "",
                         ChatColor.RED + "" + ChatColor.BOLD + "NOT IMPLEMENTED YET"),
                 true,
                 false,
-                true
-        );
-    }
-
-    public static ItemStack MuteDefaultSoundButton() {
-        return createButton(
-                Material.RED_STAINED_GLASS,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "Mute Default Sound",
-                Arrays.asList(ChatColor.WHITE + "ᴍᴜᴛᴇѕ ᴛʜᴇ ᴅᴇꜰᴀᴜʟᴛ ѕᴏᴜɴᴅ ᴏꜰ ᴛʜᴇ ʙʟᴏᴄᴋ ʙʀᴏᴋᴇɴ",
-                        "",
-                        ChatColor.RED + "" + ChatColor.BOLD + "NOT IMPLEMENTED YET"),
                 true
         );
     }
@@ -92,12 +80,11 @@ public class SettingsGUI {
         );
     }
 
-    public static ItemStack SelectiveBlockSoundsButton() {
+    public static ItemStack SoundFilterButton() {
         return createButton(
                 Material.GUSTER_BANNER_PATTERN,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "Selective Block Sounds",
-                Arrays.asList(ChatColor.WHITE + "" + ChatColor.BOLD + "ᴡʜɪᴛᴇʟɪѕᴛ " + ChatColor.WHITE + "ʙʟᴏᴄᴋѕ ᴛᴏ ᴏɴʟʏ ᴀʟʟᴏᴡ ᴛʜᴏѕᴇ ʙʟᴏᴄᴋѕ ᴛᴏ ᴍᴀᴋᴇ ѕᴏᴜɴᴅ ᴡʜᴇɴ ʙʀᴏᴋᴇɴ",
-                        ChatColor.DARK_GRAY + "" + ChatColor.BOLD + "ʙʟᴀᴄᴋʟɪѕᴛ " + ChatColor.WHITE + "ʙʟᴏᴄᴋѕ ᴛᴏ ᴅɪѕᴀʟʟᴏᴡ ᴛʜᴏѕᴇ ʙʟᴏᴄᴋѕ ꜰʀᴏᴍ ᴍᴀᴋɪɴɢ ѕᴏᴜɴᴅ ᴡʜᴇɴ ʙʀᴏᴋᴇɴ",
+                ChatColor.YELLOW + "" + ChatColor.BOLD + "Sound Filter",
+                Arrays.asList(ChatColor.WHITE + "" + ChatColor.BOLD + "ᴡʜɪᴛᴇ " + ChatColor.WHITE + " ᴀɴᴅ " +  ChatColor.BOLD + "ʙʟᴀᴄᴋʟɪѕᴛ " + ChatColor.WHITE + "ʙʟᴏᴄᴋѕ ᴛᴏ ᴄᴏɴᴛʀᴏʟ ᴡʜɪᴄʜ ʙʟᴏᴄᴋѕ ᴘʟᴀʏ ѕᴏᴜɴᴅѕ ᴡʜᴇɴ ʙʀᴏᴋᴇɴ",
                         "",
                         ChatColor.RED + "" + ChatColor.BOLD + "NOT IMPLEMENTED YET"),
                 true,
@@ -106,12 +93,12 @@ public class SettingsGUI {
         );
     }
 
-    public static ItemStack ExplosiveSoundsButton() {
+    public static ItemStack MultiSoundsButton() {
         return createButton(
                 Material.TNT,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "Explosive Sounds",
+                ChatColor.YELLOW + "" + ChatColor.BOLD + "Multi Sound",
                 Arrays.asList(ChatColor.WHITE + "ᴛᴏɢɢʟᴇ ᴡʜᴇᴛʜᴇʀ ᴛᴏ ᴘʟᴀʏ ѕᴏᴜɴᴅ ᴍᴜʟᴛɪᴘʟᴇ ᴛɪᴍᴇѕ",
-                        ChatColor.WHITE + "ɪꜰ ᴍᴜʟᴛɪᴘʟᴇ ʙʟᴏᴄᴋѕ ᴡᴇʀᴇ ʙʀᴏᴋᴇɴ ᴀᴛ ᴏɴᴄᴇ",
+                        ChatColor.WHITE + "ɪꜰ ᴍᴜʟᴛɪᴘʟᴇ ʙʟᴏᴄᴋѕ ᴀʀᴇ ʙʀᴏᴋᴇɴ ᴀᴛ ᴏɴᴄᴇ",
                         "",
                         ChatColor.RED + "" + ChatColor.BOLD + "NOT IMPLEMENTED YET")
         );
@@ -127,16 +114,15 @@ public class SettingsGUI {
         );
     }
 
-    public static ItemStack AdminSettingsButton() {
+    public static ItemStack ToDoListButton() {
         return createButton(
-                Material.COMMAND_BLOCK,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "Admin Settings",
-                Arrays.asList(ChatColor.WHITE + "₁: ѕᴇᴛ ᴅᴇꜰᴀᴜʟᴛ ʙʟᴏᴄᴋ ʙʀᴇᴀᴋ ѕᴏᴜɴᴅ ꜰᴏʀ ᴀʟʟ ᴘʟᴀʏᴇʀѕ",
-                        ChatColor.WHITE + "₂: ᴍᴀᴋᴇ ᴅᴇꜰᴀᴜʟᴛ ѕᴏᴜɴᴅ ᴏᴘᴛ ɪɴ ᴏʀ ᴏᴜᴛ ꜰᴏʀ ᴘʟᴀʏᴇʀѕ",
-                        ChatColor.WHITE + "₃: ѕᴇᴛ ʀᴏʟᴇ ɴᴇᴇᴅᴇᴅ ᴛᴏ ᴜѕᴇ ʙʟᴏᴄᴋ ʙʀᴇᴀᴋ ѕᴏᴜɴᴅѕ",
-                        ChatColor.WHITE + "₄: ᴅɪѕᴀʟʟᴏᴡ ᴜѕᴀɢᴇ ᴏꜰ ᴀʟʟ ѕᴏᴜɴᴅѕ",
-                        "",
-                        ChatColor.RED + "" + ChatColor.BOLD + "NOT IMPLEMENTED YET"),
+                Material.BOOK,
+                ChatColor.YELLOW + "" + ChatColor.BOLD + "To-Do List",
+                Arrays.asList(ChatColor.WHITE + "Add setting to set default block break sound for all players.",
+                        ChatColor.WHITE + "Add setting to allow default sound optional for players in or out.",
+                        ChatColor.WHITE + "Add option to enable role requirement to use plugin.",
+                        ChatColor.WHITE + "Add option for owner to disallow usage of 'all sounds'.",
+                        ""),
                 true,
                 false,
                 true
