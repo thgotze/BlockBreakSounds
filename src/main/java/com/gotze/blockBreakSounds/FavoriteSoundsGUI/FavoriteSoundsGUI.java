@@ -1,5 +1,6 @@
 package com.gotze.blockBreakSounds.FavoriteSoundsGUI;
 
+import com.gotze.blockBreakSounds.Utility.GUIUtils;
 import com.gotze.blockBreakSounds.Utility.SoundData.FavoriteSoundsData;
 import com.gotze.blockBreakSounds.Utility.SoundMap;
 import org.bukkit.Bukkit;
@@ -13,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.gotze.blockBreakSounds.Utility.ButtonCreator.createButton;
-import static com.gotze.blockBreakSounds.Utility.CurrentSoundDisplayButton.CurrentSoundDisplayButton;
 import static com.gotze.blockBreakSounds.Utility.GUIUtils.Frame;
 import static com.gotze.blockBreakSounds.Utility.SmallFontConverter.convertToSmallFont;
 import static com.gotze.blockBreakSounds.Utility.SmallFontConverter.removeSpecialCharacters;
@@ -29,7 +29,7 @@ public class FavoriteSoundsGUI {
 
     public void openFavoriteSoundsGUI(Player player) {
         player.openInventory(gui);
-        gui.setItem(4, CurrentSoundDisplayButton(player));
+        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(36, ReturnButton());
         gui.setItem(40, FavoriteSoundsInfoButton());
         setFavoriteSoundsToGUI(player);

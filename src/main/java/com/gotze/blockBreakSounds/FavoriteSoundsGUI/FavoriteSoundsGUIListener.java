@@ -1,6 +1,7 @@
 package com.gotze.blockBreakSounds.FavoriteSoundsGUI;
 
 import com.gotze.blockBreakSounds.BlockBreakSoundsGUI.BlockBreakSoundsGUI;
+import com.gotze.blockBreakSounds.Utility.GUIUtils;
 import com.gotze.blockBreakSounds.Utility.LineHandlers.FavoritedSoundLineHandler;
 import com.gotze.blockBreakSounds.Utility.LineHandlers.PickedSoundLineHandler;
 import com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData;
@@ -16,8 +17,6 @@ import org.bukkit.inventory.Inventory;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.gotze.blockBreakSounds.Utility.CurrentSoundDisplayButton.CurrentSoundDisplayButton;
 
 public class FavoriteSoundsGUIListener implements Listener {
 
@@ -89,7 +88,7 @@ public class FavoriteSoundsGUIListener implements Listener {
                     }
 
                     if (clickType == ClickType.DROP) {
-                        FavoriteSoundsData.clearFavoriteSound(clickedInventory, player, slot);
+                        FavoriteSoundsData.unfavoriteSound(clickedInventory, player, slot);
                         return;
                     } else {
                         PickedSoundLineHandler.handlePickedLineSound(clickedInventory, slot);
@@ -115,7 +114,7 @@ public class FavoriteSoundsGUIListener implements Listener {
 
                     CurrentSoundData.currentSound.put(player.getUniqueId(), currentSoundData);
                     player.playSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
-                    clickedInventory.setItem(4, CurrentSoundDisplayButton(player));
+                    clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
                 }
         }
     }

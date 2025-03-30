@@ -1,5 +1,6 @@
 package com.gotze.blockBreakSounds.BlockBreakSoundsGUI;
 
+import com.gotze.blockBreakSounds.Utility.GUIUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -10,7 +11,6 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Arrays;
 
 import static com.gotze.blockBreakSounds.Utility.ButtonCreator.createButton;
-import static com.gotze.blockBreakSounds.Utility.CurrentSoundDisplayButton.CurrentSoundDisplayButton;
 import static com.gotze.blockBreakSounds.Utility.GUIUtils.Frame;
 
 public class BlockBreakSoundsGUI {
@@ -30,7 +30,7 @@ public class BlockBreakSoundsGUI {
     private void setupGUI(Player player) {
         setFramesAndAir();
         gui.setItem(26, SettingsButton());
-        gui.setItem(13, CurrentSoundDisplayButton(player));
+        gui.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(11, IncreaseVolumeButton());
         gui.setItem(15, IncreasePitchButton());
         gui.setItem(20, VolumeButton());

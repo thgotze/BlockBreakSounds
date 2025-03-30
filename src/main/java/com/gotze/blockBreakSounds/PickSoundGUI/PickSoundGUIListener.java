@@ -2,6 +2,7 @@ package com.gotze.blockBreakSounds.PickSoundGUI;
 
 import com.gotze.blockBreakSounds.BlockBreakSoundsGUI.BlockBreakSoundsGUI;
 import com.gotze.blockBreakSounds.FavoriteSoundsGUI.FavoriteSoundsGUI;
+import com.gotze.blockBreakSounds.Utility.GUIUtils;
 import com.gotze.blockBreakSounds.Utility.LineHandlers.FavoritedSoundLineHandler;
 import com.gotze.blockBreakSounds.Utility.LineHandlers.PickedSoundLineHandler;
 import com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData;
@@ -18,8 +19,6 @@ import org.bukkit.inventory.Inventory;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.gotze.blockBreakSounds.Utility.CurrentSoundDisplayButton.CurrentSoundDisplayButton;
 
 public class PickSoundGUIListener implements Listener {
 
@@ -233,7 +232,7 @@ public class PickSoundGUIListener implements Listener {
             }
             CurrentSoundData.currentSound.put(player.getUniqueId(), currentSoundData);
             player.playSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
-            clickedInventory.setItem(4, CurrentSoundDisplayButton(player));
+            clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         }
     }
 

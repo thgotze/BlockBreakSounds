@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Arrays;
 
 import static com.gotze.blockBreakSounds.Utility.ButtonCreator.createButton;
-import static com.gotze.blockBreakSounds.Utility.CurrentSoundDisplayButton.CurrentSoundDisplayButton;
+import static com.gotze.blockBreakSounds.Utility.GUIUtils.CurrentSoundDisplayButton;
 import static com.gotze.blockBreakSounds.Utility.GUIUtils.Frame;
 
 public class AllSoundsGUI {

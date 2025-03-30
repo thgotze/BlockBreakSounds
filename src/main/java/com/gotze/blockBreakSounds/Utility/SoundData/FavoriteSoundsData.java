@@ -44,29 +44,18 @@ public class FavoriteSoundsData {
     public static void saveFavoriteSoundsDataToYAML(Player player) {
         File playerFile = new File(Main.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(playerFile);
+        String path = "favorite-sounds";
 
-        String currentSoundPath = "current-sound";
-        if (CurrentSoundData.currentSound.get(player.getUniqueId()) == null) {
-            yamlConfiguration.set(currentSoundPath, new HashMap<>());
+        List<Map<String, Object>> favoriteSoundsList = new ArrayList<>();
+
+        for (FavoriteSoundsData favoriteSoundData : favoriteSounds.get(player.getUniqueId())) {
+            Map<String, Object> soundData = new LinkedHashMap<>();
+            soundData.put("sound", favoriteSoundData.getSound().toString());
+            soundData.put("volume", favoriteSoundData.getVolume());
+            soundData.put("pitch", favoriteSoundData.getPitch());
+            favoriteSoundsList.add(soundData);
         }
-
-        String favoriteSoundsPath = "favorite-sounds";
-        if (favoriteSounds.isEmpty()) {
-            yamlConfiguration.set(favoriteSoundsPath, new ArrayList<>());
-        } else {
-            List<Map<String, Object>> soundList = new ArrayList<>();
-
-            List<FavoriteSoundsData> favorites = favoriteSounds.getOrDefault(player.getUniqueId(), new ArrayList<>());
-
-            for (FavoriteSoundsData data : favorites) {
-                Map<String, Object> soundData = new HashMap<>();
-                soundData.put("sound", data.getSound().toString());
-                soundData.put("volume", data.getVolume());
-                soundData.put("pitch", data.getPitch());
-                soundList.add(soundData);
-            }
-            yamlConfiguration.set(favoriteSoundsPath, soundList);
-        }
+        yamlConfiguration.set(path, favoriteSoundsList);
 
         try {
             yamlConfiguration.save(playerFile);
@@ -75,28 +64,29 @@ public class FavoriteSoundsData {
         }
     }
 
-    public static void loadFavoriteSoundsDataFromYAML(Player player) {
+    public static void loadFavoriteSoundsDataFromFile(Player player) {
         File file = new File(Main.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(file);
         String path = "favorite-sounds";
 
-        if (!yamlConfiguration.contains(path)) {
+        List<Map<?, ?>> favoriteSoundsList = yamlConfiguration.getMapList(path);
+
+        if (favoriteSoundsList.isEmpty()) {
             return;
         }
-        List<FavoriteSoundsData> favorites = new ArrayList<>();
-        List<Map<?, ?>> soundList = yamlConfiguration.getMapList(path);
+        List<FavoriteSoundsData> favoriteSoundsDataList = new ArrayList<>();
 
-        for (Map<?, ?> soundData : soundList) {
+        for (Map<?, ?> soundData : favoriteSoundsList) {
             try {
                 Sound sound = Sound.valueOf((String) soundData.get("sound"));
                 float volume = ((Number) soundData.get("volume")).floatValue();
                 float pitch = ((Number) soundData.get("pitch")).floatValue();
-                favorites.add(new FavoriteSoundsData(sound, volume, pitch));
+                favoriteSoundsDataList.add(new FavoriteSoundsData(sound, volume, pitch));
             } catch (Exception e) {
                 System.out.println("Failed to load a favorite sound for " + player.getName());
             }
         }
-        favoriteSounds.put(player.getUniqueId(), favorites);
+        favoriteSounds.put(player.getUniqueId(), favoriteSoundsDataList);
     }
 
 
@@ -119,7 +109,7 @@ public class FavoriteSoundsData {
         }
     }
 
-    public static void clearFavoriteSound(Inventory inventory, Player player, int slot) {
+    public static void unfavoriteSound(Inventory inventory, Player player, int slot) {
         ItemStack originalSlotItem = inventory.getItem(slot);
 
         if (originalSlotItem == null) {
@@ -141,7 +131,6 @@ public class FavoriteSoundsData {
         }
 
         ItemStack confirmClearFavoriteSound = ButtonCreator.createButton(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴜɴꜰᴀᴠᴏʀɪᴛᴇ");
-
         inventory.setItem(slot, confirmClearFavoriteSound);
 
         new BukkitRunnable() {

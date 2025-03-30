@@ -3,7 +3,7 @@ package com.gotze.blockBreakSounds.BlockBreakSoundsGUI;
 import com.gotze.blockBreakSounds.FavoriteSoundsGUI.FavoriteSoundsGUI;
 import com.gotze.blockBreakSounds.PickSoundGUI.PickSoundGUI;
 import com.gotze.blockBreakSounds.SettingsGUI.SettingsGUI;
-import com.gotze.blockBreakSounds.Utility.CurrentSoundDisplayButton;
+import com.gotze.blockBreakSounds.Utility.GUIUtils;
 import com.gotze.blockBreakSounds.Utility.LineHandlers.FavoritedSoundLineHandler;
 import com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData;
 import com.gotze.blockBreakSounds.Utility.SoundData.FavoriteSoundsData;
@@ -79,7 +79,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
             case 11: // Increase Volume
                 increaseVolume(player, currentSoundData);
                 updateVolumeSlider(clickedInventory, currentSoundData);
-                clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
+                clickedInventory.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
                 return;
 
             case 13: // Current Sound
@@ -103,7 +103,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
             case 15: // Increase Pitch
                 increasePitch(player, currentSoundData);
                 updatePitchSlider(clickedInventory, currentSoundData);
-                clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
+                clickedInventory.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
                 return;
 
             case 20: // Tweak Volume
@@ -114,7 +114,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
                     decreaseVolume(player, currentSoundData);
                 }
                 updateVolumeSlider(clickedInventory, currentSoundData);
-                clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
+                clickedInventory.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
                 return;
 
             case 22: // Pick Sound
@@ -130,7 +130,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
                     decreasePitch(player, currentSoundData);
                 }
                 updatePitchSlider(clickedInventory, currentSoundData);
-                clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
+                clickedInventory.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
                 return;
 
             case 26: // Settings
@@ -142,7 +142,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
             case 29: // Decrease Volume
                 decreaseVolume(player, currentSoundData);
                 updateVolumeSlider(clickedInventory, currentSoundData);
-                clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
+                clickedInventory.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
                 return;
 
             case 31: // Favorite Sounds
@@ -154,7 +154,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
             case 33: // Decrease Pitch
                 decreasePitch(player, currentSoundData);
                 updatePitchSlider(clickedInventory, currentSoundData);
-                clickedInventory.setItem(13, CurrentSoundDisplayButton.CurrentSoundDisplayButton(player));
+                clickedInventory.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
                 return;
 
             default:

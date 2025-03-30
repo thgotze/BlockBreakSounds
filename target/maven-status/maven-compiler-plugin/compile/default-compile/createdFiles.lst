@@ -1,7 +1,6 @@
 com\gotze\blockBreakSounds\PickSoundGUI\AllSoundsGUI.class
 com\gotze\blockBreakSounds\Utility\ButtonCreator.class
 com\gotze\blockBreakSounds\Utility\GUIUtils.class
-com\gotze\blockBreakSounds\Utility\CurrentSoundDisplayButton.class
 com\gotze\blockBreakSounds\PickSoundGUI\PickSoundGUIListener.class
 com\gotze\blockBreakSounds\SettingsGUI\SettingsGUI.class
 com\gotze\blockBreakSounds\Main.class

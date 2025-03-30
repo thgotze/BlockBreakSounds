@@ -1,5 +1,6 @@
 package com.gotze.blockBreakSounds.PickSoundGUI;
 
+import com.gotze.blockBreakSounds.Utility.GUIUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -10,7 +11,6 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Arrays;
 
 import static com.gotze.blockBreakSounds.Utility.ButtonCreator.createButton;
-import static com.gotze.blockBreakSounds.Utility.CurrentSoundDisplayButton.CurrentSoundDisplayButton;
 import static com.gotze.blockBreakSounds.Utility.GUIUtils.Frame;
 
 public class PickSoundGUI {
@@ -30,7 +30,7 @@ public class PickSoundGUI {
 
     private void setupGUI() {
         setFrames();
-        gui.setItem(4, CurrentSoundDisplayButton(player));
+        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(44, PickFromAllSoundsButton());
         gui.setItem(40, FavoriteSoundsButton());
         gui.setItem(36, ReturnButton());
