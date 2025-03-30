@@ -1,6 +1,7 @@
 package com.gotze.blockBreakSounds.guis;
 
 import com.gotze.blockBreakSounds.utils.GUIUtils;
+import com.gotze.blockBreakSounds.utils.ItemStackCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -9,9 +10,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
-
-import static com.gotze.blockBreakSounds.utils.ButtonCreator.createButton;
-import static com.gotze.blockBreakSounds.utils.GUIUtils.Frame;
 
 public class BlockBreakSoundsGUI {
 
@@ -30,6 +28,7 @@ public class BlockBreakSoundsGUI {
     private void setupGUI(Player player) {
         setFramesAndAir();
         gui.setItem(26, SettingsButton());
+        gui.setItem(25, SettingsButtonTesting222());
         gui.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(11, IncreaseVolumeButton());
         gui.setItem(15, IncreasePitchButton());
@@ -43,10 +42,10 @@ public class BlockBreakSoundsGUI {
 
     private void setFramesAndAir() {
         for (int i = 0; i < 9; i++) {
-            gui.setItem(i, Frame());
+            gui.setItem(i, GUIUtils.Frame());
         }
         for (int i = 36; i < 45; i++) {
-            gui.setItem(i, Frame());
+            gui.setItem(i, GUIUtils.Frame());
         }
         gui.setItem(9, new ItemStack(Material.AIR));
         gui.setItem(17, new ItemStack(Material.AIR));
@@ -56,7 +55,7 @@ public class BlockBreakSoundsGUI {
 
     // Settings Button (Command Block)
     public static ItemStack SettingsButton() {
-        return createButton(
+        return ItemStackCreator.createItemStack(
                 Material.COMMAND_BLOCK,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Settings \uD83D\uDD27",
                 Arrays.asList(
@@ -67,9 +66,19 @@ public class BlockBreakSoundsGUI {
         );
     }
 
+    // Settings Button (Command Block)
+    public static ItemStack SettingsButtonTesting222() {
+        return ItemStackCreator.createItemStack(
+                Material.COMMAND_BLOCK,
+                ChatColor.GOLD + "" + ChatColor.BOLD + "Settings \uD83D\uDD27",
+                Arrays.asList(
+                        ChatColor.WHITE + "ᴍᴏᴅɪꜰʏ ᴀᴅᴅɪᴛɪᴏɴᴀʟ ѕᴇᴛᴛɪɴɢѕ")
+        );
+    }
+
     // Favorite Sounds Button (Nether Star)
     public static ItemStack FavoriteSoundsButton() {
-        return createButton(
+        return ItemStackCreator.createItemStack(
                 Material.NETHER_STAR,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
                 Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.YELLOW + "" + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ")
@@ -78,7 +87,7 @@ public class BlockBreakSoundsGUI {
 
     // Pick Sound Button (Noteblock)
     public static ItemStack PickSoundButton() {
-        return createButton(
+        return ItemStackCreator.createItemStack(
                 Material.NOTE_BLOCK,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Pick Sound ♪",
                 Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ᴀ ѕᴏᴜɴᴅ ᴛᴏ ᴘʟᴀʏ",
@@ -88,7 +97,7 @@ public class BlockBreakSoundsGUI {
 
     // Volume Button (Goat Horn)
     public static ItemStack VolumeButton() {
-        return createButton(
+        return ItemStackCreator.createItemStack(
                 Material.GOAT_HORN,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Tweak Volume \uD83D\uDD0A",
                 Arrays.asList(
@@ -102,7 +111,7 @@ public class BlockBreakSoundsGUI {
 
     // + Increase Volume (Mangrove Button)
     public static ItemStack IncreaseVolumeButton() {
-        return createButton(
+        return ItemStackCreator.createItemStack(
                 Material.MANGROVE_BUTTON,
                         ChatColor.GREEN + "" + ChatColor.BOLD + "[+] ɪɴᴄʀᴇᴀѕᴇ ᴠᴏʟᴜᴍᴇ"
         );
@@ -110,7 +119,7 @@ public class BlockBreakSoundsGUI {
 
     // - Decrease Volume (Mangrove Button)
     public static ItemStack DecreaseVolumeButton() {
-        return createButton(
+        return ItemStackCreator.createItemStack(
                 Material.MANGROVE_BUTTON,
                 ChatColor.RED + "" + ChatColor.BOLD + "[-] ᴅᴇᴄʀᴇᴀꜱᴇ ᴠᴏʟᴜᴍᴇ"
         );
@@ -118,7 +127,7 @@ public class BlockBreakSoundsGUI {
 
     // Pitch Button (Bell)
     public static ItemStack PitchButton() {
-        return createButton(
+        return ItemStackCreator.createItemStack(
                 Material.BELL,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Tweak Pitch \uD83D\uDD14",
                 Arrays.asList(
@@ -131,7 +140,7 @@ public class BlockBreakSoundsGUI {
 
     // + Increase Pitch (Mangrove Button)
     public static ItemStack IncreasePitchButton() {
-        return createButton(
+        return ItemStackCreator.createItemStack(
                 Material.MANGROVE_BUTTON,
                 ChatColor.GREEN + "" + ChatColor.BOLD + "[+] ɪɴᴄʀᴇᴀѕᴇ ᴘɪᴛᴄʜ"
         );
@@ -139,7 +148,7 @@ public class BlockBreakSoundsGUI {
 
     // - Decrease Pitch (Mangrove Button)
     public static ItemStack DecreasePitchButton() {
-        return createButton(
+        return ItemStackCreator.createItemStack(
                 Material.MANGROVE_BUTTON,
                 ChatColor.RED + "" + ChatColor.BOLD + "[-] ᴅᴇᴄʀᴇᴀѕᴇ ᴘɪᴛᴄʜ"
         );

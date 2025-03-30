@@ -1,7 +1,7 @@
 package com.gotze.blockBreakSounds.utils.sounddata;
 
 import com.gotze.blockBreakSounds.Main;
-import com.gotze.blockBreakSounds.utils.ButtonCreator;
+import com.gotze.blockBreakSounds.utils.ItemStackCreator;
 import com.gotze.blockBreakSounds.utils.GUIUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -135,7 +135,7 @@ public class CurrentSoundData {
             return;
         }
 
-        ItemStack confirmClearCurrentSound = ButtonCreator.createButton(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴄʟᴇᴀʀ");
+        ItemStack confirmClearCurrentSound = ItemStackCreator.createItemStack(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴄʟᴇᴀʀ");
         clickedInventory.setItem(slot, confirmClearCurrentSound);
 
         new BukkitRunnable() {

@@ -1,17 +1,14 @@
 package com.gotze.blockBreakSounds.guis;
 
+import com.gotze.blockBreakSounds.utils.GUIUtils;
+import com.gotze.blockBreakSounds.utils.ItemStackCreator;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
-
-import static com.gotze.blockBreakSounds.utils.ButtonCreator.createButton;
-import static com.gotze.blockBreakSounds.utils.GUIUtils.CurrentSoundDisplayButton;
-import static com.gotze.blockBreakSounds.utils.GUIUtils.Frame;
 
 public class AllSoundsGUI {
 
@@ -24,8 +21,8 @@ public class AllSoundsGUI {
 
     public void openAllSoundsGUI(Player player) {
         player.openInventory(gui);
-        gui.setItem(4, CurrentSoundDisplayButton(player));
-        gui.setItem(36, ReturnButton());
+        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
+        gui.setItem(36, GUIUtils.ReturnButton());
     }
 
     private void setupGUI() {
@@ -35,22 +32,15 @@ public class AllSoundsGUI {
 
     private void setFrames() {
         for (int i = 0; i < 9; i++) {
-            gui.setItem(i, Frame());
+            gui.setItem(i, GUIUtils.Frame());
         }
         for (int i = 36; i < 45; i++) {
-            gui.setItem(i, Frame());
+            gui.setItem(i, GUIUtils.Frame());
         }
-    }
-
-    public static ItemStack ReturnButton() {
-        return createButton(
-                Material.ARROW,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "← ʀᴇᴛᴜʀɴ"
-        );
     }
 
     public static ItemStack AllSoundInfoButton() {
-        return createButton(
+        return ItemStackCreator.createItemStack(
                 Material.JUKEBOX,
                 "All Sounds Info",
                 Arrays.asList(

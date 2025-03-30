@@ -1,6 +1,8 @@
 package com.gotze.blockBreakSounds.guis;
 
+import com.gotze.blockBreakSounds.utils.FontUtils;
 import com.gotze.blockBreakSounds.utils.GUIUtils;
+import com.gotze.blockBreakSounds.utils.ItemStackCreator;
 import com.gotze.blockBreakSounds.utils.sounddata.FavoriteSoundsData;
 import com.gotze.blockBreakSounds.utils.SoundMap;
 import org.bukkit.Bukkit;
@@ -13,10 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.gotze.blockBreakSounds.utils.ButtonCreator.createButton;
-import static com.gotze.blockBreakSounds.utils.GUIUtils.Frame;
 import static com.gotze.blockBreakSounds.utils.FontUtils.convertToSmallFont;
-import static com.gotze.blockBreakSounds.utils.FontUtils.removeSpecialCharacters;
 
 public class FavoriteSoundsGUI {
 
@@ -30,7 +29,7 @@ public class FavoriteSoundsGUI {
     public void openFavoriteSoundsGUI(Player player) {
         player.openInventory(gui);
         gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
-        gui.setItem(36, ReturnButton());
+        gui.setItem(36, GUIUtils.ReturnButton());
         gui.setItem(40, FavoriteSoundsInfoButton());
         setFavoriteSoundsToGUI(player);
         if (gui.getItem(9) == null) {
@@ -53,11 +52,11 @@ public class FavoriteSoundsGUI {
     }
 
     public static ItemStack createFavoriteSoundButton(FavoriteSoundsData favoriteSoundsData, int index) {
-        return createButton(
+        return ItemStackCreator.createItemStack(
                 SoundMap.getMaterialFromSound(favoriteSoundsData.getSound()),
                 ChatColor.YELLOW + "" + ChatColor.BOLD + "Favorite Sound " + (index + 1) + " ⭐",
                 Arrays.asList(
-                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(removeSpecialCharacters(favoriteSoundsData.getSound().name())),
+                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(FontUtils.removeSpecialCharacters(favoriteSoundsData.getSound().name())),
                         ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", favoriteSoundsData.getVolume() * 100)),
                         ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", favoriteSoundsData.getPitch())),
                         "",
@@ -76,15 +75,15 @@ public class FavoriteSoundsGUI {
 
     private void setFrames() {
         for (int i = 0; i < 9; i++) {
-            gui.setItem(i, Frame());
+            gui.setItem(i, GUIUtils.Frame());
         }
         for (int i = 36; i < 45; i++) {
-            gui.setItem(i, Frame());
+            gui.setItem(i, GUIUtils.Frame());
         }
     }
 
     public static ItemStack FavoriteSoundsInfoButton() {
-        return createButton(
+        return ItemStackCreator.createItemStack(
                 Material.NETHER_STAR,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
                 Arrays.asList(
@@ -94,15 +93,8 @@ public class FavoriteSoundsGUI {
         );
     }
 
-    public static ItemStack ReturnButton() {
-        return createButton(
-                Material.ARROW,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "← ʀᴇᴛᴜʀɴ"
-        );
-    }
-
     public static ItemStack NoSoundsFavoritedYetButton() {
-        return createButton(
+        return ItemStackCreator.createItemStack(
                 Material.PAPER,
                 ChatColor.WHITE + "ʏᴏᴜ ʜᴀᴠᴇ ɴᴏᴛ ꜰᴀᴠᴏʀɪᴛᴇᴅ ᴀɴʏ ѕᴏᴜɴᴅѕ ʏᴇᴛ!");
     }

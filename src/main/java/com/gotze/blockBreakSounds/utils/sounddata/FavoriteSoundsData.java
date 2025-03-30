@@ -2,7 +2,7 @@ package com.gotze.blockBreakSounds.utils.sounddata;
 
 import com.gotze.blockBreakSounds.guis.FavoriteSoundsGUI;
 import com.gotze.blockBreakSounds.Main;
-import com.gotze.blockBreakSounds.utils.ButtonCreator;
+import com.gotze.blockBreakSounds.utils.ItemStackCreator;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -130,7 +130,7 @@ public class FavoriteSoundsData {
             return;
         }
 
-        ItemStack confirmClearFavoriteSound = ButtonCreator.createButton(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴜɴꜰᴀᴠᴏʀɪᴛᴇ");
+        ItemStack confirmClearFavoriteSound = ItemStackCreator.createItemStack(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴜɴꜰᴀᴠᴏʀɪᴛᴇ");
         inventory.setItem(slot, confirmClearFavoriteSound);
 
         new BukkitRunnable() {
