@@ -1,4 +1,4 @@
-package com.gotze.blockBreakSounds.PickSoundGUI;
+package com.gotze.blockBreakSounds.guis;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -9,9 +9,9 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
 
-import static com.gotze.blockBreakSounds.Utility.ButtonCreator.createButton;
-import static com.gotze.blockBreakSounds.Utility.GUIUtils.CurrentSoundDisplayButton;
-import static com.gotze.blockBreakSounds.Utility.GUIUtils.Frame;
+import static com.gotze.blockBreakSounds.utils.ButtonCreator.createButton;
+import static com.gotze.blockBreakSounds.utils.GUIUtils.CurrentSoundDisplayButton;
+import static com.gotze.blockBreakSounds.utils.GUIUtils.Frame;
 
 public class AllSoundsGUI {
 

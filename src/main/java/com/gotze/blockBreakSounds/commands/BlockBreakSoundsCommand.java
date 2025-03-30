@@ -1,8 +1,8 @@
-package com.gotze.blockBreakSounds.Command;
+package com.gotze.blockBreakSounds.commands;
 
-import com.gotze.blockBreakSounds.BlockBreakSoundsGUI.BlockBreakSoundsGUI;
-import com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData;
-import com.gotze.blockBreakSounds.Utility.SoundMap;
+import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
+import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
+import com.gotze.blockBreakSounds.utils.SoundMap;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -10,11 +10,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static com.gotze.blockBreakSounds.Utility.SmallFontConverter.convertToSmallFont;
-import static com.gotze.blockBreakSounds.Utility.SmallFontConverter.removeSpecialCharacters;
-import static com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData.currentSound;
+import static com.gotze.blockBreakSounds.utils.FontUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.utils.FontUtils.removeSpecialCharacters;
+import static com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData.currentSound;
 
-public class BlockBreakSoundsExecutor implements CommandExecutor {
+public class BlockBreakSoundsCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {

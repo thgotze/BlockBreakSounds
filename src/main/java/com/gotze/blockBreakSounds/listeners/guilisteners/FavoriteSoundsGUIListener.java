@@ -1,11 +1,11 @@
-package com.gotze.blockBreakSounds.FavoriteSoundsGUI;
+package com.gotze.blockBreakSounds.listeners.guilisteners;
 
-import com.gotze.blockBreakSounds.BlockBreakSoundsGUI.BlockBreakSoundsGUI;
-import com.gotze.blockBreakSounds.Utility.GUIUtils;
-import com.gotze.blockBreakSounds.Utility.LineHandlers.FavoritedSoundLineHandler;
-import com.gotze.blockBreakSounds.Utility.LineHandlers.PickedSoundLineHandler;
-import com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData;
-import com.gotze.blockBreakSounds.Utility.SoundData.FavoriteSoundsData;
+import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
+import com.gotze.blockBreakSounds.utils.GUIUtils;
+import com.gotze.blockBreakSounds.utils.linehandlers.FavoritedSoundLineHandler;
+import com.gotze.blockBreakSounds.utils.linehandlers.PickedSoundLineHandler;
+import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
+import com.gotze.blockBreakSounds.utils.sounddata.FavoriteSoundsData;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

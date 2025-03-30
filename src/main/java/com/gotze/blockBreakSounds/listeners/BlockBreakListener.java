@@ -1,6 +1,6 @@
-package com.gotze.blockBreakSounds.Utility.Listeners;
+package com.gotze.blockBreakSounds.listeners;
 
-import com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData;
+import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

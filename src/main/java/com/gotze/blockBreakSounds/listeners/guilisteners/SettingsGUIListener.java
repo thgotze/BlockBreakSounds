@@ -1,6 +1,6 @@
-package com.gotze.blockBreakSounds.SettingsGUI;
+package com.gotze.blockBreakSounds.listeners.guilisteners;
 
-import com.gotze.blockBreakSounds.BlockBreakSoundsGUI.BlockBreakSoundsGUI;
+import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

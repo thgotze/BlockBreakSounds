@@ -1,8 +1,8 @@
-package com.gotze.blockBreakSounds.FavoriteSoundsGUI;
+package com.gotze.blockBreakSounds.guis;
 
-import com.gotze.blockBreakSounds.Utility.GUIUtils;
-import com.gotze.blockBreakSounds.Utility.SoundData.FavoriteSoundsData;
-import com.gotze.blockBreakSounds.Utility.SoundMap;
+import com.gotze.blockBreakSounds.utils.GUIUtils;
+import com.gotze.blockBreakSounds.utils.sounddata.FavoriteSoundsData;
+import com.gotze.blockBreakSounds.utils.SoundMap;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -13,10 +13,10 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.gotze.blockBreakSounds.Utility.ButtonCreator.createButton;
-import static com.gotze.blockBreakSounds.Utility.GUIUtils.Frame;
-import static com.gotze.blockBreakSounds.Utility.SmallFontConverter.convertToSmallFont;
-import static com.gotze.blockBreakSounds.Utility.SmallFontConverter.removeSpecialCharacters;
+import static com.gotze.blockBreakSounds.utils.ButtonCreator.createButton;
+import static com.gotze.blockBreakSounds.utils.GUIUtils.Frame;
+import static com.gotze.blockBreakSounds.utils.FontUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.utils.FontUtils.removeSpecialCharacters;
 
 public class FavoriteSoundsGUI {
 

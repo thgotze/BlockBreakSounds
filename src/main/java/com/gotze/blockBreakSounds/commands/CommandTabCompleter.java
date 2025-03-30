@@ -1,6 +1,6 @@
-package com.gotze.blockBreakSounds.Command;
+package com.gotze.blockBreakSounds.commands;
 
-import com.gotze.blockBreakSounds.Utility.SoundMap;
+import com.gotze.blockBreakSounds.utils.SoundMap;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -8,7 +8,7 @@ import org.bukkit.command.TabCompleter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlockBreakSoundsTabCompleter implements TabCompleter {
+public class CommandTabCompleter implements TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender commandSender, Command command, String label, String[] args) {

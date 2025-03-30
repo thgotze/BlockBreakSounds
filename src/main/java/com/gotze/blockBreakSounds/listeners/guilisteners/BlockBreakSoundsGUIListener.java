@@ -1,12 +1,12 @@
-package com.gotze.blockBreakSounds.BlockBreakSoundsGUI;
+package com.gotze.blockBreakSounds.listeners.guilisteners;
 
-import com.gotze.blockBreakSounds.FavoriteSoundsGUI.FavoriteSoundsGUI;
-import com.gotze.blockBreakSounds.PickSoundGUI.PickSoundGUI;
-import com.gotze.blockBreakSounds.SettingsGUI.SettingsGUI;
-import com.gotze.blockBreakSounds.Utility.GUIUtils;
-import com.gotze.blockBreakSounds.Utility.LineHandlers.FavoritedSoundLineHandler;
-import com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData;
-import com.gotze.blockBreakSounds.Utility.SoundData.FavoriteSoundsData;
+import com.gotze.blockBreakSounds.guis.FavoriteSoundsGUI;
+import com.gotze.blockBreakSounds.guis.PickSoundGUI;
+import com.gotze.blockBreakSounds.guis.SettingsGUI;
+import com.gotze.blockBreakSounds.utils.GUIUtils;
+import com.gotze.blockBreakSounds.utils.linehandlers.FavoritedSoundLineHandler;
+import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
+import com.gotze.blockBreakSounds.utils.sounddata.FavoriteSoundsData;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -23,10 +23,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.gotze.blockBreakSounds.Utility.ButtonCreator.createButton;
-import static com.gotze.blockBreakSounds.Utility.GUIUtils.Frame;
-import static com.gotze.blockBreakSounds.Utility.SmallFontConverter.convertToSmallFont;
-import static com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData.currentSound;
+import static com.gotze.blockBreakSounds.utils.ButtonCreator.createButton;
+import static com.gotze.blockBreakSounds.utils.GUIUtils.Frame;
+import static com.gotze.blockBreakSounds.utils.FontUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData.currentSound;
 
 public class BlockBreakSoundsGUIListener implements Listener {
 

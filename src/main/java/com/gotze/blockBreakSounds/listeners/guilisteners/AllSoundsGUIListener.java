@@ -1,7 +1,8 @@
-package com.gotze.blockBreakSounds.PickSoundGUI;
+package com.gotze.blockBreakSounds.listeners.guilisteners;
 
-import com.gotze.blockBreakSounds.Utility.LineHandlers.FavoritedSoundLineHandler;
-import com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData;
+import com.gotze.blockBreakSounds.utils.linehandlers.FavoritedSoundLineHandler;
+import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
+import com.gotze.blockBreakSounds.guis.PickSoundGUI;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;

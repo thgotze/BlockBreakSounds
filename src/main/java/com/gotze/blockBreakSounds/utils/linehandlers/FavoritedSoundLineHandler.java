@@ -1,4 +1,4 @@
-package com.gotze.blockBreakSounds.Utility.LineHandlers;
+package com.gotze.blockBreakSounds.utils.linehandlers;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

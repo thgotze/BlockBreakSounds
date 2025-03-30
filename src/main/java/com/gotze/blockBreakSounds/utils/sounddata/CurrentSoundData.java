@@ -1,8 +1,8 @@
-package com.gotze.blockBreakSounds.Utility.SoundData;
+package com.gotze.blockBreakSounds.utils.sounddata;
 
 import com.gotze.blockBreakSounds.Main;
-import com.gotze.blockBreakSounds.Utility.ButtonCreator;
-import com.gotze.blockBreakSounds.Utility.GUIUtils;
+import com.gotze.blockBreakSounds.utils.ButtonCreator;
+import com.gotze.blockBreakSounds.utils.GUIUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static com.gotze.blockBreakSounds.Utility.GUIUtils.Frame;
+import static com.gotze.blockBreakSounds.utils.GUIUtils.Frame;
 
 public class CurrentSoundData {
     private final UUID playerUUID;

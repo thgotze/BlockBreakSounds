@@ -1,6 +1,6 @@
-package com.gotze.blockBreakSounds.BlockBreakSoundsGUI;
+package com.gotze.blockBreakSounds.guis;
 
-import com.gotze.blockBreakSounds.Utility.GUIUtils;
+import com.gotze.blockBreakSounds.utils.GUIUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -10,8 +10,8 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
 
-import static com.gotze.blockBreakSounds.Utility.ButtonCreator.createButton;
-import static com.gotze.blockBreakSounds.Utility.GUIUtils.Frame;
+import static com.gotze.blockBreakSounds.utils.ButtonCreator.createButton;
+import static com.gotze.blockBreakSounds.utils.GUIUtils.Frame;
 
 public class BlockBreakSoundsGUI {
 

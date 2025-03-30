@@ -1,4 +1,4 @@
-package com.gotze.blockBreakSounds.Utility;
+package com.gotze.blockBreakSounds.utils;
 
 import org.bukkit.Material;
 import org.bukkit.Sound;

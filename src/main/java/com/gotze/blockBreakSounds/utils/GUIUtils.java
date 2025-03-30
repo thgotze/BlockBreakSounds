@@ -1,6 +1,6 @@
-package com.gotze.blockBreakSounds.Utility;
+package com.gotze.blockBreakSounds.utils;
 
-import com.gotze.blockBreakSounds.Utility.SoundData.CurrentSoundData;
+import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -8,9 +8,9 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
 
-import static com.gotze.blockBreakSounds.Utility.ButtonCreator.createButton;
-import static com.gotze.blockBreakSounds.Utility.SmallFontConverter.convertToSmallFont;
-import static com.gotze.blockBreakSounds.Utility.SmallFontConverter.removeSpecialCharacters;
+import static com.gotze.blockBreakSounds.utils.ButtonCreator.createButton;
+import static com.gotze.blockBreakSounds.utils.FontUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.utils.FontUtils.removeSpecialCharacters;
 
 public class GUIUtils {
 

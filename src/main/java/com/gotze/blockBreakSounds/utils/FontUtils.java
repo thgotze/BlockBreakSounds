@@ -1,6 +1,6 @@
-package com.gotze.blockBreakSounds.Utility;
+package com.gotze.blockBreakSounds.utils;
 
-public class SmallFontConverter {
+public class FontUtils {
 
     public static String convertToSmallFont(String input) {
         StringBuilder newString = new StringBuilder();

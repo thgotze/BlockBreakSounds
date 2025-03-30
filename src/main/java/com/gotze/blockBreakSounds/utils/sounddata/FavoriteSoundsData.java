@@ -1,8 +1,8 @@
-package com.gotze.blockBreakSounds.Utility.SoundData;
+package com.gotze.blockBreakSounds.utils.sounddata;
 
-import com.gotze.blockBreakSounds.FavoriteSoundsGUI.FavoriteSoundsGUI;
+import com.gotze.blockBreakSounds.guis.FavoriteSoundsGUI;
 import com.gotze.blockBreakSounds.Main;
-import com.gotze.blockBreakSounds.Utility.ButtonCreator;
+import com.gotze.blockBreakSounds.utils.ButtonCreator;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;

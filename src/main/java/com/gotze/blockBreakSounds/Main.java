@@ -1,14 +1,14 @@
 package com.gotze.blockBreakSounds;
 
-import com.gotze.blockBreakSounds.BlockBreakSoundsGUI.BlockBreakSoundsGUIListener;
-import com.gotze.blockBreakSounds.Command.BlockBreakSoundsExecutor;
-import com.gotze.blockBreakSounds.Command.BlockBreakSoundsTabCompleter;
-import com.gotze.blockBreakSounds.FavoriteSoundsGUI.FavoriteSoundsGUIListener;
-import com.gotze.blockBreakSounds.PickSoundGUI.AllSoundsGUIListener;
-import com.gotze.blockBreakSounds.PickSoundGUI.PickSoundGUIListener;
-import com.gotze.blockBreakSounds.SettingsGUI.SettingsGUIListener;
-import com.gotze.blockBreakSounds.Utility.Listeners.BlockBreakListener;
-import com.gotze.blockBreakSounds.Utility.Listeners.PlayerJoinListener;
+import com.gotze.blockBreakSounds.listeners.guilisteners.BlockBreakSoundsGUIListener;
+import com.gotze.blockBreakSounds.commands.BlockBreakSoundsCommand;
+import com.gotze.blockBreakSounds.commands.CommandTabCompleter;
+import com.gotze.blockBreakSounds.listeners.guilisteners.FavoriteSoundsGUIListener;
+import com.gotze.blockBreakSounds.listeners.guilisteners.AllSoundsGUIListener;
+import com.gotze.blockBreakSounds.listeners.guilisteners.PickSoundGUIListener;
+import com.gotze.blockBreakSounds.listeners.guilisteners.SettingsGUIListener;
+import com.gotze.blockBreakSounds.listeners.BlockBreakListener;
+import com.gotze.blockBreakSounds.listeners.PlayerJoinListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -18,11 +18,11 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         INSTANCE = this;
-        getLogger().info("Block Break Sounds Plugin enabled successfully");
-        getLogger().info("Player Sound Info loaded");
-
         registerListeners();
         registerCommands();
+
+        getLogger().info("Block Break Sounds Plugin enabled successfully");
+        getLogger().info("Player Sound Info loaded");
     }
 
     private void registerListeners() {
@@ -38,8 +38,8 @@ public class Main extends JavaPlugin {
     }
 
     private void registerCommands() {
-        getCommand("blockbreaksounds").setExecutor(new BlockBreakSoundsExecutor());
-        getCommand("blockbreaksounds").setTabCompleter(new BlockBreakSoundsTabCompleter());
+        getCommand("blockbreaksounds").setExecutor(new BlockBreakSoundsCommand());
+        getCommand("blockbreaksounds").setTabCompleter(new CommandTabCompleter());
     }
 
     @Override
