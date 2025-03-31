@@ -18,8 +18,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import static com.gotze.blockBreakSounds.utils.GUIUtils.Frame;
-
 public class CurrentSoundData {
     private final UUID playerUUID;
     private Sound sound;
@@ -125,7 +123,7 @@ public class CurrentSoundData {
 
             if (slot == 13) {
                 for (int i = 0; i < 9; i++) {
-                    clickedInventory.setItem(36 + i, Frame());
+                    clickedInventory.setItem(36 + i, GUIUtils.Frame());
                 }
                 clickedInventory.setItem(9, null);
                 clickedInventory.setItem(17, null);

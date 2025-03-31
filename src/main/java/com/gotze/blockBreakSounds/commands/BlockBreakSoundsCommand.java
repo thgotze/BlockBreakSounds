@@ -56,7 +56,7 @@ public class BlockBreakSoundsCommand implements CommandExecutor {
         }
 
         // If the typed argument after /blockbreaksounds is info, message the player their sound, volume and pitch of current sound
-        else if (args[0].equalsIgnoreCase("info")) { // TODO: FIX info command formatting
+        else if (args[0].equalsIgnoreCase("info")) {
             CurrentSoundData currentSoundData = currentSound.get(player.getUniqueId());
             if (currentSoundData == null) {
                 return false;

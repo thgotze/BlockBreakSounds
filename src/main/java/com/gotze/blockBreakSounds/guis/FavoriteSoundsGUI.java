@@ -98,5 +98,4 @@ public class FavoriteSoundsGUI {
                 Material.PAPER,
                 ChatColor.WHITE + "ʏᴏᴜ ʜᴀᴠᴇ ɴᴏᴛ ꜰᴀᴠᴏʀɪᴛᴇᴅ ᴀɴʏ ѕᴏᴜɴᴅѕ ʏᴇᴛ!");
     }
-
 }

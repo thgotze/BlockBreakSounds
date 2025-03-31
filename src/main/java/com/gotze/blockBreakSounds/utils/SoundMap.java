@@ -11,10 +11,18 @@ public class SoundMap {
     public static final Map<String, Sound> soundNames = new HashMap<>();
     public static final Map<Sound, Material> soundToMaterial = new HashMap<>();
 
-//    Sound Categories:
-//    Mob Sounds, Animal Sounds, Player Sounds,
-//    Ambient Sounds,  UI Sounds, Noteblocks, Music Discs,
-//    Miscellaneous
+    public static final Sound[] ambientSounds = new Sound[](); // Example: "ambient.cave"
+    public static final Sound[] blockSounds = new Sound[](); // Has subcategory - Place, break, hit, fall & step
+    public static final Sound[] passiveMobSounds = new Sound[](); // Example:
+    public static final Sound[] hostileMobSounds = new Sound[](); // Example:
+    public static final Sound[] playerSounds = new Sound[](); // Example:
+    public static final Sound[] itemSounds= new Sound[](); // Example:
+
+    public static final Sound[] musicDiscSounds = new Sound[](); // Example: "music_disc.11"
+    public static final Sound[] noteblockSounds = new Sound[](); // Example:
+    public static final Sound[] biomeMusicSounds = new Sound[](); // Example: "music.overworld.forest"
+    public static final Sound[] otherSounds = new Sound[](); // Example: "weather.rain"
+
 
 //            Ambient Sounds
 //            "ambient.basalt_deltas.additions",
