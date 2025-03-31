@@ -1,4 +1,60 @@
-Main Menu
+All Sounds GUI:
+Start Menu: (5 options)
+1. Entity Sounds
+2. Block Sounds
+3. Item Sounds
+4. Noteblock Sounds
+5. Other Sounds
+
+-----
+
+First click menu: (5 options)
+1. Entity Sounds (6)
+Passive Mob Sounds
+Neutral Mob Sounds
+Hostile Mob Sounds
+Player Sounds
+Projectile Sounds
+Other Entity Sounds
+
+2. Blocks Sounds (6)
+Common Blocks Sounds
+Stone Blocks Sounds
+Wood Blocks Sounds
+Plant Blocks Sounds
+Functional Blocks Sounds
+Other Blocks Sounds
+
+3. Item Sounds (12)
+Trident Sounds
+Goat Horn Sounds
+Crossbow Sounds
+Bucket Sounds
+Bottle Sounds
+Wolf Armor Sounds
+Player Armor Sounds
+Axe Sounds
+Brush
+Bundle
+Mace
+Other Item Sounds
+
+4. Noteblock Sounds (32)
+
+5. Other Sounds (7)
+Music Disc Sounds
+Biome Ambience Sounds
+Weather Sounds
+Music Sounds
+Event Sounds
+UI Sounds
+Uncategorized Sounds
+
+-----
+
+Second Click Menu:
+
+Full List:
 1. Entity Sounds
     - Passive Mob Sounds
         * Villager Sounds:
@@ -1059,7 +1115,7 @@ Main Menu
             BLOCK_BASALT_HIT
             BLOCK_BASALT_PLACE
             BLOCK_BASALT_STEP
-    - Wooden Blocks Sounds
+    - Wood Blocks Sounds
         * Cherry Wood Sounds
             BLOCK_CHERRY_WOOD_BREAK
             BLOCK_CHERRY_WOOD_FALL
@@ -1850,26 +1906,6 @@ Main Menu
             BLOCK_AMETHYST_CLUSTER_HIT
             BLOCK_AMETHYST_CLUSTER_PLACE
             BLOCK_AMETHYST_CLUSTER_STEP
-3. Music Discs
-    MUSIC_DISC_11
-    MUSIC_DISC_13
-    MUSIC_DISC_5
-    MUSIC_DISC_BLOCKS
-    MUSIC_DISC_CAT
-    MUSIC_DISC_CHIRP
-    MUSIC_DISC_CREATOR
-    MUSIC_DISC_CREATOR_MUSIC_BOX
-    MUSIC_DISC_FAR
-    MUSIC_DISC_MALL
-    MUSIC_DISC_MELLOHI
-    MUSIC_DISC_OTHERSIDE
-    MUSIC_DISC_PIGSTEP
-    MUSIC_DISC_PRECIPICE
-    MUSIC_DISC_RELIC
-    MUSIC_DISC_STAL
-    MUSIC_DISC_STRAD
-    MUSIC_DISC_WAIT
-    MUSIC_DISC_WARD
 
 4. Note Block Sounds
     BLOCK_NOTE_BLOCK_BANJO
@@ -1896,6 +1932,26 @@ Main Menu
     BLOCK_NOTE_BLOCK_XYLOPHONE
 
 5. Other Sounds
+    * Music Disc
+        MUSIC_DISC_11
+        MUSIC_DISC_13
+        MUSIC_DISC_5
+        MUSIC_DISC_BLOCKS
+        MUSIC_DISC_CAT
+        MUSIC_DISC_CHIRP
+        MUSIC_DISC_CREATOR
+        MUSIC_DISC_CREATOR_MUSIC_BOX
+        MUSIC_DISC_FAR
+        MUSIC_DISC_MALL
+        MUSIC_DISC_MELLOHI
+        MUSIC_DISC_OTHERSIDE
+        MUSIC_DISC_PIGSTEP
+        MUSIC_DISC_PRECIPICE
+        MUSIC_DISC_RELIC
+        MUSIC_DISC_STAL
+        MUSIC_DISC_STRAD
+        MUSIC_DISC_WAIT
+        MUSIC_DISC_WARD
     * Biome Ambience Sounds
         AMBIENT_BASALT_DELTAS_ADDITIONS
         AMBIENT_BASALT_DELTAS_LOOP
