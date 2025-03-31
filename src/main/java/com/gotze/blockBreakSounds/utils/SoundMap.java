@@ -12,45 +12,26 @@ public class SoundMap {
     public static final Map<Sound, Material> soundToMaterial = new HashMap<>();
 
     public static final Sound[] ambientSounds = new Sound[](); // Example: "ambient.cave"
-    public static final Sound[] blockSounds = new Sound[](); // Has subcategory - Place, break, hit, fall & step
-    public static final Sound[] passiveMobSounds = new Sound[](); // Example:
-    public static final Sound[] hostileMobSounds = new Sound[](); // Example:
-    public static final Sound[] playerSounds = new Sound[](); // Example:
-    public static final Sound[] itemSounds= new Sound[](); // Example:
 
+    public static final Sound[] blockSounds = new Sound[](); // Has subcategory - Place, break, hit, fall, step & others
+    public static final Sound[] blockSoundsPlace = new Sound[](); // Example: "block.amethyst_block.place"
+    public static final Sound[] blockSoundsBreak = new Sound[](); // Example: "block.amethyst_block.break"
+    public static final Sound[] blockSoundsHit = new Sound[](); // Example: "block.amethyst_block.hit"
+    public static final Sound[] blockSoundsFall = new Sound[](); // Example: "block.amethyst_block.fall"
+    public static final Sound[] blockSoundsStep = new Sound[](); // Example: "block.amethyst_block.step"
+    public static final Sound[] blockSoundsOthers = new Sound[](); // Example: "block.amethyst_block.resonate"
+
+    public static final Sound[] passiveMobSounds = new Sound[](); // Example: "entity.dolphin.eat"
+    public static final Sound[] hostileMobSounds = new Sound[](); // Example: "entity.zombie.hurt"
+    public static final Sound[] playerSounds = new Sound[](); // Example: "entity.player.burp"
+    public static final Sound[] itemSounds = new Sound[](); // Example: "item.bucket.fill"
     public static final Sound[] musicDiscSounds = new Sound[](); // Example: "music_disc.11"
-    public static final Sound[] noteblockSounds = new Sound[](); // Example:
+    public static final Sound[] noteblockSounds = new Sound[](); // Example: "block.note_block.banjo"
     public static final Sound[] biomeMusicSounds = new Sound[](); // Example: "music.overworld.forest"
-    public static final Sound[] otherSounds = new Sound[](); // Example: "weather.rain"
-
-
-//            Ambient Sounds
-//            "ambient.basalt_deltas.additions",
-//            "ambient.basalt_deltas.loop",
-//            "ambient.basalt_deltas.mood",
-//            "ambient.cave",
-//            "ambient.crimson_forest.additions",
-//            "ambient.crimson_forest.loop",
-//            "ambient.crimson_forest.mood",
-//            "ambient.nether_wastes.additions",
-//            "ambient.nether_wastes.loop",
-//            "ambient.nether_wastes.mood",
-//            "ambient.soul_sand_valley.additions",
-//            "ambient.soul_sand_valley.loop",
-//            "ambient.soul_sand_valley.mood",
-//            "ambient.underwater.enter",
-//            "ambient.underwater.exit",
-//            "ambient.underwater.loop",
-//            "ambient.underwater.loop.additions",
-//            "ambient.underwater.loop.additions.rare",
-//            "ambient.underwater.loop.additions.ultra_rare",
-//            "ambient.warped_forest.additions",
-//            "ambient.warped_forest.loop",
-//            "ambient.warped_forest.mood"
-
+    public static final Sound[] otherSounds = new Sound[](); // EVERYTHING ELSE Example: "weather.rain"
 
     static {
-        // Sound Names - Sound File
+        // Sound Names & Sound File
         soundNames.put("Chime!", Sound.BLOCK_AMETHYST_BLOCK_CHIME);
         soundNames.put("Monch!", Sound.ENTITY_SNIFFER_EAT);
         soundNames.put("Bamboo!", Sound.BLOCK_BAMBOO_BREAK);
