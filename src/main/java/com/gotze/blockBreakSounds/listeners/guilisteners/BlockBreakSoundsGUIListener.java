@@ -26,7 +26,7 @@ import java.util.Map;
 
 import static com.gotze.blockBreakSounds.utils.ItemStackCreator.createItemStack;
 import static com.gotze.blockBreakSounds.utils.GUIUtils.Frame;
-import static com.gotze.blockBreakSounds.utils.FontUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.utils.TextUtils.convertToSmallFont;
 import static com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData.currentSound;
 
 public class BlockBreakSoundsGUIListener implements Listener {
@@ -181,6 +181,8 @@ public class BlockBreakSoundsGUIListener implements Listener {
         //  11 0.55f, 12 0.60f, 13 0.65f, 14 0.70f, 15 0.75f, 16 0.80f, 17 0.85f, 18 0.90f, 19 0.95f, 20 1.00f
 
         switch (currentIndex) {
+            // TODO Fix too many createItemStack method calls
+            // TODO Why classname + method instead of static import ??? idiot
             case 0: // 0% volume (min)
                 for (int i = 0; i < 11; i++) {
                     inventory.setItem(volumeSliderSlots.get(i), ItemStackCreator.createItemStack(Material.RED_STAINED_GLASS_PANE, ChatColor.WHITE + convertToSmallFont("volume: ") + ChatColor.RED + ChatColor.BOLD + convertToSmallFont("0%")));
@@ -648,12 +650,11 @@ public class BlockBreakSoundsGUIListener implements Listener {
         float currentVolume = soundData.getVolume();
         int currentIndex = VOLUME_LEVELS.indexOf(currentVolume);
 
-        if (currentIndex == 0) {
+        if (currentIndex == 0 || currentIndex == 1) {
             player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
             return;
-        } else if (currentIndex == 1) {
-            player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
         }
+
         float newVolume = VOLUME_LEVELS.get(currentIndex - 1);
         soundData.setVolume(newVolume);
 
