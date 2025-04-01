@@ -8,8 +8,8 @@ import java.util.Map;
 
 public class SoundMap {
 
-
-    public static final Hash
+    public static final Map<String, Sound> soundNames = new HashMap<>();
+    public static final Map<Sound, Material> soundToMaterial = new HashMap<>();
 
     public static final Sound[] ambientSounds = new Sound[](); // Example: "ambient.cave"
 
@@ -29,11 +29,6 @@ public class SoundMap {
     public static final Sound[] noteblockSounds = new Sound[](); // Example: "block.note_block.banjo"
     public static final Sound[] biomeMusicSounds = new Sound[](); // Example: "music.overworld.forest"
     public static final Sound[] otherSounds = new Sound[](); // EVERYTHING ELSE Example: "weather.rain"
-
-
-
-    public static final Map<Sound, Material> soundToMaterial = new HashMap<>();
-    public static final Map<String, Sound> soundNames = new HashMap<>();
 
     static {
         // Sound Names & Sound File
