@@ -17,16 +17,19 @@ import java.io.IOException;
 import java.util.*;
 
 public class FavoriteSoundsData {
+    private final Player player;
     private final Sound sound;
     private final float volume;
     private final float pitch;
 
     public static final Map<UUID, List<FavoriteSoundsData>> favoriteSounds = new HashMap<>();
 
-    public FavoriteSoundsData(Sound sound, float volume, float pitch) {
+    public FavoriteSoundsData(Player player, Sound sound, float volume, float pitch) {
+        this.player = player;
         this.sound = sound;
         this.volume = volume;
         this.pitch = pitch;
+        saveFavoriteSoundsDataToYAML(player);
     }
 
     public Sound getSound() {
@@ -81,7 +84,7 @@ public class FavoriteSoundsData {
                 Sound sound = Sound.valueOf((String) soundData.get("sound"));
                 float volume = ((Number) soundData.get("volume")).floatValue();
                 float pitch = ((Number) soundData.get("pitch")).floatValue();
-                favoriteSoundsDataList.add(new FavoriteSoundsData(sound, volume, pitch));
+                favoriteSoundsDataList.add(new FavoriteSoundsData(player, sound, volume, pitch));
             } catch (Exception e) {
                 System.out.println("Failed to load a favorite sound for " + player.getName());
             }
@@ -91,12 +94,7 @@ public class FavoriteSoundsData {
 
 
     public static void addFavoriteSound(Player player, Sound sound, float volume, float pitch) {
-        List<FavoriteSoundsData> favorites = favoriteSounds.get(player.getUniqueId());
-
-        if (favorites == null) {
-            favorites = new ArrayList<>();
-            favoriteSounds.put(player.getUniqueId(), favorites);
-        }
+        List<FavoriteSoundsData> favorites = favoriteSounds.computeIfAbsent(player.getUniqueId(), k -> new ArrayList<>());
 
         for (FavoriteSoundsData data : favorites) {
             if (data.getSound() == sound && data.getVolume() == volume && data.getPitch() == pitch) {
@@ -104,7 +102,7 @@ public class FavoriteSoundsData {
             }
         }
         if (favorites.size() < 27) { // You can only have 27 favorite sounds
-            favorites.add(new FavoriteSoundsData(sound, volume, pitch));
+            favorites.add(new FavoriteSoundsData(player, sound, volume, pitch));
             saveFavoriteSoundsDataToYAML(player);
         }
     }
