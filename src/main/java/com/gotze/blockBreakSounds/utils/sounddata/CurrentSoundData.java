@@ -19,7 +19,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class CurrentSoundData {
-    private final UUID playerUUID;
+    private final Player player;
     private Sound sound;
     private float volume;
     private float pitch;
@@ -27,11 +27,11 @@ public class CurrentSoundData {
     public static final Map<UUID, CurrentSoundData> currentSound = new HashMap<>();
 
     public CurrentSoundData(Player player, Sound sound, float volume, float pitch) {
-        this.playerUUID = player.getUniqueId();
+        this.player = player;
         this.sound = sound;
         this.volume = volume;
         this.pitch = pitch;
-        saveCurrentSoundDataToYAML();
+        saveCurrentSoundDataToYAML(player);
     }
 
     public Sound getSound() {
@@ -40,7 +40,7 @@ public class CurrentSoundData {
 
     public void setSound(Sound sound) {
         this.sound = sound;
-        saveCurrentSoundDataToYAML();
+        saveCurrentSoundDataToYAML(player);
     }
 
     public float getVolume() {
@@ -49,7 +49,7 @@ public class CurrentSoundData {
 
     public void setVolume(float volume) {
         this.volume = volume;
-        saveCurrentSoundDataToYAML();
+        saveCurrentSoundDataToYAML(player);
     }
 
     public float getPitch() {
@@ -58,11 +58,11 @@ public class CurrentSoundData {
 
     public void setPitch(float pitch) {
         this.pitch = pitch;
-        saveCurrentSoundDataToYAML();
+        saveCurrentSoundDataToYAML(player);
     }
 
-    public void saveCurrentSoundDataToYAML() {
-        File playerFile = new File(Main.INSTANCE.getDataFolder() + "/playerdata", playerUUID + ".yml");
+    public void saveCurrentSoundDataToYAML(Player player) {
+        File playerFile = new File(Main.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(playerFile);
         String path = "current-sound";
 
@@ -117,7 +117,7 @@ public class CurrentSoundData {
 
             currentSound.remove(player.getUniqueId());
             CurrentSoundData currentSoundData = new CurrentSoundData(player, null, 0.0f, 0.0f);
-            currentSoundData.saveCurrentSoundDataToYAML();
+            currentSoundData.saveCurrentSoundDataToYAML(player);
 
             clickedInventory.setItem(slot, GUIUtils.CurrentSoundDisplayButton(player));
 
