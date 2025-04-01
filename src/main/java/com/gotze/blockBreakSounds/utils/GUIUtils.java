@@ -9,8 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Arrays;
 
 import static com.gotze.blockBreakSounds.utils.ItemStackCreator.createItemStack;
-import static com.gotze.blockBreakSounds.utils.FontUtils.convertToSmallFont;
-import static com.gotze.blockBreakSounds.utils.FontUtils.removeSpecialCharacters;
+import static com.gotze.blockBreakSounds.utils.TextUtils.convertToSmallFont;
 
 public class GUIUtils {
 
@@ -46,7 +45,7 @@ public class GUIUtils {
                     SoundMap.getMaterialFromSound(currentSoundData.getSound()),
                     ChatColor.GOLD + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7",
                     Arrays.asList(
-                            ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(removeSpecialCharacters(currentSoundData.getSound().name())),
+                            ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(currentSoundData.getSound().toString()),
                             ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", currentSoundData.getVolume() * 100)),
                             ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", currentSoundData.getPitch())),
                             "",
