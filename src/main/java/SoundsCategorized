@@ -1,3 +1,38 @@
+TEST::
+1. Entity Sounds
+    1 Passive Mob Sounds
+        1 Villager Sounds:
+            1 ENTITY_VILLAGER_AMBIENT
+            2 ENTITY_VILLAGER_CELEBRATE
+        2 Wandering Trader Sounds:
+            1 ENTITY_WANDERING_TRADER_AMBIENT
+            2 ENTITY_WANDERING_TRADER_DEATH
+    2 Hostile Mob Sounds
+         1 Warden Sounds:
+            1 ENTITY_WARDEN_AGITATED
+            2 ENTITY_WARDEN_AMBIENT
+         2 Witch Sounds:
+            1 ENTITY_WITCH_AMBIENT
+            2 ENTITY_WITCH_CELEBRATE
+2. Block Sounds
+    1 Common Blocks Sounds
+        1 Wood Sounds
+            1 BLOCK_WOOD_BREAK
+            2 BLOCK_WOOD_FALL
+        2 Wool Sounds
+            1 BLOCK_WOOL_BREAK
+            2 BLOCK_WOOL_FALL
+    2 Stone Blocks Sounds
+        1 Stone Sounds
+            1 BLOCK_STONE_BREAK
+            2 BLOCK_STONE_BUTTON_CLICK_OFF
+        2 Polished Deepslate Sounds
+            1 BLOCK_POLISHED_DEEPSLATE_BREAK
+            2 BLOCK_POLISHED_DEEPSLATE_FALL
+
+
+
+
 All Sounds GUI:
 Start Menu: (5 options)
 1. Entity Sounds
