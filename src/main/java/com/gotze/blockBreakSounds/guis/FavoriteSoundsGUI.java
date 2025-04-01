@@ -1,6 +1,5 @@
 package com.gotze.blockBreakSounds.guis;
 
-import com.gotze.blockBreakSounds.utils.FontUtils;
 import com.gotze.blockBreakSounds.utils.GUIUtils;
 import com.gotze.blockBreakSounds.utils.ItemStackCreator;
 import com.gotze.blockBreakSounds.utils.sounddata.FavoriteSoundsData;
@@ -15,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.gotze.blockBreakSounds.utils.FontUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.utils.TextUtils.convertToSmallFont;
 
 public class FavoriteSoundsGUI {
 
@@ -56,7 +55,7 @@ public class FavoriteSoundsGUI {
                 SoundMap.getMaterialFromSound(favoriteSoundsData.getSound()),
                 ChatColor.YELLOW + "" + ChatColor.BOLD + "Favorite Sound " + (index + 1) + " ⭐",
                 Arrays.asList(
-                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(FontUtils.removeSpecialCharacters(favoriteSoundsData.getSound().name())),
+                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(favoriteSoundsData.getSound().toString()),
                         ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", favoriteSoundsData.getVolume() * 100)),
                         ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", favoriteSoundsData.getPitch())),
                         "",
