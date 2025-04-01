@@ -1,6 +1,8 @@
 package com.gotze.blockBreakSounds.utils;
 
-public class FontUtils {
+import org.bukkit.Sound;
+
+public class TextUtils {
 
     public static String convertToSmallFont(String input) {
         StringBuilder newString = new StringBuilder();
@@ -77,17 +79,26 @@ public class FontUtils {
         }
         return newString.toString();
     }
-    public static String removeSpecialCharacters(String input) {
-        StringBuilder newString = new StringBuilder();
-        String allowedCharacters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ: ";
 
-        for (char c : input.toCharArray()) {
-            if (allowedCharacters.indexOf(c) != -1) {
-                newString.append(c);
-            } else {
-                newString.append(' ');
-            }
+    // Converts name of a Sound object into a formatted String
+    // Input: ENTITY_PLAYER_LEVELUP (Sound) -> Output: "Entity Player Levelup" (String)
+
+    public static String getFormattedSoundName(Sound sound) {
+        // Step 1: Convert the Sound to a String
+        String soundString = sound.toString();
+
+        // Step 2: Replace underscores with spaces and convert to lowercase
+        String withSpaces = soundString.replace("_", " ").toLowerCase();
+
+        // Step 3: Capitalize each word and combine them into a single string
+        StringBuilder capitalized = new StringBuilder();
+        for (String word : withSpaces.split(" ")) {
+            capitalized.append(Character.toUpperCase(word.charAt(0))) // First letter uppercase
+                    .append(word.substring(1))              // Rest of the word
+                    .append(" ");                                     // Add space between words
         }
-        return newString.toString();
+
+        // Step 4: Trim trailing space and return the formatted result
+        return capitalized.toString().trim();
     }
 }
