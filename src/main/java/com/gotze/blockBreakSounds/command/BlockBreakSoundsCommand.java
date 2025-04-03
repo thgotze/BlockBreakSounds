@@ -1,8 +1,8 @@
-package com.gotze.blockBreakSounds.commands;
+package com.gotze.blockBreakSounds.command;
 
 import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
-import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
-import com.gotze.blockBreakSounds.utils.SoundMap;
+import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
+import com.gotze.blockBreakSounds.soundlogic.SoundMap;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -10,8 +10,8 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static com.gotze.blockBreakSounds.utils.TextUtils.convertToSmallFont;
-import static com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData.currentSound;
+import static com.gotze.blockBreakSounds.util.TextUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.soundlogic.CurrentSoundData.currentSound;
 
 public class BlockBreakSoundsCommand implements CommandExecutor {
 
@@ -26,8 +26,8 @@ public class BlockBreakSoundsCommand implements CommandExecutor {
 
         // If only typed /blockbreaksounds, then open the GUI as normal
         if (args.length == 0) {
-            BlockBreakSoundsGUI blockBreakSoundsGUI = new BlockBreakSoundsGUI(player);
-            blockBreakSoundsGUI.openBlockBreakSoundsGUI(player);
+            BlockBreakSoundsGUI blockBreakSoundsGUI = new BlockBreakSoundsGUI();
+            blockBreakSoundsGUI.setupAndOpenGUI(player);
             return true;
         }
 

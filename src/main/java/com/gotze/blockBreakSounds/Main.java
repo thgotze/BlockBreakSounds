@@ -1,8 +1,8 @@
 package com.gotze.blockBreakSounds;
 
 import com.gotze.blockBreakSounds.listeners.guilisteners.BlockBreakSoundsGUIListener;
-import com.gotze.blockBreakSounds.commands.BlockBreakSoundsCommand;
-import com.gotze.blockBreakSounds.commands.CommandTabCompleter;
+import com.gotze.blockBreakSounds.command.BlockBreakSoundsCommand;
+import com.gotze.blockBreakSounds.command.CommandTabCompleter;
 import com.gotze.blockBreakSounds.listeners.guilisteners.FavoriteSoundsGUIListener;
 import com.gotze.blockBreakSounds.listeners.guilisteners.AllSoundsGUIListener;
 import com.gotze.blockBreakSounds.listeners.guilisteners.PickSoundGUIListener;

@@ -3,10 +3,10 @@ package com.gotze.blockBreakSounds.listeners.guilisteners;
 import com.gotze.blockBreakSounds.guis.FavoriteSoundsGUI;
 import com.gotze.blockBreakSounds.guis.PickSoundGUI;
 import com.gotze.blockBreakSounds.guis.SettingsGUI;
-import com.gotze.blockBreakSounds.utils.GUIUtils;
-import com.gotze.blockBreakSounds.utils.linehandlers.FavoritedSoundLineHandler;
-import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
-import com.gotze.blockBreakSounds.utils.sounddata.FavoriteSoundsData;
+import com.gotze.blockBreakSounds.util.GUIUtils;
+import com.gotze.blockBreakSounds.handlers.FavoritedSoundLoreHandler;
+import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
+import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundsData;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -23,10 +23,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.gotze.blockBreakSounds.utils.ItemStackCreator.createItemStack;
-import static com.gotze.blockBreakSounds.utils.GUIUtils.Frame;
-import static com.gotze.blockBreakSounds.utils.TextUtils.convertToSmallFont;
-import static com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData.currentSound;
+import static com.gotze.blockBreakSounds.util.ItemStackCreator.createItemStack;
+import static com.gotze.blockBreakSounds.util.GUIUtils.Frame;
+import static com.gotze.blockBreakSounds.util.TextUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.soundlogic.CurrentSoundData.currentSound;
 
 public class BlockBreakSoundsGUIListener implements Listener {
 
@@ -89,7 +89,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
                 }
                 if (clickType == ClickType.SHIFT_RIGHT) {
                     FavoriteSoundsData.addFavoriteSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
-                    FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
+                    FavoritedSoundLoreHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
                     return;
                 }
                 if (currentSoundData != null && clickedInventory.getItem(slot).getType() != Material.BARRIER) {
@@ -120,7 +120,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
             case 22: // Pick Sound
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
                 PickSoundGUI pickSoundGUI = new PickSoundGUI(player);
-                pickSoundGUI.openPickSoundGUI(player);
+                pickSoundGUI.setupAndOpenGUI(player);
                 return;
 
             case 24: // Tweak Pitch
@@ -135,7 +135,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
             case 26: // Settings
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-                SettingsGUI settingsGUI = new SettingsGUI();
+                SettingsGUI settingsGUI = new SettingsGUI(player);
                 settingsGUI.openSettingsGUI(player);
                 return;
 
@@ -148,7 +148,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
             case 31: // Favorite Sounds
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
                 FavoriteSoundsGUI favoriteSoundsGUI = new FavoriteSoundsGUI();
-                favoriteSoundsGUI.openFavoriteSoundsGUI(player);
+                favoriteSoundsGUI.setupAndOpenGUI(player);
                 return;
 
             case 33: // Decrease Pitch
@@ -158,7 +158,6 @@ public class BlockBreakSoundsGUIListener implements Listener {
                 return;
 
             default:
-                return;
         }
     }
 

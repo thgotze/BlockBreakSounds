@@ -1,9 +1,9 @@
 package com.gotze.blockBreakSounds.guis;
 
-import com.gotze.blockBreakSounds.utils.GUIUtils;
-import com.gotze.blockBreakSounds.utils.ItemStackCreator;
-import com.gotze.blockBreakSounds.utils.sounddata.FavoriteSoundsData;
-import com.gotze.blockBreakSounds.utils.SoundMap;
+import com.gotze.blockBreakSounds.util.GUIUtils;
+import com.gotze.blockBreakSounds.util.ItemStackCreator;
+import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundsData;
+import com.gotze.blockBreakSounds.soundlogic.SoundMap;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.gotze.blockBreakSounds.utils.TextUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.util.TextUtils.convertToSmallFont;
 
 public class FavoriteSoundsGUI {
 
@@ -22,18 +22,38 @@ public class FavoriteSoundsGUI {
 
     public FavoriteSoundsGUI() {
         this.gui = Bukkit.createInventory(null, 45, "Favorite Sounds");
-        setupGUI();
-    }
-
-    public void openFavoriteSoundsGUI(Player player) {
-        player.openInventory(gui);
-        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
+        setFrames();
         gui.setItem(36, GUIUtils.ReturnButton());
         gui.setItem(40, FavoriteSoundsInfoButton());
+    }
+
+    public void setupAndOpenGUI(Player player) {
+        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         setFavoriteSoundsToGUI(player);
         if (gui.getItem(9) == null) {
             gui.setItem(22, NoSoundsFavoritedYetButton());
         }
+        player.openInventory(gui);
+    }
+
+    private void setFrames() {
+        for (int i = 0; i < 9; i++) {
+            gui.setItem(i, GUIUtils.Frame());
+        }
+        for (int i = 36; i < 45; i++) {
+            gui.setItem(i, GUIUtils.Frame());
+        }
+    }
+
+    private ItemStack FavoriteSoundsInfoButton() {
+        return ItemStackCreator.createItemStack(
+                Material.NETHER_STAR,
+                ChatColor.GOLD + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
+                Arrays.asList(
+                        ChatColor.WHITE + "ᴅʀᴏᴘ ѕᴏᴜɴᴅѕ ᴛᴏ " + ChatColor.RED + "ᴜɴꜰᴀᴠᴏʀɪᴛᴇ",
+                        ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ " + ChatColor.YELLOW + "ꜰᴀᴠᴏʀɪᴛᴇ"
+                )
+        );
     }
 
     private void setFavoriteSoundsToGUI(Player player) {
@@ -65,30 +85,6 @@ public class FavoriteSoundsGUI {
                 true,
                 false,
                 true
-        );
-    }
-
-    private void setupGUI() {
-        setFrames();
-    }
-
-    private void setFrames() {
-        for (int i = 0; i < 9; i++) {
-            gui.setItem(i, GUIUtils.Frame());
-        }
-        for (int i = 36; i < 45; i++) {
-            gui.setItem(i, GUIUtils.Frame());
-        }
-    }
-
-    private ItemStack FavoriteSoundsInfoButton() {
-        return ItemStackCreator.createItemStack(
-                Material.NETHER_STAR,
-                ChatColor.GOLD + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
-                Arrays.asList(
-                        ChatColor.WHITE + "ᴅʀᴏᴘ ѕᴏᴜɴᴅѕ ᴛᴏ " + ChatColor.RED + "ᴜɴꜰᴀᴠᴏʀɪᴛᴇ",
-                        ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ " + ChatColor.YELLOW + "ꜰᴀᴠᴏʀɪᴛᴇ"
-                )
         );
     }
 

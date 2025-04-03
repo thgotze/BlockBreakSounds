@@ -1,8 +1,8 @@
-package com.gotze.blockBreakSounds.utils.sounddata;
+package com.gotze.blockBreakSounds.soundlogic;
 
 import com.gotze.blockBreakSounds.Main;
-import com.gotze.blockBreakSounds.utils.ItemStackCreator;
-import com.gotze.blockBreakSounds.utils.GUIUtils;
+import com.gotze.blockBreakSounds.util.ItemStackCreator;
+import com.gotze.blockBreakSounds.util.GUIUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;

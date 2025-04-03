@@ -1,6 +1,6 @@
-package com.gotze.blockBreakSounds.commands;
+package com.gotze.blockBreakSounds.command;
 
-import com.gotze.blockBreakSounds.utils.SoundMap;
+import com.gotze.blockBreakSounds.soundlogic.SoundMap;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;

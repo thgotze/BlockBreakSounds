@@ -1,7 +1,7 @@
 package com.gotze.blockBreakSounds.listeners.guilisteners;
 
-import com.gotze.blockBreakSounds.utils.linehandlers.FavoritedSoundLineHandler;
-import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
+import com.gotze.blockBreakSounds.handlers.FavoritedSoundLoreHandler;
+import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
 import com.gotze.blockBreakSounds.guis.PickSoundGUI;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -60,7 +60,7 @@ public class AllSoundsGUIListener implements Listener {
                     return;
                 }
                 if (clickType == ClickType.SHIFT_RIGHT) {
-                    FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
+                    FavoritedSoundLoreHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
                     return;
                 }
                 if (soundData != null && clickedInventory.getItem(slot).getType() != Material.BARRIER) {
@@ -72,7 +72,7 @@ public class AllSoundsGUIListener implements Listener {
             case 36: // Return
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
                 PickSoundGUI pickSoundGUI = new PickSoundGUI(player);
-                pickSoundGUI.openPickSoundGUI(player);
+                pickSoundGUI.setupAndOpenGUI(player);
                 return;
         }
     }

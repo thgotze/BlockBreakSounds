@@ -1,8 +1,8 @@
 package com.gotze.blockBreakSounds.listeners;
 
 import com.gotze.blockBreakSounds.Main;
-import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
-import com.gotze.blockBreakSounds.utils.sounddata.FavoriteSoundsData;
+import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
+import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundsData;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

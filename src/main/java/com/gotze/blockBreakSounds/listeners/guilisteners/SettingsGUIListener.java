@@ -50,8 +50,8 @@ public class SettingsGUIListener implements Listener {
         switch (slot) {
             case 36: // Return
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-                BlockBreakSoundsGUI blockBreakSoundsGUI = new BlockBreakSoundsGUI(player);
-                blockBreakSoundsGUI.openBlockBreakSoundsGUI(player);
+                BlockBreakSoundsGUI blockBreakSoundsGUI = new BlockBreakSoundsGUI();
+                blockBreakSoundsGUI.setupAndOpenGUI(player);
                 return;
         }
     }

@@ -1,15 +1,17 @@
-package com.gotze.blockBreakSounds.utils;
+package com.gotze.blockBreakSounds.util;
 
-import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
+import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
+import com.gotze.blockBreakSounds.soundlogic.SoundMap;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
+import java.util.List;
 
-import static com.gotze.blockBreakSounds.utils.ItemStackCreator.createItemStack;
-import static com.gotze.blockBreakSounds.utils.TextUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.util.ItemStackCreator.createItemStack;
+import static com.gotze.blockBreakSounds.util.TextUtils.convertToSmallFont;
 
 public class GUIUtils {
 
@@ -36,7 +38,7 @@ public class GUIUtils {
             return ItemStackCreator.createItemStack(
                     Material.GLASS_PANE,
                     ChatColor.GOLD + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7",
-                    Arrays.asList(
+                    List.of(
                             ChatColor.WHITE + "ɴᴏ ѕᴏᴜɴᴅ ѕᴇᴛ"
                     )
             );

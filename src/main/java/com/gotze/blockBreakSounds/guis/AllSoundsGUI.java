@@ -1,14 +1,9 @@
 package com.gotze.blockBreakSounds.guis;
 
-import com.gotze.blockBreakSounds.utils.GUIUtils;
-import com.gotze.blockBreakSounds.utils.ItemStackCreator;
+import com.gotze.blockBreakSounds.util.GUIUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.Arrays;
 
 public class AllSoundsGUI {
 
@@ -16,18 +11,13 @@ public class AllSoundsGUI {
 
     public AllSoundsGUI() {
         this.gui = Bukkit.createInventory(null, 45, "All Sounds");
-        setupGUI();
-    }
-
-    public void openAllSoundsGUI(Player player) {
-        player.openInventory(gui);
-        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.ReturnButton());
     }
 
-    private void setupGUI() {
+    public void setupAndOpenGUI(Player player) {
         setFrames();
-        gui.setItem(22, AllSoundInfoButton());
+        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
+        player.openInventory(gui);
     }
 
     private void setFrames() {
@@ -39,13 +29,4 @@ public class AllSoundsGUI {
         }
     }
 
-    private ItemStack AllSoundInfoButton() {
-        return ItemStackCreator.createItemStack(
-                Material.JUKEBOX,
-                "All Sounds Info",
-                Arrays.asList(
-                        "Hello",
-                        "World!")
-        );
-    }
 }

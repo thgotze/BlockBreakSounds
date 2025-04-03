@@ -1,7 +1,7 @@
 package com.gotze.blockBreakSounds.guis;
 
-import com.gotze.blockBreakSounds.utils.GUIUtils;
-import com.gotze.blockBreakSounds.utils.ItemStackCreator;
+import com.gotze.blockBreakSounds.util.GUIUtils;
+import com.gotze.blockBreakSounds.util.ItemStackCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -15,29 +15,24 @@ public class BlockBreakSoundsGUI {
 
     private final Inventory gui;
 
-    public BlockBreakSoundsGUI(Player player) {
+    public BlockBreakSoundsGUI() {
         this.gui = Bukkit.createInventory(null, 45, "Block Break Sounds");
-        setupGUI(player);
-    }
-
-    public void openBlockBreakSoundsGUI(Player player) {
-        setFramesAndAir();
-        player.openInventory(gui);
-    }
-
-    private void setupGUI(Player player) {
-        setFramesAndAir();
-        gui.setItem(26, SettingsButton());
-        gui.setItem(25, SettingsButtonTesting222());
-        gui.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(11, IncreaseVolumeButton());
         gui.setItem(15, IncreasePitchButton());
         gui.setItem(20, VolumeButton());
         gui.setItem(22, PickSoundButton());
         gui.setItem(24, PitchButton());
+        gui.setItem(25, SettingsButtonTesting222());
+        gui.setItem(26, SettingsButton());
         gui.setItem(29, DecreaseVolumeButton());
         gui.setItem(31, FavoriteSoundsButton());
         gui.setItem(33, DecreasePitchButton());
+    }
+
+    public void setupAndOpenGUI(Player player) {
+        setFramesAndAir();
+        gui.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
+        player.openInventory(gui);
     }
 
     private void setFramesAndAir() {
@@ -54,7 +49,7 @@ public class BlockBreakSoundsGUI {
     }
 
     // Settings Button (Command Block)
-    private static ItemStack SettingsButton() {
+    private ItemStack SettingsButton() {
         return ItemStackCreator.createItemStack(
                 Material.COMMAND_BLOCK,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Settings \uD83D\uDD27",
@@ -66,7 +61,7 @@ public class BlockBreakSoundsGUI {
         );
     }
 
-    // Settings Button (Command Block)
+    // Settings Button (Command Block) test 222222222
     private ItemStack SettingsButtonTesting222() {
         return ItemStackCreator.createItemStack(
                 Material.COMMAND_BLOCK,

@@ -1,4 +1,4 @@
-package com.gotze.blockBreakSounds.utils.linehandlers;
+package com.gotze.blockBreakSounds.handlers;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Arrays;
 import java.util.List;
 
-public class FavoritedSoundLineHandler {
+public class FavoritedSoundLoreHandler {
 
     private static final String soundFavoritedLoreLine = ChatColor.GREEN + "" + ChatColor.BOLD + "ѕᴏᴜɴᴅ ꜰᴀᴠᴏʀɪᴛᴇᴅ! ⭐";
     private static final String soundUnfavoritedLoreLine = ChatColor.RED + "" + ChatColor.BOLD + "ѕᴏᴜɴᴅ ᴜɴꜰᴀᴠᴏʀɪᴛᴇᴅ! ✘";

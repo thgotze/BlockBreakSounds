@@ -1,4 +1,4 @@
-package com.gotze.blockBreakSounds.utils;
+package com.gotze.blockBreakSounds.util;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;

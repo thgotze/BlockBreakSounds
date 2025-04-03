@@ -1,7 +1,7 @@
 package com.gotze.blockBreakSounds.guis;
 
-import com.gotze.blockBreakSounds.utils.GUIUtils;
-import com.gotze.blockBreakSounds.utils.ItemStackCreator;
+import com.gotze.blockBreakSounds.util.GUIUtils;
+import com.gotze.blockBreakSounds.util.ItemStackCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -14,25 +14,13 @@ import java.util.Arrays;
 public class PickSoundGUI {
 
     private final Inventory gui;
-    private final Player player;
 
     public PickSoundGUI(Player player) {
-        this.player = player;
         this.gui = Bukkit.createInventory(null, 45, "Pick Sound");
-        setupGUI();
-    }
-
-    public void openPickSoundGUI(Player player) {
-        player.openInventory(gui);
-    }
-
-    private void setupGUI() {
         setFrames();
-        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(44, PickFromAllSoundsButton());
         gui.setItem(40, FavoriteSoundsButton());
         gui.setItem(36, GUIUtils.ReturnButton());
-
         gui.setItem(9, AmethystBreakSoundButton());
         gui.setItem(10, ItemPickupButton());
         gui.setItem(11, ExperienceOrbPickupButton());
@@ -61,6 +49,12 @@ public class PickSoundGUI {
         gui.setItem(34, SnifferEatButton());
         gui.setItem(35, NetheriteBlockBreakButton());
     }
+
+    public void setupAndOpenGUI(Player player) {
+        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
+        player.openInventory(gui);
+    }
+
 
     private void setFrames() {
         for (int i = 0; i < 9; i++) {

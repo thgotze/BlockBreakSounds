@@ -1,11 +1,11 @@
 package com.gotze.blockBreakSounds.listeners.guilisteners;
 
 import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
-import com.gotze.blockBreakSounds.utils.GUIUtils;
-import com.gotze.blockBreakSounds.utils.linehandlers.FavoritedSoundLineHandler;
-import com.gotze.blockBreakSounds.utils.linehandlers.PickedSoundLineHandler;
-import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
-import com.gotze.blockBreakSounds.utils.sounddata.FavoriteSoundsData;
+import com.gotze.blockBreakSounds.util.GUIUtils;
+import com.gotze.blockBreakSounds.handlers.FavoritedSoundLoreHandler;
+import com.gotze.blockBreakSounds.handlers.PickedSoundLoreHandler;
+import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
+import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundsData;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -63,7 +63,7 @@ public class FavoriteSoundsGUIListener implements Listener {
                 }
                 if (clickType == ClickType.SHIFT_RIGHT) {
                     FavoriteSoundsData.addFavoriteSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
-                    FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
+                    FavoritedSoundLoreHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
                     return;
                 }
                 if (currentSoundData != null && clickedInventory.getItem(slot).getType() != Material.BARRIER) {
@@ -74,8 +74,8 @@ public class FavoriteSoundsGUIListener implements Listener {
 
             case 36: // Return
             player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-            BlockBreakSoundsGUI blockBreakSoundsGUI = new BlockBreakSoundsGUI(player);
-            blockBreakSoundsGUI.openBlockBreakSoundsGUI(player);
+            BlockBreakSoundsGUI blockBreakSoundsGUI = new BlockBreakSoundsGUI();
+            blockBreakSoundsGUI.setupAndOpenGUI(player);
             return;
 
             case 40: // Favorite Sounds
@@ -92,7 +92,7 @@ public class FavoriteSoundsGUIListener implements Listener {
                         FavoriteSoundsData.removeFavoriteSound(clickedInventory, player, slot);
                         return;
                     } else {
-                        PickedSoundLineHandler.handlePickedLineSound(clickedInventory, slot);
+                        PickedSoundLoreHandler.handlePickedLineSound(clickedInventory, slot);
                     }
 
                     FavoriteSoundsData favoriteSoundsData = FavoriteSoundsData.getFavoriteSoundFromSlot(player, slot);

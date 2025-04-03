@@ -3,11 +3,11 @@ package com.gotze.blockBreakSounds.listeners.guilisteners;
 import com.gotze.blockBreakSounds.guis.AllSoundsGUI;
 import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
 import com.gotze.blockBreakSounds.guis.FavoriteSoundsGUI;
-import com.gotze.blockBreakSounds.utils.GUIUtils;
-import com.gotze.blockBreakSounds.utils.linehandlers.FavoritedSoundLineHandler;
-import com.gotze.blockBreakSounds.utils.linehandlers.PickedSoundLineHandler;
-import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
-import com.gotze.blockBreakSounds.utils.sounddata.FavoriteSoundsData;
+import com.gotze.blockBreakSounds.util.GUIUtils;
+import com.gotze.blockBreakSounds.handlers.FavoritedSoundLoreHandler;
+import com.gotze.blockBreakSounds.handlers.PickedSoundLoreHandler;
+import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
+import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundsData;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -71,7 +71,7 @@ public class PickSoundGUIListener implements Listener {
                 }
                 if (clickType == ClickType.SHIFT_RIGHT) {
                     FavoriteSoundsData.addFavoriteSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
-                    FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
+                    FavoritedSoundLoreHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
                     return;
                 }
                 if (currentSoundData != null && clickedInventory.getItem(slot).getType() != Material.BARRIER) {
@@ -196,18 +196,18 @@ public class PickSoundGUIListener implements Listener {
 
             case 36: // Return
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-                BlockBreakSoundsGUI blockBreakSoundsGUI = new BlockBreakSoundsGUI(player);
-                blockBreakSoundsGUI.openBlockBreakSoundsGUI(player);
+                BlockBreakSoundsGUI blockBreakSoundsGUI = new BlockBreakSoundsGUI();
+                blockBreakSoundsGUI.setupAndOpenGUI(player);
                 return;
 
             case 40: // Favorite Sounds
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-                new FavoriteSoundsGUI().openFavoriteSoundsGUI(player);
+                new FavoriteSoundsGUI().setupAndOpenGUI(player);
                 return;
 
             case 44: // Pick From All Sounds
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-                new AllSoundsGUI().openAllSoundsGUI(player);
+                new AllSoundsGUI().setupAndOpenGUI(player);
                 return;
 
             default:
@@ -216,9 +216,9 @@ public class PickSoundGUIListener implements Listener {
 
         if (clickType == (ClickType.SHIFT_RIGHT)) { // Favorite Sound
             FavoriteSoundsData.addFavoriteSound(player, selectedSound, volume, pitch);
-            FavoritedSoundLineHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
+            FavoritedSoundLoreHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
         } else { // Pick Sound
-            PickedSoundLineHandler.handlePickedLineSound(clickedInventory, slot);
+            PickedSoundLoreHandler.handlePickedLineSound(clickedInventory, slot);
 
             if (currentSoundData == null) {
                 currentSoundData = new CurrentSoundData(player, selectedSound, volume, pitch);

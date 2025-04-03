@@ -1,8 +1,8 @@
-package com.gotze.blockBreakSounds.utils.sounddata;
+package com.gotze.blockBreakSounds.soundlogic;
 
 import com.gotze.blockBreakSounds.guis.FavoriteSoundsGUI;
 import com.gotze.blockBreakSounds.Main;
-import com.gotze.blockBreakSounds.utils.ItemStackCreator;
+import com.gotze.blockBreakSounds.util.ItemStackCreator;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -17,19 +17,16 @@ import java.io.IOException;
 import java.util.*;
 
 public class FavoriteSoundsData {
-    private final Player player;
     private final Sound sound;
     private final float volume;
     private final float pitch;
 
     public static final Map<UUID, List<FavoriteSoundsData>> favoriteSounds = new HashMap<>();
 
-    public FavoriteSoundsData(Player player, Sound sound, float volume, float pitch) {
-        this.player = player;
+    public FavoriteSoundsData(Sound sound, float volume, float pitch) {
         this.sound = sound;
         this.volume = volume;
         this.pitch = pitch;
-        saveFavoriteSoundsDataToYAML(player);
     }
 
     public Sound getSound() {
@@ -84,7 +81,7 @@ public class FavoriteSoundsData {
                 Sound sound = Sound.valueOf((String) soundData.get("sound"));
                 float volume = ((Number) soundData.get("volume")).floatValue();
                 float pitch = ((Number) soundData.get("pitch")).floatValue();
-                favoriteSoundsDataList.add(new FavoriteSoundsData(player, sound, volume, pitch));
+                favoriteSoundsDataList.add(new FavoriteSoundsData(sound, volume, pitch));
             } catch (Exception e) {
                 System.out.println("Failed to load a favorite sound for " + player.getName());
             }
@@ -102,7 +99,7 @@ public class FavoriteSoundsData {
             }
         }
         if (favorites.size() < 27) { // You can only have 27 favorite sounds
-            favorites.add(new FavoriteSoundsData(player, sound, volume, pitch));
+            favorites.add(new FavoriteSoundsData(sound, volume, pitch));
             saveFavoriteSoundsDataToYAML(player);
         }
     }
@@ -124,7 +121,7 @@ public class FavoriteSoundsData {
             saveFavoriteSoundsDataToYAML(player);
 
             FavoriteSoundsGUI favoriteSoundsGUI = new FavoriteSoundsGUI();
-            favoriteSoundsGUI.setFavoriteSoundsToGUI(player);
+            favoriteSoundsGUI.setupAndOpenGUI(player);
             return;
         }
 

@@ -1,7 +1,7 @@
 package com.gotze.blockBreakSounds.guis;
 
-import com.gotze.blockBreakSounds.utils.GUIUtils;
-import com.gotze.blockBreakSounds.utils.ItemStackCreator;
+import com.gotze.blockBreakSounds.util.GUIUtils;
+import com.gotze.blockBreakSounds.util.ItemStackCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -17,26 +17,19 @@ public class SettingsGUI {
 
     public SettingsGUI() {
         this.gui = Bukkit.createInventory(null, 45, "Settings");
-        setupGUI();
-    }
-
-    public void openSettingsGUI(Player player) {
-        player.openInventory(gui);
-    }
-
-    private void setupGUI() {
         setFrames();
+        gui.setItem(4, ToDoListButton());
         gui.setItem(20, PitchVariance());
         gui.setItem(21, ToolSpecificSoundsButton());
         gui.setItem(22, MultiSoundsButton());
         gui.setItem(23, CombinedSoundsButton());
         gui.setItem(24, SoundFilterButton());
-
-        gui.setItem(4, ToDoListButton());
-
         gui.setItem(36, ReturnButton());
     }
 
+    public void setupAndOpenGUI(Player player) {
+        player.openInventory(gui);
+    }
 
     private void setFrames() {
         for (int i = 0; i < 9; i++) {
