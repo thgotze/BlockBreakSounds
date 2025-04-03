@@ -54,7 +54,7 @@ public class BlockBreakSoundsGUI {
     }
 
     // Settings Button (Command Block)
-    public static ItemStack SettingsButton() {
+    private static ItemStack SettingsButton() {
         return ItemStackCreator.createItemStack(
                 Material.COMMAND_BLOCK,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Settings \uD83D\uDD27",
@@ -67,7 +67,7 @@ public class BlockBreakSoundsGUI {
     }
 
     // Settings Button (Command Block)
-    public static ItemStack SettingsButtonTesting222() {
+    private ItemStack SettingsButtonTesting222() {
         return ItemStackCreator.createItemStack(
                 Material.COMMAND_BLOCK,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Settings \uD83D\uDD27",
@@ -77,7 +77,7 @@ public class BlockBreakSoundsGUI {
     }
 
     // Favorite Sounds Button (Nether Star)
-    public static ItemStack FavoriteSoundsButton() {
+    private ItemStack FavoriteSoundsButton() {
         return ItemStackCreator.createItemStack(
                 Material.NETHER_STAR,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
@@ -86,7 +86,7 @@ public class BlockBreakSoundsGUI {
     }
 
     // Pick Sound Button (Noteblock)
-    public static ItemStack PickSoundButton() {
+    private ItemStack PickSoundButton() {
         return ItemStackCreator.createItemStack(
                 Material.NOTE_BLOCK,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Pick Sound ♪",
@@ -96,7 +96,7 @@ public class BlockBreakSoundsGUI {
     }
 
     // Volume Button (Goat Horn)
-    public static ItemStack VolumeButton() {
+    private ItemStack VolumeButton() {
         return ItemStackCreator.createItemStack(
                 Material.GOAT_HORN,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Tweak Volume \uD83D\uDD0A",
@@ -110,7 +110,7 @@ public class BlockBreakSoundsGUI {
     }
 
     // + Increase Volume (Mangrove Button)
-    public static ItemStack IncreaseVolumeButton() {
+    private ItemStack IncreaseVolumeButton() {
         return ItemStackCreator.createItemStack(
                 Material.MANGROVE_BUTTON,
                         ChatColor.GREEN + "" + ChatColor.BOLD + "[+] ɪɴᴄʀᴇᴀѕᴇ ᴠᴏʟᴜᴍᴇ"
@@ -118,7 +118,7 @@ public class BlockBreakSoundsGUI {
     }
 
     // - Decrease Volume (Mangrove Button)
-    public static ItemStack DecreaseVolumeButton() {
+    private ItemStack DecreaseVolumeButton() {
         return ItemStackCreator.createItemStack(
                 Material.MANGROVE_BUTTON,
                 ChatColor.RED + "" + ChatColor.BOLD + "[-] ᴅᴇᴄʀᴇᴀꜱᴇ ᴠᴏʟᴜᴍᴇ"
@@ -126,7 +126,7 @@ public class BlockBreakSoundsGUI {
     }
 
     // Pitch Button (Bell)
-    public static ItemStack PitchButton() {
+    private ItemStack PitchButton() {
         return ItemStackCreator.createItemStack(
                 Material.BELL,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Tweak Pitch \uD83D\uDD14",
@@ -139,7 +139,7 @@ public class BlockBreakSoundsGUI {
     }
 
     // + Increase Pitch (Mangrove Button)
-    public static ItemStack IncreasePitchButton() {
+    private ItemStack IncreasePitchButton() {
         return ItemStackCreator.createItemStack(
                 Material.MANGROVE_BUTTON,
                 ChatColor.GREEN + "" + ChatColor.BOLD + "[+] ɪɴᴄʀᴇᴀѕᴇ ᴘɪᴛᴄʜ"
@@ -147,7 +147,7 @@ public class BlockBreakSoundsGUI {
     }
 
     // - Decrease Pitch (Mangrove Button)
-    public static ItemStack DecreasePitchButton() {
+    private ItemStack DecreasePitchButton() {
         return ItemStackCreator.createItemStack(
                 Material.MANGROVE_BUTTON,
                 ChatColor.RED + "" + ChatColor.BOLD + "[-] ᴅᴇᴄʀᴇᴀѕᴇ ᴘɪᴛᴄʜ"

@@ -47,14 +47,14 @@ public class SettingsGUI {
         }
     }
 
-    public static ItemStack ReturnButton() {
+    private ItemStack ReturnButton() {
         return ItemStackCreator.createItemStack(
                 Material.ARROW,
                 ChatColor.YELLOW + "" + ChatColor.BOLD + "← ʀᴇᴛᴜʀɴ"
         );
     }
 
-    public static ItemStack ToolSpecificSoundsButton() {
+    private ItemStack ToolSpecificSoundsButton() {
         return ItemStackCreator.createItemStack(
                 Material.GOLDEN_SHOVEL,
                 ChatColor.YELLOW + "" + ChatColor.BOLD + "Tool Specific Sounds",
@@ -68,7 +68,7 @@ public class SettingsGUI {
         );
     }
 
-    public static ItemStack CombinedSoundsButton() {
+    private ItemStack CombinedSoundsButton() {
         return ItemStackCreator.createItemStack(
                 Material.MUSIC_DISC_PRECIPICE,
                 ChatColor.YELLOW + "" + ChatColor.BOLD + "Combined Sounds",
@@ -81,7 +81,7 @@ public class SettingsGUI {
         );
     }
 
-    public static ItemStack SoundFilterButton() {
+    private ItemStack SoundFilterButton() {
         return ItemStackCreator.createItemStack(
                 Material.GUSTER_BANNER_PATTERN,
                 ChatColor.YELLOW + "" + ChatColor.BOLD + "Sound Filter",
@@ -95,7 +95,7 @@ public class SettingsGUI {
         );
     }
 
-    public static ItemStack MultiSoundsButton() {
+    private ItemStack MultiSoundsButton() {
         return ItemStackCreator.createItemStack(
                 Material.TNT,
                 ChatColor.YELLOW + "" + ChatColor.BOLD + "Multi Sound",
@@ -106,7 +106,7 @@ public class SettingsGUI {
         );
     }
 
-    public static ItemStack PitchVariance() {
+    private ItemStack PitchVariance() {
         return ItemStackCreator.createItemStack(
                 Material.REPEATER,
                 ChatColor.YELLOW + "" + ChatColor.BOLD + "Pitch Variance",
@@ -116,7 +116,8 @@ public class SettingsGUI {
         );
     }
 
-    public static ItemStack ToDoListButton() {
+    // TODO: Temp to do list
+    private ItemStack ToDoListButton() {
         return ItemStackCreator.createItemStack(
                 Material.BOOK,
                 ChatColor.YELLOW + "" + ChatColor.BOLD + "To-Do List",

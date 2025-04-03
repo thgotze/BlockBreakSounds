@@ -36,7 +36,7 @@ public class FavoriteSoundsGUI {
         }
     }
 
-    public void setFavoriteSoundsToGUI(Player player) {
+    private void setFavoriteSoundsToGUI(Player player) {
         Inventory inventory = player.getOpenInventory().getTopInventory();
         List<FavoriteSoundsData> favorites = FavoriteSoundsData.getFavorites(player);
         int slot = 9;
@@ -50,7 +50,7 @@ public class FavoriteSoundsGUI {
         }
     }
 
-    public static ItemStack createFavoriteSoundButton(FavoriteSoundsData favoriteSoundsData, int index) {
+    private ItemStack createFavoriteSoundButton(FavoriteSoundsData favoriteSoundsData, int index) {
         return ItemStackCreator.createItemStack(
                 SoundMap.getMaterialFromSound(favoriteSoundsData.getSound()),
                 ChatColor.YELLOW + "" + ChatColor.BOLD + "Favorite Sound " + (index + 1) + " ⭐",
@@ -81,7 +81,7 @@ public class FavoriteSoundsGUI {
         }
     }
 
-    public static ItemStack FavoriteSoundsInfoButton() {
+    private ItemStack FavoriteSoundsInfoButton() {
         return ItemStackCreator.createItemStack(
                 Material.NETHER_STAR,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
@@ -92,7 +92,7 @@ public class FavoriteSoundsGUI {
         );
     }
 
-    public static ItemStack NoSoundsFavoritedYetButton() {
+    private ItemStack NoSoundsFavoritedYetButton() {
         return ItemStackCreator.createItemStack(
                 Material.PAPER,
                 ChatColor.WHITE + "ʏᴏᴜ ʜᴀᴠᴇ ɴᴏᴛ ꜰᴀᴠᴏʀɪᴛᴇᴅ ᴀɴʏ ѕᴏᴜɴᴅѕ ʏᴇᴛ!");

@@ -39,7 +39,7 @@ public class AllSoundsGUI {
         }
     }
 
-    public static ItemStack AllSoundInfoButton() {
+    private ItemStack AllSoundInfoButton() {
         return ItemStackCreator.createItemStack(
                 Material.JUKEBOX,
                 "All Sounds Info",

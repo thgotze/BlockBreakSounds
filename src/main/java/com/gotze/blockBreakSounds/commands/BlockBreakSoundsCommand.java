@@ -4,7 +4,6 @@ import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
 import com.gotze.blockBreakSounds.utils.sounddata.CurrentSoundData;
 import com.gotze.blockBreakSounds.utils.SoundMap;
 import org.bukkit.ChatColor;
-import org.bukkit.Registry;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -37,7 +36,7 @@ public class BlockBreakSoundsCommand implements CommandExecutor {
             Sound selectedSound = SoundMap.soundNames.get(args[0]);
             currentSound.put(player.getUniqueId(), new CurrentSoundData(player, selectedSound, 0.5f, 0.5f));
 
-            player.playSound(player, selectedSound, 0.5f, 1.0f);
+            player.playSound(player, selectedSound, 0.5f, 0.5f);
             player.sendMessage("Block break sound set to: " + ChatColor.AQUA + args[0]);
             return true;
         }

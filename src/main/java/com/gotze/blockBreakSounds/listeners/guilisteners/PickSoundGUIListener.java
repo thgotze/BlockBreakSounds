@@ -82,7 +82,6 @@ public class PickSoundGUIListener implements Listener {
 
             case 9: // Cling!
                 selectedSound = Sound.BLOCK_AMETHYST_BLOCK_BREAK;
-                // TODO: Fix
                 pitch = 1.25f;
                 break;
 
@@ -92,8 +91,6 @@ public class PickSoundGUIListener implements Listener {
 
             case 11: // Ding!
                 selectedSound = Sound.ENTITY_EXPERIENCE_ORB_PICKUP;
-
-                // TODO: Fix
                 volume = 0.10f;
                 pitch = 2.00f;
                 break;
@@ -199,7 +196,6 @@ public class PickSoundGUIListener implements Listener {
 
             case 36: // Return
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-                // TODO: Change 2 lines
                 BlockBreakSoundsGUI blockBreakSoundsGUI = new BlockBreakSoundsGUI(player);
                 blockBreakSoundsGUI.openBlockBreakSoundsGUI(player);
                 return;
@@ -244,4 +240,3 @@ public class PickSoundGUIListener implements Listener {
         lastClickTime.remove(player);
     }
 }
-

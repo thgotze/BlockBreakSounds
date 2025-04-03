@@ -75,7 +75,5 @@ public class AllSoundsGUIListener implements Listener {
                 pickSoundGUI.openPickSoundGUI(player);
                 return;
         }
-
-
     }
 }
