@@ -1,6 +1,8 @@
 package com.gotze.blockBreakSounds.listeners.guilisteners;
 
 import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
+import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
+import com.gotze.blockBreakSounds.utility.ClickDelayChecker;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -9,13 +11,11 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-import java.util.HashMap;
-import java.util.Map;
+import static com.gotze.blockBreakSounds.soundlogic.CurrentSoundData.currentSound;
 
 public class SettingsGUIListener implements Listener {
 
-    private final Map<Player, Long> lastClickTime = new HashMap<>();
-    private static final long CLICK_DELAY = 50; // 50 milliseconds
+    private static final String GUI_TITLE = "Settings";
 
     public SettingsGUIListener() {
     }
@@ -24,34 +24,25 @@ public class SettingsGUIListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         Inventory clickedInventory = event.getClickedInventory();
-
-        if (!event.getView().getTitle().equals("Settings")) {
-            return;
-        }
         event.setCancelled(true);
 
-        if (clickedInventory == player.getInventory() || clickedInventory == null) {
+        if (clickedInventory == null || clickedInventory == player.getInventory() || !event.getView().getTitle().equals(GUI_TITLE)) {
             return;
         }
 
-        // Check for click delay to disallow spam clicking
-        long currentTime = System.currentTimeMillis();
-        if (lastClickTime.containsKey(player)) {
-            long lastClick = lastClickTime.get(player);
-            if ((currentTime - lastClick) < CLICK_DELAY) {
-                return;
-            }
+        if (ClickDelayChecker.shouldIgnoreClick(player)) {
+            return;
         }
-        lastClickTime.put(player, currentTime);
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
 
+        CurrentSoundData currentSoundData = currentSound.get(player.getUniqueId());
+
         switch (slot) {
             case 36: // Return
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-                BlockBreakSoundsGUI blockBreakSoundsGUI = new BlockBreakSoundsGUI();
-                blockBreakSoundsGUI.setupAndOpenGUI(player);
+                new BlockBreakSoundsGUI().setupAndOpenGUI(player);
                 return;
         }
     }

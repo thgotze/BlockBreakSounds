@@ -1,7 +1,7 @@
 package com.gotze.blockBreakSounds.guis;
 
-import com.gotze.blockBreakSounds.util.GUIUtils;
-import com.gotze.blockBreakSounds.util.ItemStackCreator;
+import com.gotze.blockBreakSounds.utility.GUIUtils;
+import com.gotze.blockBreakSounds.utility.ItemStackCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -42,10 +42,10 @@ public class BlockBreakSoundsGUI {
         for (int i = 36; i < 45; i++) {
             gui.setItem(i, GUIUtils.Frame());
         }
-        gui.setItem(9, new ItemStack(Material.AIR));
-        gui.setItem(17, new ItemStack(Material.AIR));
-        gui.setItem(27, new ItemStack(Material.AIR));
-        gui.setItem(35, new ItemStack(Material.AIR));
+        gui.clear(9);
+        gui.clear(17);
+        gui.clear(27);
+        gui.clear(35);
     }
 
     // Settings Button (Command Block)
@@ -75,8 +75,8 @@ public class BlockBreakSoundsGUI {
     private ItemStack FavoriteSoundsButton() {
         return ItemStackCreator.createItemStack(
                 Material.NETHER_STAR,
-                ChatColor.GOLD + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
-                Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.YELLOW + "" + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ")
+                ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
+                Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + "" + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ")
         );
     }
 

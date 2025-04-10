@@ -1,8 +1,8 @@
-package com.gotze.blockBreakSounds.util;
+package com.gotze.blockBreakSounds.utility;
 
 import org.bukkit.Sound;
 
-public class TextUtils {
+public final class TextUtils {
 
     public static String convertToSmallFont(String input) {
         StringBuilder newString = new StringBuilder();
@@ -87,8 +87,8 @@ public class TextUtils {
         // Step 1: Convert the Sound to a String
         String soundString = sound.toString();
 
-        // Step 2: Replace underscores with spaces and convert to lowercase
-        String withSpaces = soundString.replace("_", " ").toLowerCase();
+        // Step 2: Replace underscores and dots with spaces and convert to lowercase
+        String withSpaces = soundString.replace("_", " ").replace(".", " ").toLowerCase();
 
         // Step 3: Capitalize each word and combine them into a single string
         StringBuilder capitalized = new StringBuilder();

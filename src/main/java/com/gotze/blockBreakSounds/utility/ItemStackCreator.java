@@ -1,4 +1,4 @@
-package com.gotze.blockBreakSounds.util;
+package com.gotze.blockBreakSounds.utility;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
@@ -7,7 +7,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
-public class ItemStackCreator {
+public final class ItemStackCreator {
 
      /*
      * Creates an ItemStack with customizable display name, lore, and flags.

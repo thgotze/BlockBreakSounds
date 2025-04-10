@@ -1,11 +1,12 @@
 package com.gotze.blockBreakSounds.listeners.guilisteners;
 
 import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
-import com.gotze.blockBreakSounds.util.GUIUtils;
-import com.gotze.blockBreakSounds.handlers.FavoritedSoundLoreHandler;
-import com.gotze.blockBreakSounds.handlers.PickedSoundLoreHandler;
+import com.gotze.blockBreakSounds.utility.ClickDelayChecker;
+import com.gotze.blockBreakSounds.utility.GUIUtils;
+import com.gotze.blockBreakSounds.utility.FavoritedSoundLoreHandler;
 import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
 import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundsData;
+import com.gotze.blockBreakSounds.utility.PickedSoundLoreHandler;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -14,14 +15,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import java.util.List;
 
-import java.util.HashMap;
-import java.util.Map;
+import static com.gotze.blockBreakSounds.soundlogic.CurrentSoundData.currentSound;
 
 public class FavoriteSoundsGUIListener implements Listener {
 
-    private final Map<Player, Long> lastClickTime = new HashMap<>();
-    private static final long CLICK_DELAY = 50; // 50 milliseconds
+    private static final String GUI_TITLE = "Favorite Sounds";
 
     public FavoriteSoundsGUIListener() {
     }
@@ -30,30 +31,20 @@ public class FavoriteSoundsGUIListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         Inventory clickedInventory = event.getClickedInventory();
-
-        if (!event.getView().getTitle().equals("Favorite Sounds")) {
-            return;
-        }
         event.setCancelled(true);
 
-        if (clickedInventory == player.getInventory() || clickedInventory == null) {
+        if (clickedInventory == null || clickedInventory == player.getInventory() || !event.getView().getTitle().equals(GUI_TITLE)) {
             return;
         }
 
-        // Check for click delay to disallow spam clicking
-        long currentTime = System.currentTimeMillis();
-        if (lastClickTime.containsKey(player)) {
-            long lastClick = lastClickTime.get(player);
-            if ((currentTime - lastClick) < CLICK_DELAY) {
-                return;
-            }
+        if (ClickDelayChecker.shouldIgnoreClick(player)) {
+            return;
         }
-        lastClickTime.put(player, currentTime);
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
 
-        CurrentSoundData currentSoundData = CurrentSoundData.currentSound.get(player.getUniqueId());
+        CurrentSoundData currentSoundData = currentSound.get(player.getUniqueId());
 
         switch (slot) {
             case 4: // Current Sound
@@ -73,34 +64,29 @@ public class FavoriteSoundsGUIListener implements Listener {
                 return;
 
             case 36: // Return
-            player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-            BlockBreakSoundsGUI blockBreakSoundsGUI = new BlockBreakSoundsGUI();
-            blockBreakSoundsGUI.setupAndOpenGUI(player);
-            return;
-
-            case 40: // Favorite Sounds
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
+                new BlockBreakSoundsGUI().setupAndOpenGUI(player);
                 return;
 
-            default:
+            default: // Favorited Sounds
                 if (slot >= 9 && slot < 36) {
-                    if (clickedInventory.getItem(slot) == null || clickedInventory.getItem(slot).getType() == Material.PAPER) {
+                    List<FavoriteSoundsData> favorites = FavoriteSoundsData.favoriteSounds.get(player.getUniqueId());
+                    if (favorites == null || favorites.isEmpty()) {
+                        return;
+                    }
+
+                    ItemStack item = clickedInventory.getItem(slot);
+                    if (item == null || item.getType() == Material.PAPER) {
                         return;
                     }
 
                     if (clickType == ClickType.DROP) {
                         FavoriteSoundsData.removeFavoriteSound(clickedInventory, player, slot);
                         return;
-                    } else {
-                        PickedSoundLoreHandler.handlePickedLineSound(clickedInventory, slot);
                     }
 
-                    FavoriteSoundsData favoriteSoundsData = FavoriteSoundsData.getFavoriteSoundFromSlot(player, slot);
 
-                    if (favoriteSoundsData == null) {
-                        return;
-                    }
-
+                    FavoriteSoundsData favoriteSoundsData = favorites.get(slot - 9); // Adjust for zero-indexing
                     Sound sound = favoriteSoundsData.getSound();
                     float volume = favoriteSoundsData.getVolume();
                     float pitch = favoriteSoundsData.getPitch();
@@ -113,8 +99,9 @@ public class FavoriteSoundsGUIListener implements Listener {
                         currentSoundData.setPitch(pitch);
                     }
 
-                    CurrentSoundData.currentSound.put(player.getUniqueId(), currentSoundData);
-                    player.playSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
+                    currentSound.put(player.getUniqueId(), currentSoundData);
+                    player.playSound(player, sound, volume, pitch);
+                    PickedSoundLoreHandler.handlePickedLineSound(clickedInventory, slot);
                     clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
                 }
         }

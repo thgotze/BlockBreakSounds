@@ -2,7 +2,7 @@ package com.gotze.blockBreakSounds.soundlogic;
 
 import com.gotze.blockBreakSounds.guis.FavoriteSoundsGUI;
 import com.gotze.blockBreakSounds.Main;
-import com.gotze.blockBreakSounds.util.ItemStackCreator;
+import com.gotze.blockBreakSounds.utility.ItemStackCreator;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -45,16 +45,19 @@ public class FavoriteSoundsData {
         File playerFile = new File(Main.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(playerFile);
         String path = "favorite-sounds";
-
+        player.sendMessage("GGG");
         List<Map<String, Object>> favoriteSoundsList = new ArrayList<>();
 
-        for (FavoriteSoundsData favoriteSoundData : favoriteSounds.get(player.getUniqueId())) {
+        List<FavoriteSoundsData> favorites = favoriteSounds.getOrDefault(player.getUniqueId(), new ArrayList<>());
+
+        for (FavoriteSoundsData favoriteSoundData : favorites) {
             Map<String, Object> soundData = new LinkedHashMap<>();
             soundData.put("sound", favoriteSoundData.getSound().toString());
             soundData.put("volume", favoriteSoundData.getVolume());
             soundData.put("pitch", favoriteSoundData.getPitch());
             favoriteSoundsList.add(soundData);
         }
+        player.sendMessage("HHH");
         yamlConfiguration.set(path, favoriteSoundsList);
 
         try {
@@ -91,17 +94,28 @@ public class FavoriteSoundsData {
 
 
     public static void addFavoriteSound(Player player, Sound sound, float volume, float pitch) {
-        List<FavoriteSoundsData> favorites = favoriteSounds.computeIfAbsent(player.getUniqueId(), k -> new ArrayList<>());
-
+        List<FavoriteSoundsData> favorites = favoriteSounds.get(player.getUniqueId());
+        player.sendMessage("RRRRR");
         for (FavoriteSoundsData data : favorites) {
+            player.sendMessage("CCC");
             if (data.getSound() == sound && data.getVolume() == volume && data.getPitch() == pitch) {
+                player.sendMessage("sfdasgf");
                 return;
             }
         }
+
+        player.sendMessage("DDD");
+
         if (favorites.size() < 27) { // You can only have 27 favorite sounds
+            player.sendMessage("SDADADA");
             favorites.add(new FavoriteSoundsData(sound, volume, pitch));
-            saveFavoriteSoundsDataToYAML(player);
+            player.sendMessage("EEE");
         }
+
+
+        player.sendMessage("poooloo");
+        favoriteSounds.put(player.getUniqueId(), favorites);
+        saveFavoriteSoundsDataToYAML(player);
     }
 
     public static void removeFavoriteSound(Inventory inventory, Player player, int slot) {
@@ -118,10 +132,10 @@ public class FavoriteSoundsData {
             List<FavoriteSoundsData> favorites = favoriteSounds.get(player.getUniqueId());
             int listIndex = slot - 9;
             favorites.remove(listIndex);
-            saveFavoriteSoundsDataToYAML(player);
+            favoriteSounds.put(player.getUniqueId(), favorites);
 
-            FavoriteSoundsGUI favoriteSoundsGUI = new FavoriteSoundsGUI();
-            favoriteSoundsGUI.setupAndOpenGUI(player);
+            new FavoriteSoundsGUI().setupAndOpenGUI(player);
+            saveFavoriteSoundsDataToYAML(player);
             return;
         }
 
@@ -140,19 +154,5 @@ public class FavoriteSoundsData {
                 }
             }
         }.runTaskLater(Main.INSTANCE, 60L);
-    }
-
-    public static List<FavoriteSoundsData> getFavorites(Player player) {
-        return favoriteSounds.getOrDefault(player.getUniqueId(), new ArrayList<>());
-    }
-
-    public static FavoriteSoundsData getFavoriteSoundFromSlot(Player player, int slot) {
-        List<FavoriteSoundsData> favorites = favoriteSounds.get(player.getUniqueId());
-
-        int index = slot - 9; // Adjust for zero-indexing (slot 9 maps to index 0)
-        if (index < favorites.size()) {
-            return favorites.get(index);
-        }
-        return null;
     }
 }

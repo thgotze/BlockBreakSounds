@@ -1,6 +1,6 @@
 package com.gotze.blockBreakSounds.guis;
 
-import com.gotze.blockBreakSounds.util.GUIUtils;
+import com.gotze.blockBreakSounds.utility.GUIUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

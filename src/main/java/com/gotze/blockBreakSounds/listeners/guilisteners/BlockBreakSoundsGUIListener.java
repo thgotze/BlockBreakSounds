@@ -3,8 +3,9 @@ package com.gotze.blockBreakSounds.listeners.guilisteners;
 import com.gotze.blockBreakSounds.guis.FavoriteSoundsGUI;
 import com.gotze.blockBreakSounds.guis.PickSoundGUI;
 import com.gotze.blockBreakSounds.guis.SettingsGUI;
-import com.gotze.blockBreakSounds.util.GUIUtils;
-import com.gotze.blockBreakSounds.handlers.FavoritedSoundLoreHandler;
+import com.gotze.blockBreakSounds.utility.ClickDelayChecker;
+import com.gotze.blockBreakSounds.utility.GUIUtils;
+import com.gotze.blockBreakSounds.utility.FavoritedSoundLoreHandler;
 import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
 import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundsData;
 import org.bukkit.ChatColor;
@@ -15,23 +16,20 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static com.gotze.blockBreakSounds.util.ItemStackCreator.createItemStack;
-import static com.gotze.blockBreakSounds.util.GUIUtils.Frame;
-import static com.gotze.blockBreakSounds.util.TextUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
+import static com.gotze.blockBreakSounds.utility.GUIUtils.Frame;
+import static com.gotze.blockBreakSounds.utility.TextUtils.convertToSmallFont;
 import static com.gotze.blockBreakSounds.soundlogic.CurrentSoundData.currentSound;
 
 public class BlockBreakSoundsGUIListener implements Listener {
 
-    private final Map<Player, Long> lastClickTime = new HashMap<>();
-    private static final long CLICK_DELAY = 50; // 50 milliseconds
+    private static final String GUI_TITLE = "Block Break Sounds";
 
     private static final List<Float> VOLUME_LEVELS = Arrays.asList( // 21 levels
             0.00f, 0.05f, 0.10f, 0.15f, 0.20f, 0.25f, 0.30f, 0.35f, 0.40f, 0.45f, 0.50f,
@@ -50,29 +48,19 @@ public class BlockBreakSoundsGUIListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         Inventory clickedInventory = event.getClickedInventory();
-
-        if (!event.getView().getTitle().equals("Block Break Sounds")) {
-            return;
-        }
-
         event.setCancelled(true);
 
-        if (clickedInventory == player.getInventory() || clickedInventory == null) {
+        if (clickedInventory == null || clickedInventory == player.getInventory() || !event.getView().getTitle().equals(GUI_TITLE)) {
             return;
         }
 
-        // Check for click delay to disallow spam clicking
-        long currentTime = System.currentTimeMillis();
-        if (lastClickTime.containsKey(player)) {
-            long lastClick = lastClickTime.get(player);
-            if ((currentTime - lastClick) < CLICK_DELAY) {
-                return;
-            }
+        if (ClickDelayChecker.shouldIgnoreClick(player)) {
+            return;
         }
-        lastClickTime.put(player, currentTime);
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
+
         CurrentSoundData currentSoundData = currentSound.get(player.getUniqueId());
 
         switch (slot) {
@@ -119,8 +107,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
             case 22: // Pick Sound
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-                PickSoundGUI pickSoundGUI = new PickSoundGUI(player);
-                pickSoundGUI.setupAndOpenGUI(player);
+                new PickSoundGUI().setupAndOpenGUI(player);
                 return;
 
             case 24: // Tweak Pitch
@@ -135,8 +122,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
             case 26: // Settings
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-                SettingsGUI settingsGUI = new SettingsGUI(player);
-                settingsGUI.openSettingsGUI(player);
+                new SettingsGUI().setupAndOpenGUI(player);
                 return;
 
             case 29: // Decrease Volume
@@ -147,8 +133,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
             case 31: // Favorite Sounds
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.5f, 1.0f);
-                FavoriteSoundsGUI favoriteSoundsGUI = new FavoriteSoundsGUI();
-                favoriteSoundsGUI.setupAndOpenGUI(player);
+                new FavoriteSoundsGUI().setupAndOpenGUI(player);
                 return;
 
             case 33: // Decrease Pitch
@@ -194,28 +179,45 @@ public class BlockBreakSoundsGUIListener implements Listener {
             return;
         }
 
-        // Retrieve the current pitch value and its index
         float currentPitch = soundData.getPitch();
-        int currentIndex = PITCH_LEVELS.indexOf(currentPitch);
 
-        // Clear all pitch slider slots with placeholder frames
         final List<Integer> pitchSliderSlots = Arrays.asList(27, 36, 37, 38, 39, 40, 41, 42, 43, 44, 35);
-        for (Integer pitchSliderSlot : pitchSliderSlots) {
-            inventory.setItem(pitchSliderSlot, Frame());
+
+        // Clear all slots with the frame
+        for (Integer slot : pitchSliderSlots) {
+            inventory.setItem(slot, Frame());
         }
 
-        // Dynamically set panes for the pitch slider
-        for (int i = 0; i <= currentIndex; i++) {
-            Material material = (i == currentIndex) ? Material.YELLOW_STAINED_GLASS_PANE : Material.LIME_STAINED_GLASS_PANE;
+        String displayText = ChatColor.WHITE + convertToSmallFont("pitch: ") +
+                ChatColor.YELLOW + ChatColor.BOLD + convertToSmallFont(String.format("%.2f", currentPitch));
 
-            // Consistent text style for all panes: white text with bold yellow for pitch level
-            String displayText = ChatColor.WHITE + convertToSmallFont("pitch: ") +
-                    ChatColor.YELLOW + ChatColor.BOLD + convertToSmallFont(String.format("%.2f", PITCH_LEVELS.get(i)));
+        // If the pitch is at the max value, set all slots to yellow
+        if (currentPitch == 2.00f) {
+            ItemStack yellowPane = createItemStack(Material.YELLOW_STAINED_GLASS_PANE, displayText);
+            for (Integer slot : pitchSliderSlots) {
+                inventory.setItem(slot, yellowPane);
+            }
+            return; // No need to continue if it's max
+        }
 
-            // Set the colored pane in the respective pitch slider slot
-            inventory.setItem(pitchSliderSlots.get(i), createItemStack(material, displayText));
+        // Loop through each slot and determine the color for the pane
+        for (int i = 0; i < pitchSliderSlots.size(); i++) {
+            Integer slot = pitchSliderSlots.get(i);
+
+            Material paneMaterial = Material.LIME_STAINED_GLASS_PANE; // Default is LIME
+            if (i == PITCH_LEVELS.indexOf(currentPitch)) {
+                // If it's the exact pitch level, set it to yellow
+                paneMaterial = Material.YELLOW_STAINED_GLASS_PANE;
+            }
+
+            // Create a new item stack for each slot
+            ItemStack itemStack = createItemStack(paneMaterial, displayText);
+
+            // Set the item in the inventory
+            inventory.setItem(slot, itemStack);
         }
     }
+
 
     private void decreaseVolume(Player player, CurrentSoundData soundData) {
         if (soundData == null) {
@@ -285,12 +287,5 @@ public class BlockBreakSoundsGUIListener implements Listener {
         }
 
         player.playSound(player, soundData.getSound(), soundData.getVolume(), soundData.getPitch());
-    }
-
-    @EventHandler
-    // Clean up when player closes the inventory
-    private void onInventoryClose (InventoryCloseEvent event) {
-        Player player = (Player) event.getPlayer();
-        lastClickTime.remove(player);
     }
 }

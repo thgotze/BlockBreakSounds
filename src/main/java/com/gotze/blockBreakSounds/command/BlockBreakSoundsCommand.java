@@ -3,6 +3,7 @@ package com.gotze.blockBreakSounds.command;
 import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
 import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
 import com.gotze.blockBreakSounds.soundlogic.SoundMap;
+import com.gotze.blockBreakSounds.utility.TextUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -10,7 +11,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static com.gotze.blockBreakSounds.util.TextUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.utility.TextUtils.convertToSmallFont;
 import static com.gotze.blockBreakSounds.soundlogic.CurrentSoundData.currentSound;
 
 public class BlockBreakSoundsCommand implements CommandExecutor {
@@ -26,8 +27,7 @@ public class BlockBreakSoundsCommand implements CommandExecutor {
 
         // If only typed /blockbreaksounds, then open the GUI as normal
         if (args.length == 0) {
-            BlockBreakSoundsGUI blockBreakSoundsGUI = new BlockBreakSoundsGUI();
-            blockBreakSoundsGUI.setupAndOpenGUI(player);
+            new BlockBreakSoundsGUI().setupAndOpenGUI(player);
             return true;
         }
 
@@ -60,8 +60,9 @@ public class BlockBreakSoundsCommand implements CommandExecutor {
             if (currentSoundData == null) {
                 return false;
             } else {
-                String message = ChatColor.GOLD + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7\n" +
-                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(currentSoundData.getSound().toString()) +
+
+                String message = ChatColor.GOLD + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7" +
+                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(TextUtils.getFormattedSoundName(currentSoundData.getSound())) +
                         ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", currentSoundData.getVolume() * 100)) +
                         ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", currentSoundData.getPitch()));
                 player.sendMessage(message);

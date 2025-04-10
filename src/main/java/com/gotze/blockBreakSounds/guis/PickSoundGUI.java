@@ -1,7 +1,7 @@
 package com.gotze.blockBreakSounds.guis;
 
-import com.gotze.blockBreakSounds.util.GUIUtils;
-import com.gotze.blockBreakSounds.util.ItemStackCreator;
+import com.gotze.blockBreakSounds.utility.GUIUtils;
+import com.gotze.blockBreakSounds.utility.ItemStackCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -15,12 +15,13 @@ public class PickSoundGUI {
 
     private final Inventory gui;
 
-    public PickSoundGUI(Player player) {
+    public PickSoundGUI() {
         this.gui = Bukkit.createInventory(null, 45, "Pick Sound");
         setFrames();
         gui.setItem(44, PickFromAllSoundsButton());
         gui.setItem(40, FavoriteSoundsButton());
         gui.setItem(36, GUIUtils.ReturnButton());
+
         gui.setItem(9, AmethystBreakSoundButton());
         gui.setItem(10, ItemPickupButton());
         gui.setItem(11, ExperienceOrbPickupButton());
@@ -81,7 +82,7 @@ public class PickSoundGUI {
         return ItemStackCreator.createItemStack(
                 Material.NETHER_STAR,
                 ChatColor.GOLD + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
-                Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.YELLOW + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ",
+                Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ",
                         "",
                         ChatColor.GRAY + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ ꜰᴀᴠᴏʀɪᴛᴇ")
         );

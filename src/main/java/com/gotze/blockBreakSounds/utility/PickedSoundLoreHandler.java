@@ -1,4 +1,4 @@
-package com.gotze.blockBreakSounds.handlers;
+package com.gotze.blockBreakSounds.utility;
 
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.Inventory;
@@ -7,7 +7,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
-public class PickedSoundLoreHandler {
+public final class PickedSoundLoreHandler {
 
     private static final String clickToPickLine = ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ";
     private static final String soundPickedLine = ChatColor.YELLOW + "" + ChatColor.BOLD + "ѕᴏᴜɴᴅ ᴘɪᴄᴋᴇᴅ! ♪";
