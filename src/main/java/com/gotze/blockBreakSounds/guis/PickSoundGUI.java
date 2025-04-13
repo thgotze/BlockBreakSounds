@@ -151,8 +151,8 @@ public class PickSoundGUI {
                         "",
                         ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ"),
                 true,
-                false,
-                true
+                true,
+                false
         );
     }
 

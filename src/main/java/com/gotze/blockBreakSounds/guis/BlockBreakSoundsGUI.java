@@ -22,7 +22,6 @@ public class BlockBreakSoundsGUI {
         gui.setItem(20, VolumeButton());
         gui.setItem(22, PickSoundButton());
         gui.setItem(24, PitchButton());
-        gui.setItem(25, SettingsButtonTesting222());
         gui.setItem(26, SettingsButton());
         gui.setItem(29, DecreaseVolumeButton());
         gui.setItem(31, FavoriteSoundsButton());
@@ -56,18 +55,8 @@ public class BlockBreakSoundsGUI {
                 Arrays.asList(
                         ChatColor.WHITE + "ᴍᴏᴅɪꜰʏ ᴀᴅᴅɪᴛɪᴏɴᴀʟ ѕᴇᴛᴛɪɴɢѕ"),
                 true,
-                false,
-                true
-        );
-    }
-
-    // Settings Button (Command Block) test 222222222
-    private ItemStack SettingsButtonTesting222() {
-        return ItemStackCreator.createItemStack(
-                Material.COMMAND_BLOCK,
-                ChatColor.GOLD + "" + ChatColor.BOLD + "Settings \uD83D\uDD27",
-                Arrays.asList(
-                        ChatColor.WHITE + "ᴍᴏᴅɪꜰʏ ᴀᴅᴅɪᴛɪᴏɴᴀʟ ѕᴇᴛᴛɪɴɢѕ")
+                true,
+                false
         );
     }
 
@@ -77,7 +66,7 @@ public class BlockBreakSoundsGUI {
                 Material.NETHER_STAR,
                 ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
                 Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + "" + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ")
-        );
+        ); // TODO can i remove the empty string "" ?
     }
 
     // Pick Sound Button (Noteblock)

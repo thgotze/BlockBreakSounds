@@ -56,8 +56,8 @@ public class SettingsGUI {
                         "",
                         ChatColor.RED + "" + ChatColor.BOLD + "NOT IMPLEMENTED YET"),
                 true,
-                false,
-                true
+                true,
+                false
         );
     }
 
@@ -69,8 +69,8 @@ public class SettingsGUI {
                         "",
                         ChatColor.RED + "" + ChatColor.BOLD + "NOT IMPLEMENTED YET"),
                 true,
-                false,
-                true
+                true,
+                false
         );
     }
 
@@ -83,8 +83,8 @@ public class SettingsGUI {
                         "",
                         ChatColor.RED + "" + ChatColor.BOLD + "NOT IMPLEMENTED YET"),
                 true,
-                false,
-                true
+                true,
+                false
         );
     }
 

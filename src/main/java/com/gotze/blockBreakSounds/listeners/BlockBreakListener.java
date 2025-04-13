@@ -1,6 +1,7 @@
 package com.gotze.blockBreakSounds.listeners;
 
 import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
+import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,10 +17,8 @@ public class BlockBreakListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
-        CurrentSoundData soundData = CurrentSoundData.currentSound.get(player.getUniqueId());
-        if (soundData == null) {
-            return;
-        }
+        SoundData soundData = CurrentSoundData.currentSound.get(player.getUniqueId());
+        if (soundData == null) return;
 
         float randomPitchVariation = pitchVariations[random.nextInt(pitchVariations.length)];
         float finalPitch = soundData.getPitch() + randomPitchVariation;

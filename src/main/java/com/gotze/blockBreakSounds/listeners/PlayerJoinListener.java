@@ -2,7 +2,7 @@ package com.gotze.blockBreakSounds.listeners;
 
 import com.gotze.blockBreakSounds.Main;
 import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
-import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundsData;
+import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundData;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,7 +22,7 @@ public class PlayerJoinListener implements Listener {
 
         initializePlayerDataFile(player);
         CurrentSoundData.loadCurrentSoundDataFromFile(player);
-        FavoriteSoundsData.loadFavoriteSoundsDataFromFile(player);
+        FavoriteSoundData.loadFavoriteSoundsDataFromFile(player);
     }
 
     private void initializePlayerDataFile(Player player) {

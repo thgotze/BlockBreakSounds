@@ -3,11 +3,9 @@ package com.gotze.blockBreakSounds.listeners.guilisteners;
 import com.gotze.blockBreakSounds.guis.FavoriteSoundsGUI;
 import com.gotze.blockBreakSounds.guis.PickSoundGUI;
 import com.gotze.blockBreakSounds.guis.SettingsGUI;
+import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import com.gotze.blockBreakSounds.utility.ClickDelayChecker;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
-import com.gotze.blockBreakSounds.utility.FavoritedSoundLoreHandler;
-import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
-import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundsData;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -22,10 +20,10 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
-import static com.gotze.blockBreakSounds.utility.GUIUtils.Frame;
-import static com.gotze.blockBreakSounds.utility.TextUtils.convertToSmallFont;
 import static com.gotze.blockBreakSounds.soundlogic.CurrentSoundData.currentSound;
+import static com.gotze.blockBreakSounds.utility.GUIUtils.Frame;
+import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
+import static com.gotze.blockBreakSounds.utility.TextUtils.convertToSmallFont;
 
 public class BlockBreakSoundsGUIListener implements Listener {
 
@@ -50,58 +48,44 @@ public class BlockBreakSoundsGUIListener implements Listener {
         Inventory clickedInventory = event.getClickedInventory();
         event.setCancelled(true);
 
-        if (clickedInventory == null || clickedInventory == player.getInventory() || !event.getView().getTitle().equals(GUI_TITLE)) {
+        if (clickedInventory == null
+                || clickedInventory == player.getInventory()
+                || !event.getView().getTitle().equals(GUI_TITLE)) {
             return;
         }
 
-        if (ClickDelayChecker.shouldIgnoreClick(player)) {
-            return;
-        }
+        if (ClickDelayChecker.shouldIgnoreClick(player)) return;
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
 
-        CurrentSoundData currentSoundData = currentSound.get(player.getUniqueId());
+        SoundData playerCurrentSound = currentSound.get(player.getUniqueId());
 
         switch (slot) {
             case 11: // Increase Volume
-                increaseVolume(player, currentSoundData);
-                updateVolumeSlider(clickedInventory, currentSoundData);
+                increaseVolume(player, playerCurrentSound);
+                updateVolumeSlider(clickedInventory, playerCurrentSound);
                 clickedInventory.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
                 return;
 
             case 13: // Current Sound
-                if (clickType == ClickType.DROP) {
-                    CurrentSoundData.clearCurrentSound(clickedInventory, player, slot);
-                    return;
-                }
-                if (clickType == ClickType.SHIFT_RIGHT) {
-                    FavoriteSoundsData.addFavoriteSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
-                    FavoritedSoundLoreHandler.handleFavoritedLineSound(player, clickedInventory, slot, false);
-                    return;
-                }
-                if (currentSoundData != null && clickedInventory.getItem(slot).getType() != Material.BARRIER) {
-                    player.playSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
-                    updateVolumeSlider(clickedInventory, currentSoundData);
-                    updatePitchSlider(clickedInventory, currentSoundData);
-                    return;
-                }
+                GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
                 return;
 
             case 15: // Increase Pitch
-                increasePitch(player, currentSoundData);
-                updatePitchSlider(clickedInventory, currentSoundData);
+                increasePitch(player, playerCurrentSound);
+                updatePitchSlider(clickedInventory, playerCurrentSound);
                 clickedInventory.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
                 return;
 
             case 20: // Tweak Volume
                 if (clickType.isLeftClick()) {
-                    increaseVolume(player, currentSoundData);
+                    increaseVolume(player, playerCurrentSound);
                 }
                 else if (clickType.isRightClick()) {
-                    decreaseVolume(player, currentSoundData);
+                    decreaseVolume(player, playerCurrentSound);
                 }
-                updateVolumeSlider(clickedInventory, currentSoundData);
+                updateVolumeSlider(clickedInventory, playerCurrentSound);
                 clickedInventory.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
                 return;
 
@@ -112,11 +96,11 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
             case 24: // Tweak Pitch
                 if (clickType.isLeftClick()) {
-                    increasePitch(player, currentSoundData);
+                    increasePitch(player, playerCurrentSound);
                 } else if (clickType.isRightClick()) {
-                    decreasePitch(player, currentSoundData);
+                    decreasePitch(player, playerCurrentSound);
                 }
-                updatePitchSlider(clickedInventory, currentSoundData);
+                updatePitchSlider(clickedInventory, playerCurrentSound);
                 clickedInventory.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
                 return;
 
@@ -126,8 +110,8 @@ public class BlockBreakSoundsGUIListener implements Listener {
                 return;
 
             case 29: // Decrease Volume
-                decreaseVolume(player, currentSoundData);
-                updateVolumeSlider(clickedInventory, currentSoundData);
+                decreaseVolume(player, playerCurrentSound);
+                updateVolumeSlider(clickedInventory, playerCurrentSound);
                 clickedInventory.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
                 return;
 
@@ -137,8 +121,8 @@ public class BlockBreakSoundsGUIListener implements Listener {
                 return;
 
             case 33: // Decrease Pitch
-                decreasePitch(player, currentSoundData);
-                updatePitchSlider(clickedInventory, currentSoundData);
+                decreasePitch(player, playerCurrentSound);
+                updatePitchSlider(clickedInventory, playerCurrentSound);
                 clickedInventory.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
                 return;
 
@@ -146,10 +130,8 @@ public class BlockBreakSoundsGUIListener implements Listener {
         }
     }
 
-    private void updateVolumeSlider(Inventory inventory, CurrentSoundData soundData) {
-        if (soundData == null) {
-            return;
-        }
+    private void updateVolumeSlider(Inventory inventory, SoundData soundData) {
+        if (soundData == null) return;
 
         // Retrieve the current volume and its index
         float currentVolume = soundData.getVolume();
@@ -174,10 +156,8 @@ public class BlockBreakSoundsGUIListener implements Listener {
         }
     }
 
-    private void updatePitchSlider(Inventory inventory, CurrentSoundData soundData) {
-        if (soundData == null) {
-            return;
-        }
+    private void updatePitchSlider(Inventory inventory, SoundData soundData) {
+        if (soundData == null) return;
 
         float currentPitch = soundData.getPitch();
 
@@ -219,7 +199,23 @@ public class BlockBreakSoundsGUIListener implements Listener {
     }
 
 
-    private void decreaseVolume(Player player, CurrentSoundData soundData) {
+    private void increaseVolume(Player player, SoundData soundData) {
+        if (soundData == null) {
+            player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
+            return;
+        }
+        float currentVolume = soundData.getVolume();
+        int currentIndex = VOLUME_LEVELS.indexOf(currentVolume);
+
+        if (currentIndex != VOLUME_LEVELS.size() - 1) {
+           float newVolume = VOLUME_LEVELS.get(currentIndex + 1);
+           soundData.setVolume(newVolume);
+        }
+
+        player.playSound(player, soundData.getSound(), soundData.getVolume(), soundData.getPitch());
+    }
+
+    private void decreaseVolume(Player player, SoundData soundData) {
         if (soundData == null) {
             player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
             return;
@@ -238,23 +234,23 @@ public class BlockBreakSoundsGUIListener implements Listener {
         player.playSound(player, soundData.getSound(), soundData.getVolume(), soundData.getPitch());
     }
 
-    private void increaseVolume(Player player, CurrentSoundData soundData) {
+    private void increasePitch(Player player, SoundData soundData) {
         if (soundData == null) {
             player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
             return;
         }
-        float currentVolume = soundData.getVolume();
-        int currentIndex = VOLUME_LEVELS.indexOf(currentVolume);
+        float currentPitch = soundData.getPitch();
+        int currentIndex = PITCH_LEVELS.indexOf(currentPitch);
 
-        if (currentIndex != VOLUME_LEVELS.size() - 1) {
-           float newVolume = VOLUME_LEVELS.get(currentIndex + 1);
-           soundData.setVolume(newVolume);
+        if (currentIndex != PITCH_LEVELS.size() -1) {
+            float newPitch = PITCH_LEVELS.get(currentIndex + 1);
+            soundData.setPitch(newPitch);
         }
 
         player.playSound(player, soundData.getSound(), soundData.getVolume(), soundData.getPitch());
     }
 
-    private void decreasePitch(Player player, CurrentSoundData soundData) {
+    private void decreasePitch(Player player, SoundData soundData) {
         if (soundData == null) {
             player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
             return;
@@ -270,22 +266,6 @@ public class BlockBreakSoundsGUIListener implements Listener {
             float newPitch = PITCH_LEVELS.get(currentIndex - 1);
             soundData.setPitch(newPitch);
         }
-        player.playSound(player, soundData.getSound(), soundData.getVolume(), soundData.getPitch());
-    }
-
-    private void increasePitch(Player player, CurrentSoundData soundData) {
-        if (soundData == null) {
-            player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
-            return;
-        }
-        float currentPitch = soundData.getPitch();
-        int currentIndex = PITCH_LEVELS.indexOf(currentPitch);
-
-        if (currentIndex != PITCH_LEVELS.size() -1) {
-            float newPitch = PITCH_LEVELS.get(currentIndex + 1);
-            soundData.setPitch(newPitch);
-        }
-
         player.playSound(player, soundData.getSound(), soundData.getVolume(), soundData.getPitch());
     }
 }

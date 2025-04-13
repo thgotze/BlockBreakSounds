@@ -2,17 +2,61 @@ package com.gotze.blockBreakSounds.soundlogic;
 
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SoundMap {
 
     public static final Map<String, Sound> soundNames = new HashMap<>();
     public static final Map<Sound, Material> soundToMaterial = new HashMap<>();
+    
+    public static final Map<ItemStack, List<SoundData>> OTHER_SOUNDS = new HashMap<>();
 
-    static {
-        // Sound Names & Sound File
+    public static final Sound[] villagerSounds;
+
+    Sound.ENTITY_VILLAGER_AMBIENT
+            Sound.ENTITY_VILLAGER_CELEBRATE
+    Sound.ENTITY_VILLAGER_DEATH
+            Sound.ENTITY_VILLAGER_HURT
+    Sound.ENTITY_VILLAGER_NO
+            Sound.ENTITY_VILLAGER_TRADE
+    Sound.ENTITY_VILLAGER_WORK_ARMORER
+            Sound.ENTITY_VILLAGER_WORK_BUTCHER
+    Sound.ENTITY_VILLAGER_WORK_CARTOGRAPHER
+            Sound.ENTITY_VILLAGER_WORK_CLERIC
+    Sound.ENTITY_VILLAGER_WORK_FARMER
+            Sound.ENTITY_VILLAGER_WORK_FISHERMAN
+    Sound.ENTITY_VILLAGER_WORK_FLETCHER
+            Sound.ENTITY_VILLAGER_WORK_LEATHERWORKER
+    Sound.ENTITY_VILLAGER_WORK_LIBRARIAN
+            Sound.ENTITY_VILLAGER_WORK_MASON
+    Sound.ENTITY_VILLAGER_WORK_SHEPHERD
+            Sound.ENTITY_VILLAGER_WORK_TOOLSMITH
+    Sound.ENTITY_VILLAGER_WORK_WEAPONSMITH
+            Sound.ENTITY_VILLAGER_YES
+    //    public static final Sound[] ambientSounds = new Sound[](); // Example: "ambient.cave"
+    //    public static final Sound[] blockSounds = new Sound[](); // Has subcategory - Place, break, hit, fall, step & others
+    //    public static final Sound[] blockSoundsPlace = new Sound[](); // Example: "block.amethyst_block.place"
+    //    public static final Sound[] blockSoundsBreak = new Sound[](); // Example: "block.amethyst_block.break"
+    //    public static final Sound[] blockSoundsHit = new Sound[](); // Example: "block.amethyst_block.hit"
+    //    public static final Sound[] blockSoundsFall = new Sound[](); // Example: "block.amethyst_block.fall"
+    //    public static final Sound[] blockSoundsStep = new Sound[](); // Example: "block.amethyst_block.step"
+    //
+    //    public static final Sound[] blockSoundsOthers = new Sound[](); // Example: "block.amethyst_block.resonate"
+    //    public static final Sound[] passiveMobSounds = new Sound[](); // Example: "entity.dolphin.eat"
+    //    public static final Sound[] hostileMobSounds = new Sound[](); // Example: "entity.zombie.hurt"
+    //    public static final Sound[] playerSounds = new Sound[](); // Example: "entity.player.burp"
+    //    public static final Sound[] itemSounds = new Sound[](); // Example: "item.bucket.fill"
+    //    public static final Sound[] musicDiscSounds = new Sound[](); // Example: "music_disc.11"
+    //    public static final Sound[] noteblockSounds = new Sound[](); // Example: "block.note_block.banjo"
+    //    public static final Sound[] biomeMusicSounds = new Sound[](); // Example: "music.overworld.forest"
+
+    //    public static final Sound[] otherSounds = new Sound[](); // EVERYTHING ELSE Example: "weather.rain"
+
+    static { // Sound Names & Sound File
         soundNames.put("Chime!", Sound.BLOCK_AMETHYST_BLOCK_CHIME);
         soundNames.put("Monch!", Sound.ENTITY_SNIFFER_EAT);
         soundNames.put("Bamboo!", Sound.BLOCK_BAMBOO_BREAK);
@@ -74,25 +118,7 @@ public class SoundMap {
         soundToMaterial.put(Sound.BLOCK_DEEPSLATE_BREAK, Material.COBBLED_DEEPSLATE);
     }
 
-//    public static final Sound[] ambientSounds = new Sound[](); // Example: "ambient.cave"
-//    public static final Sound[] blockSounds = new Sound[](); // Has subcategory - Place, break, hit, fall, step & others
-//    public static final Sound[] blockSoundsPlace = new Sound[](); // Example: "block.amethyst_block.place"
-//    public static final Sound[] blockSoundsBreak = new Sound[](); // Example: "block.amethyst_block.break"
-//    public static final Sound[] blockSoundsHit = new Sound[](); // Example: "block.amethyst_block.hit"
-//    public static final Sound[] blockSoundsFall = new Sound[](); // Example: "block.amethyst_block.fall"
-//    public static final Sound[] blockSoundsStep = new Sound[](); // Example: "block.amethyst_block.step"
-//
-//    public static final Sound[] blockSoundsOthers = new Sound[](); // Example: "block.amethyst_block.resonate"
-//    public static final Sound[] passiveMobSounds = new Sound[](); // Example: "entity.dolphin.eat"
-//    public static final Sound[] hostileMobSounds = new Sound[](); // Example: "entity.zombie.hurt"
-//    public static final Sound[] playerSounds = new Sound[](); // Example: "entity.player.burp"
-//    public static final Sound[] itemSounds = new Sound[](); // Example: "item.bucket.fill"
-//    public static final Sound[] musicDiscSounds = new Sound[](); // Example: "music_disc.11"
-//    public static final Sound[] noteblockSounds = new Sound[](); // Example: "block.note_block.banjo"
-//    public static final Sound[] biomeMusicSounds = new Sound[](); // Example: "music.overworld.forest"
-
-//    public static final Sound[] otherSounds = new Sound[](); // EVERYTHING ELSE Example: "weather.rain"
-
+    // TODO: Is this method needed?
     public static Material getMaterialFromSound(Sound sound) {
         // return the material of the 27 pre-selected sounds, if it can't find sound the default is note block
         return soundToMaterial.getOrDefault(sound, Material.NOTE_BLOCK);

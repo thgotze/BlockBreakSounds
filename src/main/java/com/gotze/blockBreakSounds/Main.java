@@ -34,10 +34,10 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SettingsGUIListener(), this);
         getServer().getPluginManager().registerEvents(new FavoriteSoundsGUIListener(), this);
         getServer().getPluginManager().registerEvents(new AllSoundsGUIListener(), this);
-
     }
 
     private void registerCommands() {
+        // TODO figure out how these can produce null pointer exceptions
         getCommand("blockbreaksounds").setExecutor(new BlockBreakSoundsCommand());
         getCommand("blockbreaksounds").setTabCompleter(new CommandTabCompleter());
     }
@@ -45,6 +45,5 @@ public class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         getLogger().info("Block Break Sounds Plugin has stopped");
-        getLogger().info("Player Sound Info saved");
     }
 }

@@ -28,5 +28,4 @@ public class AllSoundsGUI {
             gui.setItem(i, GUIUtils.Frame());
         }
     }
-
 }

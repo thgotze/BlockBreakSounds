@@ -21,7 +21,7 @@ public final class ItemStackCreator {
      * @return A fully customized ItemStack.
      */
 
-    public static ItemStack createItemStack(Material material, String displayName, List<String> lore, boolean hideAdditionalTooltip, boolean hideTooltipBox, boolean hideAttributes) {
+    public static ItemStack createItemStack(Material material, String displayName, List<String> lore, boolean hideAdditionalTooltip, boolean hideAttributes, boolean hideTooltipBox) {
 
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
@@ -38,11 +38,11 @@ public final class ItemStackCreator {
             if (hideAdditionalTooltip) {
                 itemMeta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
             }
-            if (hideTooltipBox) {
-                itemMeta.setHideTooltip(true);
-            }
             if (hideAttributes) {
                 itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+            }
+            if (hideTooltipBox) {
+                itemMeta.setHideTooltip(true);
             }
             item.setItemMeta(itemMeta);
         }
@@ -53,27 +53,27 @@ public final class ItemStackCreator {
     private static final String DEFAULT_DISPLAY_NAME = null;
     private static final List<String> DEFAULT_LORE = null;
     private static final boolean DEFAULT_HIDE_ADDITIONAL_TOOLTIP = false;
-    private static final boolean DEFAULT_HIDE_TOOLTIP_BOX = false;
     private static final boolean DEFAULT_HIDE_ATTRIBUTES = false;
+    private static final boolean DEFAULT_HIDE_TOOLTIP_BOX = false;
 
     // Overloaded methods in descending order of parameters
-    public static ItemStack createItemStack(Material material, String displayName, List<String> lore, boolean hideAdditionalTooltip, boolean hideTooltipBox) {
-        return createItemStack(material, displayName, lore, hideAdditionalTooltip, hideTooltipBox, DEFAULT_HIDE_ATTRIBUTES);
+    public static ItemStack createItemStack(Material material, String displayName, List<String> lore, boolean hideAdditionalTooltip, boolean hideAttributes) {
+        return createItemStack(material, displayName, lore, hideAdditionalTooltip, hideAttributes, DEFAULT_HIDE_TOOLTIP_BOX);
     }
 
     public static ItemStack createItemStack(Material material, String displayName, List<String> lore, boolean hideAdditionalTooltip) {
-        return createItemStack(material, displayName, lore, hideAdditionalTooltip, DEFAULT_HIDE_TOOLTIP_BOX, DEFAULT_HIDE_ATTRIBUTES);
+        return createItemStack(material, displayName, lore, hideAdditionalTooltip, DEFAULT_HIDE_ATTRIBUTES, DEFAULT_HIDE_TOOLTIP_BOX);
     }
 
     public static ItemStack createItemStack(Material material, String displayName, List<String> lore) {
-        return createItemStack(material, displayName, lore, DEFAULT_HIDE_ADDITIONAL_TOOLTIP, DEFAULT_HIDE_TOOLTIP_BOX, DEFAULT_HIDE_ATTRIBUTES);
+        return createItemStack(material, displayName, lore, DEFAULT_HIDE_ADDITIONAL_TOOLTIP, DEFAULT_HIDE_ATTRIBUTES, DEFAULT_HIDE_TOOLTIP_BOX);
     }
 
     public static ItemStack createItemStack(Material material, String displayName) {
-        return createItemStack(material, displayName, DEFAULT_LORE, DEFAULT_HIDE_ADDITIONAL_TOOLTIP, DEFAULT_HIDE_TOOLTIP_BOX, DEFAULT_HIDE_ATTRIBUTES);
+        return createItemStack(material, displayName, DEFAULT_LORE, DEFAULT_HIDE_ADDITIONAL_TOOLTIP, DEFAULT_HIDE_ATTRIBUTES, DEFAULT_HIDE_TOOLTIP_BOX);
     }
 
     public static ItemStack createItemStack(Material material) {
-        return createItemStack(material, DEFAULT_DISPLAY_NAME, DEFAULT_LORE, DEFAULT_HIDE_ADDITIONAL_TOOLTIP, DEFAULT_HIDE_TOOLTIP_BOX, DEFAULT_HIDE_ATTRIBUTES);
+        return createItemStack(material, DEFAULT_DISPLAY_NAME, DEFAULT_LORE, DEFAULT_HIDE_ADDITIONAL_TOOLTIP, DEFAULT_HIDE_ATTRIBUTES, DEFAULT_HIDE_TOOLTIP_BOX);
     }
 }
