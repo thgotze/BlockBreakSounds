@@ -39,6 +39,7 @@ public class FavoriteSoundsGUIListener implements Listener {
         int slot = event.getSlot();
 
         switch (slot) {
+            // TODO: update the gui after favoriting the currentsound while in favorite sound gui
             case 4: // Current Sound
                 GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
                 return;

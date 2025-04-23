@@ -109,6 +109,8 @@ public class SettingsGUI {
                 Arrays.asList(ChatColor.WHITE + "Setting to set default block break sound for all players",
                         ChatColor.WHITE + "Setting to allow default sound optional for players in or out",
                         ChatColor.WHITE + "Option to enable role requirement to use plugin",
+                        ChatColor.WHITE + "Option to enable role requirement to use plugin",
+                        ChatColor.WHITE + "Make it so current sound 'click to playtest' line adds the note symbol after playtesting for 2 seconds",
                         ChatColor.WHITE + "Option for owner to disallow usage of 'all sounds'")
         );
     }

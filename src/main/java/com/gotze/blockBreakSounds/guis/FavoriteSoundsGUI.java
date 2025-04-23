@@ -44,6 +44,7 @@ public class FavoriteSoundsGUI {
         }
     }
 
+    // TODO: Add bold for colored words
     // Favorite Sounds Button (Nether Star)
     private ItemStack FavoriteSoundsButton() {
         return ItemStackCreator.createItemStack(

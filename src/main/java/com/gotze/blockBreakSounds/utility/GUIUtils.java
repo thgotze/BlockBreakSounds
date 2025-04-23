@@ -41,6 +41,7 @@ public final class GUIUtils {
         );
     }
 
+    // TODO: Add bold for colored words
     public static ItemStack CurrentSoundDisplayButton(Player player) {
         SoundData playerCurrentSound = CurrentSoundData.currentSound.get(player.getUniqueId());
         if (playerCurrentSound == null) {
@@ -91,6 +92,7 @@ public final class GUIUtils {
         }
     }
 
+    // TODO: add checker if 27 sounds are already favorite add line that says "max favorites reached"
     public static void handleFavoritedLineSound(Inventory clickedInventory, int slot) {
         final String soundFavoritedLoreLine = ChatColor.GREEN + "" + ChatColor.BOLD + "ѕᴏᴜɴᴅ ꜰᴀᴠᴏʀɪᴛᴇᴅ! ⭐";
 
