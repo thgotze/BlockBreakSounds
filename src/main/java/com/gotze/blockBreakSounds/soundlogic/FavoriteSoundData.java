@@ -22,11 +22,8 @@ public class FavoriteSoundData extends SoundData {
         List<SoundData> playerFavorites = favoriteSounds.computeIfAbsent(player.getUniqueId(), k -> new ArrayList<>());
 
         if (playerFavorites.size() >= 27) {
-            System.out.println("you have " + playerFavorites.size() + " sounds favorited");
             return;
         }
-
-        System.out.println("you have " + playerFavorites.size() + " sounds favorited");
 
         for (SoundData favoriteSoundsData : playerFavorites) {
             if (favoriteSoundsData.getSound() == soundData.getSound()
@@ -36,7 +33,6 @@ public class FavoriteSoundData extends SoundData {
                 return;
             }
         }
-        System.out.println("no identical sounddata found in favorites... adding to favorites");
 
         player.playSound(player, Sound.BLOCK_NOTE_BLOCK_CHIME, 0.5f, 1.5f);
         playerFavorites.add(soundData);
@@ -53,7 +49,6 @@ public class FavoriteSoundData extends SoundData {
     }
 
     public static void saveFavoriteSoundsDataToYAML(Player player) {
-        System.out.println("saving to yaml");
         File playerFile = new File(Main.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(playerFile);
         String path = "favorite-sounds";
@@ -69,19 +64,13 @@ public class FavoriteSoundData extends SoundData {
             soundData.put("pitch", favoriteSoundData.getPitch());
             soundData.put("material", favoriteSoundData.getMaterial().toString());
             favoriteSoundsList.add(soundData);
-            System.out.println("added a favorite sound data to playerfavorites");
-
         }
         yamlConfiguration.set(path, favoriteSoundsList);
-        System.out.println("finished setting to yaml configuration");
 
         try {
             yamlConfiguration.save(playerFile);
-            System.out.println("successfully saved to yaml");
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("failed saving to yaml");
-
         }
     }
 
@@ -99,12 +88,13 @@ public class FavoriteSoundData extends SoundData {
         for (Map<?, ?> soundData : favoriteSoundsList) {
             try {
                 Sound sound = Sound.valueOf((String) soundData.get("sound"));
-                float volume = ((Number) soundData.get("volume")).floatValue();
-                float pitch = ((Number) soundData.get("pitch")).floatValue();
+                float volume = (float) soundData.get("volume");
+                float pitch = (float) soundData.get("pitch");
                 Material material = Material.valueOf((String) soundData.get("material"));
                 favoriteSoundsDataList.add(new SoundData(sound, volume, pitch, material));
             } catch (Exception e) {
-                System.out.println("Failed to load a favorite sound for " + player.getName());
+                System.out.println("Failed to load favorite sounds for " + player.getName() + e.getMessage());
+                return;
             }
         }
         favoriteSounds.put(player.getUniqueId(), favoriteSoundsDataList);

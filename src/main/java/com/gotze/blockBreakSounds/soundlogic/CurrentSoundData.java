@@ -100,14 +100,14 @@ public class CurrentSoundData extends SoundData {
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(playerFile);
         String path = "current-sound";
 
-        String soundString = yamlConfiguration.getString(path + ".sound");
-        if (soundString == null) return;
-
-        Sound sound = Sound.valueOf(soundString);
-        float volume = (float) yamlConfiguration.getDouble(path + ".volume");
-        float pitch = (float) yamlConfiguration.getDouble(path + ".pitch");
-        Material material = (Material) yamlConfiguration.get(path + ".material");
-
-        currentSound.put(player.getUniqueId(), new SoundData(sound, volume, pitch, material));
+        try {
+            Sound sound = Sound.valueOf(yamlConfiguration.getString(path + ".sound"));
+            float volume = (float) yamlConfiguration.getDouble(path + ".volume");
+            float pitch = (float) yamlConfiguration.getDouble(path + ".pitch");
+            Material material = Material.valueOf(yamlConfiguration.getString(path + ".material"));
+            currentSound.put(player.getUniqueId(), new SoundData(sound, volume, pitch, material));
+        } catch (Exception e) {
+            System.out.println("Failed to load current sound for " + player.getName() + e.getMessage());
+        }
     }
 }
