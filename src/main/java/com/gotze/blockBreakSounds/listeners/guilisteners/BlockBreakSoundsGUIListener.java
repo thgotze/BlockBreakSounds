@@ -21,7 +21,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.gotze.blockBreakSounds.soundlogic.CurrentSoundData.currentSound;
-import static com.gotze.blockBreakSounds.utility.GUIUtils.Frame;
 import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
 import static com.gotze.blockBreakSounds.utility.TextUtils.convertToSmallFont;
 
@@ -133,26 +132,49 @@ public class BlockBreakSoundsGUIListener implements Listener {
     private void updateVolumeSlider(Inventory inventory, SoundData soundData) {
         if (soundData == null) return;
 
-        // Retrieve the current volume and its index
         float currentVolume = soundData.getVolume();
-        int currentIndex = VOLUME_LEVELS.indexOf(currentVolume);
 
-        // Clear all volume slider slots with placeholder frames
-        final List<Integer> volumeSliderSlots = Arrays.asList(9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 17);
-        for (Integer volumeSliderSlot : volumeSliderSlots) {
-            inventory.setItem(volumeSliderSlot, Frame());
+        float[] volumeThresholds = {0.05f, 0.15f, 0.25f, 0.35f, 0.50f, 0.65f, 0.80f, 0.90f};
+
+//        0 0;
+//        1 5 10;
+//        2 15 20;
+//        3 25 30;
+//        4 35 40 45;
+//        5 50 55 60;
+//        6 65 75;
+//        7 80 85;
+//        8 90 95;
+//        9 100;
+
+        int paneAmount = 0;
+        for (int i = 0; i < volumeThresholds.length; i++) {
+            if (currentVolume < volumeThresholds[i]) {
+                break;
+            }
+            paneAmount = i;
         }
 
-        // Dynamically set panes for the volume slider
-        for (int i = 0; i <= currentIndex; i++) {
-            Material material = i == currentIndex ? Material.YELLOW_STAINED_GLASS_PANE : Material.LIME_STAINED_GLASS_PANE; // Highlight current index
+        String volumeSliderDisplayText = ChatColor.WHITE + convertToSmallFont("volume: ") +
+                ChatColor.YELLOW + ChatColor.BOLD + convertToSmallFont((int) (currentVolume * 100) + "%");
+        ItemStack greenPane = createItemStack(Material.GREEN_STAINED_GLASS_PANE, volumeSliderDisplayText);
+        ItemStack yellowPane = createItemStack(Material.YELLOW_STAINED_GLASS_PANE, volumeSliderDisplayText);
+        ItemStack redPane = createItemStack(Material.RED_STAINED_GLASS_PANE, volumeSliderDisplayText);
 
-            // Consistent text style for all panes: white text with bold yellow for volume percentage
-            String displayText = ChatColor.WHITE + convertToSmallFont("volume: ") +
-                    ChatColor.YELLOW + ChatColor.BOLD + convertToSmallFont((int) (VOLUME_LEVELS.get(i) * 100) + "%");
+        int[] volumeSliderSlots = {0, 1, 2, 3, 4, 5, 6, 7, 8};
 
-            // Set the colored pane in the respective volume slider slot
-            inventory.setItem(volumeSliderSlots.get(i), createItemStack(material, displayText));
+        for (int i = 0; i < volumeSliderSlots.length; i++) {
+            if (currentVolume == 0.00f) {
+                inventory.setItem(volumeSliderSlots[i], redPane);
+            } else if (currentVolume == 1.00f) {
+                inventory.setItem(volumeSliderSlots[i], yellowPane);
+            } else if (i < paneAmount) {
+                inventory.setItem(volumeSliderSlots[i], greenPane);
+            } else if (i == paneAmount) {
+                inventory.setItem(volumeSliderSlots[i], yellowPane);
+            } else if (i > paneAmount) {
+                inventory.setItem(volumeSliderSlots[i], GUIUtils.Frame());
+            }
         }
     }
 
@@ -161,43 +183,40 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
         float currentPitch = soundData.getPitch();
 
-        final List<Integer> pitchSliderSlots = Arrays.asList(27, 36, 37, 38, 39, 40, 41, 42, 43, 44, 35);
+        float[] pitchThresholds = {0.50f, 0.65f, 0.80f, 1.00f, 1.20f, 1.40f, 1.60f, 1.75f};
 
-        // Clear all slots with the frame
-        for (Integer slot : pitchSliderSlots) {
-            inventory.setItem(slot, Frame());
+        // Calculates how filled the pitch slider should be depending on the values for pitch thresholds
+        // Checks if current pitch is greater than the thresholds, if so then add a pane for the slider
+        int paneAmount = 0;
+        for (int i = 0; i < pitchThresholds.length; i++) {
+            if (currentPitch < pitchThresholds[i]) {
+                break;
+            }
+            paneAmount = i;
         }
 
-        String displayText = ChatColor.WHITE + convertToSmallFont("pitch: ") +
+        String pitchSliderDisplayText = ChatColor.WHITE + convertToSmallFont("pitch: ") +
                 ChatColor.YELLOW + ChatColor.BOLD + convertToSmallFont(String.format("%.2f", currentPitch));
+        ItemStack greenPane = createItemStack(Material.GREEN_STAINED_GLASS_PANE, pitchSliderDisplayText);
+        ItemStack yellowPane = createItemStack(Material.YELLOW_STAINED_GLASS_PANE, pitchSliderDisplayText);
 
-        // If the pitch is at the max value, set all slots to yellow
-        if (currentPitch == 2.00f) {
-            ItemStack yellowPane = createItemStack(Material.YELLOW_STAINED_GLASS_PANE, displayText);
-            for (Integer slot : pitchSliderSlots) {
-                inventory.setItem(slot, yellowPane);
+        int[] pitchSliderSlots = {36, 37, 38, 39, 40, 41, 42, 43, 44};
+
+        // If pitch is max (2.00f) all panes are yellow to indicate that pitch is maxed out
+        // Otherwise the panes are green except the last one which is yellow to indicate current pitch level
+        // Panes beyond the current pitch level are black to indicate blank
+        for (int i = 0; i < pitchSliderSlots.length; i++) {
+            if (currentPitch == 2.00f) {
+                inventory.setItem(pitchSliderSlots[i], yellowPane);
+            } else if (i < paneAmount) {
+                inventory.setItem(pitchSliderSlots[i], greenPane);
+            } else if (i == paneAmount) {
+                inventory.setItem(pitchSliderSlots[i], yellowPane);
+            } else if (i > paneAmount) {
+                inventory.setItem(pitchSliderSlots[i], GUIUtils.Frame());
             }
-            return; // No need to continue if it's max
-        }
-
-        // Loop through each slot and determine the color for the pane
-        for (int i = 0; i < pitchSliderSlots.size(); i++) {
-            Integer slot = pitchSliderSlots.get(i);
-
-            Material paneMaterial = Material.LIME_STAINED_GLASS_PANE; // Default is LIME
-            if (i == PITCH_LEVELS.indexOf(currentPitch)) {
-                // If it's the exact pitch level, set it to yellow
-                paneMaterial = Material.YELLOW_STAINED_GLASS_PANE;
-            }
-
-            // Create a new item stack for each slot
-            ItemStack itemStack = createItemStack(paneMaterial, displayText);
-
-            // Set the item in the inventory
-            inventory.setItem(slot, itemStack);
         }
     }
-
 
     private void increaseVolume(Player player, SoundData soundData) {
         if (soundData == null) {
