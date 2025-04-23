@@ -1,14 +1,9 @@
 package com.gotze.blockBreakSounds;
 
-import com.gotze.blockBreakSounds.listeners.guilisteners.BlockBreakSoundsGUIListener;
 import com.gotze.blockBreakSounds.command.BlockBreakSoundsCommand;
-import com.gotze.blockBreakSounds.command.CommandTabCompleter;
-import com.gotze.blockBreakSounds.listeners.guilisteners.FavoriteSoundsGUIListener;
-import com.gotze.blockBreakSounds.listeners.guilisteners.AllSoundsGUIListener;
-import com.gotze.blockBreakSounds.listeners.guilisteners.PickSoundGUIListener;
-import com.gotze.blockBreakSounds.listeners.guilisteners.SettingsGUIListener;
 import com.gotze.blockBreakSounds.listeners.BlockBreakListener;
 import com.gotze.blockBreakSounds.listeners.PlayerJoinListener;
+import com.gotze.blockBreakSounds.listeners.guilisteners.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -39,7 +34,6 @@ public class Main extends JavaPlugin {
     private void registerCommands() {
         // TODO figure out how these can produce null pointer exceptions
         getCommand("blockbreaksounds").setExecutor(new BlockBreakSoundsCommand());
-        getCommand("blockbreaksounds").setTabCompleter(new CommandTabCompleter());
     }
 
     @Override

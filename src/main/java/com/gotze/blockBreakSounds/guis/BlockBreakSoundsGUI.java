@@ -17,6 +17,7 @@ public class BlockBreakSoundsGUI {
 
     public BlockBreakSoundsGUI() {
         this.gui = Bukkit.createInventory(null, 45, "Block Break Sounds");
+        setFramesAndAir();
         gui.setItem(11, IncreaseVolumeButton());
         gui.setItem(15, IncreasePitchButton());
         gui.setItem(20, VolumeButton());
@@ -29,7 +30,6 @@ public class BlockBreakSoundsGUI {
     }
 
     public void setupAndOpenGUI(Player player) {
-        setFramesAndAir();
         gui.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
         player.openInventory(gui);
     }
@@ -51,7 +51,7 @@ public class BlockBreakSoundsGUI {
     private ItemStack SettingsButton() {
         return ItemStackCreator.createItemStack(
                 Material.COMMAND_BLOCK,
-                ChatColor.GOLD + "" + ChatColor.BOLD + "Settings \uD83D\uDD27",
+                ChatColor.RED + "" + ChatColor.BOLD + "Settings \uD83D\uDD27",
                 Arrays.asList(
                         ChatColor.WHITE + "ᴍᴏᴅɪꜰʏ ᴀᴅᴅɪᴛɪᴏɴᴀʟ ѕᴇᴛᴛɪɴɢѕ"),
                 true,
@@ -65,15 +65,15 @@ public class BlockBreakSoundsGUI {
         return ItemStackCreator.createItemStack(
                 Material.NETHER_STAR,
                 ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
-                Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + "" + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ")
-        ); // TODO can i remove the empty string "" ?
+                Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ")
+        );
     }
 
     // Pick Sound Button (Noteblock)
     private ItemStack PickSoundButton() {
         return ItemStackCreator.createItemStack(
                 Material.NOTE_BLOCK,
-                ChatColor.GOLD + "" + ChatColor.BOLD + "Pick Sound ♪",
+                ChatColor.AQUA + "" + ChatColor.BOLD + "Pick Sound ♪",
                 Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ᴀ ѕᴏᴜɴᴅ ᴛᴏ ᴘʟᴀʏ",
                         ChatColor.WHITE + "ᴡʜᴇɴ ʏᴏᴜ ʙʀᴇᴀᴋ ʙʟᴏᴄᴋѕ")
         );
@@ -83,7 +83,7 @@ public class BlockBreakSoundsGUI {
     private ItemStack VolumeButton() {
         return ItemStackCreator.createItemStack(
                 Material.GOAT_HORN,
-                ChatColor.GOLD + "" + ChatColor.BOLD + "Tweak Volume \uD83D\uDD0A",
+                ChatColor.YELLOW + "" + ChatColor.BOLD + "Tweak Volume \uD83D\uDD0A",
                 Arrays.asList(
                         ChatColor.WHITE + "ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.GREEN + ChatColor.BOLD + "ɪɴᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ",
                         ChatColor.WHITE + "ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.RED + ChatColor.BOLD + "ᴅᴇᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ",
@@ -97,7 +97,7 @@ public class BlockBreakSoundsGUI {
     private ItemStack IncreaseVolumeButton() {
         return ItemStackCreator.createItemStack(
                 Material.MANGROVE_BUTTON,
-                        ChatColor.GREEN + "" + ChatColor.BOLD + "[+] ɪɴᴄʀᴇᴀѕᴇ ᴠᴏʟᴜᴍᴇ"
+                ChatColor.GREEN + "" + ChatColor.BOLD + "[+] ɪɴᴄʀᴇᴀѕᴇ ᴠᴏʟᴜᴍᴇ"
         );
     }
 
@@ -113,7 +113,7 @@ public class BlockBreakSoundsGUI {
     private ItemStack PitchButton() {
         return ItemStackCreator.createItemStack(
                 Material.BELL,
-                ChatColor.GOLD + "" + ChatColor.BOLD + "Tweak Pitch \uD83D\uDD14",
+                ChatColor.YELLOW + "" + ChatColor.BOLD + "Tweak Pitch \uD83D\uDD14",
                 Arrays.asList(
                         ChatColor.WHITE + "ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.GREEN + ChatColor.BOLD + "ɪɴᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴘɪᴛᴄʜ",
                         ChatColor.WHITE + "ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.RED + ChatColor.BOLD + "ᴅᴇᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴘɪᴛᴄʜ",

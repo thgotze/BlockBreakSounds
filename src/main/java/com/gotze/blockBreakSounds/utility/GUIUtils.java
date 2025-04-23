@@ -20,8 +20,10 @@ import static com.gotze.blockBreakSounds.utility.TextUtils.convertToSmallFont;
 
 public final class GUIUtils {
 
-    public static ItemStack Frame() {
+    public static final String CLICK_TO_PICK = ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ";
+    public static final String SOUND_PICKED = ChatColor.YELLOW + "" + ChatColor.BOLD + "ѕᴏᴜɴᴅ ᴘɪᴄᴋᴇᴅ! ♪";
 
+    public static ItemStack Frame() {
         return createItemStack(
                 Material.BLACK_STAINED_GLASS_PANE,
                 null,
@@ -33,26 +35,26 @@ public final class GUIUtils {
     }
 
     public static ItemStack ReturnButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.ARROW,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "← ʀᴇᴛᴜʀɴ"
+                ChatColor.YELLOW + "" + ChatColor.BOLD + convertToSmallFont("← return")
         );
     }
 
     public static ItemStack CurrentSoundDisplayButton(Player player) {
         SoundData playerCurrentSound = CurrentSoundData.currentSound.get(player.getUniqueId());
         if (playerCurrentSound == null) {
-            return ItemStackCreator.createItemStack(
+            return createItemStack(
                     Material.GLASS_PANE,
-                    ChatColor.GOLD + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7",
+                    ChatColor.YELLOW + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7",
                     List.of(
-                            ChatColor.WHITE + "ɴᴏ ѕᴏᴜɴᴅ ѕᴇᴛ"
+                            ChatColor.WHITE + convertToSmallFont("no sound set")
                     )
             );
         } else {
-            return ItemStackCreator.createItemStack(
+            return createItemStack(
                     (playerCurrentSound.getMaterial()),
-                    ChatColor.GOLD + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7",
+                    ChatColor.YELLOW + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7",
                     Arrays.asList(
                             ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(TextUtils.getFormattedSoundName(playerCurrentSound.getSound())),
                             ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", playerCurrentSound.getVolume() * 100)),
@@ -70,22 +72,26 @@ public final class GUIUtils {
     }
 
     public static void currentSoundButtonHandler(Inventory clickedInventory, ClickType clickType, Player player, int slot) {
-        SoundData playerCurrentSound = CurrentSoundData.currentSound.get(player.getUniqueId());
+        SoundData currentSoundData = CurrentSoundData.currentSound.get(player.getUniqueId());
+        if (currentSoundData == null) return;
 
         if (clickType == ClickType.DROP) {
             CurrentSoundData.clearCurrentSound(clickedInventory, player, slot);
+            return;
+        }
 
-        } else if (clickType == ClickType.SHIFT_RIGHT) {
-            FavoriteSoundData.addSoundToFavorites(player, playerCurrentSound);
-            GUIUtils.handleFavoritedLineSound(player, clickedInventory, slot);
+        if (clickType == ClickType.SHIFT_RIGHT) {
+            FavoriteSoundData.addSoundToFavorites(player, currentSoundData);
+            GUIUtils.handleFavoritedLineSound(clickedInventory, slot);
+            return;
+        }
 
-        } else if (playerCurrentSound != null && clickedInventory.getItem(slot).getType() != Material.BARRIER) {
-            player.playSound(player, playerCurrentSound.getSound(), playerCurrentSound.getVolume(), playerCurrentSound.getPitch());
+        if (clickedInventory.getItem(slot).getType() != Material.BARRIER) {
+            player.playSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
         }
     }
 
-    public static void handleFavoritedLineSound(Player player, Inventory clickedInventory, int slot) {
-        final String soundUnfavoritedLoreLine = ChatColor.RED + "" + ChatColor.BOLD + "ѕᴏᴜɴᴅ ᴜɴꜰᴀᴠᴏʀɪᴛᴇᴅ! ✘";
+    public static void handleFavoritedLineSound(Inventory clickedInventory, int slot) {
         final String soundFavoritedLoreLine = ChatColor.GREEN + "" + ChatColor.BOLD + "ѕᴏᴜɴᴅ ꜰᴀᴠᴏʀɪᴛᴇᴅ! ⭐";
 
         ItemStack item = clickedInventory.getItem(slot);
@@ -97,59 +103,52 @@ public final class GUIUtils {
         List<String> lore = itemMeta.getLore();
         if (lore == null) return;
 
-        if (lore.contains(soundFavoritedLoreLine)) { // Currently favorited
-            lore.remove(soundFavoritedLoreLine);
-            lore.add(soundUnfavoritedLoreLine);
-
-        } else if (lore.contains(soundUnfavoritedLoreLine)) { // Currently unfavorited
-            lore.remove(soundUnfavoritedLoreLine);
+        if (!lore.contains(soundFavoritedLoreLine)) { // Not favorited yet, add favorited sound line
             lore.add(soundFavoritedLoreLine);
-            player.playSound(player, Sound.BLOCK_NOTE_BLOCK_CHIME, 0.5f, 1.5f);
-
-        } else { // Not favorited yet, add favorited sound line
-            lore.addAll(Arrays.asList("", soundFavoritedLoreLine));
-            player.playSound(player, Sound.BLOCK_NOTE_BLOCK_CHIME, 0.5f, 1.5f);
+            itemMeta.setLore(lore);
+            item.setItemMeta(itemMeta);
+            clickedInventory.setItem(slot, item);
         }
-
-        itemMeta.setLore(lore);
-        item.setItemMeta(itemMeta);
-        clickedInventory.setItem(slot, item);
     }
 
     public static void handlePickedLineSound(Inventory clickedInventory, int pickedSoundIndex) {
-        final String clickToPickLine = ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ";
-        final String soundPickedLine = ChatColor.YELLOW + "" + ChatColor.BOLD + "ѕᴏᴜɴᴅ ᴘɪᴄᴋᴇᴅ! ♪";
-
+        // Replace sound picked line with click to pick sound line for all sounds in gui
         for (int i = 9; i < 36; i++) {
             ItemStack item = clickedInventory.getItem(i);
-            if (item == null) return;
-
+            if (item == null) break;
             ItemMeta itemMeta = item.getItemMeta();
-            if (itemMeta == null) return;
-
+            if (itemMeta == null) break;
             List<String> lore = itemMeta.getLore();
-            if (lore == null) return;
-
-            lore.remove(soundPickedLine);
-            lore.add(clickToPickLine);
-            itemMeta.setLore(lore);
-            item.setItemMeta(itemMeta);
-            clickedInventory.setItem(i, item);
+            if (lore == null) break;
+            if (lore.contains(SOUND_PICKED)) {
+                lore.set(lore.indexOf(SOUND_PICKED), CLICK_TO_PICK);
+                itemMeta.setLore(lore);
+                item.setItemMeta(itemMeta);
+                clickedInventory.setItem(i, item);
+            }
         }
 
+        // Replace pick sound line with sound picked line for clicked sound in gui
         ItemStack item = clickedInventory.getItem(pickedSoundIndex);
+        System.out.println("got item");
         if (item == null) return;
 
         ItemMeta itemMeta = item.getItemMeta();
         if (itemMeta == null) return;
+        System.out.println("got meta");
 
         List<String> lore = itemMeta.getLore();
         if (lore == null) return;
+        System.out.println("got lore");
 
-        lore.remove(clickToPickLine);
-        lore.add(soundPickedLine);
-        itemMeta.setLore(lore);
-        item.setItemMeta(itemMeta);
-        clickedInventory.setItem(pickedSoundIndex, item);
+        if (lore.contains(CLICK_TO_PICK)) {
+            System.out.println("lore contains click to pick");
+            lore.set(lore.indexOf(CLICK_TO_PICK), SOUND_PICKED);
+            itemMeta.setLore(lore);
+            item.setItemMeta(itemMeta);
+            clickedInventory.setItem(pickedSoundIndex, item);
+            System.out.println("lore set to sound picked");
+        }
+        System.out.println("lore doesnt contain click to pick");
     }
 }

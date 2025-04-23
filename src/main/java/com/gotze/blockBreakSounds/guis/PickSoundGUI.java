@@ -18,9 +18,9 @@ public class PickSoundGUI {
     public PickSoundGUI() {
         this.gui = Bukkit.createInventory(null, 45, "Pick Sound");
         setFrames();
-        gui.setItem(44, PickFromAllSoundsButton());
-        gui.setItem(40, FavoriteSoundsButton());
         gui.setItem(36, GUIUtils.ReturnButton());
+        gui.setItem(40, FavoriteSoundsButton());
+        gui.setItem(44, PickFromAllSoundsButton());
 
         gui.setItem(9, AmethystBreakSoundButton());
         gui.setItem(10, ItemPickupButton());
@@ -69,7 +69,7 @@ public class PickSoundGUI {
     private ItemStack PickFromAllSoundsButton() {
         return ItemStackCreator.createItemStack(
                 Material.JUKEBOX,
-                ChatColor.GOLD + "" + ChatColor.BOLD + "Pick From All Sounds",
+                ChatColor.AQUA + "" + ChatColor.BOLD + "Pick From All Sounds",
                 Arrays.asList(
                         ChatColor.WHITE + "ᴘɪᴄᴋ ᴀ ѕᴏᴜɴᴅ ꜰʀᴏᴍ ᴀʟʟ ѕᴏᴜɴᴅѕ",
                         ChatColor.WHITE + "ᴀᴠᴀɪʟᴀʙʟᴇ ɪɴ ᴍɪɴᴇᴄʀᴀꜰᴛ!",
@@ -78,13 +78,14 @@ public class PickSoundGUI {
         );
     }
 
+    // Favorite Sounds Button (Nether Star)
     private ItemStack FavoriteSoundsButton() {
         return ItemStackCreator.createItemStack(
                 Material.NETHER_STAR,
-                ChatColor.GOLD + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
+                ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
                 Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ",
                         "",
-                        ChatColor.GRAY + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ ꜰᴀᴠᴏʀɪᴛᴇ")
+                        ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ " + ChatColor.GREEN + "ꜰᴀᴠᴏʀɪᴛᴇ")
         );
     }
 

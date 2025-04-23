@@ -18,7 +18,42 @@ public class FavoriteSoundData extends SoundData {
         super(sound, volume, pitch, material);
     }
 
+    public static void addSoundToFavorites(Player player, SoundData soundData) {
+        List<SoundData> playerFavorites = favoriteSounds.computeIfAbsent(player.getUniqueId(), k -> new ArrayList<>());
+
+        if (playerFavorites.size() >= 27) {
+            System.out.println("you have " + playerFavorites.size() + " sounds favorited");
+            return;
+        }
+
+        System.out.println("you have " + playerFavorites.size() + " sounds favorited");
+
+        for (SoundData favoriteSoundsData : playerFavorites) {
+            if (favoriteSoundsData.getSound() == soundData.getSound()
+                    && favoriteSoundsData.getVolume() == soundData.getVolume()
+                    && favoriteSoundsData.getPitch() == soundData.getPitch()) {
+                System.out.println(favoriteSoundsData.getSound().toString() + " is the same as " + soundData.getSound().toString());
+                return;
+            }
+        }
+        System.out.println("no identical sounddata found in favorites... adding to favorites");
+
+        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_CHIME, 0.5f, 1.5f);
+        playerFavorites.add(soundData);
+        favoriteSounds.put(player.getUniqueId(), playerFavorites);
+        saveFavoriteSoundsDataToYAML(player);
+    }
+
+    public static void removeSoundFromFavorites(Player player, int favoriteSoundNumber) {
+        List<SoundData> playerFavorites = favoriteSounds.get(player.getUniqueId());
+        player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);
+        playerFavorites.remove(favoriteSoundNumber);
+        favoriteSounds.put(player.getUniqueId(), playerFavorites);
+        saveFavoriteSoundsDataToYAML(player);
+    }
+
     public static void saveFavoriteSoundsDataToYAML(Player player) {
+        System.out.println("saving to yaml");
         File playerFile = new File(Main.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(playerFile);
         String path = "favorite-sounds";
@@ -32,15 +67,21 @@ public class FavoriteSoundData extends SoundData {
             soundData.put("sound", favoriteSoundData.getSound().toString());
             soundData.put("volume", favoriteSoundData.getVolume());
             soundData.put("pitch", favoriteSoundData.getPitch());
-            soundData.put("material", favoriteSoundData.getMaterial());
+            soundData.put("material", favoriteSoundData.getMaterial().toString());
             favoriteSoundsList.add(soundData);
+            System.out.println("added a favorite sound data to playerfavorites");
+
         }
         yamlConfiguration.set(path, favoriteSoundsList);
+        System.out.println("finished setting to yaml configuration");
 
         try {
             yamlConfiguration.save(playerFile);
+            System.out.println("successfully saved to yaml");
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("failed saving to yaml");
+
         }
     }
 
@@ -67,29 +108,5 @@ public class FavoriteSoundData extends SoundData {
             }
         }
         favoriteSounds.put(player.getUniqueId(), favoriteSoundsDataList);
-    }
-
-    public static void addSoundToFavorites(Player player, SoundData soundData) {
-        List<SoundData> playerFavorites = favoriteSounds.get(player.getUniqueId());
-
-        if (playerFavorites.size() >= 27) return;
-
-        for (SoundData favoriteSoundsData : playerFavorites) {
-            if (favoriteSoundsData.getSound() == soundData.getSound()
-                    && favoriteSoundsData.getVolume() == soundData.getVolume()
-                    && favoriteSoundsData.getPitch() == soundData.getPitch()) {
-                return;
-            }
-        }
-        playerFavorites.add(soundData);
-        favoriteSounds.put(player.getUniqueId(), playerFavorites);
-        saveFavoriteSoundsDataToYAML(player);
-    }
-
-    public static void removeSoundFromFavorites(Player player, int favoriteSoundNumber) {
-        List<SoundData> playerFavorites = favoriteSounds.get(player.getUniqueId());
-        playerFavorites.remove(favoriteSoundNumber);
-        favoriteSounds.put(player.getUniqueId(), playerFavorites);
-        saveFavoriteSoundsDataToYAML(player);
     }
 }

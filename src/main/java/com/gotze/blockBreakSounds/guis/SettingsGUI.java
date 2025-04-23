@@ -24,7 +24,7 @@ public class SettingsGUI {
         gui.setItem(22, MultiSoundsButton());
         gui.setItem(23, CombinedSoundsButton());
         gui.setItem(24, SoundFilterButton());
-        gui.setItem(36, ReturnButton());
+        gui.setItem(36, GUIUtils.ReturnButton());
     }
 
     public void setupAndOpenGUI(Player player) {
@@ -40,17 +40,10 @@ public class SettingsGUI {
         }
     }
 
-    private ItemStack ReturnButton() {
-        return ItemStackCreator.createItemStack(
-                Material.ARROW,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "← ʀᴇᴛᴜʀɴ"
-        );
-    }
-
     private ItemStack ToolSpecificSoundsButton() {
         return ItemStackCreator.createItemStack(
                 Material.GOLDEN_SHOVEL,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "Tool Specific Sounds",
+                ChatColor.RED + "" + ChatColor.BOLD + "Tool Specific Sounds",
                 Arrays.asList(ChatColor.WHITE + "ᴄʜᴏᴏѕᴇ ѕᴘᴇᴄɪꜰɪᴄ ʙʟᴏᴄᴋ ʙʀᴇᴀᴋ ѕᴏᴜɴᴅѕ",
                         ChatColor.WHITE + "ʙᴀѕᴇᴅ ᴏɴ ᴡʜᴀᴛ ᴛᴏᴏʟ ᴡᴀѕ ᴜѕᴇᴅ",
                         "",
@@ -64,7 +57,7 @@ public class SettingsGUI {
     private ItemStack CombinedSoundsButton() {
         return ItemStackCreator.createItemStack(
                 Material.MUSIC_DISC_PRECIPICE,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "Combined Sounds",
+                ChatColor.RED + "" + ChatColor.BOLD + "Combined Sounds",
                 Arrays.asList(ChatColor.WHITE + "ᴄʜᴏᴏѕᴇ ᴍᴜʟᴛɪᴘʟᴇ ʙʟᴏᴄᴋ ʙʀᴇᴀᴋ ѕᴏᴜɴᴅѕ ᴛᴏ ᴘʟᴀʏ ѕɪᴍᴜʟᴛᴀɴᴇᴏᴜѕʟʏ",
                         "",
                         ChatColor.RED + "" + ChatColor.BOLD + "NOT IMPLEMENTED YET"),
@@ -77,9 +70,8 @@ public class SettingsGUI {
     private ItemStack SoundFilterButton() {
         return ItemStackCreator.createItemStack(
                 Material.GUSTER_BANNER_PATTERN,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "Sound Filter",
-                Arrays.asList(ChatColor.WHITE + "" + ChatColor.BOLD + "ᴡʜɪᴛᴇ " + ChatColor.WHITE + "ᴀɴᴅ " + ChatColor.DARK_GRAY + ChatColor.BOLD + "ʙʟᴀᴄᴋ" + ChatColor.WHITE + "ʟɪѕᴛ ʙʟᴏᴄᴋѕ ᴛᴏ ꜰɪʟᴛᴇʀ",
-                        "ʙʟᴏᴄᴋѕ ꜰʀᴏᴍ ᴘʟᴀʏɪɴɢ ѕᴏᴜɴᴅѕ ᴡʜᴇɴ ʙʀᴏᴋᴇɴ",
+                ChatColor.RED + "" + ChatColor.BOLD + "Sound Filter",
+                Arrays.asList(ChatColor.WHITE + "ꜰɪʟᴛᴇʀ ʙʟᴏᴄᴋѕ ꜰʀᴏᴍ ᴘʟᴀʏɪɴɢ ѕᴏᴜɴᴅѕ ᴡʜᴇɴ ʙʀᴏᴋᴇɴ",
                         "",
                         ChatColor.RED + "" + ChatColor.BOLD + "NOT IMPLEMENTED YET"),
                 true,
@@ -91,7 +83,7 @@ public class SettingsGUI {
     private ItemStack MultiSoundsButton() {
         return ItemStackCreator.createItemStack(
                 Material.TNT,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "Multi Sound",
+                ChatColor.RED + "" + ChatColor.BOLD + "Multi Sound",
                 Arrays.asList(ChatColor.WHITE + "ᴛᴏɢɢʟᴇ ᴡʜᴇᴛʜᴇʀ ᴛᴏ ᴘʟᴀʏ ѕᴏᴜɴᴅ ᴍᴜʟᴛɪᴘʟᴇ ᴛɪᴍᴇѕ",
                         ChatColor.WHITE + "ɪꜰ ᴍᴜʟᴛɪᴘʟᴇ ʙʟᴏᴄᴋѕ ᴀʀᴇ ʙʀᴏᴋᴇɴ ᴀᴛ ᴏɴᴄᴇ",
                         "",
@@ -102,7 +94,7 @@ public class SettingsGUI {
     private ItemStack PitchVariance() {
         return ItemStackCreator.createItemStack(
                 Material.REPEATER,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "Pitch Variance",
+                ChatColor.RED + "" + ChatColor.BOLD + "Pitch Variance",
                 Arrays.asList(ChatColor.WHITE + "ᴛᴏɢɢʟᴇ ᴘɪᴛᴄʜ ᴠᴀʀɪᴀɴᴄᴇ",
                         "",
                         ChatColor.RED + "" + ChatColor.BOLD + "NOT IMPLEMENTED YET")
@@ -113,7 +105,7 @@ public class SettingsGUI {
     private ItemStack ToDoListButton() {
         return ItemStackCreator.createItemStack(
                 Material.BOOK,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "To-Do List",
+                ChatColor.RED + "" + ChatColor.BOLD + "To-Do List",
                 Arrays.asList(ChatColor.WHITE + "Setting to set default block break sound for all players",
                         ChatColor.WHITE + "Setting to allow default sound optional for players in or out",
                         ChatColor.WHITE + "Option to enable role requirement to use plugin",

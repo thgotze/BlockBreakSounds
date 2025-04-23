@@ -26,7 +26,7 @@ public class FavoriteSoundsGUI {
         this.gui = Bukkit.createInventory(null, 45, "Favorite Sounds");
         setFrames();
         gui.setItem(36, GUIUtils.ReturnButton());
-        gui.setItem(40, FavoriteSoundsInfoButton());
+        gui.setItem(40, FavoriteSoundsButton());
     }
 
     public void setupAndOpenGUI(Player player) {
@@ -44,14 +44,15 @@ public class FavoriteSoundsGUI {
         }
     }
 
-    private ItemStack FavoriteSoundsInfoButton() {
+    // Favorite Sounds Button (Nether Star)
+    private ItemStack FavoriteSoundsButton() {
         return ItemStackCreator.createItemStack(
                 Material.NETHER_STAR,
-                ChatColor.GOLD + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
-                Arrays.asList(
+                ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
+                Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ",
+                        "",
                         ChatColor.WHITE + "ᴅʀᴏᴘ ѕᴏᴜɴᴅѕ ᴛᴏ " + ChatColor.RED + "ᴜɴꜰᴀᴠᴏʀɪᴛᴇ",
-                        ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ " + ChatColor.GREEN + "ꜰᴀᴠᴏʀɪᴛᴇ"
-                )
+                        ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ " + ChatColor.GREEN + "ꜰᴀᴠᴏʀɪᴛᴇ")
         );
     }
 
@@ -71,17 +72,16 @@ public class FavoriteSoundsGUI {
         }
     }
 
-    private ItemStack createFavoriteSoundButton(SoundData soundData, int index) {
+    private ItemStack createFavoriteSoundButton(SoundData soundData, int soundNumber) {
         return ItemStackCreator.createItemStack(
                 soundData.getMaterial(),
-                ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sound " + index + " ⭐",
+                ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sound " + soundNumber + " ⭐",
                 Arrays.asList(
                         ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(TextUtils.getFormattedSoundName(soundData.getSound())),
                         ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", soundData.getVolume() * 100)),
                         ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", soundData.getPitch())),
                         "",
                         ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ",
-                        "",
                         ChatColor.GREEN + "" + ChatColor.BOLD + "ѕᴏᴜɴᴅ ꜰᴀᴠᴏʀɪᴛᴇᴅ! ⭐"),
                 true,
                 true,
@@ -92,6 +92,6 @@ public class FavoriteSoundsGUI {
     private ItemStack NoSoundsFavoritedYetButton() {
         return ItemStackCreator.createItemStack(
                 Material.PAPER,
-                ChatColor.WHITE + "ʏᴏᴜ ʜᴀᴠᴇ ɴᴏᴛ ꜰᴀᴠᴏʀɪᴛᴇᴅ ᴀɴʏ ѕᴏᴜɴᴅѕ ʏᴇᴛ!");
+                ChatColor.WHITE + convertToSmallFont("You have not favorited any sounds yet!"));
     }
 }
