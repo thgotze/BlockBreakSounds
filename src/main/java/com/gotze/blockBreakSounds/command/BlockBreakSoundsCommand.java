@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 
 import static com.gotze.blockBreakSounds.utility.TextUtils.convertToSmallFont;
 
-public class BlockBreakSoundsCommand implements CommandExecutor {
+public final class BlockBreakSoundsCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String label, String[] args) {

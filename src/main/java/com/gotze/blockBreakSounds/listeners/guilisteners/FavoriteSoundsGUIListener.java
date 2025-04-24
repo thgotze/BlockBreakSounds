@@ -31,10 +31,13 @@ public class FavoriteSoundsGUIListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
+        if (!event.getView().getTitle().equals(GUI_TITLE)) return;
+        event.setCancelled(true);
+
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
 
-        if (ValidClickChecker.shouldCancelClick(GUI_TITLE, event, clickedInventory, player)) return;
+        if (clickedInventory == null || clickedInventory.equals(player.getInventory())) return;
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
