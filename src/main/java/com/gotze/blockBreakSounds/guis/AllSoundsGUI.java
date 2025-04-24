@@ -29,7 +29,6 @@ public class AllSoundsGUI {
         gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         setCategoryOrSoundButtons();
         player.openInventory(gui);
-
     }
 
     private void setFrames() {
@@ -47,19 +46,36 @@ public class AllSoundsGUI {
                 gui.setItem(20, EntitySoundsButton());
                 gui.setItem(21, BlockSoundsButton());
                 gui.setItem(22, ItemSoundsButton());
-                gui.setItem(23, NoteBlockSoundsButton());
+                gui.setItem(23, NoteblockSoundsButton());
                 gui.setItem(24, OtherSoundsButton());
                 return;
 
             case "Entity Sounds":
                 gui.setItem(22, PlaceHolderPaperItem());
+                return;
+
+            case "Block Sounds":
+                gui.setItem(22, PlaceHolderPaperItem());
+                return;
+
+            case "Item Sounds":
+                gui.setItem(22, PlaceHolderPaperItem());
+                return;
+
+            case "Noteblock Sounds":
+                gui.setItem(22, PlaceHolderPaperItem());
+                return;
+
+            case "Other Sounds":
+                gui.setItem(22, PlaceHolderPaperItem());
+                return;
         }
     }
 
     private ItemStack PlaceHolderPaperItem() {
         return createItemStack(
                 Material.PAPER,
-                "Placeholder Item for Entity Sounds"
+                "Placeholder Item for Categories"
         );
     }
 
@@ -75,7 +91,7 @@ public class AllSoundsGUI {
     private ItemStack BlockSoundsButton() {
         return createItemStack(
                 Material.GRASS_BLOCK,
-                ChatColor.AQUA + "" + ChatColor.BOLD + "Entity Sounds"
+                ChatColor.AQUA + "" + ChatColor.BOLD + "Block Sounds"
         );
     }
 
@@ -83,15 +99,18 @@ public class AllSoundsGUI {
     private ItemStack ItemSoundsButton() {
         return createItemStack(
                 Material.DIAMOND_PICKAXE,
-                ChatColor.AQUA + "" + ChatColor.BOLD + "Item Sounds"
+                ChatColor.AQUA + "" + ChatColor.BOLD + "Item Sounds",
+                null,
+                true,
+                true
         );
     }
 
     // Noteblock Sounds Button (Note Block)
-    private ItemStack NoteBlockSoundsButton() {
+    private ItemStack NoteblockSoundsButton() {
         return createItemStack(
                 Material.NOTE_BLOCK,
-                ChatColor.AQUA + "" + ChatColor.BOLD + "Note Block Sounds"
+                ChatColor.AQUA + "" + ChatColor.BOLD + "Noteblock Sounds"
         );
     }
 

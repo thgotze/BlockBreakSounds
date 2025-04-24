@@ -23,7 +23,7 @@ public class SoundMap {
             // Passive Mob Sounds
             put(createItemStack(Material.SHEEP_SPAWN_EGG, "Passive Mob Sounds"), new HashMap<>() {{
                 put(createItemStack(Material.CHICKEN_SPAWN_EGG, "Chicken Sounds"), List.of(
-                        new SoundData(Sound.ENTITY_CHI      CKEN_AMBIENT, Material.FEATHER),
+                        new SoundData(Sound.ENTITY_CHICKEN_AMBIENT, Material.FEATHER),
                         new SoundData(Sound.ENTITY_CHICKEN_HURT, Material.BONE),
                         new SoundData(Sound.ENTITY_CHICKEN_EGG, Material.EGG)
                 ));

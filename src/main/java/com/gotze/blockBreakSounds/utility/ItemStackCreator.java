@@ -16,8 +16,8 @@ public final class ItemStackCreator {
      * @param displayName The display name of the ItemStack (null if not desired).
      * @param lore The lore of the ItemStack (null if not desired).
      * @param hideAdditionalTooltip Flag to hide additional tooltips (e.g., music discs).
-     * @param hideTooltipBox Flag to hide the tooltip box when hovering over the item.
      * @param hideAttributes Flag to hide item attributes (e.g., damage, armor values).
+     * @param hideTooltipBox Flag to hide the tooltip box when hovering over the item.
      * @return A fully customized ItemStack.
      */
 

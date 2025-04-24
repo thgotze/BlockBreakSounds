@@ -12,6 +12,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import javax.annotation.Nullable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,7 +42,6 @@ public final class GUIUtils {
         );
     }
 
-    // TODO: Add bold for colored words
     public static ItemStack CurrentSoundDisplayButton(Player player) {
         SoundData playerCurrentSound = CurrentSoundData.currentSound.get(player.getUniqueId());
         if (playerCurrentSound == null) {
@@ -61,9 +61,9 @@ public final class GUIUtils {
                             ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", playerCurrentSound.getVolume() * 100)),
                             ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", playerCurrentSound.getPitch())),
                             "",
-                            ChatColor.WHITE + "ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.YELLOW + "ᴘʟᴀʏᴛᴇѕᴛ",
-                            ChatColor.WHITE + "ᴅʀᴏᴘ ɪᴛᴇᴍ ᴛᴏ " + ChatColor.RED + "ᴄʟᴇᴀʀ",
-                            ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.GREEN + "ꜰᴀᴠᴏʀɪᴛᴇ"
+                            ChatColor.WHITE + "ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.YELLOW + "" + ChatColor.BOLD + "ᴘʟᴀʏᴛᴇѕᴛ",
+                            ChatColor.WHITE + "ᴅʀᴏᴘ ɪᴛᴇᴍ ᴛᴏ " + ChatColor.RED + "" + ChatColor.BOLD + "ᴄʟᴇᴀʀ",
+                            ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.GREEN + "" + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇ"
                     ),
                     true,
                     true,

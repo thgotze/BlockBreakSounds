@@ -40,9 +40,11 @@ public class FavoriteSoundsGUIListener implements Listener {
         int slot = event.getSlot();
 
         switch (slot) {
-            // TODO: update the gui after favoriting the currentsound while in favorite sound gui
             case 4: // Current Sound
                 GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
+                if (clickType == ClickType.SHIFT_RIGHT && clickedInventory.getItem(slot).getType() != Material.GLASS_PANE) {
+                    new FavoriteSoundsGUI().setupAndOpenGUI(player);
+                }
                 return;
 
             case 36: // Return
@@ -81,15 +83,10 @@ public class FavoriteSoundsGUIListener implements Listener {
                     }
 
                     if (clickType != ClickType.DROP) { // Set as current sound
-                        System.out.println("handlePickedLineSound running for slot " + slot);
                         SoundData favoriteSoundData = FavoriteSoundData.favoriteSounds.get(player.getUniqueId()).get(slot - 9);
-                        if (favoriteSoundData == null) {
-                            System.out.println("unable to get favorite sound data");
-                            return;
-                        }
+                        if (favoriteSoundData == null) return;
+
                         CurrentSoundData.setCurrentSound(player, favoriteSoundData);
-                        System.out.println("sound has been set");
-                        System.out.println("trying to handlepickededline");
                         GUIUtils.handlePickedLineSound(clickedInventory, slot);
                         clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
                     }
