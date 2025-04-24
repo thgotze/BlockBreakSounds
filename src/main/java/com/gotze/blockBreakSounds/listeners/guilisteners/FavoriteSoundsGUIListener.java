@@ -7,7 +7,6 @@ import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
 import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundData;
 import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
-import com.gotze.blockBreakSounds.utility.ItemStackCreator;
 import com.gotze.blockBreakSounds.utility.ValidClickChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -20,6 +19,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
 
 public class FavoriteSoundsGUIListener implements Listener {
 
@@ -57,7 +58,7 @@ public class FavoriteSoundsGUIListener implements Listener {
 
                     if (clickType == ClickType.DROP) { // Remove sound from favorites
                         if (item.getType() != Material.BARRIER) {
-                            ItemStack confirmClearFavoriteSound = ItemStackCreator.createItemStack(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴜɴꜰᴀᴠᴏʀɪᴛᴇ");
+                            ItemStack confirmClearFavoriteSound = createItemStack(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴜɴꜰᴀᴠᴏʀɪᴛᴇ");
                             clickedInventory.setItem(slot, confirmClearFavoriteSound);
 
                             new BukkitRunnable() {

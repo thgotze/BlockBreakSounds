@@ -168,7 +168,7 @@ public class PickSoundGUIListener implements Listener {
 
             case 44: // Pick From All Sounds
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                new AllSoundsGUI().setupAndOpenGUI(player);
+                new AllSoundsGUI("All Sounds").setupAndOpenGUI(player);
                 return;
 
             default:

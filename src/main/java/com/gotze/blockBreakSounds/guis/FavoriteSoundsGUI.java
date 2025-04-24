@@ -1,9 +1,8 @@
 package com.gotze.blockBreakSounds.guis;
 
+import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundData;
 import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
-import com.gotze.blockBreakSounds.utility.ItemStackCreator;
-import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundData;
 import com.gotze.blockBreakSounds.utility.TextUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
 import static com.gotze.blockBreakSounds.utility.TextUtils.convertToSmallFont;
 
 public class FavoriteSoundsGUI {
@@ -47,7 +47,7 @@ public class FavoriteSoundsGUI {
     // TODO: Add bold for colored words
     // Favorite Sounds Button (Nether Star)
     private ItemStack FavoriteSoundsButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.NETHER_STAR,
                 ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
                 Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ",
@@ -74,7 +74,7 @@ public class FavoriteSoundsGUI {
     }
 
     private ItemStack createFavoriteSoundButton(SoundData soundData, int soundNumber) {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 soundData.getMaterial(),
                 ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sound " + soundNumber + " ⭐",
                 Arrays.asList(
@@ -91,7 +91,7 @@ public class FavoriteSoundsGUI {
     }
 
     private ItemStack NoSoundsFavoritedYetButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.PAPER,
                 ChatColor.WHITE + convertToSmallFont("You have not favorited any sounds yet!"));
     }

@@ -2,7 +2,6 @@ package com.gotze.blockBreakSounds.soundlogic;
 
 import com.gotze.blockBreakSounds.Main;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
-import com.gotze.blockBreakSounds.utility.ItemStackCreator;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -17,6 +16,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
+import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
 
 public class CurrentSoundData extends SoundData {
 
@@ -44,7 +45,7 @@ public class CurrentSoundData extends SoundData {
         }
 
         if (materialOfSound != Material.BARRIER) {
-            ItemStack confirmClearCurrentSoundItem = ItemStackCreator.createItemStack(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴄʟᴇᴀʀ");
+            ItemStack confirmClearCurrentSoundItem = createItemStack(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴄʟᴇᴀʀ");
             gui.setItem(slot, confirmClearCurrentSoundItem);
 
             new BukkitRunnable() {

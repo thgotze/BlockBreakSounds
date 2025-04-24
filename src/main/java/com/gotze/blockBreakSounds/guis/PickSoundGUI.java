@@ -1,7 +1,6 @@
 package com.gotze.blockBreakSounds.guis;
 
 import com.gotze.blockBreakSounds.utility.GUIUtils;
-import com.gotze.blockBreakSounds.utility.ItemStackCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -10,6 +9,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
+
+import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
 
 public class PickSoundGUI {
 
@@ -67,7 +68,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack PickFromAllSoundsButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.JUKEBOX,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Pick From All Sounds",
                 Arrays.asList(
@@ -80,7 +81,7 @@ public class PickSoundGUI {
 
     // Favorite Sounds Button (Nether Star)
     private ItemStack FavoriteSoundsButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.NETHER_STAR,
                 ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
                 Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ",
@@ -90,7 +91,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack PlayerLevelupButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.SUNFLOWER,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Glimmer!",
                 Arrays.asList(
@@ -103,7 +104,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack DecoratedPotBreakButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.DECORATED_POT,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Clonk!",
                 Arrays.asList(
@@ -116,7 +117,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack AmethystBreakSoundButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.AMETHYST_BLOCK,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Cling!",
                 Arrays.asList(
@@ -129,7 +130,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack AmethystChimeButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.PINK_PETALS,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Chime!",
                 Arrays.asList(
@@ -142,7 +143,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack BeehiveExitSoundButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.BEE_NEST,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Plop!",
                 Arrays.asList(
@@ -158,7 +159,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack ItemFrameRemoveItemButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.ITEM_FRAME,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Smack!",
                 Arrays.asList(
@@ -171,7 +172,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack ArmadilloBrushButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.BRUSH,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Brushplop!",
                 Arrays.asList(
@@ -185,7 +186,7 @@ public class PickSoundGUI {
 
 
     private ItemStack BambooBreakSoundButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.BAMBOO,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Bamboo!",
                 Arrays.asList(
@@ -198,7 +199,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack SnifferEatButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.COOKED_BEEF,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Monch!",
                 Arrays.asList(
@@ -213,7 +214,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack NetheriteBlockBreakButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.NETHERITE_BLOCK,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Clank!",
                 Arrays.asList(
@@ -226,7 +227,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack BoneBreakSoundButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.BONE_BLOCK,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Clatter!",
                 Arrays.asList(
@@ -239,7 +240,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack BubbleColumnBubblePopButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.GLASS_BOTTLE,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Blip!",
                 Arrays.asList(
@@ -252,7 +253,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack BubbleColumnUpwardsAmbientButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.CAULDRON,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Sizzle!",
                 Arrays.asList(
@@ -267,7 +268,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack CalciteBreakButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.CALCITE,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Crumble!",
                 Arrays.asList(
@@ -280,7 +281,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack CopperBulbPlaceButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.COPPER_BULB,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Klink!",
                 Arrays.asList(
@@ -293,7 +294,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack EndPortalFrameFillButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.END_PORTAL_FRAME,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Whomp!",
                 Arrays.asList(
@@ -306,7 +307,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack FungusBreakButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.OAK_PLANKS,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Creak!",
                 Arrays.asList(
@@ -319,7 +320,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack LavaPopButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.LAVA_BUCKET,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Bloop!",
                 Arrays.asList(
@@ -332,7 +333,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack ScaffoldingBreakButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.SCAFFOLDING,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Snap!",
                 Arrays.asList(
@@ -345,7 +346,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack LodestonePlaceButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.LODESTONE,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Quink!",
                 Arrays.asList(
@@ -358,7 +359,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack SnowBreakButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.SNOW_BLOCK,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Snow!",
                 Arrays.asList(
@@ -371,7 +372,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack DeepslateBreakButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.COBBLED_DEEPSLATE,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Grumble!",
                 Arrays.asList(
@@ -384,7 +385,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack VexHurtButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.SPECTRAL_ARROW,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Pew!",
                 Arrays.asList(
@@ -397,7 +398,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack DecoratedPotInsertButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.HOPPER,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Pop!",
                 Arrays.asList(
@@ -410,7 +411,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack EnderEyeDeathButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.ENDER_EYE ,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Whoosh!",
                 Arrays.asList(
@@ -423,7 +424,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack ItemPickupButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.PUFFERFISH,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Pickup!",
                 Arrays.asList(
@@ -436,7 +437,7 @@ public class PickSoundGUI {
     }
 
     private ItemStack ExperienceOrbPickupButton () {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.EXPERIENCE_BOTTLE,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Ding!",
                 Arrays.asList(

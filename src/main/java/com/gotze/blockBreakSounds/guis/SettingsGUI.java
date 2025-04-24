@@ -1,7 +1,6 @@
 package com.gotze.blockBreakSounds.guis;
 
 import com.gotze.blockBreakSounds.utility.GUIUtils;
-import com.gotze.blockBreakSounds.utility.ItemStackCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -10,6 +9,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
+
+import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
 
 public class SettingsGUI {
 
@@ -41,7 +42,7 @@ public class SettingsGUI {
     }
 
     private ItemStack ToolSpecificSoundsButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.GOLDEN_SHOVEL,
                 ChatColor.RED + "" + ChatColor.BOLD + "Tool Specific Sounds",
                 Arrays.asList(ChatColor.WHITE + "ᴄʜᴏᴏѕᴇ ѕᴘᴇᴄɪꜰɪᴄ ʙʟᴏᴄᴋ ʙʀᴇᴀᴋ ѕᴏᴜɴᴅѕ",
@@ -55,7 +56,7 @@ public class SettingsGUI {
     }
 
     private ItemStack CombinedSoundsButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.MUSIC_DISC_PRECIPICE,
                 ChatColor.RED + "" + ChatColor.BOLD + "Combined Sounds",
                 Arrays.asList(ChatColor.WHITE + "ᴄʜᴏᴏѕᴇ ᴍᴜʟᴛɪᴘʟᴇ ʙʟᴏᴄᴋ ʙʀᴇᴀᴋ ѕᴏᴜɴᴅѕ ᴛᴏ ᴘʟᴀʏ ѕɪᴍᴜʟᴛᴀɴᴇᴏᴜѕʟʏ",
@@ -68,7 +69,7 @@ public class SettingsGUI {
     }
 
     private ItemStack SoundFilterButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.GUSTER_BANNER_PATTERN,
                 ChatColor.RED + "" + ChatColor.BOLD + "Sound Filter",
                 Arrays.asList(ChatColor.WHITE + "ꜰɪʟᴛᴇʀ ʙʟᴏᴄᴋѕ ꜰʀᴏᴍ ᴘʟᴀʏɪɴɢ ѕᴏᴜɴᴅѕ ᴡʜᴇɴ ʙʀᴏᴋᴇɴ",
@@ -81,7 +82,7 @@ public class SettingsGUI {
     }
 
     private ItemStack MultiSoundsButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.TNT,
                 ChatColor.RED + "" + ChatColor.BOLD + "Multi Sound",
                 Arrays.asList(ChatColor.WHITE + "ᴛᴏɢɢʟᴇ ᴡʜᴇᴛʜᴇʀ ᴛᴏ ᴘʟᴀʏ ѕᴏᴜɴᴅ ᴍᴜʟᴛɪᴘʟᴇ ᴛɪᴍᴇѕ",
@@ -92,7 +93,7 @@ public class SettingsGUI {
     }
 
     private ItemStack PitchVariance() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.REPEATER,
                 ChatColor.RED + "" + ChatColor.BOLD + "Pitch Variance",
                 Arrays.asList(ChatColor.WHITE + "ᴛᴏɢɢʟᴇ ᴘɪᴛᴄʜ ᴠᴀʀɪᴀɴᴄᴇ",
@@ -103,7 +104,7 @@ public class SettingsGUI {
 
     // TODO: Temp to do list
     private ItemStack ToDoListButton() {
-        return ItemStackCreator.createItemStack(
+        return createItemStack(
                 Material.BOOK,
                 ChatColor.RED + "" + ChatColor.BOLD + "To-Do List",
                 Arrays.asList(ChatColor.WHITE + "Setting to set default block break sound for all players",
