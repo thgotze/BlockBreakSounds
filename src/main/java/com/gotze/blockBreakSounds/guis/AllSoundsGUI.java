@@ -1,5 +1,7 @@
 package com.gotze.blockBreakSounds.guis;
 
+import com.gotze.blockBreakSounds.soundlogic.SoundData;
+import com.gotze.blockBreakSounds.soundlogic.SoundMap;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -9,6 +11,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
 
@@ -59,8 +63,29 @@ public class AllSoundsGUI {
                 return;
 
             case "Item Sounds":
-                gui.setItem(22, PlaceHolderPaperItem());
+                int slot = 9; // Starting GUI slot
+
+                for (Map.Entry<ItemStack, Map<ItemStack, List<SoundData>>> categoryEntry : SoundMap.ITEM_SOUNDS.entrySet()) {
+                    Map<ItemStack, List<SoundData>> subcategories = categoryEntry.getValue();
+
+                    for (Map.Entry<ItemStack, List<SoundData>> subEntry : subcategories.entrySet()) {
+                        gui.setItem(slot++, subEntry.getKey()); // Place the subcategory ItemStack
+                    }
+                }
                 return;
+
+            case "Item Sounds":
+                int slot = 9; // Starting GUI slot
+
+                // Directly access the subcategories for "Item Sounds" without the first loop
+                Map<ItemStack, List<SoundData>> subcategories = SoundMap.ITEM_SOUNDS.get(createItemStack(Material.DIAMOND_AXE, "Item Sounds"));
+
+                // Now, iterate over the subcategories and set them in the GUI
+                for (Map.Entry<ItemStack, List<SoundData>> subEntry : subcategories.entrySet()) {
+                    gui.setItem(slot++, subEntry.getKey()); // Place the subcategory ItemStack
+                }
+                return;
+
 
             case "Noteblock Sounds":
                 gui.setItem(22, PlaceHolderPaperItem());
@@ -98,7 +123,7 @@ public class AllSoundsGUI {
     // Item Sounds Button (Diamond Pickaxe)
     private ItemStack ItemSoundsButton() {
         return createItemStack(
-                Material.DIAMOND_PICKAXE,
+                Material.DIAMOND_AXE,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Item Sounds",
                 null,
                 true,
@@ -114,10 +139,10 @@ public class AllSoundsGUI {
         );
     }
 
-    // Other Sounds Button (Jukebox)
+    // Other Sounds Button (Pufferfish)
     private ItemStack OtherSoundsButton() {
         return createItemStack(
-                Material.JUKEBOX,
+                Material.PUFFERFISH,
                 ChatColor.AQUA + "" + ChatColor.BOLD + "Other Sounds"
         );
     }
