@@ -12,73 +12,72 @@ import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStac
 
 public class SoundMap {
 
-    public static final Map<ItemStack, Map<ItemStack, List<SoundData>>> ENTITY_SOUNDS = new LinkedHashMap<>(); // Ender pearl
-    public static final Map<ItemStack, Map<ItemStack, Map<ItemStack, List<SoundData>>>> BLOCK_SOUNDS = new LinkedHashMap<>(); // Stone Block
-    public static final Map<ItemStack, List<SoundData>> ITEM_SOUNDS = new LinkedHashMap<>(); // Diamond axe
-    public static final Map<ItemStack, Map<ItemStack, Map<ItemStack, List<SoundData>>>> NOTEBLOCK_SOUNDS = new LinkedHashMap<>(); // Noteblock
-    public static final Map<ItemStack, Map<ItemStack, Map<ItemStack, List<SoundData>>>> OTHER_SOUNDS = new LinkedHashMap<>(); // Pufferfish
-
-    static { // Entity Sounds
+    // Entity Sounds
+    public static final Map<ItemStack, Map<ItemStack, List<SoundData>>> ENTITY_SOUNDS = new LinkedHashMap<>();
+    static {
         // Passive Mob Sounds
         ENTITY_SOUNDS.put(createItemStack(Material.SHEEP_SPAWN_EGG, "Passive Mob Sounds"), new LinkedHashMap<>() {{
-                put(createItemStack(Material.CHICKEN_SPAWN_EGG, "Chicken Sounds"), List.of(
-                        new SoundData(Sound.ENTITY_CHICKEN_AMBIENT, Material.FEATHER),
-                        new SoundData(Sound.ENTITY_CHICKEN_HURT, Material.BONE),
-                        new SoundData(Sound.ENTITY_CHICKEN_EGG, Material.EGG)
-                ));
-                put(createItemStack(Material.VILLAGER_SPAWN_EGG, "Villager Sounds"), List.of(
-                        new SoundData(Sound.ENTITY_VILLAGER_TRADE, Material.EMERALD),
-                        new SoundData(Sound.ENTITY_VILLAGER_YES, Material.LIME_DYE),
-                        new SoundData(Sound.ENTITY_VILLAGER_NO, Material.RED_DYE)
-                ));
-            }});
-            // Neutral Mob Sounds
-            put(createItemStack(Material.SQUID_SPAWN_EGG, "Neutral Mob Sounds"), new LinkedHashMap<>() {{
-                put(createItemStack(Material.CHICKEN_SPAWN_EGG, "Chicken Sounds"), List.of(
-                        new SoundData(Sound.ENTITY_CHICKEN_AMBIENT, Material.FEATHER),
-                        new SoundData(Sound.ENTITY_CHICKEN_HURT, Material.BONE),
-                        new SoundData(Sound.ENTITY_CHICKEN_EGG, Material.EGG)
-                ));
-            }});
-            // Hostile Mob Sounds
-            put(createItemStack(Material.ZOMBIE_SPAWN_EGG, "Hostile Mob Sounds"), new LinkedHashMap<>() {{
-                put(createItemStack(Material.ZOMBIE_HEAD, "Zombie Sounds"), List.of(
-                        new SoundData(Sound.ENTITY_ZOMBIE_AMBIENT, Material.ROTTEN_FLESH),
-                        new SoundData(Sound.ENTITY_ZOMBIE_HURT, Material.BONE),
-                        new SoundData(Sound.ENTITY_ZOMBIE_DEATH, Material.REDSTONE)
-                ));
-                put(createItemStack(Material.SKELETON_SKULL, "Skeleton Sounds"), List.of(
-                        new SoundData(Sound.ENTITY_SKELETON_AMBIENT, Material.BONE),
-                        new SoundData(Sound.ENTITY_SKELETON_HURT, Material.ARROW),
-                        new SoundData(Sound.ENTITY_SKELETON_DEATH, Material.BONE_MEAL)
-                ));
-            }});
-            // Player Sounds
-            put(createItemStack(Material.PLAYER_HEAD, "Player Sounds"), new LinkedHashMap<>() {{
-                put(createItemStack(Material.NOTE_BLOCK, ""), List.of(
-                        new SoundData(Sound.BLOCK_NOTE_BLOCK_BANJO, Material.NOTE_BLOCK)
-                ));
-
-
-            }});
-            // Projectile Sounds
-            put(createItemStack(Material.ARROW, "Projectile Sounds"), new LinkedHashMap<>() {{
-                put(createItemStack(Material.NOTE_BLOCK, ""), List.of(
-                        new SoundData(Sound.BLOCK_NOTE_BLOCK_BANJO, Material.NOTE_BLOCK)
-                ));
-
-
-            }});
-            // Other Entity Sounds
-            put(createItemStack(Material.GLASS, "Other Entity Sounds"), new LinkedHashMap<>() {{
-                put(createItemStack(Material.NOTE_BLOCK, ""), List.of(
-                        new SoundData(Sound.BLOCK_NOTE_BLOCK_BANJO, Material.NOTE_BLOCK)
-                ));
-            }});
+            put(createItemStack(Material.CHICKEN_SPAWN_EGG, "Chicken Sounds"), List.of(
+                    new SoundData(Sound.ENTITY_CHICKEN_AMBIENT, Material.FEATHER),
+                    new SoundData(Sound.ENTITY_CHICKEN_HURT, Material.BONE),
+                    new SoundData(Sound.ENTITY_CHICKEN_EGG, Material.EGG)
+            ));
+            put(createItemStack(Material.VILLAGER_SPAWN_EGG, "Villager Sounds"), List.of(
+                    new SoundData(Sound.ENTITY_VILLAGER_TRADE, Material.EMERALD),
+                    new SoundData(Sound.ENTITY_VILLAGER_YES, Material.LIME_DYE),
+                    new SoundData(Sound.ENTITY_VILLAGER_NO, Material.RED_DYE)
+            ));
+        }});
+        // Neutral Mob Sounds
+        ENTITY_SOUNDS.put(createItemStack(Material.SQUID_SPAWN_EGG, "Neutral Mob Sounds"), new LinkedHashMap<>() {{
+            put(createItemStack(Material.CHICKEN_SPAWN_EGG, "Chicken Sounds"), List.of(
+                    new SoundData(Sound.ENTITY_CHICKEN_AMBIENT, Material.FEATHER),
+                    new SoundData(Sound.ENTITY_CHICKEN_HURT, Material.BONE),
+                    new SoundData(Sound.ENTITY_CHICKEN_EGG, Material.EGG)
+            ));
+        }});
+        // Hostile Mob Sounds
+        ENTITY_SOUNDS.put(createItemStack(Material.ZOMBIE_SPAWN_EGG, "Hostile Mob Sounds"), new LinkedHashMap<>() {{
+            put(createItemStack(Material.ZOMBIE_HEAD, "Zombie Sounds"), List.of(
+                    new SoundData(Sound.ENTITY_ZOMBIE_AMBIENT, Material.ROTTEN_FLESH),
+                    new SoundData(Sound.ENTITY_ZOMBIE_HURT, Material.BONE),
+                    new SoundData(Sound.ENTITY_ZOMBIE_DEATH, Material.REDSTONE)
+            ));
+            put(createItemStack(Material.SKELETON_SKULL, "Skeleton Sounds"), List.of(
+                    new SoundData(Sound.ENTITY_SKELETON_AMBIENT, Material.BONE),
+                    new SoundData(Sound.ENTITY_SKELETON_HURT, Material.ARROW),
+                    new SoundData(Sound.ENTITY_SKELETON_DEATH, Material.BONE_MEAL)
+            ));
+        }});
+        // Player Sounds
+        ENTITY_SOUNDS.put(createItemStack(Material.PLAYER_HEAD, "Player Sounds"), new LinkedHashMap<>() {{
+            put(createItemStack(Material.NOTE_BLOCK, ""), List.of(
+                    new SoundData(Sound.BLOCK_NOTE_BLOCK_BANJO, Material.NOTE_BLOCK)
+            ));
+        }});
+        // Projectile Sounds
+        ENTITY_SOUNDS.put(createItemStack(Material.ARROW, "Projectile Sounds"), new LinkedHashMap<>() {{
+            put(createItemStack(Material.NOTE_BLOCK, ""), List.of(
+                    new SoundData(Sound.BLOCK_NOTE_BLOCK_BANJO, Material.NOTE_BLOCK)
+            ));
+        }});
+        // Other Entity Sounds
+        ENTITY_SOUNDS.put(createItemStack(Material.GLASS, "Other Entity Sounds"), new LinkedHashMap<>() {{
+            put(createItemStack(Material.NOTE_BLOCK, ""), List.of(
+                    new SoundData(Sound.BLOCK_NOTE_BLOCK_BANJO, Material.NOTE_BLOCK)
+            ));
         }});
     }
 
-    static { // Item Sounds
+    // Block Sounds
+    public static final Map<ItemStack, Map<ItemStack, Map<ItemStack, List<SoundData>>>> BLOCK_SOUNDS = new LinkedHashMap<>();
+    static {
+
+    }
+
+    // Item Sounds
+    public static final Map<ItemStack, List<SoundData>> ITEM_SOUNDS = new LinkedHashMap<>();
+    static {
         // Trident Sounds
         ITEM_SOUNDS.put(createItemStack(Material.TRIDENT, "Trident Sounds"), List.of(
                 new SoundData(Sound.ITEM_TRIDENT_HIT, Material.TRIDENT),
@@ -205,6 +204,154 @@ public class SoundMap {
                 new SoundData(Sound.ITEM_SPYGLASS_STOP_USING, Material.SPYGLASS),
                 new SoundData(Sound.ITEM_SPYGLASS_USE, Material.SPYGLASS),
                 new SoundData(Sound.ITEM_TOTEM_USE, Material.TOTEM_OF_UNDYING)
+        ));
+    }
+
+    // Noteblock Sounds
+    public static final List<SoundData> NOTEBLOCK_SOUNDS = List.of(
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_BANJO, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_BASEDRUM, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_BASS, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_BELL, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_BIT, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_CHIME, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_COW_BELL, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_DIDGERIDOO, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_FLUTE, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_GUITAR, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_HARP, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_HAT, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_CREEPER, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_ENDER_DRAGON, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_PIGLIN, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_SKELETON, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_WITHER_SKELETON, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_ZOMBIE, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_IRON_XYLOPHONE, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_PLING, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_SNARE, Material.NOTE_BLOCK),
+            new SoundData(Sound.BLOCK_NOTE_BLOCK_XYLOPHONE, Material.NOTE_BLOCK)
+    );
+
+    // Other Sounds
+    public static final Map<ItemStack, List<SoundData>> OTHER_SOUNDS = new LinkedHashMap<>();
+    static {
+        // Music Discs
+        OTHER_SOUNDS.put(createItemStack(Material.MUSIC_DISC_CAT, "Music Disc Sounds"), List.of(
+                new SoundData(Sound.MUSIC_DISC_11, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_13, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_5, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_BLOCKS, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_CAT, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_CHIRP, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_CREATOR, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_CREATOR_MUSIC_BOX, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_FAR, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_MALL, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_MELLOHI, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_OTHERSIDE, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_PIGSTEP, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_PRECIPICE, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_RELIC, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_STAL, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_STRAD, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_WAIT, Material.MUSIC_DISC_CAT),
+                new SoundData(Sound.MUSIC_DISC_WARD, Material.MUSIC_DISC_CAT)
+        ));
+
+        // Biome Ambience
+        OTHER_SOUNDS.put(createItemStack(Material.OAK_SAPLING, "Biome Ambience Sounds"), List.of(
+                new SoundData(Sound.AMBIENT_BASALT_DELTAS_ADDITIONS, Material.BASALT),
+                new SoundData(Sound.AMBIENT_BASALT_DELTAS_LOOP, Material.BASALT),
+                new SoundData(Sound.AMBIENT_BASALT_DELTAS_MOOD, Material.BASALT),
+                new SoundData(Sound.AMBIENT_CAVE, Material.STONE),
+                new SoundData(Sound.AMBIENT_CRIMSON_FOREST_ADDITIONS, Material.CRIMSON_STEM),
+                new SoundData(Sound.AMBIENT_CRIMSON_FOREST_LOOP, Material.CRIMSON_STEM),
+                new SoundData(Sound.AMBIENT_CRIMSON_FOREST_MOOD, Material.CRIMSON_STEM),
+                new SoundData(Sound.AMBIENT_NETHER_WASTES_ADDITIONS, Material.SOUL_SOIL),
+                new SoundData(Sound.AMBIENT_NETHER_WASTES_LOOP, Material.SOUL_SOIL),
+                new SoundData(Sound.AMBIENT_NETHER_WASTES_MOOD, Material.SOUL_SOIL),
+                new SoundData(Sound.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, Material.SOUL_SAND),
+                new SoundData(Sound.AMBIENT_SOUL_SAND_VALLEY_LOOP, Material.SOUL_SAND),
+                new SoundData(Sound.AMBIENT_SOUL_SAND_VALLEY_MOOD, Material.SOUL_SAND),
+                new SoundData(Sound.AMBIENT_UNDERWATER_ENTER, Material.WATER_BUCKET),
+                new SoundData(Sound.AMBIENT_UNDERWATER_EXIT, Material.WATER_BUCKET),
+                new SoundData(Sound.AMBIENT_UNDERWATER_LOOP, Material.WATER_BUCKET),
+                new SoundData(Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS, Material.WATER_BUCKET),
+                new SoundData(Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_RARE, Material.WATER_BUCKET),
+                new SoundData(Sound.AMBIENT_UNDERWATER_LOOP_ADDITIONS_ULTRA_RARE, Material.WATER_BUCKET),
+                new SoundData(Sound.AMBIENT_WARPED_FOREST_ADDITIONS, Material.WARPED_HYPHAE),
+                new SoundData(Sound.AMBIENT_WARPED_FOREST_LOOP, Material.WARPED_HYPHAE),
+                new SoundData(Sound.AMBIENT_WARPED_FOREST_MOOD, Material.WARPED_HYPHAE)
+        ));
+
+        // Music Sounds
+        OTHER_SOUNDS.put(createItemStack(Material.JUKEBOX), List.of(
+                new SoundData(Sound.MUSIC_CREATIVE, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_CREDITS, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_DRAGON, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_END, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_GAME, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_MENU, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_UNDER_WATER, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_NETHER_BASALT_DELTAS, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_NETHER_CRIMSON_FOREST, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_NETHER_NETHER_WASTES, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_NETHER_SOUL_SAND_VALLEY, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_NETHER_WARPED_FOREST, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_BADLANDS, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_BAMBOO_JUNGLE, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_CHERRY_GROVE, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_DEEP_DARK, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_DESERT, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_DRIPSTONE_CAVES, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_FLOWER_FOREST, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_FOREST, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_FROZEN_PEAKS, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_GROVE, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_JAGGED_PEAKS, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_JUNGLE, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_LUSH_CAVES, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_MEADOW, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_OLD_GROWTH_TAIGA, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_SNOWY_SLOPES, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_SPARSE_JUNGLE, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_STONY_PEAKS, Material.JUKEBOX),
+                new SoundData(Sound.MUSIC_OVERWORLD_SWAMP, Material.JUKEBOX)
+        ));
+
+        // Weather Sounds
+        OTHER_SOUNDS.put(createItemStack(Material.LIGHTNING_ROD), List.of(
+                new SoundData(Sound.WEATHER_RAIN, Material.WATER_BUCKET),
+                new SoundData(Sound.WEATHER_RAIN_ABOVE, Material.WATER_BUCKET)
+        ));
+
+        // Event Sounds
+        OTHER_SOUNDS.put(createItemStack(Material.TOTEM_OF_UNDYING), List.of(
+                new SoundData(Sound.EVENT_MOB_EFFECT_BAD_OMEN, Material.TOTEM_OF_UNDYING),
+                new SoundData(Sound.EVENT_MOB_EFFECT_RAID_OMEN, Material.TOTEM_OF_UNDYING),
+                new SoundData(Sound.EVENT_MOB_EFFECT_TRIAL_OMEN, Material.TOTEM_OF_UNDYING),
+                new SoundData(Sound.EVENT_RAID_HORN, Material.GOAT_HORN)
+        ));
+
+        // UI Sounds
+        OTHER_SOUNDS.put(createItemStack(Material.STONE_BUTTON), List.of(
+                new SoundData(Sound.UI_BUTTON_CLICK, Material.STONE_BUTTON),
+                new SoundData(Sound.UI_CARTOGRAPHY_TABLE_TAKE_RESULT, Material.CARTOGRAPHY_TABLE),
+                new SoundData(Sound.UI_HUD_BUBBLE_POP, Material.PUFFERFISH),
+                new SoundData(Sound.UI_LOOM_SELECT_PATTERN, Material.LOOM),
+                new SoundData(Sound.UI_LOOM_TAKE_RESULT, Material.LOOM),
+                new SoundData(Sound.UI_STONECUTTER_SELECT_RECIPE, Material.STONECUTTER),
+                new SoundData(Sound.UI_STONECUTTER_TAKE_RESULT, Material.STONECUTTER),
+                new SoundData(Sound.UI_TOAST_CHALLENGE_COMPLETE, Material.DIAMOND_BLOCK),
+                new SoundData(Sound.UI_TOAST_IN, Material.OAK_BUTTON),
+                new SoundData(Sound.UI_TOAST_OUT, Material.OAK_BUTTON)
+        ));
+
+        // Uncategorized
+        OTHER_SOUNDS.put(createItemStack(Material.GLASS), List.of(
+                new SoundData(Sound.PARTICLE_SOUL_ESCAPE, Material.SOUL_SAND),
+                new SoundData(Sound.ENCHANT_THORNS_HIT, Material.CACTUS)
         ));
     }
 }

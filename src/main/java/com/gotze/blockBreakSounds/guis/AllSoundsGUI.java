@@ -16,7 +16,8 @@ import java.util.Map;
 
 import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
 
-public class AllSoundsGUI {
+public class
+AllSoundsGUI {
 
     private final Inventory gui;
     private final String guiTitle;
@@ -65,27 +66,10 @@ public class AllSoundsGUI {
             case "Item Sounds":
                 int slot = 9; // Starting GUI slot
 
-                for (Map.Entry<ItemStack, Map<ItemStack, List<SoundData>>> categoryEntry : SoundMap.ITEM_SOUNDS.entrySet()) {
-                    Map<ItemStack, List<SoundData>> subcategories = categoryEntry.getValue();
-
-                    for (Map.Entry<ItemStack, List<SoundData>> subEntry : subcategories.entrySet()) {
-                        gui.setItem(slot++, subEntry.getKey()); // Place the subcategory ItemStack
-                    }
+                for (Map.Entry<ItemStack, List<SoundData>> subEntry : SoundMap.ITEM_SOUNDS.entrySet()) {
+                    gui.setItem(slot++, subEntry.getKey());
                 }
                 return;
-
-            case "Item Sounds":
-                int slot = 9; // Starting GUI slot
-
-                // Directly access the subcategories for "Item Sounds" without the first loop
-                Map<ItemStack, List<SoundData>> subcategories = SoundMap.ITEM_SOUNDS.get(createItemStack(Material.DIAMOND_AXE, "Item Sounds"));
-
-                // Now, iterate over the subcategories and set them in the GUI
-                for (Map.Entry<ItemStack, List<SoundData>> subEntry : subcategories.entrySet()) {
-                    gui.setItem(slot++, subEntry.getKey()); // Place the subcategory ItemStack
-                }
-                return;
-
 
             case "Noteblock Sounds":
                 gui.setItem(22, PlaceHolderPaperItem());
