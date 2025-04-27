@@ -1,5 +1,6 @@
 package com.gotze.blockBreakSounds.soundlogic;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.inventory.ItemStack;
@@ -16,54 +17,54 @@ public class SoundMap {
     public static final Map<ItemStack, Map<ItemStack, List<SoundData>>> ENTITY_SOUNDS = new LinkedHashMap<>();
     static {
         // Passive Mob Sounds
-        ENTITY_SOUNDS.put(createItemStack(Material.SHEEP_SPAWN_EGG, "Passive Mob Sounds"), new LinkedHashMap<>() {{
-            put(createItemStack(Material.CHICKEN_SPAWN_EGG, "Chicken Sounds"), List.of(
+        ENTITY_SOUNDS.put(createItemStack(Material.SHEEP_SPAWN_EGG, ChatColor.BOLD + "" + ChatColor.AQUA + "Passive Mob Sounds"), new LinkedHashMap<>() {{
+            put(createItemStack(Material.CHICKEN_SPAWN_EGG, ChatColor.BOLD + "" + ChatColor.AQUA + "Chicken Sounds"), List.of(
                     new SoundData(Sound.ENTITY_CHICKEN_AMBIENT, Material.FEATHER),
                     new SoundData(Sound.ENTITY_CHICKEN_HURT, Material.BONE),
                     new SoundData(Sound.ENTITY_CHICKEN_EGG, Material.EGG)
             ));
-            put(createItemStack(Material.VILLAGER_SPAWN_EGG, "Villager Sounds"), List.of(
+            put(createItemStack(Material.VILLAGER_SPAWN_EGG, ChatColor.BOLD + "" + ChatColor.AQUA + "Villager Sounds"), List.of(
                     new SoundData(Sound.ENTITY_VILLAGER_TRADE, Material.EMERALD),
                     new SoundData(Sound.ENTITY_VILLAGER_YES, Material.LIME_DYE),
                     new SoundData(Sound.ENTITY_VILLAGER_NO, Material.RED_DYE)
             ));
         }});
         // Neutral Mob Sounds
-        ENTITY_SOUNDS.put(createItemStack(Material.SQUID_SPAWN_EGG, "Neutral Mob Sounds"), new LinkedHashMap<>() {{
-            put(createItemStack(Material.CHICKEN_SPAWN_EGG, "Chicken Sounds"), List.of(
+        ENTITY_SOUNDS.put(createItemStack(Material.SQUID_SPAWN_EGG, ChatColor.BOLD + "" + ChatColor.AQUA + "Neutral Mob Sounds"), new LinkedHashMap<>() {{
+            put(createItemStack(Material.CHICKEN_SPAWN_EGG, ChatColor.BOLD + "" + ChatColor.AQUA + "Chicken Sounds"), List.of(
                     new SoundData(Sound.ENTITY_CHICKEN_AMBIENT, Material.FEATHER),
                     new SoundData(Sound.ENTITY_CHICKEN_HURT, Material.BONE),
                     new SoundData(Sound.ENTITY_CHICKEN_EGG, Material.EGG)
             ));
         }});
         // Hostile Mob Sounds
-        ENTITY_SOUNDS.put(createItemStack(Material.ZOMBIE_SPAWN_EGG, "Hostile Mob Sounds"), new LinkedHashMap<>() {{
-            put(createItemStack(Material.ZOMBIE_HEAD, "Zombie Sounds"), List.of(
+        ENTITY_SOUNDS.put(createItemStack(Material.ZOMBIE_SPAWN_EGG, ChatColor.BOLD + "" + ChatColor.AQUA + "Hostile Mob Sounds"), new LinkedHashMap<>() {{
+            put(createItemStack(Material.ZOMBIE_HEAD, ChatColor.BOLD + "" + ChatColor.AQUA + "Zombie Sounds"), List.of(
                     new SoundData(Sound.ENTITY_ZOMBIE_AMBIENT, Material.ROTTEN_FLESH),
                     new SoundData(Sound.ENTITY_ZOMBIE_HURT, Material.BONE),
                     new SoundData(Sound.ENTITY_ZOMBIE_DEATH, Material.REDSTONE)
             ));
-            put(createItemStack(Material.SKELETON_SKULL, "Skeleton Sounds"), List.of(
+            put(createItemStack(Material.SKELETON_SKULL, ChatColor.BOLD + "" + ChatColor.AQUA + "Skeleton Sounds"), List.of(
                     new SoundData(Sound.ENTITY_SKELETON_AMBIENT, Material.BONE),
                     new SoundData(Sound.ENTITY_SKELETON_HURT, Material.ARROW),
                     new SoundData(Sound.ENTITY_SKELETON_DEATH, Material.BONE_MEAL)
             ));
         }});
         // Player Sounds
-        ENTITY_SOUNDS.put(createItemStack(Material.PLAYER_HEAD, "Player Sounds"), new LinkedHashMap<>() {{
+        ENTITY_SOUNDS.put(createItemStack(Material.PLAYER_HEAD, ChatColor.BOLD + "" + ChatColor.AQUA + "Player Sounds"), new LinkedHashMap<>() {{
             put(createItemStack(Material.NOTE_BLOCK, ""), List.of(
                     new SoundData(Sound.BLOCK_NOTE_BLOCK_BANJO, Material.NOTE_BLOCK)
             ));
         }});
         // Projectile Sounds
-        ENTITY_SOUNDS.put(createItemStack(Material.ARROW, "Projectile Sounds"), new LinkedHashMap<>() {{
+        ENTITY_SOUNDS.put(createItemStack(Material.ARROW, ChatColor.BOLD + "" + ChatColor.AQUA + "Projectile Sounds"), new LinkedHashMap<>() {{
             put(createItemStack(Material.NOTE_BLOCK, ""), List.of(
                     new SoundData(Sound.BLOCK_NOTE_BLOCK_BANJO, Material.NOTE_BLOCK)
             ));
         }});
         // Other Entity Sounds
-        ENTITY_SOUNDS.put(createItemStack(Material.GLASS, "Other Entity Sounds"), new LinkedHashMap<>() {{
-            put(createItemStack(Material.NOTE_BLOCK, ""), List.of(
+        ENTITY_SOUNDS.put(createItemStack(Material.GLASS, ChatColor.BOLD + "" + ChatColor.AQUA + "Other Entity Sounds"), new LinkedHashMap<>() {{
+            put(createItemStack(Material.PUFFERFISH, ""), List.of(
                     new SoundData(Sound.BLOCK_NOTE_BLOCK_BANJO, Material.NOTE_BLOCK)
             ));
         }});
@@ -79,7 +80,8 @@ public class SoundMap {
     public static final Map<ItemStack, List<SoundData>> ITEM_SOUNDS = new LinkedHashMap<>();
     static {
         // Trident Sounds
-        ITEM_SOUNDS.put(createItemStack(Material.TRIDENT, "Trident Sounds"), List.of(
+        ITEM_SOUNDS.put(createItemStack(Material.TRIDENT,
+                ChatColor.BOLD + "" + ChatColor.AQUA + "Trident Sounds", null, true, true), List.of(
                 new SoundData(Sound.ITEM_TRIDENT_HIT, Material.TRIDENT),
                 new SoundData(Sound.ITEM_TRIDENT_HIT_GROUND, Material.TRIDENT),
                 new SoundData(Sound.ITEM_TRIDENT_RETURN, Material.TRIDENT),
@@ -90,7 +92,7 @@ public class SoundMap {
                 new SoundData(Sound.ITEM_TRIDENT_THUNDER, Material.TRIDENT)
         ));
         // Goat Horn Sounds
-        ITEM_SOUNDS.put(createItemStack(Material.GOAT_HORN, "Goat Horn Sounds"), List.of(
+        ITEM_SOUNDS.put(createItemStack(Material.GOAT_HORN, ChatColor.BOLD + "" + ChatColor.AQUA + "Goat Horn Sounds", null, true, true), List.of(
                 new SoundData(Sound.ITEM_GOAT_HORN_SOUND_0, Material.GOAT_HORN),
                 new SoundData(Sound.ITEM_GOAT_HORN_SOUND_1, Material.GOAT_HORN),
                 new SoundData(Sound.ITEM_GOAT_HORN_SOUND_2, Material.GOAT_HORN),
@@ -101,7 +103,7 @@ public class SoundMap {
                 new SoundData(Sound.ITEM_GOAT_HORN_SOUND_7, Material.GOAT_HORN)
         ));
         // Player Armor Sounds
-        ITEM_SOUNDS.put(createItemStack(Material.IRON_CHESTPLATE, "Player Armor Sounds"), List.of(
+        ITEM_SOUNDS.put(createItemStack(Material.IRON_CHESTPLATE, ChatColor.BOLD + "" + ChatColor.AQUA + "Player Armor Sounds", null, true, true), List.of(
                 new SoundData(Sound.ITEM_ARMOR_EQUIP_LEATHER, Material.LEATHER_CHESTPLATE),
                 new SoundData(Sound.ITEM_ARMOR_EQUIP_CHAIN, Material.CHAINMAIL_CHESTPLATE),
                 new SoundData(Sound.ITEM_ARMOR_EQUIP_GOLD, Material.GOLDEN_CHESTPLATE),
@@ -112,13 +114,13 @@ public class SoundMap {
                 new SoundData(Sound.ITEM_ARMOR_EQUIP_GENERIC, Material.LEATHER_BOOTS)
         ));
         // Axe Sounds
-        ITEM_SOUNDS.put(createItemStack(Material.IRON_AXE, "Axe Sounds"), List.of(
+        ITEM_SOUNDS.put(createItemStack(Material.IRON_AXE, ChatColor.BOLD + "" + ChatColor.AQUA + "Axe Sounds", null, true, true), List.of(
                 new SoundData(Sound.ITEM_AXE_SCRAPE, Material.IRON_AXE),
                 new SoundData(Sound.ITEM_AXE_STRIP, Material.OAK_LOG),
                 new SoundData(Sound.ITEM_AXE_WAX_OFF, Material.HONEYCOMB)
         ));
         // Crossbow Sounds
-        ITEM_SOUNDS.put(createItemStack(Material.CROSSBOW, "Crossbow Sounds"), List.of(
+        ITEM_SOUNDS.put(createItemStack(Material.CROSSBOW, ChatColor.BOLD + "" + ChatColor.AQUA + "Crossbow Sounds"), List.of(
                 new SoundData(Sound.ITEM_CROSSBOW_LOADING_END, Material.CROSSBOW),
                 new SoundData(Sound.ITEM_CROSSBOW_LOADING_MIDDLE, Material.CROSSBOW),
                 new SoundData(Sound.ITEM_CROSSBOW_LOADING_START, Material.CROSSBOW),
@@ -128,7 +130,7 @@ public class SoundMap {
                 new SoundData(Sound.ITEM_CROSSBOW_SHOOT, Material.CROSSBOW)
         ));
         // Bucket Sounds
-        ITEM_SOUNDS.put(createItemStack(Material.BUCKET, "Bucket Sounds"), List.of(
+        ITEM_SOUNDS.put(createItemStack(Material.BUCKET, ChatColor.BOLD + "" + ChatColor.AQUA + "Bucket Sounds"), List.of(
                 new SoundData(Sound.ITEM_BUCKET_EMPTY, Material.BUCKET),
                 new SoundData(Sound.ITEM_BUCKET_EMPTY_AXOLOTL, Material.AXOLOTL_BUCKET),
                 new SoundData(Sound.ITEM_BUCKET_EMPTY_FISH, Material.WATER_BUCKET),
@@ -143,7 +145,7 @@ public class SoundMap {
                 new SoundData(Sound.ITEM_BUCKET_FILL_TADPOLE, Material.TADPOLE_BUCKET)
         ));
         // Brush Sounds
-        ITEM_SOUNDS.put(createItemStack(Material.BRUSH, "Brush Sounds"), List.of(
+        ITEM_SOUNDS.put(createItemStack(Material.BRUSH, ChatColor.BOLD + "" + ChatColor.AQUA + "Brush Sounds"), List.of(
                 new SoundData(Sound.ITEM_BRUSH_BRUSHING_GENERIC, Material.BRUSH),
                 new SoundData(Sound.ITEM_BRUSH_BRUSHING_GRAVEL, Material.SUSPICIOUS_GRAVEL),
                 new SoundData(Sound.ITEM_BRUSH_BRUSHING_GRAVEL_COMPLETE, Material.SUSPICIOUS_GRAVEL),
@@ -151,20 +153,20 @@ public class SoundMap {
                 new SoundData(Sound.ITEM_BRUSH_BRUSHING_SAND_COMPLETE, Material.SUSPICIOUS_SAND)
         ));
         // Bundle Sounds
-        ITEM_SOUNDS.put(createItemStack(Material.BUNDLE, "Bundle Sounds"), List.of(
+        ITEM_SOUNDS.put(createItemStack(Material.BUNDLE, ChatColor.BOLD + "" + ChatColor.AQUA + "Bundle Sounds", null, false, false), List.of(
                 new SoundData(Sound.ITEM_BUNDLE_DROP_CONTENTS, Material.RED_BUNDLE),
                 new SoundData(Sound.ITEM_BUNDLE_INSERT, Material.BLUE_BUNDLE),
                 new SoundData(Sound.ITEM_BUNDLE_INSERT_FAIL, Material.ORANGE_BUNDLE),
                 new SoundData(Sound.ITEM_BUNDLE_REMOVE_ONE, Material.PURPLE_BUNDLE)
         ));
         // Bottle Sounds
-        ITEM_SOUNDS.put(createItemStack(Material.GLASS_BOTTLE, "Bottle Sounds"), List.of(
+        ITEM_SOUNDS.put(createItemStack(Material.GLASS_BOTTLE, ChatColor.BOLD + "" + ChatColor.AQUA + "Bottle Sounds"), List.of(
                 new SoundData(Sound.ITEM_BOTTLE_EMPTY, Material.GLASS_BOTTLE),
                 new SoundData(Sound.ITEM_BOTTLE_FILL, Material.POTION),
                 new SoundData(Sound.ITEM_BOTTLE_FILL_DRAGONBREATH, Material.DRAGON_BREATH)
         ));
         // Wolf Armor Sounds
-        ITEM_SOUNDS.put(createItemStack(Material.WOLF_ARMOR, "Wolf Armor Sounds"), List.of(
+        ITEM_SOUNDS.put(createItemStack(Material.WOLF_ARMOR, ChatColor.BOLD + "" + ChatColor.AQUA + "Wolf Armor Sounds", null, true, true), List.of(
                 new SoundData(Sound.ITEM_ARMOR_EQUIP_WOLF, Material.WOLF_ARMOR),
                 new SoundData(Sound.ITEM_ARMOR_UNEQUIP_WOLF, Material.WOLF_ARMOR),
                 new SoundData(Sound.ITEM_WOLF_ARMOR_BREAK, Material.WOLF_ARMOR),
@@ -173,13 +175,13 @@ public class SoundMap {
                 new SoundData(Sound.ITEM_WOLF_ARMOR_REPAIR, Material.WOLF_ARMOR)
         ));
         // Mace Sounds
-        ITEM_SOUNDS.put(createItemStack(Material.MACE, "Mace Sounds"), List.of(
+        ITEM_SOUNDS.put(createItemStack(Material.MACE, ChatColor.BOLD + "" + ChatColor.AQUA + " Mace Sounds", null, false, false), List.of(
                 new SoundData(Sound.ITEM_MACE_SMASH_AIR, Material.MACE),
                 new SoundData(Sound.ITEM_MACE_SMASH_GROUND, Material.MACE),
                 new SoundData(Sound.ITEM_MACE_SMASH_GROUND_HEAVY, Material.MACE)
         ));
         // Other Sounds
-        ITEM_SOUNDS.put(createItemStack(Material.PUFFERFISH, "Other Sounds"), List.of(
+        ITEM_SOUNDS.put(createItemStack(Material.PUFFERFISH, ChatColor.BOLD + "" + ChatColor.AQUA + "Other Sounds", null, false, false), List.of(
                 new SoundData(Sound.ITEM_BONE_MEAL_USE, Material.BONE_MEAL),
                 new SoundData(Sound.ITEM_BOOK_PAGE_TURN, Material.BOOK),
                 new SoundData(Sound.ITEM_BOOK_PUT, Material.BOOKSHELF),
@@ -286,7 +288,7 @@ public class SoundMap {
         ));
 
         // Music Sounds
-        OTHER_SOUNDS.put(createItemStack(Material.JUKEBOX), List.of(
+        OTHER_SOUNDS.put(createItemStack(Material.JUKEBOX, "Music Sounds"), List.of(
                 new SoundData(Sound.MUSIC_CREATIVE, Material.JUKEBOX),
                 new SoundData(Sound.MUSIC_CREDITS, Material.JUKEBOX),
                 new SoundData(Sound.MUSIC_DRAGON, Material.JUKEBOX),
@@ -321,13 +323,13 @@ public class SoundMap {
         ));
 
         // Weather Sounds
-        OTHER_SOUNDS.put(createItemStack(Material.LIGHTNING_ROD), List.of(
+        OTHER_SOUNDS.put(createItemStack(Material.LIGHTNING_ROD, "Weather Sounds"), List.of(
                 new SoundData(Sound.WEATHER_RAIN, Material.WATER_BUCKET),
                 new SoundData(Sound.WEATHER_RAIN_ABOVE, Material.WATER_BUCKET)
         ));
 
         // Event Sounds
-        OTHER_SOUNDS.put(createItemStack(Material.TOTEM_OF_UNDYING), List.of(
+        OTHER_SOUNDS.put(createItemStack(Material.TOTEM_OF_UNDYING, "Event Sounds"), List.of(
                 new SoundData(Sound.EVENT_MOB_EFFECT_BAD_OMEN, Material.TOTEM_OF_UNDYING),
                 new SoundData(Sound.EVENT_MOB_EFFECT_RAID_OMEN, Material.TOTEM_OF_UNDYING),
                 new SoundData(Sound.EVENT_MOB_EFFECT_TRIAL_OMEN, Material.TOTEM_OF_UNDYING),
@@ -335,7 +337,7 @@ public class SoundMap {
         ));
 
         // UI Sounds
-        OTHER_SOUNDS.put(createItemStack(Material.STONE_BUTTON), List.of(
+        OTHER_SOUNDS.put(createItemStack(Material.STONE_BUTTON, "UI Sounds"), List.of(
                 new SoundData(Sound.UI_BUTTON_CLICK, Material.STONE_BUTTON),
                 new SoundData(Sound.UI_CARTOGRAPHY_TABLE_TAKE_RESULT, Material.CARTOGRAPHY_TABLE),
                 new SoundData(Sound.UI_HUD_BUBBLE_POP, Material.PUFFERFISH),
@@ -349,7 +351,7 @@ public class SoundMap {
         ));
 
         // Uncategorized
-        OTHER_SOUNDS.put(createItemStack(Material.GLASS), List.of(
+        OTHER_SOUNDS.put(createItemStack(Material.GLASS, "Uncategorized Sounds"), List.of(
                 new SoundData(Sound.PARTICLE_SOUL_ESCAPE, Material.SOUL_SAND),
                 new SoundData(Sound.ENCHANT_THORNS_HIT, Material.CACTUS)
         ));

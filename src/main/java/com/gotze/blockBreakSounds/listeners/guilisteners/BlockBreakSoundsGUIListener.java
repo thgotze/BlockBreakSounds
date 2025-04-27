@@ -107,6 +107,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
                 return;
 
             default:
+                return;
         }
     }
 

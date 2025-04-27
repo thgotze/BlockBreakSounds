@@ -3,6 +3,7 @@ package com.gotze.blockBreakSounds.guis;
 import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import com.gotze.blockBreakSounds.soundlogic.SoundMap;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
+import com.gotze.blockBreakSounds.utility.TextUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -16,8 +17,7 @@ import java.util.Map;
 
 import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
 
-public class
-AllSoundsGUI {
+public class AllSoundsGUI {
 
     private final Inventory gui;
     private final String guiTitle;
@@ -46,6 +46,8 @@ AllSoundsGUI {
     }
 
     private void setCategoryOrSoundButtons() {
+        int slot = 9; // Starting slot where to put buttons
+
         switch (guiTitle) {
             case "All Sounds":
                 gui.setItem(20, EntitySoundsButton());
@@ -56,36 +58,44 @@ AllSoundsGUI {
                 return;
 
             case "Entity Sounds":
-                gui.setItem(22, PlaceHolderPaperItem());
+                for (Map.Entry<ItemStack, Map<ItemStack, List<SoundData>>> subEntry : SoundMap.ENTITY_SOUNDS.entrySet()) {
+                    gui.setItem(slot++, subEntry.getKey());
+                }
                 return;
 
             case "Block Sounds":
-                gui.setItem(22, PlaceHolderPaperItem());
                 return;
 
             case "Item Sounds":
-                int slot = 9; // Starting GUI slot
-
                 for (Map.Entry<ItemStack, List<SoundData>> subEntry : SoundMap.ITEM_SOUNDS.entrySet()) {
                     gui.setItem(slot++, subEntry.getKey());
                 }
                 return;
 
             case "Noteblock Sounds":
-                gui.setItem(22, PlaceHolderPaperItem());
+                for (SoundData soundData : SoundMap.NOTEBLOCK_SOUNDS) {
+                    gui.setItem(slot++, createItemStack(soundData.getMaterial()));
+                }
                 return;
 
             case "Other Sounds":
-                gui.setItem(22, PlaceHolderPaperItem());
+                for (Map.Entry<ItemStack, List<SoundData>> subEntry : SoundMap.OTHER_SOUNDS.entrySet()) {
+                    gui.setItem(slot++, subEntry.getKey());
+                }
+                return;
+
+            default: // any subcategory like "Trident Sounds", "Goat Horn Sounds", etc.
+                for (Map.Entry<ItemStack, List<SoundData>> subEntry : SoundMap.ITEM_SOUNDS.entrySet()) {
+                    String displayName = subEntry.getKey().getItemMeta().getDisplayName();
+                    if (displayName.equals(guiTitle)) { // if the item's name matches the guiTitle (example: "Trident Sounds")
+                        for (SoundData soundData : subEntry.getValue()) {
+                            gui.setItem(slot++, createItemStack(soundData.getMaterial()));
+                        }
+                        return;
+                    }
+                }
                 return;
         }
-    }
-
-    private ItemStack PlaceHolderPaperItem() {
-        return createItemStack(
-                Material.PAPER,
-                "Placeholder Item for Categories"
-        );
     }
 
     // Entity Sounds Button (Ender Pearl)
