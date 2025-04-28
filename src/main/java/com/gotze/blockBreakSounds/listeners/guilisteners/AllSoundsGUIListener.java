@@ -1,7 +1,13 @@
 package com.gotze.blockBreakSounds.listeners.guilisteners;
 
+import com.gotze.blockBreakSounds.guis.AllSoundsGUI;
 import com.gotze.blockBreakSounds.guis.FavoriteSoundsGUI;
+import com.gotze.blockBreakSounds.soundlogic.AllSoundsRegistry;
+import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
+import com.gotze.blockBreakSounds.soundlogic.SoundCategory;
+import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,32 +18,20 @@ import org.bukkit.inventory.Inventory;
 
 public class AllSoundsGUIListener implements Listener {
 
-    private static final String[] POSSIBLE_ALL_SOUNDS_GUI_TITLES = {"All Sounds", "Entity Sounds", "Block Sounds", "Item Sounds", "Noteblock Sounds", "Other Sounds"};
-
     public AllSoundsGUIListener() {
     }
 
-    @EventHandler
-    public void onInventoryClick(InventoryClickEvent event) {
-        String guiTitle = null;
-        for (String openedGuiTitle : POSSIBLE_ALL_SOUNDS_GUI_TITLES) {
-            if (event.getView().getTitle().equals(openedGuiTitle)) {
-                guiTitle = event.getView().getTitle();
-                break;
-            }
-        }
-        if (guiTitle == null) return;
-
-        event.setCancelled(true);
-
+    @EventHandler public void onInventoryClick(InventoryClickEvent event) {
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
 
-        if (clickedInventory == null || clickedInventory.equals(player.getInventory())) return;
+        if (clickedInventory == null || clickedInventory.equals(player.getInventory()))
+            return;
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
 
+        String inventoryTitle = event.getView().getTitle();
         if (slot == 4) { // Current Sound
             GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
             return;
@@ -45,8 +39,31 @@ public class AllSoundsGUIListener implements Listener {
 
         if (slot == 40) { // Favorite Sounds
             player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-            new FavoriteSoundsGUI().setupAndOpenGUI(player);
+            new FavoriteSoundsGUI(player);
             return;
+        }
+
+
+        // TODO: Make it a method so it goes through the same code no matter if its child or grandchild
+        for (SoundCategory soundCategory : AllSoundsRegistry.CATEGORIES) {
+            if (soundCategory.getCategoryName().equals(inventoryTitle)) {
+                for (Object child : soundCategory.getChildren()) {
+                    if (child instanceof SoundCategory) {
+                        if (((SoundCategory) child).getCategoryName().equals(ChatColor.stripColor(clickedInventory.getItem(slot).getItemMeta().getDisplayName()))) {
+                            player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                            new AllSoundsGUI(player, ((SoundCategory) child).getCategoryName());
+                            return;
+                        }
+                    } else if (child instanceof SoundData) {
+                        if ((((SoundData) child).getSound().toString()).equals(ChatColor.stripColor(clickedInventory.getItem(slot).getItemMeta().getDisplayName()))) {
+                            SoundData soundData = new SoundData(((SoundData) child).getSound(), ((SoundData) child).getDisplayMaterial());
+                            CurrentSoundData.setCurrentSound(player, soundData);
+                            GUIUtils.handlePickedLineSound(clickedInventory, slot);
+                            clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
+                        }
+                    }
+                }
+            }
         }
     }
 }

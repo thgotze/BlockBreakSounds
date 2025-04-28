@@ -16,9 +16,12 @@ public class PickSoundGUI {
 
     private final Inventory gui;
 
-    public PickSoundGUI() {
+
+    // TODO: Refactor class to use SoundData instead
+    public PickSoundGUI(Player player) {
         this.gui = Bukkit.createInventory(null, 45, "Pick Sound");
         setFrames();
+        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.ReturnButton());
         gui.setItem(40, FavoriteSoundsButton());
         gui.setItem(44, PickFromAllSoundsButton());
@@ -50,13 +53,8 @@ public class PickSoundGUI {
         gui.setItem(33, VexHurtButton());
         gui.setItem(34, SnifferEatButton());
         gui.setItem(35, NetheriteBlockBreakButton());
-    }
-
-    public void setupAndOpenGUI(Player player) {
-        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         player.openInventory(gui);
     }
-
 
     private void setFrames() {
         for (int i = 0; i < 9; i++) {

@@ -7,7 +7,6 @@ import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
 import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundData;
 import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
-import com.gotze.blockBreakSounds.utility.ValidClickChecker;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -161,17 +160,17 @@ public class PickSoundGUIListener implements Listener {
 
             case 36: // Return
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                new BlockBreakSoundsGUI().setupAndOpenGUI(player);
+                new BlockBreakSoundsGUI(player);
                 return;
 
             case 40: // Favorite Sounds
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                new FavoriteSoundsGUI().setupAndOpenGUI(player);
+                new FavoriteSoundsGUI(player);
                 return;
 
             case 44: // Pick From All Sounds
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                new AllSoundsGUI("All Sounds").setupAndOpenGUI(player);
+                new AllSoundsGUI(player, "All Sounds");
                 return;
 
             default:

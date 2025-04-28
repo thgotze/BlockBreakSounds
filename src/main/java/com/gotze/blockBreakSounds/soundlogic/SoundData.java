@@ -7,20 +7,20 @@ public class SoundData {
     private Sound sound;
     private float volume;
     private float pitch;
-    private Material material;
+    private Material displayMaterial;
 
-    public SoundData(Sound sound, float volume, float pitch, Material material) {
+    public SoundData(Sound sound, float volume, float pitch, Material displayMaterial) {
         this.sound = sound;
         setVolume(volume);
         setPitch(pitch);
-        this.material = material;
+        this.displayMaterial = displayMaterial;
     }
 
-    public SoundData(Sound sound, Material material) {
+    public SoundData(Sound sound, Material displayMaterial) {
         this.sound = sound;
         this.volume = 1.0f;
         this.pitch = 1.0f;
-        this.material = material;
+        this.displayMaterial = displayMaterial;
     }
 
     public Sound getSound() {
@@ -51,11 +51,11 @@ public class SoundData {
         } else this.pitch = Math.min(pitch, 2.0f);
     }
 
-    public Material getMaterial() {
-        return material;
+    public Material getDisplayMaterial() {
+        return displayMaterial;
     }
 
-    public void setMaterial(Material material) {
-        this.material = material;
+    public void setDisplayMaterial(Material displayMaterial) {
+        this.displayMaterial = displayMaterial;
     }
 }

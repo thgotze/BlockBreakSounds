@@ -62,7 +62,7 @@ public class FavoriteSoundData extends SoundData {
             soundData.put("sound", favoriteSoundData.getSound().toString());
             soundData.put("volume", favoriteSoundData.getVolume());
             soundData.put("pitch", favoriteSoundData.getPitch());
-            soundData.put("material", favoriteSoundData.getMaterial().toString());
+            soundData.put("material", favoriteSoundData.getDisplayMaterial().toString());
             favoriteSoundsList.add(soundData);
         }
         yamlConfiguration.set(path, favoriteSoundsList);

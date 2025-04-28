@@ -16,10 +16,11 @@ public class BlockBreakSoundsGUI {
 
     private final Inventory gui;
 
-    public BlockBreakSoundsGUI() {
+    public BlockBreakSoundsGUI(Player player) {
         this.gui = Bukkit.createInventory(null, 45, "Block Break Sounds");
         setFrames();
         gui.setItem(11, IncreaseVolumeButton());
+        gui.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(15, IncreasePitchButton());
         gui.setItem(20, VolumeButton());
         gui.setItem(22, PickSoundButton());
@@ -28,10 +29,6 @@ public class BlockBreakSoundsGUI {
         gui.setItem(29, DecreaseVolumeButton());
         gui.setItem(31, FavoriteSoundsButton());
         gui.setItem(33, DecreasePitchButton());
-    }
-
-    public void setupAndOpenGUI(Player player) {
-        gui.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
         player.openInventory(gui);
     }
 

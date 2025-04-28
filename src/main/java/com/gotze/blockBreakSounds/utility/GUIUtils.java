@@ -52,7 +52,7 @@ public final class GUIUtils {
             );
         } else {
             return createItemStack(
-                    (playerCurrentSound.getMaterial()),
+                    (playerCurrentSound.getDisplayMaterial()),
                     ChatColor.YELLOW + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7",
                     Arrays.asList(
                             ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(TextUtils.getFormattedSoundName(playerCurrentSound.getSound())),
@@ -130,25 +130,19 @@ public final class GUIUtils {
 
         // Replace pick sound line with sound picked line for clicked sound in gui
         ItemStack item = clickedInventory.getItem(pickedSoundIndex);
-        System.out.println("got item");
         if (item == null) return;
 
         ItemMeta itemMeta = item.getItemMeta();
         if (itemMeta == null) return;
-        System.out.println("got meta");
 
         List<String> lore = itemMeta.getLore();
         if (lore == null) return;
-        System.out.println("got lore");
 
         if (lore.contains(CLICK_TO_PICK)) {
-            System.out.println("lore contains click to pick");
             lore.set(lore.indexOf(CLICK_TO_PICK), SOUND_PICKED);
             itemMeta.setLore(lore);
             item.setItemMeta(itemMeta);
             clickedInventory.setItem(pickedSoundIndex, item);
-            System.out.println("lore set to sound picked");
         }
-        System.out.println("lore doesnt contain click to pick");
     }
 }

@@ -16,7 +16,7 @@ public class SettingsGUI {
 
     private final Inventory gui;
 
-    public SettingsGUI() {
+    public SettingsGUI(Player player) {
         this.gui = Bukkit.createInventory(null, 45, "Settings");
         setFrames();
         gui.setItem(4, ToDoListButton());
@@ -26,9 +26,6 @@ public class SettingsGUI {
         gui.setItem(23, CombinedSoundsButton());
         gui.setItem(24, SoundFilterButton());
         gui.setItem(36, GUIUtils.ReturnButton());
-    }
-
-    public void setupAndOpenGUI(Player player) {
         player.openInventory(gui);
     }
 

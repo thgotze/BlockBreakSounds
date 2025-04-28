@@ -7,7 +7,6 @@ import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
 import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundData;
 import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
-import com.gotze.blockBreakSounds.utility.ValidClickChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -46,13 +45,13 @@ public class FavoriteSoundsGUIListener implements Listener {
             case 4: // Current Sound
                 GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
                 if (clickType == ClickType.SHIFT_RIGHT && clickedInventory.getItem(slot).getType() != Material.GLASS_PANE) {
-                    new FavoriteSoundsGUI().setupAndOpenGUI(player);
+                    new FavoriteSoundsGUI(player);
                 }
                 return;
 
             case 36: // Return
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                new BlockBreakSoundsGUI().setupAndOpenGUI(player);
+                new BlockBreakSoundsGUI(player);
                 return;
 
             default: // Favorited Sounds
@@ -80,7 +79,7 @@ public class FavoriteSoundsGUIListener implements Listener {
 
                         if (item.getType() == Material.BARRIER) {
                             FavoriteSoundData.removeSoundFromFavorites(player, slot - 9);
-                            new FavoriteSoundsGUI().setupAndOpenGUI(player);
+                            new FavoriteSoundsGUI(player);
                         }
                         return;
                     }

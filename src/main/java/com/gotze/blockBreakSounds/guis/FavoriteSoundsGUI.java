@@ -22,16 +22,13 @@ public class FavoriteSoundsGUI {
 
     private final Inventory gui;
 
-    public FavoriteSoundsGUI() {
+    public FavoriteSoundsGUI(Player player) {
         this.gui = Bukkit.createInventory(null, 45, "Favorite Sounds");
         setFrames();
+        setFavoriteSoundsToGUI(player);
+        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.ReturnButton());
         gui.setItem(40, FavoriteSoundsButton());
-    }
-
-    public void setupAndOpenGUI(Player player) {
-        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
-        setFavoriteSoundsToGUI(player);
         player.openInventory(gui);
     }
 
@@ -74,10 +71,10 @@ public class FavoriteSoundsGUI {
 
     private ItemStack createFavoriteSoundButton(SoundData soundData, int soundNumber) {
         return createItemStack(
-                soundData.getMaterial(),
+                soundData.getDisplayMaterial(),
                 ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sound " + soundNumber + " ⭐",
                 Arrays.asList(
-                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(TextUtils.getFormattedSoundName(soundData.getSound())),
+                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(TextUtils. getFormattedSoundName(soundData.getSound())),
                         ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", soundData.getVolume() * 100)),
                         ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", soundData.getPitch())),
                         "",

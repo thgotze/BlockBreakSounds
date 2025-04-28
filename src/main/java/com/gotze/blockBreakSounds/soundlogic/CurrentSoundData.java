@@ -86,7 +86,7 @@ public class CurrentSoundData extends SoundData {
             yamlConfiguration.set(path + ".sound", playerCurrentSound.getSound().toString());
             yamlConfiguration.set(path + ".volume", playerCurrentSound.getVolume());
             yamlConfiguration.set(path + ".pitch", playerCurrentSound.getPitch());
-            yamlConfiguration.set(path + ".material", playerCurrentSound.getMaterial().toString());
+            yamlConfiguration.set(path + ".material", playerCurrentSound.getDisplayMaterial().toString());
         }
 
         try {

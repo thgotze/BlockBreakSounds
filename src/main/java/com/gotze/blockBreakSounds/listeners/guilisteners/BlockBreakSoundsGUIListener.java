@@ -6,7 +6,6 @@ import com.gotze.blockBreakSounds.guis.SettingsGUI;
 import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
 import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
-import com.gotze.blockBreakSounds.utility.ValidClickChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -71,7 +70,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
             case 22: // Pick Sound
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                new PickSoundGUI().setupAndOpenGUI(player);
+                new PickSoundGUI(player);
                 return;
 
             case 24: // Tweak Pitch
@@ -86,7 +85,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
             case 26: // Settings
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                new SettingsGUI().setupAndOpenGUI(player);
+                new SettingsGUI(player);
                 return;
 
             case 29: // Decrease Volume
@@ -97,7 +96,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
             case 31: // Favorite Sounds
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                new FavoriteSoundsGUI().setupAndOpenGUI(player);
+                new FavoriteSoundsGUI(player);
                 return;
 
             case 33: // Decrease Pitch
@@ -205,7 +204,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
         }
 
         SoundData newCurrentSound = new SoundData(currentSoundData.getSound(), (Math.round((currentSoundData.getVolume() + 0.05f) * 100f) / 100f),
-                currentSoundData.getPitch(), currentSoundData.getMaterial());
+                currentSoundData.getPitch(), currentSoundData.getDisplayMaterial());
         CurrentSoundData.setCurrentSound(player, newCurrentSound);
     }
 
@@ -221,7 +220,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
         }
 
         SoundData newCurrentSound = new SoundData(currentSoundData.getSound(), (Math.round((currentSoundData.getVolume() - 0.05f) * 100f) / 100f),
-                currentSoundData.getPitch(), currentSoundData.getMaterial());
+                currentSoundData.getPitch(), currentSoundData.getDisplayMaterial());
         CurrentSoundData.setCurrentSound(player, newCurrentSound);
     }
 
@@ -233,7 +232,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
         }
 
         SoundData newCurrentSound = new SoundData(currentSoundData.getSound(), currentSoundData.getVolume(),
-                (Math.round((currentSoundData.getPitch() + 0.05f) * 100f) / 100f), currentSoundData.getMaterial());
+                (Math.round((currentSoundData.getPitch() + 0.05f) * 100f) / 100f), currentSoundData.getDisplayMaterial());
         CurrentSoundData.setCurrentSound(player, newCurrentSound);
     }
 
@@ -244,7 +243,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
             return;
         }
         SoundData newCurrentSound = new SoundData(currentSoundData.getSound(), currentSoundData.getVolume(),
-                (Math.round((currentSoundData.getPitch() - 0.05f) * 100f) / 100f), currentSoundData.getMaterial());
+                (Math.round((currentSoundData.getPitch() - 0.05f) * 100f) / 100f), currentSoundData.getDisplayMaterial());
         CurrentSoundData.setCurrentSound(player, newCurrentSound);
     }
 }

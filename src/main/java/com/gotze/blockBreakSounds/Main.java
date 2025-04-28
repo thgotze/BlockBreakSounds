@@ -1,5 +1,6 @@
 package com.gotze.blockBreakSounds;
 
+import com.gotze.blockBreakSounds.listeners.guilisteners.AllSoundsGUIListener;
 import com.gotze.blockBreakSounds.command.BlockBreakSoundsCommand;
 import com.gotze.blockBreakSounds.listeners.BlockBreakListener;
 import com.gotze.blockBreakSounds.listeners.PlayerJoinListener;
