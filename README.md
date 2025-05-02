@@ -14,6 +14,7 @@ hearing a satisfying, personalized sound whenever you break a block, enhances th
 1. Specify a default sound, volume and pitch for all players - if servers owners want to have a global block break sound for all players
 2. Disallow non-op players from accessing the GUI - to disable general use on server but still allow ops to test plugin
 3. Disallow access to the 'all sounds' part of the plugin - if server owners decide having all sounds to customize with is undesired
+4. Globally disable pitch variance
 
 - GUI Features
 1. Make it so when you click the current sound it displays a note symbol for 2 seconds
@@ -28,3 +29,5 @@ hearing a satisfying, personalized sound whenever you break a block, enhances th
 for example if a custom enchant would make a pickaxe break many blocks at once
 6. Feature that players and changes the selected sounds volume or pitch in a sine wave pattern,
 then you can choose the values of the crest and trough
+7. Option to disable pitch variance
+8. Option to pick multiple sounds that overlap and play at the same time when breaking blocks
