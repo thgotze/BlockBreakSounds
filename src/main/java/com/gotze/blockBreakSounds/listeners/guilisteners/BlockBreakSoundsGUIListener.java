@@ -18,7 +18,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
-import static com.gotze.blockBreakSounds.utility.TextUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.utility.StringUtils.convertToSmallFont;
 
 public class BlockBreakSoundsGUIListener implements Listener {
 

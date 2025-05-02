@@ -4,7 +4,7 @@ import com.gotze.blockBreakSounds.soundlogic.AllSoundsRegistry;
 import com.gotze.blockBreakSounds.soundlogic.SoundCategory;
 import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
-import com.gotze.blockBreakSounds.utility.TextUtils;
+import com.gotze.blockBreakSounds.utility.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -54,7 +54,7 @@ public class AllSoundsGUI {
                     } else if (child instanceof SoundData) {
                         gui.setItem(slot++, createItemStack(
                                 ((SoundData) child).getDisplayMaterial(),
-                                ChatColor.AQUA + "" + ChatColor.BOLD + TextUtils.getFormattedSoundName(((SoundData) child).getSound()),
+                                ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) child).getSound()),
                                 Arrays.asList(
                                         "",
                                         ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ")
@@ -62,8 +62,7 @@ public class AllSoundsGUI {
                     }
                 }
                 return;
-            }
-            else if (!soundCategory.getCategoryName().equals(guiTitle)) {
+            } else {
                 for (Object grandChild : soundCategory.getChildren()) {
                     if (grandChild instanceof SoundCategory) {
                         if (((SoundCategory) grandChild).getCategoryName().equals(guiTitle)) {
@@ -75,7 +74,7 @@ public class AllSoundsGUI {
                                 } else if (grandGrandChild instanceof SoundData) {
                                     gui.setItem(slot++, createItemStack(
                                             ((SoundData) grandGrandChild).getDisplayMaterial(),
-                                            ChatColor.AQUA + "" + ChatColor.BOLD + TextUtils.getFormattedSoundName(((SoundData) grandGrandChild).getSound()),
+                                            ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) grandGrandChild).getSound()),
                                             Arrays.asList(
                                                     "",
                                                     ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ")

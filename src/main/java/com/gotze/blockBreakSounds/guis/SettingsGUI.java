@@ -19,7 +19,6 @@ public class SettingsGUI {
     public SettingsGUI(Player player) {
         this.gui = Bukkit.createInventory(null, 45, "Settings");
         setFrames();
-        gui.setItem(4, ToDoListButton());
         gui.setItem(20, PitchVariance());
         gui.setItem(21, ToolSpecificSoundsButton());
         gui.setItem(22, MultiSoundsButton());
@@ -97,19 +96,5 @@ public class SettingsGUI {
                         "",
                         ChatColor.RED + "" + ChatColor.BOLD + "NOT IMPLEMENTED YET")
         );
-    }
-
-    // TODO: Temp to do list
-    private ItemStack ToDoListButton() {
-        return createItemStack(
-                Material.BOOK,
-                ChatColor.RED + "" + ChatColor.BOLD + "To-Do List",
-                Arrays.asList(ChatColor.WHITE + "Setting to set default block break sound for all players",
-                        ChatColor.WHITE + "Setting to allow default sound optional for players in or out",
-                        ChatColor.WHITE + "Option to enable role requirement to use plugin",
-                        ChatColor.WHITE + "Option to enable role requirement to use plugin",
-                        ChatColor.WHITE + "Make it so current sound 'click to playtest' line adds the note symbol after playtesting for 2 seconds",
-                        ChatColor.WHITE + "Option for owner to disallow usage of 'all sounds'")
-                );
     }
 }

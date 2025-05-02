@@ -2,8 +2,10 @@ package com.gotze.blockBreakSounds.utility;
 
 import org.bukkit.Sound;
 
-public final class TextUtils {
+public final class StringUtils {
 
+    // Converts a string to a new string using the Minecraft small font
+    // "Block Break Sounds is a great plugin!" -> "ʙʟᴏᴄᴋ ʙʀᴇᴀᴋ ѕᴏᴜɴᴅѕ ɪѕ ᴀ ɢʀᴇᴀᴛ ᴘʟᴜɢɪɴ!"
     public static String convertToSmallFont(String input) {
         StringBuilder newString = new StringBuilder();
         for (char c : input.toCharArray()) {
