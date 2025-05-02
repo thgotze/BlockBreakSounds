@@ -43,19 +43,25 @@ public class AllSoundsGUIListener implements Listener {
             return;
         }
 
+        String clickedItemTitle = clickedInventory.getItem(slot).getItemMeta().getDisplayName();
+        // TODO: Temp debug message
+        player.sendMessage("Title of item at slot " + slot + " is " + clickedItemTitle);
 
         // TODO: Make it a method so it goes through the same code no matter if its child or grandchild
         for (SoundCategory soundCategory : AllSoundsRegistry.CATEGORIES) {
-            if (soundCategory.getCategoryName().equals(inventoryTitle)) {
+            if (soundCategory.getCategoryName().equals(clickedItemTitle)) {
+                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                new AllSoundsGUI(player, soundCategory.getCategoryName());
+            } else {
                 for (Object child : soundCategory.getChildren()) {
                     if (child instanceof SoundCategory) {
-                        if (((SoundCategory) child).getCategoryName().equals(ChatColor.stripColor(clickedInventory.getItem(slot).getItemMeta().getDisplayName()))) {
+                        if (((SoundCategory) child).getCategoryName().equals(clickedItemTitle)) {
                             player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
                             new AllSoundsGUI(player, ((SoundCategory) child).getCategoryName());
                             return;
                         }
                     } else if (child instanceof SoundData) {
-                        if ((((SoundData) child).getSound().toString()).equals(ChatColor.stripColor(clickedInventory.getItem(slot).getItemMeta().getDisplayName()))) {
+                        if ((((SoundData) child).getSound().toString()).equals(clickedItemTitle)) {
                             SoundData soundData = new SoundData(((SoundData) child).getSound(), ((SoundData) child).getDisplayMaterial());
                             CurrentSoundData.setCurrentSound(player, soundData);
                             GUIUtils.handlePickedLineSound(clickedInventory, slot);

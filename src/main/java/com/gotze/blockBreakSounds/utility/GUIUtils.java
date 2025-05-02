@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
-import static com.gotze.blockBreakSounds.utility.TextUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.utility.StringUtils.convertToSmallFont;
 
 public final class GUIUtils {
 
@@ -55,7 +55,7 @@ public final class GUIUtils {
                     (playerCurrentSound.getDisplayMaterial()),
                     ChatColor.YELLOW + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7",
                     Arrays.asList(
-                            ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(TextUtils.getFormattedSoundName(playerCurrentSound.getSound())),
+                            ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(StringUtils.getFormattedSoundName(playerCurrentSound.getSound())),
                             ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", playerCurrentSound.getVolume() * 100)),
                             ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", playerCurrentSound.getPitch())),
                             "",

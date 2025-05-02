@@ -3,14 +3,14 @@ package com.gotze.blockBreakSounds.command;
 import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
 import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
 import com.gotze.blockBreakSounds.soundlogic.SoundData;
-import com.gotze.blockBreakSounds.utility.TextUtils;
+import com.gotze.blockBreakSounds.utility.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static com.gotze.blockBreakSounds.utility.TextUtils.convertToSmallFont;
+import static com.gotze.blockBreakSounds.utility.StringUtils.convertToSmallFont;
 
 public final class BlockBreakSoundsCommand implements CommandExecutor {
 
@@ -49,7 +49,7 @@ public final class BlockBreakSoundsCommand implements CommandExecutor {
             } else {
 
                 String message = ChatColor.GOLD + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7" +
-                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(TextUtils.getFormattedSoundName(currentSoundData.getSound())) +
+                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(StringUtils.getFormattedSoundName(currentSoundData.getSound())) +
                         ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", currentSoundData.getVolume() * 100)) +
                         ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", currentSoundData.getPitch()));
                 player.sendMessage(message);

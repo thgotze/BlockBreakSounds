@@ -7,7 +7,7 @@ import java.util.List;
 public class SoundCategory {
     private final String categoryName;
     private final Material displayMaterial;
-    private final List<?> children;  // Holds either SoundCategory or SoundData, but never both
+    private final List<?> children;  // Holds either 1. SoundCategories (subcategories) or 2. SoundData
 
     public SoundCategory(String name, Material displayMaterial, List<?> children) {
         this.categoryName = name;

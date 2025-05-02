@@ -9,17 +9,15 @@ import java.util.List;
 
 public final class ItemStackCreator {
 
-     /*
-     * Creates an ItemStack with customizable display name, lore, and flags.
-     *
-     * @param material The material type for the ItemStack (e.g. Material.STONE_BLOCK).
-     * @param displayName The display name of the ItemStack (null if not desired).
-     * @param lore The lore of the ItemStack (null if not desired).
-     * @param hideAdditionalTooltip Flag to hide additional tooltips (e.g., music discs).
-     * @param hideAttributes Flag to hide item attributes (e.g., damage, armor values).
-     * @param hideTooltipBox Flag to hide the tooltip box when hovering over the item.
-     * @return A fully customized ItemStack.
-     */
+    // Creates an ItemStack with customizable display name, lore, and flags.
+
+    // @param material The material type for the ItemStack (e.g. Material.STONE_BLOCK).
+    // @param displayName The display name of the ItemStack (null if not desired).
+    // @param lore The lore of the ItemStack (null if not desired).
+    // @param hideAdditionalTooltip Flag to hide additional tooltips (e.g., music discs).
+    // @param hideAttributes Flag to hide item attributes (e.g., damage, armor values).
+    // @param hideTooltipBox Flag to hide the tooltip box when hovering over the item.
+    // @return A fully customized ItemStack.
 
     public static ItemStack createItemStack(Material material, String displayName, List<String> lore, boolean hideAdditionalTooltip, boolean hideAttributes, boolean hideTooltipBox) {
 
