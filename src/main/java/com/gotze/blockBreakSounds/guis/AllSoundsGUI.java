@@ -13,6 +13,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
 
@@ -43,9 +44,9 @@ public class AllSoundsGUI {
 
         // TODO: Make it a method so it goes through the same code no matter if its child or grandchild
         slot = 9; // Starting slot to set items
-        for (SoundCategory soundCategory : AllSoundsRegistry.CATEGORIES) {
-            if (soundCategory.getCategoryName().equals(guiTitle)) {
-                for (Object child : soundCategory.getChildren()) {
+        for (SoundCategory parent : AllSoundsRegistry.CATEGORIES) {
+            if (parent.getCategoryName().equals(guiTitle)) {
+                for (Object child : parent.getChildren()) {
                     if (child instanceof SoundCategory) {
                         gui.setItem(slot++, createItemStack(
                                 ((SoundCategory) child).getDisplayMaterial(),
@@ -57,28 +58,49 @@ public class AllSoundsGUI {
                                 ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) child).getSound()),
                                 Arrays.asList(
                                         "",
-                                        ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ")
+                                        ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ"),
+                                true,
+                                true
                         ));
                     }
                 }
                 return;
-            } else {
-                for (Object grandChild : soundCategory.getChildren()) {
-                    if (grandChild instanceof SoundCategory) {
-                        if (((SoundCategory) grandChild).getCategoryName().equals(guiTitle)) {
-                            for (Object grandGrandChild : ((SoundCategory) grandChild).getChildren()) {
-                                if (grandGrandChild instanceof SoundCategory) {
-                                    gui.setItem(slot++, createItemStack(
-                                            ((SoundCategory) grandGrandChild).getDisplayMaterial(),
-                                            ChatColor.AQUA + "" + ChatColor.BOLD + ((SoundCategory) grandGrandChild).getCategoryName()));
-                                } else if (grandGrandChild instanceof SoundData) {
-                                    gui.setItem(slot++, createItemStack(
-                                            ((SoundData) grandGrandChild).getDisplayMaterial(),
-                                            ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) grandGrandChild).getSound()),
-                                            Arrays.asList(
-                                                    "",
-                                                    ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ")
-                                    ));
+            }
+
+            for (Object child : parent.getChildren()) {
+                if (child instanceof SoundCategory) {
+                    if (((SoundCategory) child).getCategoryName().equals(guiTitle)) {
+                        for (Object grandChild : ((SoundCategory) child).getChildren()) {
+                            if (grandChild instanceof SoundCategory) {
+                                gui.setItem(slot++, createItemStack(
+                                        ((SoundCategory) grandChild).getDisplayMaterial(),
+                                        ChatColor.AQUA + "" + ChatColor.BOLD + ((SoundCategory) grandChild).getCategoryName()));
+                            } else if (grandChild instanceof SoundData) {
+                                gui.setItem(slot++, createItemStack(
+                                        ((SoundData) grandChild).getDisplayMaterial(),
+                                        ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) grandChild).getSound()),
+                                        Arrays.asList(
+                                                "",
+                                                ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ")
+                                ));
+                            }
+                        }
+                        return;
+                    }
+
+                    for (Object grandChild : ((SoundCategory) child).getChildren()) {
+                        if (grandChild instanceof SoundCategory) {
+                            if (((SoundCategory) grandChild).getCategoryName().equals(guiTitle)) {
+                                for (Object grandGrandChild : ((SoundCategory) grandChild).getChildren()) {
+                                    if (grandGrandChild instanceof SoundData) {
+                                        gui.setItem(slot++, createItemStack(
+                                                ((SoundData) grandGrandChild).getDisplayMaterial(),
+                                                ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) grandGrandChild).getSound()),
+                                                Arrays.asList(
+                                                        "",
+                                                        ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ")
+                                        ));
+                                    }
                                 }
                             }
                         }

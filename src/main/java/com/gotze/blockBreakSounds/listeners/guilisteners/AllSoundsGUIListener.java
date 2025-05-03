@@ -21,7 +21,8 @@ public class AllSoundsGUIListener implements Listener {
     public AllSoundsGUIListener() {
     }
 
-    @EventHandler public void onInventoryClick(InventoryClickEvent event) {
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent event) {
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
 
@@ -43,7 +44,7 @@ public class AllSoundsGUIListener implements Listener {
             return;
         }
 
-        String clickedItemTitle = clickedInventory.getItem(slot).getItemMeta().getDisplayName();
+        String clickedItemTitle = ChatColor.stripColor(clickedInventory.getItem(slot).getItemMeta().getDisplayName());
         // TODO: Temp debug message
         player.sendMessage("Title of item at slot " + slot + " is " + clickedItemTitle);
 
@@ -59,6 +60,23 @@ public class AllSoundsGUIListener implements Listener {
                             player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
                             new AllSoundsGUI(player, ((SoundCategory) child).getCategoryName());
                             return;
+                        } else {
+                            for (Object grandChild : ((SoundCategory) child).getChildren()) {
+                                if (grandChild instanceof SoundCategory) {
+                                    if (((SoundCategory) grandChild).getCategoryName().equals(clickedItemTitle)) {
+                                        player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                                        new AllSoundsGUI(player, ((SoundCategory) grandChild).getCategoryName());
+                                    }
+                                }
+                                else if (grandChild instanceof SoundData) {
+                                    if ((((SoundData) grandChild).getSound().toString()).equals(clickedItemTitle)) {
+                                        SoundData soundData = new SoundData(((SoundData) grandChild).getSound(), ((SoundData) grandChild).getDisplayMaterial());
+                                        CurrentSoundData.setCurrentSound(player, soundData);
+                                        GUIUtils.handlePickedLineSound(clickedInventory, slot);
+                                        clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
+                                    }
+                                }
+                            }
                         }
                     } else if (child instanceof SoundData) {
                         if ((((SoundData) child).getSound().toString()).equals(clickedItemTitle)) {
