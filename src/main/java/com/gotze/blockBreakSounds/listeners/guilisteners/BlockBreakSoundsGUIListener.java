@@ -22,14 +22,12 @@ import static com.gotze.blockBreakSounds.utility.StringUtils.convertToSmallFont;
 
 public class BlockBreakSoundsGUIListener implements Listener {
 
-    private static final String GUI_TITLE = "Block Break Sounds";
-
     public BlockBreakSoundsGUIListener() {
     }
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (!event.getView().getTitle().equals(GUI_TITLE)) return;
+        if (!event.getView().getTitle().equals("Block Break Sounds")) return;
         event.setCancelled(true);
 
         Inventory clickedInventory = event.getClickedInventory();

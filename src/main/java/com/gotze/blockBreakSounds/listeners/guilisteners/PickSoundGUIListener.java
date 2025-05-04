@@ -17,14 +17,12 @@ import org.bukkit.inventory.Inventory;
 
 public class PickSoundGUIListener implements Listener {
 
-    private static final String GUI_TITLE = "Pick Sound";
-
     public PickSoundGUIListener() {
     }
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (!event.getView().getTitle().equals(GUI_TITLE)) return;
+        if (!event.getView().getTitle().equals("Pick Sound")) return;
         event.setCancelled(true);
 
         Inventory clickedInventory = event.getClickedInventory();

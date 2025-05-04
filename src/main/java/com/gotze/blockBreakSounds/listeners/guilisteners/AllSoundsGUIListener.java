@@ -15,6 +15,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class AllSoundsGUIListener implements Listener {
 
@@ -26,13 +28,26 @@ public class AllSoundsGUIListener implements Listener {
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
 
-        if (clickedInventory == null || clickedInventory.equals(player.getInventory()))
-            return;
+        if (clickedInventory == null) return;
+
+        ItemStack itemInSlot44 = clickedInventory.getItem(44);
+        if (itemInSlot44 == null) return;
+
+        ItemMeta itemMeta = itemInSlot44.getItemMeta();
+        if (itemMeta == null) return;
+
+        // TODO: Probably dont check by a display name, use something safer
+        String displayName = itemMeta.getDisplayName();
+        if (!displayName.equals("Testing")) return;
+
+        // At THIS point we're in the gui
+        event.setCancelled(true);
+
+        if (clickedInventory.equals(player.getInventory())) return;
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
 
-        String inventoryTitle = event.getView().getTitle();
         if (slot == 4) { // Current Sound
             GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
             return;

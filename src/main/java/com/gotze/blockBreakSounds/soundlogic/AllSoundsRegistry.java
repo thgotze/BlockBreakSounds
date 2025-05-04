@@ -536,6 +536,15 @@ public class AllSoundsRegistry {
                 // *** HOSTILE MOB SOUNDS ***
                 // **************************
                 new SoundCategory("Hostile Mob Sounds", Material.ZOMBIE_HEAD, List.of(
+                        // --- Hostile Generic Sounds ---
+                        new SoundCategory("Hostile Generic Sounds", Material.ZOMBIE_HEAD, List.of(
+                                new SoundData(Sound.ENTITY_HOSTILE_BIG_FALL, Material.ANVIL),
+                                new SoundData(Sound.ENTITY_HOSTILE_DEATH, Material.SKELETON_SKULL),
+                                new SoundData(Sound.ENTITY_HOSTILE_HURT, Material.RED_DYE),
+                                new SoundData(Sound.ENTITY_HOSTILE_SMALL_FALL, Material.FEATHER),
+                                new SoundData(Sound.ENTITY_HOSTILE_SPLASH, Material.WATER_BUCKET),
+                                new SoundData(Sound.ENTITY_HOSTILE_SWIM, Material.WATER_BUCKET)
+                        )),
                         // --- Warden Sounds ---
                         new SoundCategory("Warden Sounds", Material.WARDEN_SPAWN_EGG, List.of(
                                 new SoundData(Sound.ENTITY_WARDEN_AGITATED, Material.WARDEN_SPAWN_EGG),
@@ -894,17 +903,27 @@ public class AllSoundsRegistry {
                 // *** PROJECTILE SOUNDS ***
                 // *************************
                 new SoundCategory("Projectile Sounds", Material.ARROW, List.of(
-                        // --- Wind Charge Sounds ---
-                        new SoundCategory("Wind Charge Sounds", Material.WIND_CHARGE, List.of(
-                                new SoundData(Sound.ENTITY_WIND_CHARGE_THROW, Material.WIND_CHARGE),
-                                new SoundData(Sound.ENTITY_WIND_CHARGE_WIND_BURST, Material.WIND_CHARGE)
-                        )),
-                        // --- Arrow Sounds ---
-                        new SoundCategory("Arrow Sounds", Material.ARROW, List.of(
-                                new SoundData(Sound.ENTITY_ARROW_HIT, Material.ARROW),
-                                new SoundData(Sound.ENTITY_ARROW_HIT_PLAYER, Material.ARROW),
-                                new SoundData(Sound.ENTITY_ARROW_SHOOT, Material.ARROW)
-                        )),
+                        new SoundData(Sound.ENTITY_WIND_CHARGE_THROW, Material.WIND_CHARGE),
+                        new SoundData(Sound.ENTITY_WIND_CHARGE_WIND_BURST, Material.WIND_CHARGE),
+                        new SoundData(Sound.ENTITY_ARROW_HIT, Material.ARROW),
+                        new SoundData(Sound.ENTITY_ARROW_HIT_PLAYER, Material.ARROW),
+                        new SoundData(Sound.ENTITY_ARROW_SHOOT, Material.ARROW),
+                        new SoundData(Sound.ENTITY_FISHING_BOBBER_THROW, Material.FISHING_ROD),
+                        new SoundData(Sound.ENTITY_FISHING_BOBBER_RETRIEVE, Material.FISHING_ROD),
+                        new SoundData(Sound.ENTITY_FISHING_BOBBER_SPLASH, Material.FISHING_ROD),
+                        new SoundData(Sound.ENTITY_ENDER_EYE_LAUNCH, Material.ENDER_EYE),
+                        new SoundData(Sound.ENTITY_ENDER_EYE_DEATH, Material.ENDER_EYE),
+                        new SoundData(Sound.ENTITY_ENDER_PEARL_THROW, Material.ENDER_PEARL),
+                        new SoundData(Sound.ENTITY_SHULKER_BULLET_HIT, Material.SHULKER_BOX),
+                        new SoundData(Sound.ENTITY_SHULKER_BULLET_HURT, Material.SHULKER_BOX),
+                        new SoundData(Sound.ENTITY_SPLASH_POTION_BREAK, Material.SPLASH_POTION),
+                        new SoundData(Sound.ENTITY_SPLASH_POTION_THROW, Material.SPLASH_POTION),
+                        new SoundData(Sound.ENTITY_LINGERING_POTION_THROW, Material.LINGERING_POTION),
+                        new SoundData(Sound.ENTITY_WANDERING_TRADER_DRINK_POTION, Material.WANDERING_TRADER_SPAWN_EGG),
+                        new SoundData(Sound.ENTITY_EXPERIENCE_BOTTLE_THROW, Material.EXPERIENCE_BOTTLE),
+                        new SoundData(Sound.ENTITY_EGG_THROW, Material.EGG),
+                        new SoundData(Sound.ENTITY_SNOWBALL_THROW, Material.SNOWBALL),
+                        new SoundData(Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, Material.FIRE_CHARGE),
                         // --- Firework Sounds ---
                         new SoundCategory("Firework Sounds", Material.FIREWORK_ROCKET, List.of(
                                 new SoundData(Sound.ENTITY_FIREWORK_ROCKET_SHOOT, Material.FIREWORK_ROCKET),
@@ -915,87 +934,61 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST, Material.FIREWORK_ROCKET),
                                 new SoundData(Sound.ENTITY_FIREWORK_ROCKET_LARGE_BLAST_FAR, Material.FIREWORK_ROCKET),
                                 new SoundData(Sound.ENTITY_FIREWORK_ROCKET_TWINKLE_FAR, Material.FIREWORK_ROCKET)
-                        )),
-                        // --- Ender Pearl & Eye Sounds ---
-                        new SoundCategory("Ender Pearl & Eye Sounds", Material.ENDER_PEARL, List.of(
-                                new SoundData(Sound.ENTITY_ENDER_EYE_LAUNCH, Material.ENDER_EYE),
-                                new SoundData(Sound.ENTITY_ENDER_EYE_DEATH, Material.ENDER_EYE),
-                                new SoundData(Sound.ENTITY_ENDER_PEARL_THROW, Material.ENDER_PEARL)
-                        )),
-                        // --- Fishing Bobber Sounds ---
-                        new SoundCategory("Fishing Bobber Sounds", Material.FISHING_ROD, List.of(
-                                new SoundData(Sound.ENTITY_FISHING_BOBBER_THROW, Material.FISHING_ROD),
-                                new SoundData(Sound.ENTITY_FISHING_BOBBER_RETRIEVE, Material.FISHING_ROD),
-                                new SoundData(Sound.ENTITY_FISHING_BOBBER_SPLASH, Material.FISHING_ROD)
-                        )),
-                        // --- Shulker Bullet Sounds ---
-                        new SoundCategory("Shulker Bullet Sounds", Material.SHULKER_BOX, List.of(
-                                new SoundData(Sound.ENTITY_SHULKER_BULLET_HIT, Material.SHULKER_BOX),
-                                new SoundData(Sound.ENTITY_SHULKER_BULLET_HURT, Material.SHULKER_BOX)
-                        )),
-                        // --- Potion Sounds ---
-                        new SoundCategory("Potion Sounds", Material.POTION, List.of(
-                                new SoundData(Sound.ENTITY_SPLASH_POTION_BREAK, Material.SPLASH_POTION),
-                                new SoundData(Sound.ENTITY_SPLASH_POTION_THROW, Material.SPLASH_POTION),
-                                new SoundData(Sound.ENTITY_LINGERING_POTION_THROW, Material.LINGERING_POTION),
-                                new SoundData(Sound.ENTITY_WANDERING_TRADER_DRINK_POTION, Material.WANDERING_TRADER_SPAWN_EGG),
-                                new SoundData(Sound.ENTITY_EXPERIENCE_BOTTLE_THROW, Material.EXPERIENCE_BOTTLE)
-                        )),
-                        // --- Other Projectile Sounds ---
-                        new SoundCategory("Other Projectile Sounds", Material.SNOWBALL, List.of(
-                                new SoundData(Sound.ENTITY_EGG_THROW, Material.EGG),
-                                new SoundData(Sound.ENTITY_SNOWBALL_THROW, Material.SNOWBALL),
-                                new SoundData(Sound.ENTITY_DRAGON_FIREBALL_EXPLODE, Material.FIRE_CHARGE)
                         ))
                 )),
                 // *********************
                 // *** PLAYER SOUNDS ***
                 // *********************
                 new SoundCategory("Player Sounds", Material.PLAYER_HEAD, List.of(
-                        // --- Player Attack Sounds ---
-                        new SoundCategory("Player Attack Sounds", Material.IRON_SWORD, List.of(
-                                new SoundData(Sound.ENTITY_PLAYER_ATTACK_CRIT, Material.GOLDEN_SWORD),
-                                new SoundData(Sound.ENTITY_PLAYER_ATTACK_KNOCKBACK, Material.PISTON),
-                                new SoundData(Sound.ENTITY_PLAYER_ATTACK_NODAMAGE, Material.STICK),
-                                new SoundData(Sound.ENTITY_PLAYER_ATTACK_STRONG, Material.DIAMOND_SWORD),
-                                new SoundData(Sound.ENTITY_PLAYER_ATTACK_SWEEP, Material.IRON_SWORD),
-                                new SoundData(Sound.ENTITY_PLAYER_ATTACK_WEAK, Material.WOODEN_SWORD)
-                        )),
-                        // --- Player Hurt Sounds ---
-                        new SoundCategory("Player Hurt Sounds", Material.RED_DYE, List.of(
-                                new SoundData(Sound.ENTITY_PLAYER_HURT, Material.RED_DYE),
-                                new SoundData(Sound.ENTITY_PLAYER_HURT_DROWN, Material.WATER_BUCKET),
-                                new SoundData(Sound.ENTITY_PLAYER_HURT_FREEZE, Material.ICE),
-                                new SoundData(Sound.ENTITY_PLAYER_HURT_ON_FIRE, Material.BLAZE_POWDER),
-                                new SoundData(Sound.ENTITY_PLAYER_HURT_SWEET_BERRY_BUSH, Material.SWEET_BERRIES)
-                        )),
-                        // --- Player Fall & Dive Sounds ---
-                        new SoundCategory("Player Fall & Dive Sounds", Material.FEATHER, List.of(
-                                new SoundData(Sound.ENTITY_PLAYER_BIG_FALL, Material.ANVIL),
-                                new SoundData(Sound.ENTITY_PLAYER_SMALL_FALL, Material.FEATHER),
-                                new SoundData(Sound.ENTITY_PLAYER_SPLASH, Material.WATER_BUCKET),
-                                new SoundData(Sound.ENTITY_PLAYER_SPLASH_HIGH_SPEED, Material.WATER)
-                        )),
-                        // --- Other Player Sounds ---
-                        new SoundCategory("Other Player Sounds", Material.PLAYER_HEAD, List.of(
-                                new SoundData(Sound.ENTITY_PLAYER_BREATH, Material.PLAYER_HEAD),
-                                new SoundData(Sound.ENTITY_PLAYER_BURP, Material.COOKED_BEEF),
-                                new SoundData(Sound.ENTITY_PLAYER_DEATH, Material.SKELETON_SKULL),
-                                new SoundData(Sound.ENTITY_PLAYER_LEVELUP, Material.EXPERIENCE_BOTTLE),
-                                new SoundData(Sound.ENTITY_PLAYER_SWIM, Material.WATER_BUCKET),
-                                new SoundData(Sound.ENTITY_PLAYER_TELEPORT, Material.ENDER_PEARL)
-                        ))
+                        new SoundData(Sound.ENTITY_PLAYER_ATTACK_CRIT, Material.GOLDEN_SWORD),
+                        new SoundData(Sound.ENTITY_PLAYER_ATTACK_KNOCKBACK, Material.PISTON),
+                        new SoundData(Sound.ENTITY_PLAYER_ATTACK_NODAMAGE, Material.STICK),
+                        new SoundData(Sound.ENTITY_PLAYER_ATTACK_STRONG, Material.DIAMOND_SWORD),
+                        new SoundData(Sound.ENTITY_PLAYER_ATTACK_SWEEP, Material.IRON_SWORD),
+                        new SoundData(Sound.ENTITY_PLAYER_ATTACK_WEAK, Material.WOODEN_SWORD),
+                        new SoundData(Sound.ENTITY_PLAYER_HURT, Material.RED_DYE),
+                        new SoundData(Sound.ENTITY_PLAYER_HURT_DROWN, Material.WATER_BUCKET),
+                        new SoundData(Sound.ENTITY_PLAYER_HURT_FREEZE, Material.ICE),
+                        new SoundData(Sound.ENTITY_PLAYER_HURT_ON_FIRE, Material.BLAZE_POWDER),
+                        new SoundData(Sound.ENTITY_PLAYER_HURT_SWEET_BERRY_BUSH, Material.SWEET_BERRIES),
+                        new SoundData(Sound.ENTITY_PLAYER_BIG_FALL, Material.ANVIL),
+                        new SoundData(Sound.ENTITY_PLAYER_SMALL_FALL, Material.FEATHER),
+                        new SoundData(Sound.ENTITY_PLAYER_SPLASH, Material.WATER_BUCKET),
+                        new SoundData(Sound.ENTITY_PLAYER_SPLASH_HIGH_SPEED, Material.WATER_BUCKET),
+                        new SoundData(Sound.ENTITY_PLAYER_BREATH, Material.PLAYER_HEAD),
+                        new SoundData(Sound.ENTITY_PLAYER_BURP, Material.COOKED_BEEF),
+                        new SoundData(Sound.ENTITY_PLAYER_DEATH, Material.SKELETON_SKULL),
+                        new SoundData(Sound.ENTITY_PLAYER_LEVELUP, Material.EXPERIENCE_BOTTLE),
+                        new SoundData(Sound.ENTITY_PLAYER_SWIM, Material.WATER_BUCKET),
+                        new SoundData(Sound.ENTITY_PLAYER_TELEPORT, Material.ENDER_PEARL),
+                        // --- Generic Sounds ---
+                        new SoundCategory("Generic Sounds", Material.NOTE_BLOCK, List.of())
                 )),
                 // ***************************
                 // *** OTHER ENTITY SOUNDS ***
                 // ***************************
                 new SoundCategory("Other Entity Sounds", Material.OAK_BOAT, List.of(
-                        // --- Explosive Sounds ---
-                        new SoundCategory("Explosive Sounds", Material.TNT, List.of(
-                                new SoundData(Sound.ENTITY_GENERIC_EXPLODE, Material.TNT),
-                                new SoundData(Sound.ENTITY_CREEPER_PRIMED, Material.CREEPER_HEAD),
-                                new SoundData(Sound.ENTITY_TNT_PRIMED, Material.TNT)
-                        )),
+                        new SoundData(Sound.ENTITY_LEASH_KNOT_BREAK, Material.LEAD),
+                        new SoundData(Sound.ENTITY_LEASH_KNOT_PLACE, Material.LEAD),
+                        new SoundData(Sound.ENTITY_ITEM_BREAK, Material.IRON_PICKAXE),
+                        new SoundData(Sound.ENTITY_ITEM_PICKUP, Material.HOPPER),
+                        new SoundData(Sound.ENTITY_EXPERIENCE_ORB_PICKUP, Material.EXPERIENCE_BOTTLE),
+                        new SoundData(Sound.ENTITY_BOAT_PADDLE_LAND, Material.OAK_BOAT),
+                        new SoundData(Sound.ENTITY_BOAT_PADDLE_WATER, Material.OAK_BOAT),
+                        new SoundData(Sound.ENTITY_MINECART_INSIDE, Material.MINECART),
+                        new SoundData(Sound.ENTITY_MINECART_INSIDE_UNDERWATER, Material.MINECART),
+                        new SoundData(Sound.ENTITY_MINECART_RIDING, Material.MINECART),
+                        new SoundData(Sound.ENTITY_LIGHTNING_BOLT_IMPACT, Material.LIGHTNING_ROD),
+                        new SoundData(Sound.ENTITY_LIGHTNING_BOLT_THUNDER, Material.LIGHTNING_ROD),
+                        new SoundData(Sound.ENTITY_PAINTING_BREAK, Material.PAINTING),
+                        new SoundData(Sound.ENTITY_PAINTING_PLACE, Material.PAINTING),
+                        new SoundData(Sound.ENTITY_GENERIC_EXPLODE, Material.TNT),
+                        new SoundData(Sound.ENTITY_CREEPER_PRIMED, Material.CREEPER_HEAD),
+                        new SoundData(Sound.ENTITY_TNT_PRIMED, Material.TNT),
+                        new SoundData(Sound.ENTITY_ARMOR_STAND_BREAK, Material.ARMOR_STAND),
+                        new SoundData(Sound.ENTITY_ARMOR_STAND_FALL, Material.ARMOR_STAND),
+                        new SoundData(Sound.ENTITY_ARMOR_STAND_HIT, Material.ARMOR_STAND),
+                        new SoundData(Sound.ENTITY_ARMOR_STAND_PLACE, Material.ARMOR_STAND),
                         // --- Generic Sounds ---
                         new SoundCategory("Generic Sounds", Material.NOTE_BLOCK, List.of(
                                 new SoundData(Sound.ENTITY_GENERIC_BIG_FALL, Material.ANVIL),
@@ -1018,13 +1011,6 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.ENTITY_HOSTILE_SPLASH, Material.WATER_BUCKET),
                                 new SoundData(Sound.ENTITY_HOSTILE_SWIM, Material.WATER_BUCKET)
                         )),
-                        // --- Armor Stand Sounds ---
-                        new SoundCategory("Armor Stand Sounds", Material.ARMOR_STAND, List.of(
-                                new SoundData(Sound.ENTITY_ARMOR_STAND_BREAK, Material.ARMOR_STAND),
-                                new SoundData(Sound.ENTITY_ARMOR_STAND_FALL, Material.ARMOR_STAND),
-                                new SoundData(Sound.ENTITY_ARMOR_STAND_HIT, Material.ARMOR_STAND),
-                                new SoundData(Sound.ENTITY_ARMOR_STAND_PLACE, Material.ARMOR_STAND)
-                        )),
                         // --- Glow Item Frame Sounds ---
                         new SoundCategory("Glow Item Frame Sounds", Material.GLOW_ITEM_FRAME, List.of(
                                 new SoundData(Sound.ENTITY_GLOW_ITEM_FRAME_ADD_ITEM, Material.GLOW_ITEM_FRAME),
@@ -1040,38 +1026,6 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.ENTITY_ITEM_FRAME_PLACE, Material.ITEM_FRAME),
                                 new SoundData(Sound.ENTITY_ITEM_FRAME_REMOVE_ITEM, Material.ITEM_FRAME),
                                 new SoundData(Sound.ENTITY_ITEM_FRAME_ROTATE_ITEM, Material.ITEM_FRAME)
-                        )),
-                        // --- Painting Sounds ---
-                        new SoundCategory("Painting Sounds", Material.PAINTING, List.of(
-                                new SoundData(Sound.ENTITY_PAINTING_BREAK, Material.PAINTING),
-                                new SoundData(Sound.ENTITY_PAINTING_PLACE, Material.PAINTING)
-                        )),
-                        // --- Lightning Bolt Sounds ---
-                        new SoundCategory("Lightning Bolt Sounds", Material.LIGHTNING_ROD, List.of(
-                                new SoundData(Sound.ENTITY_LIGHTNING_BOLT_IMPACT, Material.LIGHTNING_ROD),
-                                new SoundData(Sound.ENTITY_LIGHTNING_BOLT_THUNDER, Material.LIGHTNING_ROD)
-                        )),
-                        // --- Minecart Sounds ---
-                        new SoundCategory("Minecart Sounds", Material.MINECART, List.of(
-                                new SoundData(Sound.ENTITY_MINECART_INSIDE, Material.MINECART),
-                                new SoundData(Sound.ENTITY_MINECART_INSIDE_UNDERWATER, Material.MINECART),
-                                new SoundData(Sound.ENTITY_MINECART_RIDING, Material.MINECART)
-                        )),
-                        // --- Boat Sounds ---
-                        new SoundCategory("Boat Sounds", Material.OAK_BOAT, List.of(
-                                new SoundData(Sound.ENTITY_BOAT_PADDLE_LAND, Material.OAK_BOAT),
-                                new SoundData(Sound.ENTITY_BOAT_PADDLE_WATER, Material.OAK_BOAT)
-                        )),
-                        // --- Lead Sounds ---
-                        new SoundCategory("Lead Sounds", Material.LEAD, List.of(
-                                new SoundData(Sound.ENTITY_LEASH_KNOT_BREAK, Material.LEAD),
-                                new SoundData(Sound.ENTITY_LEASH_KNOT_PLACE, Material.LEAD)
-                        )),
-                        // --- Uncategorized Entity Sounds ---
-                        new SoundCategory("Uncategorized Entity Sounds", Material.EXPERIENCE_BOTTLE, List.of(
-                                new SoundData(Sound.ENTITY_ITEM_BREAK, Material.IRON_PICKAXE),
-                                new SoundData(Sound.ENTITY_ITEM_PICKUP, Material.HOPPER),
-                                new SoundData(Sound.ENTITY_EXPERIENCE_ORB_PICKUP, Material.EXPERIENCE_BOTTLE)
                         ))
                 ))
         )));
@@ -1254,12 +1208,12 @@ public class AllSoundsRegistry {
                 // **************************
                 new SoundCategory("Wood Blocks Sounds", Material.OAK_LOG, List.of(
                         // --- Cherry Wood Sounds ---
-                        new SoundCategory("Cherry Wood Sounds", Material.CHERRY_WOOD, List.of(
-                                new SoundData(Sound.BLOCK_CHERRY_WOOD_BREAK, Material.CHERRY_WOOD),
-                                new SoundData(Sound.BLOCK_CHERRY_WOOD_FALL, Material.CHERRY_WOOD),
-                                new SoundData(Sound.BLOCK_CHERRY_WOOD_HIT, Material.CHERRY_WOOD),
-                                new SoundData(Sound.BLOCK_CHERRY_WOOD_PLACE, Material.CHERRY_WOOD),
-                                new SoundData(Sound.BLOCK_CHERRY_WOOD_STEP, Material.CHERRY_WOOD)
+                        new SoundCategory("Cherry Wood Sounds", Material.CHERRY_PLANKS, List.of(
+                                new SoundData(Sound.BLOCK_CHERRY_WOOD_BREAK, Material.CHERRY_PLANKS),
+                                new SoundData(Sound.BLOCK_CHERRY_WOOD_FALL, Material.CHERRY_PLANKS),
+                                new SoundData(Sound.BLOCK_CHERRY_WOOD_HIT, Material.CHERRY_PLANKS),
+                                new SoundData(Sound.BLOCK_CHERRY_WOOD_PLACE, Material.CHERRY_PLANKS),
+                                new SoundData(Sound.BLOCK_CHERRY_WOOD_STEP, Material.CHERRY_PLANKS)
                         )),
                         // --- Cherry Wood Button Sounds ---
                         new SoundCategory("Cherry Wood Button Sounds", Material.CHERRY_BUTTON, List.of(
@@ -1365,12 +1319,12 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.BLOCK_EYEBLOSSOM_OPEN_LONG, Material.OPEN_EYEBLOSSOM)
                         )),
                         // --- Coral Block Sounds ---
-                        new SoundCategory("Coral Block Sounds", Material.BUBBLE_CORAL, List.of(
-                                new SoundData(Sound.BLOCK_CORAL_BLOCK_BREAK, Material.BUBBLE_CORAL),
-                                new SoundData(Sound.BLOCK_CORAL_BLOCK_FALL, Material.BUBBLE_CORAL),
-                                new SoundData(Sound.BLOCK_CORAL_BLOCK_HIT, Material.BUBBLE_CORAL),
-                                new SoundData(Sound.BLOCK_CORAL_BLOCK_PLACE, Material.BUBBLE_CORAL),
-                                new SoundData(Sound.BLOCK_CORAL_BLOCK_STEP, Material.BUBBLE_CORAL)
+                        new SoundCategory("Coral Block Sounds", Material.BRAIN_CORAL_BLOCK, List.of(
+                                new SoundData(Sound.BLOCK_CORAL_BLOCK_BREAK, Material.BRAIN_CORAL_BLOCK),
+                                new SoundData(Sound.BLOCK_CORAL_BLOCK_FALL, Material.BRAIN_CORAL_BLOCK),
+                                new SoundData(Sound.BLOCK_CORAL_BLOCK_HIT, Material.BRAIN_CORAL_BLOCK),
+                                new SoundData(Sound.BLOCK_CORAL_BLOCK_PLACE, Material.BRAIN_CORAL_BLOCK),
+                                new SoundData(Sound.BLOCK_CORAL_BLOCK_STEP, Material.BRAIN_CORAL_BLOCK)
                         )),
                         // --- Chorus Flower Sounds ---
                         new SoundCategory("Chorus Flower Sounds", Material.CHORUS_FLOWER, List.of(
@@ -1402,13 +1356,13 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.BLOCK_CHERRY_SAPLING_STEP, Material.CHERRY_SAPLING)
                         )),
                         // --- Cave Vines Sounds ---
-                        new SoundCategory("Cave Vines Sounds", Material.CAVE_VINES, List.of(
-                                new SoundData(Sound.BLOCK_CAVE_VINES_BREAK, Material.CAVE_VINES),
-                                new SoundData(Sound.BLOCK_CAVE_VINES_FALL, Material.CAVE_VINES),
-                                new SoundData(Sound.BLOCK_CAVE_VINES_HIT, Material.CAVE_VINES),
-                                new SoundData(Sound.BLOCK_CAVE_VINES_PICK_BERRIES, Material.CAVE_VINES),
-                                new SoundData(Sound.BLOCK_CAVE_VINES_PLACE, Material.CAVE_VINES),
-                                new SoundData(Sound.BLOCK_CAVE_VINES_STEP, Material.CAVE_VINES)
+                        new SoundCategory("Cave Vines Sounds", Material.GLOW_BERRIES, List.of(
+                                new SoundData(Sound.BLOCK_CAVE_VINES_BREAK, Material.GLOW_BERRIES),
+                                new SoundData(Sound.BLOCK_CAVE_VINES_FALL, Material.GLOW_BERRIES),
+                                new SoundData(Sound.BLOCK_CAVE_VINES_HIT, Material.GLOW_BERRIES),
+                                new SoundData(Sound.BLOCK_CAVE_VINES_PICK_BERRIES, Material.GLOW_BERRIES),
+                                new SoundData(Sound.BLOCK_CAVE_VINES_PLACE, Material.GLOW_BERRIES),
+                                new SoundData(Sound.BLOCK_CAVE_VINES_STEP, Material.GLOW_BERRIES)
                         )),
                         // --- Rooted Dirt Sounds ---
                         new SoundCategory("Rooted Dirt Sounds", Material.ROOTED_DIRT, List.of(
@@ -1419,12 +1373,12 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.BLOCK_ROOTED_DIRT_STEP, Material.ROOTED_DIRT)
                         )),
                         // --- Roots Sounds ---
-                        new SoundCategory("Roots Sounds", Material.HANGING_ROOTS, List.of(
-                                new SoundData(Sound.BLOCK_ROOTS_BREAK, Material.HANGING_ROOTS),
-                                new SoundData(Sound.BLOCK_ROOTS_FALL, Material.HANGING_ROOTS),
-                                new SoundData(Sound.BLOCK_ROOTS_HIT, Material.HANGING_ROOTS),
-                                new SoundData(Sound.BLOCK_ROOTS_PLACE, Material.HANGING_ROOTS),
-                                new SoundData(Sound.BLOCK_ROOTS_STEP, Material.HANGING_ROOTS)
+                        new SoundCategory("Roots Sounds", Material.CRIMSON_ROOTS, List.of(
+                                new SoundData(Sound.BLOCK_ROOTS_BREAK, Material.CRIMSON_ROOTS),
+                                new SoundData(Sound.BLOCK_ROOTS_FALL, Material.CRIMSON_ROOTS),
+                                new SoundData(Sound.BLOCK_ROOTS_HIT, Material.CRIMSON_ROOTS),
+                                new SoundData(Sound.BLOCK_ROOTS_PLACE, Material.CRIMSON_ROOTS),
+                                new SoundData(Sound.BLOCK_ROOTS_STEP, Material.CRIMSON_ROOTS)
                         )),
                         // --- Azalea Sounds ---
                         new SoundCategory("Azalea Sounds", Material.AZALEA, List.of(
@@ -1443,14 +1397,14 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.BLOCK_HANGING_ROOTS_STEP, Material.HANGING_ROOTS)
                         )),
                         // --- Growing Plant Sounds ---
-                        new SoundCategory("Growing Plant Sounds", Material.WHEAT_SEEDS, List.of(
-                                new SoundData(Sound.BLOCK_GROWING_PLANT_CROP, Material.WHEAT_SEEDS)
+                        new SoundCategory("Growing Plant Sounds", Material.WHEAT, List.of(
+                                new SoundData(Sound.BLOCK_GROWING_PLANT_CROP, Material.WHEAT)
                         )),
                         // --- Sweet Berry Bush Sounds ---
-                        new SoundCategory("Sweet Berry Bush Sounds", Material.SWEET_BERRY_BUSH, List.of(
-                                new SoundData(Sound.BLOCK_SWEET_BERRY_BUSH_BREAK, Material.SWEET_BERRY_BUSH),
-                                new SoundData(Sound.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, Material.SWEET_BERRY_BUSH),
-                                new SoundData(Sound.BLOCK_SWEET_BERRY_BUSH_PLACE, Material.SWEET_BERRY_BUSH)
+                        new SoundCategory("Sweet Berry Bush Sounds", Material.SWEET_BERRIES, List.of(
+                                new SoundData(Sound.BLOCK_SWEET_BERRY_BUSH_BREAK, Material.SWEET_BERRIES),
+                                new SoundData(Sound.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, Material.SWEET_BERRIES),
+                                new SoundData(Sound.BLOCK_SWEET_BERRY_BUSH_PLACE, Material.SWEET_BERRIES)
                         )),
                         // --- Spore Blossom Sounds ---
                         new SoundCategory("Spore Blossom Sounds", Material.SPORE_BLOSSOM, List.of(
@@ -1460,14 +1414,14 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.BLOCK_SPORE_BLOSSOM_PLACE, Material.SPORE_BLOSSOM),
                                 new SoundData(Sound.BLOCK_SPORE_BLOSSOM_STEP, Material.SPORE_BLOSSOM)
                         )),
-//                        // --- Stem Sounds --- TODO: what is a stem?
-//                        new SoundCategory("Stem Sounds", Material.STEM, List.of(
-//                                new SoundData(Sound.BLOCK_STEM_BREAK, Material.STEM),
-//                                new SoundData(Sound.BLOCK_STEM_FALL, Material.STEM),
-//                                new SoundData(Sound.BLOCK_STEM_HIT, Material.STEM),
-//                                new SoundData(Sound.BLOCK_STEM_PLACE, Material.STEM),
-//                                new SoundData(Sound.BLOCK_STEM_STEP, Material.STEM)
-//                        )),
+                        // --- Stem Sounds ---
+                        new SoundCategory("Stem Sounds", Material.WARPED_STEM, List.of(
+                                new SoundData(Sound.BLOCK_STEM_BREAK, Material.WARPED_STEM),
+                                new SoundData(Sound.BLOCK_STEM_FALL, Material.WARPED_STEM),
+                                new SoundData(Sound.BLOCK_STEM_HIT, Material.WARPED_STEM),
+                                new SoundData(Sound.BLOCK_STEM_PLACE, Material.WARPED_STEM),
+                                new SoundData(Sound.BLOCK_STEM_STEP, Material.WARPED_STEM)
+                        )),
                         // --- Weeping Vines Sounds ---
                         new SoundCategory("Weeping Vines Sounds", Material.WEEPING_VINES, List.of(
                                 new SoundData(Sound.BLOCK_WEEPING_VINES_BREAK, Material.WEEPING_VINES),
@@ -1559,10 +1513,10 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.BLOCK_BIG_DRIPLEAF_TILT_UP, Material.BIG_DRIPLEAF)
                         )),
                         // --- Bamboo Sapling Sounds ---
-                        new SoundCategory("Bamboo Sapling Sounds", Material.BAMBOO_SAPLING, List.of(
-                                new SoundData(Sound.BLOCK_BAMBOO_SAPLING_BREAK, Material.BAMBOO_SAPLING),
-                                new SoundData(Sound.BLOCK_BAMBOO_SAPLING_HIT, Material.BAMBOO_SAPLING),
-                                new SoundData(Sound.BLOCK_BAMBOO_SAPLING_PLACE, Material.BAMBOO_SAPLING)
+                        new SoundCategory("Bamboo Sapling Sounds", Material.BAMBOO, List.of(
+                                new SoundData(Sound.BLOCK_BAMBOO_SAPLING_BREAK, Material.BAMBOO),
+                                new SoundData(Sound.BLOCK_BAMBOO_SAPLING_HIT, Material.BAMBOO),
+                                new SoundData(Sound.BLOCK_BAMBOO_SAPLING_PLACE, Material.BAMBOO)
                         ))
 
                 )),
@@ -1576,9 +1530,12 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.BLOCK_METAL_FALL, Material.IRON_BLOCK),
                                 new SoundData(Sound.BLOCK_METAL_HIT, Material.IRON_BLOCK),
                                 new SoundData(Sound.BLOCK_METAL_PLACE, Material.IRON_BLOCK),
-                                new SoundData(Sound.BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF, Material.HEAVY_WEIGHTED_PRESSURE_PLATE),
-                                new SoundData(Sound.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, Material.HEAVY_WEIGHTED_PRESSURE_PLATE),
                                 new SoundData(Sound.BLOCK_METAL_STEP, Material.IRON_BLOCK)
+                        )),
+                        // --- Metal Pressure Plate Sounds ---
+                        new SoundCategory("Metal Pressure Plate Sounds", Material.HEAVY_WEIGHTED_PRESSURE_PLATE, List.of(
+                                new SoundData(Sound.BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF, Material.HEAVY_WEIGHTED_PRESSURE_PLATE),
+                                new SoundData(Sound.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON, Material.HEAVY_WEIGHTED_PRESSURE_PLATE)
                         )),
                         // --- Copper Door Sounds ---
                         new SoundCategory("Copper Door Sounds", Material.COPPER_DOOR, List.of(
@@ -1586,12 +1543,12 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.BLOCK_COPPER_DOOR_OPEN, Material.COPPER_DOOR)
                         )),
                         // --- Copper Grate Sounds ---
-                        new SoundCategory("Copper Grate Sounds", Material.COPPER_BLOCK, List.of(
-                                new SoundData(Sound.BLOCK_COPPER_GRATE_BREAK, Material.CUT_COPPER),
-                                new SoundData(Sound.BLOCK_COPPER_GRATE_FALL, Material.CUT_COPPER),
-                                new SoundData(Sound.BLOCK_COPPER_GRATE_HIT, Material.CUT_COPPER),
-                                new SoundData(Sound.BLOCK_COPPER_GRATE_PLACE, Material.CUT_COPPER),
-                                new SoundData(Sound.BLOCK_COPPER_GRATE_STEP, Material.CUT_COPPER)
+                        new SoundCategory("Copper Grate Sounds", Material.COPPER_GRATE, List.of(
+                                new SoundData(Sound.BLOCK_COPPER_GRATE_BREAK, Material.COPPER_GRATE),
+                                new SoundData(Sound.BLOCK_COPPER_GRATE_FALL, Material.COPPER_GRATE),
+                                new SoundData(Sound.BLOCK_COPPER_GRATE_HIT, Material.COPPER_GRATE),
+                                new SoundData(Sound.BLOCK_COPPER_GRATE_PLACE, Material.COPPER_GRATE),
+                                new SoundData(Sound.BLOCK_COPPER_GRATE_STEP, Material.COPPER_GRATE)
                         )),
                         // --- Copper Trapdoor Sounds ---
                         new SoundCategory("Copper Trapdoor Sounds", Material.COPPER_TRAPDOOR, List.of(
@@ -1599,14 +1556,14 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.BLOCK_COPPER_TRAPDOOR_OPEN, Material.COPPER_TRAPDOOR)
                         )),
                         // --- Copper Bulb Sounds ---
-                        new SoundCategory("Copper Bulb Sounds", Material.COPPER_BLOCK, List.of(
-                                new SoundData(Sound.BLOCK_COPPER_BULB_BREAK, Material.COPPER_BLOCK),
-                                new SoundData(Sound.BLOCK_COPPER_BULB_FALL, Material.COPPER_BLOCK),
-                                new SoundData(Sound.BLOCK_COPPER_BULB_HIT, Material.COPPER_BLOCK),
-                                new SoundData(Sound.BLOCK_COPPER_BULB_PLACE, Material.COPPER_BLOCK),
-                                new SoundData(Sound.BLOCK_COPPER_BULB_STEP, Material.COPPER_BLOCK),
-                                new SoundData(Sound.BLOCK_COPPER_BULB_TURN_OFF, Material.COPPER_BLOCK),
-                                new SoundData(Sound.BLOCK_COPPER_BULB_TURN_ON, Material.COPPER_BLOCK)
+                        new SoundCategory("Copper Bulb Sounds", Material.COPPER_BULB, List.of(
+                                new SoundData(Sound.BLOCK_COPPER_BULB_BREAK, Material.COPPER_BULB),
+                                new SoundData(Sound.BLOCK_COPPER_BULB_FALL, Material.COPPER_BULB),
+                                new SoundData(Sound.BLOCK_COPPER_BULB_HIT, Material.COPPER_BULB),
+                                new SoundData(Sound.BLOCK_COPPER_BULB_PLACE, Material.COPPER_BULB),
+                                new SoundData(Sound.BLOCK_COPPER_BULB_STEP, Material.COPPER_BULB),
+                                new SoundData(Sound.BLOCK_COPPER_BULB_TURN_OFF, Material.COPPER_BULB),
+                                new SoundData(Sound.BLOCK_COPPER_BULB_TURN_ON, Material.COPPER_BULB)
                         )),
                         // --- Copper Sounds ---
                         new SoundCategory("Copper Sounds", Material.COPPER_BLOCK, List.of(
@@ -1698,13 +1655,10 @@ public class AllSoundsRegistry {
                         // --- Nether Wood Sounds ---
                         new SoundCategory("Nether Wood Sounds", Material.CRIMSON_PLANKS, List.of(
                                 new SoundData(Sound.BLOCK_NETHER_WOOD_BREAK, Material.CRIMSON_PLANKS),
-                                new SoundData(Sound.BLOCK_NETHER_WOOD_BUTTON_CLICK_OFF, Material.CRIMSON_BUTTON),
-                                new SoundData(Sound.BLOCK_NETHER_WOOD_BUTTON_CLICK_ON, Material.CRIMSON_BUTTON),
-                                new SoundData(Sound.BLOCK_NETHER_WOOD_DOOR_CLOSE, Material.CRIMSON_DOOR),
-                                new SoundData(Sound.BLOCK_NETHER_WOOD_DOOR_OPEN, Material.CRIMSON_DOOR),
                                 new SoundData(Sound.BLOCK_NETHER_WOOD_FALL, Material.CRIMSON_PLANKS),
-                                new SoundData(Sound.BLOCK_NETHER_WOOD_FENCE_GATE_CLOSE, Material.CRIMSON_FENCE_GATE),
-                                new SoundData(Sound.BLOCK_NETHER_WOOD_FENCE_GATE_OPEN, Material.CRIMSON_FENCE_GATE)
+                                new SoundData(Sound.BLOCK_NETHER_WOOD_HIT, Material.CRIMSON_PLANKS),
+                                new SoundData(Sound.BLOCK_NETHER_WOOD_PLACE, Material.CRIMSON_PLANKS),
+                                new SoundData(Sound.BLOCK_NETHER_WOOD_STEP, Material.CRIMSON_PLANKS)
                         )),
                         // --- Nether Wood Hanging Sign Sounds ---
                         new SoundCategory("Nether Wood Hanging Sign Sounds", Material.CRIMSON_HANGING_SIGN, List.of(
@@ -1713,6 +1667,16 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.BLOCK_NETHER_WOOD_HANGING_SIGN_HIT, Material.CRIMSON_HANGING_SIGN),
                                 new SoundData(Sound.BLOCK_NETHER_WOOD_HANGING_SIGN_PLACE, Material.CRIMSON_HANGING_SIGN),
                                 new SoundData(Sound.BLOCK_NETHER_WOOD_HANGING_SIGN_STEP, Material.CRIMSON_HANGING_SIGN)
+                        )),
+                        // --- Nether Wood Door Sounds ---
+                        new SoundCategory("Nether Wood Door Sounds", Material.CRIMSON_HANGING_SIGN, List.of(
+                                new SoundData(Sound.BLOCK_NETHER_WOOD_DOOR_CLOSE, Material.CRIMSON_DOOR),
+                                new SoundData(Sound.BLOCK_NETHER_WOOD_DOOR_OPEN, Material.CRIMSON_DOOR)
+                        )),
+                        // --- Nether Wood Button Sounds ---
+                        new SoundCategory("Nether Wood Button Sounds", Material.CRIMSON_BUTTON, List.of(
+                                new SoundData(Sound.BLOCK_NETHER_WOOD_BUTTON_CLICK_OFF, Material.CRIMSON_BUTTON),
+                                new SoundData(Sound.BLOCK_NETHER_WOOD_BUTTON_CLICK_ON, Material.CRIMSON_BUTTON)
                         )),
                         // --- Soul Sand Sounds ---
                         new SoundCategory("Soul Sand Sounds", Material.SOUL_SAND, List.of(
@@ -1731,20 +1695,25 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.BLOCK_SOUL_SOIL_STEP, Material.SOUL_SOIL)
                         )),
                         // --- Wart Block Sounds ---
-                        new SoundCategory("Wart Block Sounds", Material.WARPED_WART_BLOCK, List.of(
-                                new SoundData(Sound.BLOCK_WART_BLOCK_BREAK, Material.WARPED_WART_BLOCK),
-                                new SoundData(Sound.BLOCK_WART_BLOCK_FALL, Material.WARPED_WART_BLOCK),
-                                new SoundData(Sound.BLOCK_WART_BLOCK_HIT, Material.WARPED_WART_BLOCK),
-                                new SoundData(Sound.BLOCK_WART_BLOCK_PLACE, Material.WARPED_WART_BLOCK),
-                                new SoundData(Sound.BLOCK_WART_BLOCK_STEP, Material.WARPED_WART_BLOCK)
+                        new SoundCategory("Wart Block Sounds", Material.NETHER_WART_BLOCK, List.of(
+                                new SoundData(Sound.BLOCK_WART_BLOCK_BREAK, Material.NETHER_WART_BLOCK),
+                                new SoundData(Sound.BLOCK_WART_BLOCK_FALL, Material.NETHER_WART_BLOCK),
+                                new SoundData(Sound.BLOCK_WART_BLOCK_HIT, Material.NETHER_WART_BLOCK),
+                                new SoundData(Sound.BLOCK_WART_BLOCK_PLACE, Material.NETHER_WART_BLOCK),
+                                new SoundData(Sound.BLOCK_WART_BLOCK_STEP, Material.NETHER_WART_BLOCK)
                         )),
-                        // --- Nether Wood Miscellaneous Sounds ---
-                        new SoundCategory("Nether Wood Miscellaneous Sounds", Material.CRIMSON_PLANKS, List.of(
-                                new SoundData(Sound.BLOCK_NETHER_WOOD_HIT, Material.CRIMSON_PLANKS),
-                                new SoundData(Sound.BLOCK_NETHER_WOOD_PLACE, Material.CRIMSON_PLANKS),
+                        // --- Nether Wood Fence Gate Sounds ---
+                        new SoundCategory("Nether Wood Fence Gate Sounds", Material.CRIMSON_FENCE_GATE, List.of(
+                                new SoundData(Sound.BLOCK_NETHER_WOOD_FENCE_GATE_CLOSE, Material.CRIMSON_FENCE_GATE),
+                                new SoundData(Sound.BLOCK_NETHER_WOOD_FENCE_GATE_OPEN, Material.CRIMSON_FENCE_GATE)
+                        )),
+                        // --- Nether Wood Pressure Plate Sounds ---
+                        new SoundCategory("Nether Wood Pressure Plate Sounds", Material.CRIMSON_FENCE_GATE, List.of(
                                 new SoundData(Sound.BLOCK_NETHER_WOOD_PRESSURE_PLATE_CLICK_OFF, Material.CRIMSON_PRESSURE_PLATE),
-                                new SoundData(Sound.BLOCK_NETHER_WOOD_PRESSURE_PLATE_CLICK_ON, Material.CRIMSON_PRESSURE_PLATE),
-                                new SoundData(Sound.BLOCK_NETHER_WOOD_STEP, Material.CRIMSON_PLANKS),
+                                new SoundData(Sound.BLOCK_NETHER_WOOD_PRESSURE_PLATE_CLICK_ON, Material.CRIMSON_PRESSURE_PLATE)
+                        )),
+                        // --- Nether Wood Trapdoor Sounds ---
+                        new SoundCategory("Nether Wood Trapdoor Sounds", Material.CRIMSON_FENCE_GATE, List.of(
                                 new SoundData(Sound.BLOCK_NETHER_WOOD_TRAPDOOR_CLOSE, Material.CRIMSON_TRAPDOOR),
                                 new SoundData(Sound.BLOCK_NETHER_WOOD_TRAPDOOR_OPEN, Material.CRIMSON_TRAPDOOR)
                         ))
@@ -2040,27 +2009,36 @@ public class AllSoundsRegistry {
                         new SoundData(Sound.ITEM_MACE_SMASH_GROUND, Material.MACE),
                         new SoundData(Sound.ITEM_MACE_SMASH_GROUND_HEAVY, Material.MACE)
                 )),
+                // --- Spyglass Sounds ---
+                new SoundCategory("Spyglass Sounds", Material.SPYGLASS, List.of(
+                        new SoundData(Sound.ITEM_SPYGLASS_USE, Material.SPYGLASS),
+                        new SoundData(Sound.ITEM_SPYGLASS_STOP_USING, Material.SPYGLASS)
+                )),
+                // --- Book Sounds ---
+                new SoundCategory("Book Sounds", Material.BOOK, List.of(
+                        new SoundData(Sound.ITEM_BOOK_PAGE_TURN, Material.BOOK),
+                        new SoundData(Sound.ITEM_BOOK_PUT, Material.BOOK)
+                )),
+                // --- Shield Sounds ---
+                new SoundCategory("Shield Sounds", Material.SHIELD, List.of(
+                        new SoundData(Sound.ITEM_SHIELD_BLOCK, Material.SHIELD),
+                        new SoundData(Sound.ITEM_SHIELD_BREAK, Material.SHIELD)
+                )),
                 // --- Other Item Sounds ---
-                new SoundCategory("Other Item Sounds", Material.PUFFERFISH_BUCKET, List.of(
+                new SoundCategory("Other Item Sounds", Material.BONE_MEAL, List.of(
                         new SoundData(Sound.ITEM_BONE_MEAL_USE, Material.BONE_MEAL),
                         new SoundData(Sound.ITEM_CROP_PLANT, Material.WHEAT_SEEDS),
                         new SoundData(Sound.ITEM_NETHER_WART_PLANT, Material.NETHER_WART),
-                        new SoundData(Sound.ITEM_BOOK_PAGE_TURN, Material.BOOK),
-                        new SoundData(Sound.ITEM_BOOK_PUT, Material.CHISELED_BOOKSHELF),
                         new SoundData(Sound.ITEM_ELYTRA_FLYING, Material.ELYTRA),
                         new SoundData(Sound.ITEM_DYE_USE, Material.GREEN_DYE),
                         new SoundData(Sound.ITEM_GLOW_INK_SAC_USE, Material.GLOW_INK_SAC),
                         new SoundData(Sound.ITEM_INK_SAC_USE, Material.INK_SAC),
-                        new SoundData(Sound.ITEM_SHIELD_BLOCK, Material.SHIELD),
-                        new SoundData(Sound.ITEM_SHIELD_BREAK, Material.SHIELD),
                         new SoundData(Sound.ITEM_HOE_TILL, Material.IRON_HOE),
                         new SoundData(Sound.ITEM_SHOVEL_FLATTEN, Material.IRON_SHOVEL),
                         new SoundData(Sound.ITEM_LODESTONE_COMPASS_LOCK, Material.RECOVERY_COMPASS),
                         new SoundData(Sound.ITEM_FIRECHARGE_USE, Material.FIRE_CHARGE),
                         new SoundData(Sound.ITEM_FLINTANDSTEEL_USE, Material.FLINT_AND_STEEL),
                         new SoundData(Sound.ITEM_HONEYCOMB_WAX_ON, Material.HONEYCOMB),
-                        new SoundData(Sound.ITEM_SPYGLASS_USE, Material.SPYGLASS),
-                        new SoundData(Sound.ITEM_SPYGLASS_STOP_USING, Material.SPYGLASS),
                         new SoundData(Sound.ITEM_TOTEM_USE, Material.TOTEM_OF_UNDYING),
                         new SoundData(Sound.ITEM_CHORUS_FRUIT_TELEPORT, Material.CHORUS_FRUIT),
                         new SoundData(Sound.ITEM_OMINOUS_BOTTLE_DISPOSE, Material.OMINOUS_BOTTLE)

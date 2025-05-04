@@ -12,14 +12,12 @@ import org.bukkit.inventory.Inventory;
 
 public class SettingsGUIListener implements Listener {
 
-    private static final String GUI_TITLE = "Settings";
-
     public SettingsGUIListener() {
     }
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (!event.getView().getTitle().equals(GUI_TITLE)) return;
+        if (!event.getView().getTitle().equals("Settings")) return;
         event.setCancelled(true);
 
         Inventory clickedInventory = event.getClickedInventory();

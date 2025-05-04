@@ -13,7 +13,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
-import java.util.List;
 
 import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
 
@@ -37,7 +36,7 @@ public class AllSoundsGUI {
         int slot = 20; // Starting slot to set items
         if (guiTitle.equals("All Sounds")) {
             for (SoundCategory soundCategory : AllSoundsRegistry.CATEGORIES) {
-                gui.setItem(slot++, createItemStack(soundCategory.getDisplayMaterial(), soundCategory.getCategoryName()));
+                gui.setItem(slot++, createItemStack(soundCategory.getDisplayMaterial(), ChatColor.AQUA + "" + ChatColor.BOLD + soundCategory.getCategoryName()));
             }
             return;
         }
@@ -50,7 +49,11 @@ public class AllSoundsGUI {
                     if (child instanceof SoundCategory) {
                         gui.setItem(slot++, createItemStack(
                                 ((SoundCategory) child).getDisplayMaterial(),
-                                ChatColor.AQUA + "" + ChatColor.BOLD + ((SoundCategory) child).getCategoryName()));
+                                ChatColor.AQUA + "" + ChatColor.BOLD + ((SoundCategory) child).getCategoryName(),
+                                null,
+                                true,
+                                true
+                                ));
                         // TODO: Add lore "click to go down a category?"
                     } else if (child instanceof SoundData) {
                         gui.setItem(slot++, createItemStack(
@@ -74,14 +77,20 @@ public class AllSoundsGUI {
                             if (grandChild instanceof SoundCategory) {
                                 gui.setItem(slot++, createItemStack(
                                         ((SoundCategory) grandChild).getDisplayMaterial(),
-                                        ChatColor.AQUA + "" + ChatColor.BOLD + ((SoundCategory) grandChild).getCategoryName()));
+                                        ChatColor.AQUA + "" + ChatColor.BOLD + ((SoundCategory) grandChild).getCategoryName(),
+                                        null,
+                                        true,
+                                        true
+                                ));
                             } else if (grandChild instanceof SoundData) {
                                 gui.setItem(slot++, createItemStack(
                                         ((SoundData) grandChild).getDisplayMaterial(),
                                         ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) grandChild).getSound()),
                                         Arrays.asList(
                                                 "",
-                                                ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ")
+                                                ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ"),
+                                        true,
+                                        true
                                 ));
                             }
                         }
@@ -98,7 +107,9 @@ public class AllSoundsGUI {
                                                 ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) grandGrandChild).getSound()),
                                                 Arrays.asList(
                                                         "",
-                                                        ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ")
+                                                        ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ"),
+                                                true,
+                                                true
                                         ));
                                     }
                                 }
@@ -117,6 +128,16 @@ public class AllSoundsGUI {
         for (int i = 36; i < 45; i++) {
             gui.setItem(i, GUIUtils.Frame());
         }
+
+        // TODO: Testing
+        gui.setItem(44, createItemStack(
+                Material.BLACK_STAINED_GLASS_PANE,
+                "Testing",
+                null,
+                false,
+                false,
+                true
+        ));
     }
 
     // Favorite Sounds Button (Nether Star)

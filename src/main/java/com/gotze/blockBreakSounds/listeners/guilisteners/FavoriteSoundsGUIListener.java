@@ -23,14 +23,12 @@ import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStac
 
 public class FavoriteSoundsGUIListener implements Listener {
 
-    private static final String GUI_TITLE = "Favorite Sounds";
-
     public FavoriteSoundsGUIListener() {
     }
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (!event.getView().getTitle().equals(GUI_TITLE)) return;
+        if (!event.getView().getTitle().equals("Favorite Sounds")) return;
         event.setCancelled(true);
 
         Inventory clickedInventory = event.getClickedInventory();
