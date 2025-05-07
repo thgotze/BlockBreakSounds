@@ -7,6 +7,7 @@ import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
 import com.gotze.blockBreakSounds.soundlogic.SoundCategory;
 import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
+import com.gotze.blockBreakSounds.utility.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -17,6 +18,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import javax.xml.crypto.Data;
 
 public class AllSoundsGUIListener implements Listener {
 
@@ -32,15 +35,11 @@ public class AllSoundsGUIListener implements Listener {
 
         ItemStack itemInSlot44 = clickedInventory.getItem(44);
         if (itemInSlot44 == null) return;
-
         ItemMeta itemMeta = itemInSlot44.getItemMeta();
         if (itemMeta == null) return;
-
-        // TODO: Probably dont check by a display name, use something safer
         String displayName = itemMeta.getDisplayName();
         if (!displayName.equals("Testing")) return;
 
-        // At THIS point we're in the gui
         event.setCancelled(true);
 
         if (clickedInventory.equals(player.getInventory())) return;
@@ -50,57 +49,39 @@ public class AllSoundsGUIListener implements Listener {
 
         if (slot == 4) { // Current Sound
             GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
-            return;
-        }
-
-        if (slot == 40) { // Favorite Sounds
+        } else if (slot == 40) { // Favorite Sounds
             player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
             new FavoriteSoundsGUI(player);
-            return;
+        } else {
+            ItemStack clickedItem = clickedInventory.getItem(slot);
+            if (clickedItem == null) return;
+            ItemMeta clickedItemMeta = clickedItem.getItemMeta();
+            if (clickedItemMeta == null) return;
+            String clickedItemTitle = ChatColor.stripColor(clickedItemMeta.getDisplayName());
+            System.out.println("Title of clicked item: " + clickedItemTitle);
+
+            findCategoryAndHandleClick(AllSoundsRegistry.ALL_SOUNDS, player, clickedItemTitle, clickedInventory, slot);
         }
+    }
 
-        String clickedItemTitle = ChatColor.stripColor(clickedInventory.getItem(slot).getItemMeta().getDisplayName());
-        // TODO: Temp debug message
-        player.sendMessage("Title of item at slot " + slot + " is " + clickedItemTitle);
+    private void findCategoryAndHandleClick(SoundCategory soundCategory, Player player, String clickedItemTitle, Inventory clickedInventory, int slot) {
+        for (Object child : soundCategory.getChildren()) {
+            if (child instanceof SoundCategory childCategory) {
+                if (childCategory.getCategoryName().equals(clickedItemTitle)) {
+                    player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                    new AllSoundsGUI(player, childCategory.getCategoryName());
+                    return;
+                }
 
-        // TODO: Make it a method so it goes through the same code no matter if its child or grandchild
-        for (SoundCategory soundCategory : AllSoundsRegistry.CATEGORIES) {
-            if (soundCategory.getCategoryName().equals(clickedItemTitle)) {
-                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                new AllSoundsGUI(player, soundCategory.getCategoryName());
-            } else {
-                for (Object child : soundCategory.getChildren()) {
-                    if (child instanceof SoundCategory) {
-                        if (((SoundCategory) child).getCategoryName().equals(clickedItemTitle)) {
-                            player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                            new AllSoundsGUI(player, ((SoundCategory) child).getCategoryName());
-                            return;
-                        } else {
-                            for (Object grandChild : ((SoundCategory) child).getChildren()) {
-                                if (grandChild instanceof SoundCategory) {
-                                    if (((SoundCategory) grandChild).getCategoryName().equals(clickedItemTitle)) {
-                                        player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                                        new AllSoundsGUI(player, ((SoundCategory) grandChild).getCategoryName());
-                                    }
-                                }
-                                else if (grandChild instanceof SoundData) {
-                                    if ((((SoundData) grandChild).getSound().toString()).equals(clickedItemTitle)) {
-                                        SoundData soundData = new SoundData(((SoundData) grandChild).getSound(), ((SoundData) grandChild).getDisplayMaterial());
-                                        CurrentSoundData.setCurrentSound(player, soundData);
-                                        GUIUtils.handlePickedLineSound(clickedInventory, slot);
-                                        clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
-                                    }
-                                }
-                            }
-                        }
-                    } else if (child instanceof SoundData) {
-                        if ((((SoundData) child).getSound().toString()).equals(clickedItemTitle)) {
-                            SoundData soundData = new SoundData(((SoundData) child).getSound(), ((SoundData) child).getDisplayMaterial());
-                            CurrentSoundData.setCurrentSound(player, soundData);
-                            GUIUtils.handlePickedLineSound(clickedInventory, slot);
-                            clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
-                        }
-                    }
+                findCategoryAndHandleClick(childCategory, player, clickedItemTitle, clickedInventory, slot);
+
+            } else if (child instanceof SoundData soundData) {
+                if (StringUtils.getFormattedSoundName(soundData.getSound()).equals(clickedItemTitle)) {
+                    Sound<Data updatedSoundData = new SoundData(soundData.getSound(), soundData.getDisplayMaterial());
+                    CurrentSoundData.setCurrentSound(player, updatedSoundData);
+                    GUIUtils.handlePickedLineSound(clickedInventory, slot);
+                    clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
+                    return;
                 }
             }
         }
