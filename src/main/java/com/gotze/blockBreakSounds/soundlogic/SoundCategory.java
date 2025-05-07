@@ -7,9 +7,9 @@ import java.util.List;
 public class SoundCategory {
     private final String categoryName;
     private final Material displayMaterial;
-    private final List<?> children;  // Holds either 1. SoundCategories (subcategories) or 2. SoundData
+    private final List<Object> children;  // Holds either SoundCategories or SoundData
 
-    public SoundCategory(String name, Material displayMaterial, List<?> children) {
+    public SoundCategory(String name, Material displayMaterial, List<Object> children) {
         this.categoryName = name;
         this.displayMaterial = displayMaterial;
         this.children = children;
@@ -23,7 +23,7 @@ public class SoundCategory {
         return displayMaterial;
     }
 
-    public List<?> getChildren() {
+    public List<Object> getChildren() {
         return children;
     }
 }
