@@ -37,6 +37,7 @@ public class PickSoundGUIListener implements Listener {
         float volume = 0.50f;
         float pitch = 1.00f;
 
+        // TODO: Condense the cases together
         switch (slot) {
             case 4: // Current Sound
                 GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);

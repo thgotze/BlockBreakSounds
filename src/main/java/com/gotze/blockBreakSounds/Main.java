@@ -25,6 +25,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
 
+        // GUI Listeners
         getServer().getPluginManager().registerEvents(new BlockBreakSoundsGUIListener(), this);
         getServer().getPluginManager().registerEvents(new PickSoundGUIListener(), this);
         getServer().getPluginManager().registerEvents(new SettingsGUIListener(), this);

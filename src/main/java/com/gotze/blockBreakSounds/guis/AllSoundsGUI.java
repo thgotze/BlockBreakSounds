@@ -28,24 +28,24 @@ public class AllSoundsGUI {
         setCategoryOrSoundButtons();
         gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.ReturnButton());
-        gui.setItem(40, FavoriteSoundsButton());
+        gui.setItem(40, favoriteSoundsButton);
         player.openInventory(gui);
     }
 
     private void setCategoryOrSoundButtons() {
         SoundCategory category;
+        int slot = 9;
+
         if (guiTitle.equals("All Sounds")) {
             category = AllSoundsRegistry.ALL_SOUNDS;
-            System.out.println("Title is All Sounds");
+            slot = 20;
         } else {
             category = findCategory(AllSoundsRegistry.ALL_SOUNDS);
-            if (category == null) return;
         }
+        if (category == null) return;
 
-        int slot = 9;
         for (Object child : category.getChildren()) {
             if (child instanceof SoundCategory) {
-                System.out.println("Creating itemstacks for soundcategory");
                 gui.setItem(slot++, createItemStack(
                         ((SoundCategory) child).getDisplayMaterial(),
                         ChatColor.AQUA + "" + ChatColor.BOLD + ((SoundCategory) child).getCategoryName(),
@@ -54,7 +54,6 @@ public class AllSoundsGUI {
                         true
                 ));
             } else if (child instanceof SoundData) {
-                System.out.println("Creating itemstacks for sounddata");
                 gui.setItem(slot++, createItemStack(
                         ((SoundData) child).getDisplayMaterial(),
                         ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) child).getSound()),
@@ -72,7 +71,6 @@ public class AllSoundsGUI {
         for (Object child : soundCategory.getChildren()) {
             if (child instanceof SoundCategory childCategory) {
                 if (childCategory.getCategoryName().equals(guiTitle)) {
-                    System.out.println("Found matching category. Title: " + guiTitle + " Category: " + childCategory.getCategoryName());
                     return childCategory;
                 } else {
                     SoundCategory result = findCategory(childCategory);
@@ -80,7 +78,6 @@ public class AllSoundsGUI {
                 }
             }
         }
-        System.out.println("Didnt find :(");
         return null;
     }
 
@@ -91,26 +88,14 @@ public class AllSoundsGUI {
         for (int i = 36; i < 45; i++) {
             gui.setItem(i, GUIUtils.Frame());
         }
-
-        // TODO: Testing
-        gui.setItem(44, createItemStack(
-                Material.BLACK_STAINED_GLASS_PANE,
-                "Testing",
-                null,
-                false,
-                false,
-                true
-        ));
     }
 
     // Favorite Sounds Button (Nether Star)
-    private ItemStack FavoriteSoundsButton() {
-        return createItemStack(
-                Material.NETHER_STAR,
-                ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
-                Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ",
-                        "",
-                        ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ " + ChatColor.GREEN + "ꜰᴀᴠᴏʀɪᴛᴇ")
-        );
-    }
+    private final ItemStack favoriteSoundsButton = createItemStack(
+            Material.NETHER_STAR,
+            ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
+            Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ",
+                    "",
+                    ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ " + ChatColor.GREEN + "ꜰᴀᴠᴏʀɪᴛᴇ")
+    );
 }

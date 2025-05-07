@@ -18,7 +18,7 @@ public class SoundData {
 
     public SoundData(Sound sound, Material displayMaterial) {
         this.sound = sound;
-        this.volume = 1.0f;
+        this.volume = 0.5f;
         this.pitch = 1.0f;
         this.displayMaterial = displayMaterial;
     }
@@ -38,7 +38,9 @@ public class SoundData {
     public void setVolume(float volume) {
         if (volume < 0.0f) {
             this.volume = 0.0f;
-        } else this.volume = Math.min(volume, 1.0f);
+        } else {
+            this.volume = Math.min(volume, 1.0f);
+        }
     }
 
     public float getPitch() {
@@ -48,7 +50,9 @@ public class SoundData {
     public void setPitch(float pitch) {
         if (pitch < 0.5f) {
             this.pitch = 0.5f;
-        } else this.pitch = Math.min(pitch, 2.0f);
+        } else {
+            this.pitch = Math.min(pitch, 2.0f);
+        }
     }
 
     public Material getDisplayMaterial() {

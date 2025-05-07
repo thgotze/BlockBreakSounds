@@ -1,11 +1,9 @@
 package com.gotze.blockBreakSounds.listeners.guilisteners;
 
 import com.gotze.blockBreakSounds.guis.AllSoundsGUI;
+import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
 import com.gotze.blockBreakSounds.guis.FavoriteSoundsGUI;
-import com.gotze.blockBreakSounds.soundlogic.AllSoundsRegistry;
-import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
-import com.gotze.blockBreakSounds.soundlogic.SoundCategory;
-import com.gotze.blockBreakSounds.soundlogic.SoundData;
+import com.gotze.blockBreakSounds.soundlogic.*;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
 import com.gotze.blockBreakSounds.utility.StringUtils;
 import org.bukkit.ChatColor;
@@ -19,7 +17,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import javax.xml.crypto.Data;
+import static com.gotze.blockBreakSounds.soundlogic.AllSoundsRegistry.VALID_ALL_SOUNDS_GUI_TITLES;
 
 public class AllSoundsGUIListener implements Listener {
 
@@ -28,62 +26,102 @@ public class AllSoundsGUIListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
+        if (!VALID_ALL_SOUNDS_GUI_TITLES.contains(event.getView().getTitle())) return;
+        event.setCancelled(true);
+        
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
 
         if (clickedInventory == null) return;
-
-        ItemStack itemInSlot44 = clickedInventory.getItem(44);
-        if (itemInSlot44 == null) return;
-        ItemMeta itemMeta = itemInSlot44.getItemMeta();
-        if (itemMeta == null) return;
-        String displayName = itemMeta.getDisplayName();
-        if (!displayName.equals("Testing")) return;
-
-        event.setCancelled(true);
 
         if (clickedInventory.equals(player.getInventory())) return;
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
 
-        if (slot == 4) { // Current Sound
-            GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
-        } else if (slot == 40) { // Favorite Sounds
-            player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-            new FavoriteSoundsGUI(player);
-        } else {
-            ItemStack clickedItem = clickedInventory.getItem(slot);
-            if (clickedItem == null) return;
-            ItemMeta clickedItemMeta = clickedItem.getItemMeta();
-            if (clickedItemMeta == null) return;
-            String clickedItemTitle = ChatColor.stripColor(clickedItemMeta.getDisplayName());
-            System.out.println("Title of clicked item: " + clickedItemTitle);
+        switch (slot) {
+            case 4: // Current Sound
+                GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
+                return;
 
-            findCategoryAndHandleClick(AllSoundsRegistry.ALL_SOUNDS, player, clickedItemTitle, clickedInventory, slot);
+            case 36: // Return
+                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                String inventoryTitle = event.getView().getTitle();
+
+                if (inventoryTitle.equals("All Sounds")) {
+                    new BlockBreakSoundsGUI(player);
+                } else {
+                    String parentCategoryTitle = getParentCategoryTitle(AllSoundsRegistry.ALL_SOUNDS, inventoryTitle);
+                    new AllSoundsGUI(player, parentCategoryTitle);
+                }
+                return;
+
+            case 40: // Favorite Sounds
+                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                new FavoriteSoundsGUI(player);
+                return;
+
+            default: // Soundcategories and/or Sounds
+                if (slot >= 9 && slot < 36) {
+                    ItemStack clickedItem = clickedInventory.getItem(slot);
+                    if (clickedItem == null)
+                        return;
+                    ItemMeta clickedItemMeta = clickedItem.getItemMeta();
+                    if (clickedItemMeta == null)
+                        return;
+
+                    String clickedItemTitle = ChatColor.stripColor(clickedItemMeta.getDisplayName());
+
+                    Object object = getCategoryOrSoundDataOfClickedItem(AllSoundsRegistry.ALL_SOUNDS, clickedItemTitle);
+
+                    if (object instanceof SoundCategory soundCategory) {
+                        player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                        new AllSoundsGUI(player, soundCategory.getCategoryName());
+                        return;
+
+                    } else if (object instanceof SoundData soundData) {
+                        if (clickType == ClickType.SHIFT_RIGHT) { // Favorite Sound
+                            FavoriteSoundData.addSoundToFavorites(player, soundData);
+                            GUIUtils.handleFavoritedLineSound(clickedInventory, slot);
+                            return;
+
+                        } else if (clickType != ClickType.SHIFT_RIGHT) { // Pick Sound
+                            CurrentSoundData.setCurrentSound(player, soundData);
+                            GUIUtils.handlePickedLineSound(clickedInventory, slot);
+                            clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
+                            return;
+                        }
+                    }
+                }
         }
     }
 
-    private void findCategoryAndHandleClick(SoundCategory soundCategory, Player player, String clickedItemTitle, Inventory clickedInventory, int slot) {
+    private String getParentCategoryTitle(SoundCategory soundCategory, String inventoryTitle) {
+        for (Object child : soundCategory.getChildren()) {
+            if (child instanceof SoundCategory childCategory) {
+                if (childCategory.getCategoryName().equals(inventoryTitle)) {
+                    return soundCategory.getCategoryName();
+                }
+                getParentCategoryTitle(childCategory, inventoryTitle);
+            }
+        }
+        return null;
+    }
+
+    private Object getCategoryOrSoundDataOfClickedItem(SoundCategory soundCategory, String clickedItemTitle) {
         for (Object child : soundCategory.getChildren()) {
             if (child instanceof SoundCategory childCategory) {
                 if (childCategory.getCategoryName().equals(clickedItemTitle)) {
-                    player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                    new AllSoundsGUI(player, childCategory.getCategoryName());
-                    return;
+                    return childCategory;
                 }
-
-                findCategoryAndHandleClick(childCategory, player, clickedItemTitle, clickedInventory, slot);
+                getCategoryOrSoundDataOfClickedItem(childCategory, clickedItemTitle);
 
             } else if (child instanceof SoundData soundData) {
                 if (StringUtils.getFormattedSoundName(soundData.getSound()).equals(clickedItemTitle)) {
-                    Sound<Data updatedSoundData = new SoundData(soundData.getSound(), soundData.getDisplayMaterial());
-                    CurrentSoundData.setCurrentSound(player, updatedSoundData);
-                    GUIUtils.handlePickedLineSound(clickedInventory, slot);
-                    clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
-                    return;
+                    return soundData;
                 }
             }
         }
+        return null;
     }
 }

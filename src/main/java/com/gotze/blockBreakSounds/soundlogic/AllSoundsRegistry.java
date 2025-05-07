@@ -3,7 +3,9 @@ package com.gotze.blockBreakSounds.soundlogic;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class AllSoundsRegistry {
 
@@ -20,8 +22,10 @@ public class AllSoundsRegistry {
 
     public static final SoundCategory ALL_SOUNDS;
 
-    // TODO: Add same material for jump, eat, hurt, die, attack, step, celebrate
+    // TODO: Add explanaiting what thiss set string does
+    public static final Set<String> VALID_ALL_SOUNDS_GUI_TITLES = new HashSet<>();
 
+    // TODO: Add same material for jump, eat, hurt, die, attack, step, celebrate
     static {
         ALL_SOUNDS = new SoundCategory("All Sounds", null, List.of(
                 // 1st SoundCategory
@@ -2178,5 +2182,19 @@ public class AllSoundsRegistry {
                         ))
                 ))
         ));
+    }
+
+    static {
+        initializeValidGUITitles(ALL_SOUNDS);
+    }
+
+    private static void initializeValidGUITitles(SoundCategory category) {
+        VALID_ALL_SOUNDS_GUI_TITLES.add(category.getCategoryName());
+
+        for (Object child : category.getChildren()) {
+            if (child instanceof SoundCategory soundCategory) {
+                initializeValidGUITitles(soundCategory);
+            }
+        }
     }
 }
