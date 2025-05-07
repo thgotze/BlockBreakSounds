@@ -33,92 +33,55 @@ public class AllSoundsGUI {
     }
 
     private void setCategoryOrSoundButtons() {
-        int slot = 20; // Starting slot to set items
+        SoundCategory category;
         if (guiTitle.equals("All Sounds")) {
-            for (SoundCategory soundCategory : AllSoundsRegistry.CATEGORIES) {
-                gui.setItem(slot++, createItemStack(soundCategory.getDisplayMaterial(), ChatColor.AQUA + "" + ChatColor.BOLD + soundCategory.getCategoryName()));
-            }
-            return;
+            category = AllSoundsRegistry.ALL_SOUNDS;
+            System.out.println("Title is All Sounds");
+        } else {
+            category = findCategory(AllSoundsRegistry.ALL_SOUNDS);
+            if (category == null) return;
         }
 
-        // TODO: Make it a method so it goes through the same code no matter if its child or grandchild
-        slot = 9; // Starting slot to set items
-        for (SoundCategory parent : AllSoundsRegistry.CATEGORIES) {
-            if (parent.getCategoryName().equals(guiTitle)) {
-                for (Object child : parent.getChildren()) {
-                    if (child instanceof SoundCategory) {
-                        gui.setItem(slot++, createItemStack(
-                                ((SoundCategory) child).getDisplayMaterial(),
-                                ChatColor.AQUA + "" + ChatColor.BOLD + ((SoundCategory) child).getCategoryName(),
-                                null,
-                                true,
-                                true
-                                ));
-                        // TODO: Add lore "click to go down a category?"
-                    } else if (child instanceof SoundData) {
-                        gui.setItem(slot++, createItemStack(
-                                ((SoundData) child).getDisplayMaterial(),
-                                ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) child).getSound()),
-                                Arrays.asList(
-                                        "",
-                                        ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ"),
-                                true,
-                                true
-                        ));
-                    }
-                }
-                return;
+        int slot = 9;
+        for (Object child : category.getChildren()) {
+            if (child instanceof SoundCategory) {
+                System.out.println("Creating itemstacks for soundcategory");
+                gui.setItem(slot++, createItemStack(
+                        ((SoundCategory) child).getDisplayMaterial(),
+                        ChatColor.AQUA + "" + ChatColor.BOLD + ((SoundCategory) child).getCategoryName(),
+                        null,
+                        true,
+                        true
+                ));
+            } else if (child instanceof SoundData) {
+                System.out.println("Creating itemstacks for sounddata");
+                gui.setItem(slot++, createItemStack(
+                        ((SoundData) child).getDisplayMaterial(),
+                        ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) child).getSound()),
+                        Arrays.asList(
+                                "",
+                                ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ"),
+                        true,
+                        true
+                ));
             }
+        }
+    }
 
-            for (Object child : parent.getChildren()) {
-                if (child instanceof SoundCategory) {
-                    if (((SoundCategory) child).getCategoryName().equals(guiTitle)) {
-                        for (Object grandChild : ((SoundCategory) child).getChildren()) {
-                            if (grandChild instanceof SoundCategory) {
-                                gui.setItem(slot++, createItemStack(
-                                        ((SoundCategory) grandChild).getDisplayMaterial(),
-                                        ChatColor.AQUA + "" + ChatColor.BOLD + ((SoundCategory) grandChild).getCategoryName(),
-                                        null,
-                                        true,
-                                        true
-                                ));
-                            } else if (grandChild instanceof SoundData) {
-                                gui.setItem(slot++, createItemStack(
-                                        ((SoundData) grandChild).getDisplayMaterial(),
-                                        ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) grandChild).getSound()),
-                                        Arrays.asList(
-                                                "",
-                                                ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ"),
-                                        true,
-                                        true
-                                ));
-                            }
-                        }
-                        return;
-                    }
-
-                    for (Object grandChild : ((SoundCategory) child).getChildren()) {
-                        if (grandChild instanceof SoundCategory) {
-                            if (((SoundCategory) grandChild).getCategoryName().equals(guiTitle)) {
-                                for (Object grandGrandChild : ((SoundCategory) grandChild).getChildren()) {
-                                    if (grandGrandChild instanceof SoundData) {
-                                        gui.setItem(slot++, createItemStack(
-                                                ((SoundData) grandGrandChild).getDisplayMaterial(),
-                                                ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) grandGrandChild).getSound()),
-                                                Arrays.asList(
-                                                        "",
-                                                        ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ"),
-                                                true,
-                                                true
-                                        ));
-                                    }
-                                }
-                            }
-                        }
-                    }
+    private SoundCategory findCategory(SoundCategory soundCategory) {
+        for (Object child : soundCategory.getChildren()) {
+            if (child instanceof SoundCategory childCategory) {
+                if (childCategory.getCategoryName().equals(guiTitle)) {
+                    System.out.println("Found matching category. Title: " + guiTitle + " Category: " + childCategory.getCategoryName());
+                    return childCategory;
+                } else {
+                    SoundCategory result = findCategory(childCategory);
+                    if (result != null) return result;
                 }
             }
         }
+        System.out.println("Didnt find :(");
+        return null;
     }
 
     private void setFrames() {
