@@ -38,9 +38,9 @@ public class AllSoundsRegistry {
                         // **************************
                         new SoundCategory("Passive Mob Sounds", Material.COW_SPAWN_EGG, List.of(
                                 // --- Villager Sounds ---
-                                new SoundCategory("Villager Sounds", Material.EMERALD, List.of(
+                                new SoundCategory("Villager Sounds", Material.VILLAGER_SPAWN_EGG, List.of(
                                         new SoundData(Sound.ENTITY_VILLAGER_AMBIENT, Material.VILLAGER_SPAWN_EGG),
-                                        new SoundData(Sound.ENTITY_VILLAGER_CELEBRATE, Material.EMERALD),
+                                        new SoundData(Sound.ENTITY_VILLAGER_CELEBRATE, Material.FIREWORK_ROCKET),
                                         new SoundData(Sound.ENTITY_VILLAGER_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_VILLAGER_HURT, Material.RED_DYE),
                                         new SoundData(Sound.ENTITY_VILLAGER_NO, Material.RED_CONCRETE),
@@ -86,43 +86,43 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.ENTITY_STRIDER_STEP_LAVA, Material.LAVA_BUCKET)
                                 )),
                                 // --- Squid Sounds ---
-                                new SoundCategory("Squid Sounds", Material.INK_SAC, List.of(
+                                new SoundCategory("Squid Sounds", Material.SQUID_SPAWN_EGG, List.of(
                                         new SoundData(Sound.ENTITY_SQUID_AMBIENT, Material.SQUID_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_SQUID_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_SQUID_HURT, Material.RED_DYE),
-                                        new SoundData(Sound.ENTITY_SQUID_SQUIRT, Material.INK_SAC)
+                                        new SoundData(Sound.ENTITY_SQUID_SQUIRT, Material.SQUID_SPAWN_EGG)
                                 )),
                                 // --- Tropical Fish Sounds ---
-                                new SoundCategory("Tropical Fish Sounds", Material.TROPICAL_FISH, List.of(
-                                        new SoundData(Sound.ENTITY_TROPICAL_FISH_AMBIENT, Material.TROPICAL_FISH),
+                                new SoundCategory("Tropical Fish Sounds", Material.TROPICAL_FISH_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_TROPICAL_FISH_AMBIENT, Material.TROPICAL_FISH_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_TROPICAL_FISH_DEATH, Material.SKELETON_SKULL),
-                                        new SoundData(Sound.ENTITY_TROPICAL_FISH_FLOP, Material.TROPICAL_FISH),
+                                        new SoundData(Sound.ENTITY_TROPICAL_FISH_FLOP, Material.TROPICAL_FISH_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_TROPICAL_FISH_HURT, Material.RED_DYE)
                                 )),
                                 // --- Turtle Sounds ---
-                                new SoundCategory("Turtle Sounds", Material.TURTLE_EGG, List.of(
+                                new SoundCategory("Turtle Sounds", Material.TURTLE_SPAWN_EGG, List.of(
                                         new SoundData(Sound.ENTITY_TURTLE_AMBIENT_LAND, Material.TURTLE_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_TURTLE_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_TURTLE_DEATH_BABY, Material.SKELETON_SKULL),
-                                        new SoundData(Sound.ENTITY_TURTLE_EGG_BREAK, Material.TURTLE_EGG),
-                                        new SoundData(Sound.ENTITY_TURTLE_EGG_CRACK, Material.TURTLE_EGG),
-                                        new SoundData(Sound.ENTITY_TURTLE_EGG_HATCH, Material.TURTLE_EGG),
+                                        new SoundData(Sound.ENTITY_TURTLE_EGG_BREAK, Material.TURTLE_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_TURTLE_EGG_CRACK, Material.TURTLE_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_TURTLE_EGG_HATCH, Material.TURTLE_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_TURTLE_HURT, Material.RED_DYE),
                                         new SoundData(Sound.ENTITY_TURTLE_HURT_BABY, Material.RED_DYE),
-                                        new SoundData(Sound.ENTITY_TURTLE_LAY_EGG, Material.TURTLE_EGG),
-                                        new SoundData(Sound.ENTITY_TURTLE_SHAMBLE, Material.TURTLE_EGG),
-                                        new SoundData(Sound.ENTITY_TURTLE_SHAMBLE_BABY, Material.TURTLE_EGG),
-                                        new SoundData(Sound.ENTITY_TURTLE_SWIM, Material.WATER_BUCKET)
+                                        new SoundData(Sound.ENTITY_TURTLE_LAY_EGG, Material.TURTLE_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_TURTLE_SHAMBLE, Material.TURTLE_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_TURTLE_SHAMBLE_BABY, Material.TURTLE_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_TURTLE_SWIM, Material.TURTLE_SPAWN_EGG)
                                 )),
                                 // --- Tadpole Sounds ---
-                                new SoundCategory("Tadpole Sounds", Material.TADPOLE_BUCKET, List.of(
+                                new SoundCategory("Tadpole Sounds", Material.TADPOLE_SPAWN_EGG, List.of(
                                         new SoundData(Sound.ENTITY_TADPOLE_DEATH, Material.SKELETON_SKULL),
-                                        new SoundData(Sound.ENTITY_TADPOLE_FLOP, Material.TADPOLE_BUCKET),
-                                        new SoundData(Sound.ENTITY_TADPOLE_GROW_UP, Material.TADPOLE_BUCKET),
+                                        new SoundData(Sound.ENTITY_TADPOLE_FLOP, Material.TADPOLE_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_TADPOLE_GROW_UP, Material.TADPOLE_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_TADPOLE_HURT, Material.RED_DYE)
                                 )),
                                 // --- Sheep Sounds ---
-                                new SoundCategory("Sheep Sounds", Material.MUTTON, List.of(
+                                new SoundCategory("Sheep Sounds", Material.SHEEP_SPAWN_EGG, List.of(
                                         new SoundData(Sound.ENTITY_SHEEP_AMBIENT, Material.SHEEP_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_SHEEP_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_SHEEP_HURT, Material.RED_DYE),
@@ -130,7 +130,7 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.ENTITY_SHEEP_STEP, Material.LEATHER_BOOTS)
                                 )),
                                 // --- Sniffer Sounds ---
-                                new SoundCategory("Sniffer Sounds", Material.SNIFFER_EGG, List.of(
+                                new SoundCategory("Sniffer Sounds", Material.SNIFFER_SPAWN_EGG, List.of(
                                         new SoundData(Sound.ENTITY_SNIFFER_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_SNIFFER_DIGGING, Material.WOODEN_SHOVEL),
                                         new SoundData(Sound.ENTITY_SNIFFER_DIGGING_STOP, Material.WOODEN_SHOVEL),
@@ -138,29 +138,29 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.ENTITY_SNIFFER_EAT, Material.COOKED_BEEF),
                                         new SoundData(Sound.ENTITY_SNIFFER_HAPPY, Material.SUNFLOWER),
                                         new SoundData(Sound.ENTITY_SNIFFER_HURT, Material.RED_DYE),
-                                        new SoundData(Sound.ENTITY_SNIFFER_IDLE, Material.SNIFFER_EGG),
+                                        new SoundData(Sound.ENTITY_SNIFFER_IDLE, Material.SNIFFER_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_SNIFFER_SCENTING, Material.POPPY),
                                         new SoundData(Sound.ENTITY_SNIFFER_SEARCHING, Material.SPYGLASS),
                                         new SoundData(Sound.ENTITY_SNIFFER_SNIFFING, Material.POPPY),
                                         new SoundData(Sound.ENTITY_SNIFFER_STEP, Material.LEATHER_BOOTS)
                                 )),
                                 // --- Snow Golem Sounds ---
-                                new SoundCategory("Snow Golem Sounds", Material.PUMPKIN, List.of(
-                                        new SoundData(Sound.ENTITY_SNOW_GOLEM_AMBIENT, Material.PUMPKIN),
+                                new SoundCategory("Snow Golem Sounds", Material.SNOW_GOLEM_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_SNOW_GOLEM_AMBIENT, Material.SNOW_GOLEM_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_SNOW_GOLEM_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_SNOW_GOLEM_HURT, Material.RED_DYE),
                                         new SoundData(Sound.ENTITY_SNOW_GOLEM_SHEAR, Material.SHEARS),
                                         new SoundData(Sound.ENTITY_SNOW_GOLEM_SHOOT, Material.SNOWBALL)
                                 )),
                                 // --- Salmon Sounds ---
-                                new SoundCategory("Salmon Sounds", Material.SALMON, List.of(
-                                        new SoundData(Sound.ENTITY_SALMON_AMBIENT, Material.SALMON),
+                                new SoundCategory("Salmon Sounds", Material.SALMON_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_SALMON_AMBIENT, Material.SALMON_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_SALMON_DEATH, Material.SKELETON_SKULL),
-                                        new SoundData(Sound.ENTITY_SALMON_FLOP, Material.SALMON),
+                                        new SoundData(Sound.ENTITY_SALMON_FLOP, Material.SALMON_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_SALMON_HURT, Material.RED_DYE)
                                 )),
                                 // --- Pig Sounds ---
-                                new SoundCategory("Pig Sounds", Material.PORKCHOP, List.of(
+                                new SoundCategory("Pig Sounds", Material.PIG_SPAWN_EGG, List.of(
                                         new SoundData(Sound.ENTITY_PIG_AMBIENT, Material.PIG_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_PIG_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_PIG_HURT, Material.RED_DYE),
@@ -174,29 +174,29 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.ENTITY_POLAR_BEAR_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_POLAR_BEAR_HURT, Material.RED_DYE),
                                         new SoundData(Sound.ENTITY_POLAR_BEAR_STEP, Material.LEATHER_BOOTS),
-                                        new SoundData(Sound.ENTITY_POLAR_BEAR_WARNING, Material.REDSTONE_TORCH)
+                                        new SoundData(Sound.ENTITY_POLAR_BEAR_WARNING, Material.POLAR_BEAR_SPAWN_EGG)
                                 )),
                                 // --- Puffer Fish Sounds ---
-                                new SoundCategory("Puffer Fish Sounds", Material.PUFFERFISH, List.of(
-                                        new SoundData(Sound.ENTITY_PUFFER_FISH_AMBIENT, Material.PUFFERFISH),
-                                        new SoundData(Sound.ENTITY_PUFFER_FISH_BLOW_OUT, Material.PUFFERFISH),
-                                        new SoundData(Sound.ENTITY_PUFFER_FISH_BLOW_UP, Material.PUFFERFISH),
+                                new SoundCategory("Puffer Fish Sounds", Material.PUFFERFISH_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_PUFFER_FISH_AMBIENT, Material.PUFFERFISH_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_PUFFER_FISH_BLOW_OUT, Material.PUFFERFISH_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_PUFFER_FISH_BLOW_UP, Material.PUFFERFISH_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_PUFFER_FISH_DEATH, Material.SKELETON_SKULL),
-                                        new SoundData(Sound.ENTITY_PUFFER_FISH_FLOP, Material.PUFFERFISH),
+                                        new SoundData(Sound.ENTITY_PUFFER_FISH_FLOP, Material.PUFFERFISH_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_PUFFER_FISH_HURT, Material.RED_DYE),
-                                        new SoundData(Sound.ENTITY_PUFFER_FISH_STING, Material.PUFFERFISH)
+                                        new SoundData(Sound.ENTITY_PUFFER_FISH_STING, Material.PUFFERFISH_SPAWN_EGG)
                                 )),
                                 // --- Rabbit Sounds ---
-                                new SoundCategory("Rabbit Sounds", Material.RABBIT_HIDE, List.of(
-                                        new SoundData(Sound.ENTITY_RABBIT_ATTACK, Material.RABBIT),
-                                        new SoundData(Sound.ENTITY_RABBIT_AMBIENT, Material.RABBIT),
+                                new SoundCategory("Rabbit Sounds", Material.RABBIT_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_RABBIT_ATTACK, Material.RABBIT_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_RABBIT_AMBIENT, Material.RABBIT_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_RABBIT_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_RABBIT_HURT, Material.RED_DYE),
                                         new SoundData(Sound.ENTITY_RABBIT_JUMP, Material.FEATHER)
                                 )),
                                 // --- Mooshroom Sounds ---
-                                new SoundCategory("Mooshroom Sounds", Material.RED_MUSHROOM, List.of(
-                                        new SoundData(Sound.ENTITY_MOOSHROOM_CONVERT, Material.RED_MUSHROOM),
+                                new SoundCategory("Mooshroom Sounds", Material.MOOSHROOM_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_MOOSHROOM_CONVERT, Material.MOOSHROOM_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_MOOSHROOM_EAT, Material.COOKED_BEEF),
                                         new SoundData(Sound.ENTITY_MOOSHROOM_MILK, Material.MILK_BUCKET),
                                         new SoundData(Sound.ENTITY_MOOSHROOM_SHEAR, Material.SHEARS),
@@ -271,7 +271,7 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.ENTITY_GOAT_AMBIENT, Material.GOAT_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_GOAT_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_GOAT_EAT, Material.COOKED_BEEF),
-                                        new SoundData(Sound.ENTITY_GOAT_HORN_BREAK, Material.GOAT_HORN),
+                                        new SoundData(Sound.ENTITY_GOAT_HORN_BREAK, Material.GOAT_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_GOAT_HURT, Material.RED_DYE),
                                         new SoundData(Sound.ENTITY_GOAT_LONG_JUMP, Material.FEATHER),
                                         new SoundData(Sound.ENTITY_GOAT_MILK, Material.MILK_BUCKET),
@@ -291,14 +291,14 @@ public class AllSoundsRegistry {
                                 new SoundCategory("Horse Sounds", Material.HORSE_SPAWN_EGG, List.of(
                                         new SoundData(Sound.ENTITY_HORSE_AMBIENT, Material.HORSE_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_HORSE_ANGRY, Material.RED_DYE),
-                                        new SoundData(Sound.ENTITY_HORSE_ARMOR, Material.DIAMOND_HORSE_ARMOR),
-                                        new SoundData(Sound.ENTITY_HORSE_BREATHE, Material.SUGAR),
+                                        new SoundData(Sound.ENTITY_HORSE_ARMOR, Material.HORSE_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_HORSE_BREATHE, Material.HORSE_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_HORSE_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_HORSE_EAT, Material.COOKED_BEEF),
-                                        new SoundData(Sound.ENTITY_HORSE_GALLOP, Material.GRASS_BLOCK),
+                                        new SoundData(Sound.ENTITY_HORSE_GALLOP, Material.HORSE_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_HORSE_HURT, Material.RED_DYE),
                                         new SoundData(Sound.ENTITY_HORSE_JUMP, Material.FEATHER),
-                                        new SoundData(Sound.ENTITY_HORSE_LAND, Material.GRASS_BLOCK),
+                                        new SoundData(Sound.ENTITY_HORSE_LAND, Material.HORSE_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_HORSE_SADDLE, Material.SADDLE),
                                         new SoundData(Sound.ENTITY_HORSE_STEP, Material.LEATHER_BOOTS),
                                         new SoundData(Sound.ENTITY_HORSE_STEP_WOOD, Material.OAK_PLANKS)
@@ -318,8 +318,8 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.ENTITY_FOX_HURT, Material.RED_DYE),
                                         new SoundData(Sound.ENTITY_FOX_SCREECH, Material.FOX_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_FOX_SLEEP, Material.RED_BED),
-                                        new SoundData(Sound.ENTITY_FOX_SNIFF, Material.POPPY),
-                                        new SoundData(Sound.ENTITY_FOX_SPIT, Material.WIND_CHARGE),
+                                        new SoundData(Sound.ENTITY_FOX_SNIFF, Material.FOX_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_FOX_SPIT, Material.FOX_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_FOX_TELEPORT, Material.ENDER_PEARL)
                                 )),
                                 // --- Frog Sounds ---
@@ -344,15 +344,15 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.ENTITY_ALLAY_ITEM_THROWN, Material.ALLAY_SPAWN_EGG)
                                 )),
                                 // --- Axolotl Sounds ---
-                                new SoundCategory("Axolotl Sounds", Material.AXOLOTL_BUCKET, List.of(
-                                        new SoundData(Sound.ENTITY_AXOLOTL_ATTACK, Material.AXOLOTL_BUCKET),
+                                new SoundCategory("Axolotl Sounds", Material.AXOLOTL_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_AXOLOTL_ATTACK, Material.AXOLOTL_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_AXOLOTL_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_AXOLOTL_HURT, Material.RED_DYE),
-                                        new SoundData(Sound.ENTITY_AXOLOTL_IDLE_AIR, Material.AXOLOTL_BUCKET),
-                                        new SoundData(Sound.ENTITY_AXOLOTL_IDLE_WATER, Material.AXOLOTL_BUCKET),
-                                        new SoundData(Sound.ENTITY_AXOLOTL_SPLASH, Material.AXOLOTL_BUCKET),
-                                        new SoundData(Sound.ENTITY_AXOLOTL_SWIM, Material.AXOLOTL_BUCKET),
-                                        new SoundData(Sound.ITEM_BUCKET_FILL_AXOLOTL, Material.AXOLOTL_BUCKET)
+                                        new SoundData(Sound.ENTITY_AXOLOTL_IDLE_AIR, Material.AXOLOTL_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_AXOLOTL_IDLE_WATER, Material.AXOLOTL_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_AXOLOTL_SPLASH, Material.AXOLOTL_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_AXOLOTL_SWIM, Material.AXOLOTL_SPAWN_EGG),
+                                        new SoundData(Sound.ITEM_BUCKET_FILL_AXOLOTL, Material.AXOLOTL_SPAWN_EGG)
                                 )),
                                 // --- Bat Sounds ---
                                 new SoundCategory("Bat Sounds", Material.BAT_SPAWN_EGG, List.of(
@@ -389,23 +389,23 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.ENTITY_CAT_STRAY_AMBIENT, Material.CAT_SPAWN_EGG)
                                 )),
                                 // --- Chicken Sounds ---
-                                new SoundCategory("Chicken Sounds", Material.CHICKEN, List.of(
-                                        new SoundData(Sound.ENTITY_CHICKEN_AMBIENT, Material.CHICKEN),
+                                new SoundCategory("Chicken Sounds", Material.CHICKEN_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_CHICKEN_AMBIENT, Material.CHICKEN_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_CHICKEN_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_CHICKEN_EGG, Material.EGG),
                                         new SoundData(Sound.ENTITY_CHICKEN_HURT, Material.RED_DYE),
-                                        new SoundData(Sound.ENTITY_CHICKEN_STEP, Material.CHICKEN)
+                                        new SoundData(Sound.ENTITY_CHICKEN_STEP, Material.CHICKEN_SPAWN_EGG)
                                 )),
                                 // --- Cod Sounds ---
-                                new SoundCategory("Cod Sounds", Material.COD, List.of(
-                                        new SoundData(Sound.ENTITY_COD_AMBIENT, Material.COD),
+                                new SoundCategory("Cod Sounds", Material.COD_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_COD_AMBIENT, Material.COD_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_COD_DEATH, Material.SKELETON_SKULL),
-                                        new SoundData(Sound.ENTITY_COD_FLOP, Material.COD),
+                                        new SoundData(Sound.ENTITY_COD_FLOP, Material.COD_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_COD_HURT, Material.RED_DYE)
                                 )),
                                 // --- Cow Sounds ---
-                                new SoundCategory("Cow Sounds", Material.BEEF, List.of(
-                                        new SoundData(Sound.ENTITY_COW_AMBIENT, Material.BEEF),
+                                new SoundCategory("Cow Sounds", Material.COW_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_COW_AMBIENT, Material.COW_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_COW_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_COW_HURT, Material.RED_DYE),
                                         new SoundData(Sound.ENTITY_COW_MILK, Material.MILK_BUCKET),
@@ -435,11 +435,11 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.ENTITY_DONKEY_JUMP, Material.FEATHER)
                                 )),
                                 // --- Glow Squid Sounds ---
-                                new SoundCategory("Glow Squid Sounds", Material.GLOW_INK_SAC, List.of(
-                                        new SoundData(Sound.ENTITY_GLOW_SQUID_AMBIENT, Material.GLOW_INK_SAC),
+                                new SoundCategory("Glow Squid Sounds", Material.GLOW_SQUID_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_GLOW_SQUID_AMBIENT, Material.GLOW_SQUID_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_GLOW_SQUID_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_GLOW_SQUID_HURT, Material.RED_DYE),
-                                        new SoundData(Sound.ENTITY_GLOW_SQUID_SQUIRT, Material.GLOW_INK_SAC)
+                                        new SoundData(Sound.ENTITY_GLOW_SQUID_SQUIRT, Material.GLOW_SQUID_SPAWN_EGG)
                                 ))
                         )),
                         // **************************
@@ -488,21 +488,21 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.ENTITY_BEE_STING, Material.BEE_SPAWN_EGG)
                                 )),
                                 // --- Enderman Sounds ---
-                                new SoundCategory("Enderman Sounds", Material.ENDER_PEARL, List.of(
-                                        new SoundData(Sound.ENTITY_ENDERMAN_AMBIENT, Material.ENDER_PEARL),
+                                new SoundCategory("Enderman Sounds", Material.ENDERMAN_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_ENDERMAN_AMBIENT, Material.ENDERMAN_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_ENDERMAN_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_ENDERMAN_HURT, Material.RED_DYE),
-                                        new SoundData(Sound.ENTITY_ENDERMAN_SCREAM, Material.ENDER_PEARL),
-                                        new SoundData(Sound.ENTITY_ENDERMAN_STARE, Material.ENDER_PEARL),
-                                        new SoundData(Sound.ENTITY_ENDERMAN_TELEPORT, Material.ENDER_PEARL)
+                                        new SoundData(Sound.ENTITY_ENDERMAN_SCREAM, Material.ENDERMAN_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_ENDERMAN_STARE, Material.ENDERMAN_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_ENDERMAN_TELEPORT, Material.ENDERMAN_SPAWN_EGG)
                                 )),
                                 // --- Iron Golem Sounds ---
-                                new SoundCategory("Iron Golem Sounds", Material.IRON_BLOCK, List.of(
-                                        new SoundData(Sound.ENTITY_IRON_GOLEM_ATTACK, Material.IRON_BLOCK),
-                                        new SoundData(Sound.ENTITY_IRON_GOLEM_DAMAGE, Material.IRON_BLOCK),
+                                new SoundCategory("Iron Golem Sounds", Material.IRON_GOLEM_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_IRON_GOLEM_ATTACK, Material.IRON_GOLEM_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_IRON_GOLEM_DAMAGE, Material.IRON_GOLEM_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_IRON_GOLEM_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_IRON_GOLEM_HURT, Material.RED_DYE),
-                                        new SoundData(Sound.ENTITY_IRON_GOLEM_REPAIR, Material.IRON_BLOCK),
+                                        new SoundData(Sound.ENTITY_IRON_GOLEM_REPAIR, Material.IRON_GOLEM_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_IRON_GOLEM_STEP, Material.LEATHER_BOOTS)
                                 )),
                                 // --- Llama Sounds ---
@@ -537,15 +537,15 @@ public class AllSoundsRegistry {
                         // **************************
                         // *** HOSTILE MOB SOUNDS ***
                         // **************************
-                        new SoundCategory("Hostile Mob Sounds", Material.ZOMBIE_HEAD, List.of(
+                        new SoundCategory("Hostile Mob Sounds", Material.ZOMBIE_SPAWN_EGG, List.of( // TODO: Needs shortened, messes with gui.set item slot because its too large
                                 // --- Hostile Generic Sounds ---
-                                new SoundCategory("Hostile Generic Sounds", Material.ZOMBIE_HEAD, List.of(
+                                new SoundCategory("Hostile Generic Sounds", Material.ZOMBIE_SPAWN_EGG, List.of(
                                         new SoundData(Sound.ENTITY_HOSTILE_BIG_FALL, Material.ANVIL),
                                         new SoundData(Sound.ENTITY_HOSTILE_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_HOSTILE_HURT, Material.RED_DYE),
                                         new SoundData(Sound.ENTITY_HOSTILE_SMALL_FALL, Material.FEATHER),
-                                        new SoundData(Sound.ENTITY_HOSTILE_SPLASH, Material.WATER_BUCKET),
-                                        new SoundData(Sound.ENTITY_HOSTILE_SWIM, Material.WATER_BUCKET)
+                                        new SoundData(Sound.ENTITY_HOSTILE_SPLASH, Material.ZOMBIE_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_HOSTILE_SWIM, Material.ZOMBIE_SPAWN_EGG)
                                 )),
                                 // --- Warden Sounds ---
                                 new SoundCategory("Warden Sounds", Material.WARDEN_SPAWN_EGG, List.of(
@@ -571,26 +571,26 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.ENTITY_WARDEN_TENDRIL_CLICKS, Material.WARDEN_SPAWN_EGG)
                                 )),
                                 // --- Witch Sounds ---
-                                new SoundCategory("Witch Sounds", Material.GLOWSTONE, List.of(
-                                        new SoundData(Sound.ENTITY_WITCH_AMBIENT, Material.GLOWSTONE),
-                                        new SoundData(Sound.ENTITY_WITCH_CELEBRATE, Material.GLOWSTONE),
+                                new SoundCategory("Witch Sounds", Material.WITCH_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_WITCH_AMBIENT, Material.WITCH_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_WITCH_CELEBRATE, Material.WITCH_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_WITCH_DEATH, Material.SKELETON_SKULL),
-                                        new SoundData(Sound.ENTITY_WITCH_DRINK, Material.GLOWSTONE),
+                                        new SoundData(Sound.ENTITY_WITCH_DRINK, Material.WITCH_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_WITCH_HURT, Material.RED_DYE),
-                                        new SoundData(Sound.ENTITY_WITCH_THROW, Material.GLOWSTONE)
+                                        new SoundData(Sound.ENTITY_WITCH_THROW, Material.WITCH_SPAWN_EGG)
                                 )),
                                 // --- Wither Sounds ---
-                                new SoundCategory("Wither Sounds", Material.NETHER_STAR, List.of(
-                                        new SoundData(Sound.ENTITY_WITHER_AMBIENT, Material.NETHER_STAR),
-                                        new SoundData(Sound.ENTITY_WITHER_BREAK_BLOCK, Material.NETHER_STAR),
+                                new SoundCategory("Wither Sounds", Material.WITHER_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_WITHER_AMBIENT, Material.WITHER_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_WITHER_BREAK_BLOCK, Material.WITHER_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_WITHER_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_WITHER_HURT, Material.RED_DYE),
-                                        new SoundData(Sound.ENTITY_WITHER_SHOOT, Material.NETHER_STAR),
-                                        new SoundData(Sound.ENTITY_WITHER_SPAWN, Material.NETHER_STAR)
+                                        new SoundData(Sound.ENTITY_WITHER_SHOOT, Material.WITHER_SPAWN_EGG),
+                                        new SoundData(Sound.ENTITY_WITHER_SPAWN, Material.WITHER_SPAWN_EGG)
                                 )),
                                 // --- Wither Skeleton Sounds ---
-                                new SoundCategory("Wither Skeleton Sounds", Material.WITHER_SKELETON_SKULL, List.of(
-                                        new SoundData(Sound.ENTITY_WITHER_SKELETON_AMBIENT, Material.WITHER_SKELETON_SKULL),
+                                new SoundCategory("Wither Skeleton Sounds", Material.WITHER_SKELETON_SPAWN_EGG, List.of(
+                                        new SoundData(Sound.ENTITY_WITHER_SKELETON_AMBIENT, Material.WITHER_SKELETON_SPAWN_EGG),
                                         new SoundData(Sound.ENTITY_WITHER_SKELETON_DEATH, Material.SKELETON_SKULL),
                                         new SoundData(Sound.ENTITY_WITHER_SKELETON_HURT, Material.RED_DYE),
                                         new SoundData(Sound.ENTITY_WITHER_SKELETON_STEP, Material.LEATHER_BOOTS)
@@ -962,9 +962,7 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.ENTITY_PLAYER_DEATH, Material.SKELETON_SKULL),
                                 new SoundData(Sound.ENTITY_PLAYER_LEVELUP, Material.EXPERIENCE_BOTTLE),
                                 new SoundData(Sound.ENTITY_PLAYER_SWIM, Material.WATER_BUCKET),
-                                new SoundData(Sound.ENTITY_PLAYER_TELEPORT, Material.ENDER_PEARL),
-                                // --- Generic Sounds ---
-                                new SoundCategory("Generic Sounds", Material.NOTE_BLOCK, List.of())
+                                new SoundData(Sound.ENTITY_PLAYER_TELEPORT, Material.ENDER_PEARL)
                         )),
                         // ***************************
                         // *** OTHER ENTITY SOUNDS ***
@@ -1092,13 +1090,9 @@ public class AllSoundsRegistry {
                                 // --- Stone Sounds ---
                                 new SoundCategory("Stone Sounds", Material.STONE, List.of(
                                         new SoundData(Sound.BLOCK_STONE_BREAK, Material.STONE),
-                                        new SoundData(Sound.BLOCK_STONE_BUTTON_CLICK_OFF, Material.STONE_BUTTON),
-                                        new SoundData(Sound.BLOCK_STONE_BUTTON_CLICK_ON, Material.STONE_BUTTON),
                                         new SoundData(Sound.BLOCK_STONE_FALL, Material.STONE),
                                         new SoundData(Sound.BLOCK_STONE_HIT, Material.STONE),
                                         new SoundData(Sound.BLOCK_STONE_PLACE, Material.STONE),
-                                        new SoundData(Sound.BLOCK_STONE_PRESSURE_PLATE_CLICK_OFF, Material.STONE_PRESSURE_PLATE),
-                                        new SoundData(Sound.BLOCK_STONE_PRESSURE_PLATE_CLICK_ON, Material.STONE_PRESSURE_PLATE),
                                         new SoundData(Sound.BLOCK_STONE_STEP, Material.STONE)
                                 )),
                                 // --- Polished Deepslate Sounds ---
@@ -1297,14 +1291,6 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.BLOCK_FLOWERING_AZALEA_PLACE, Material.FLOWERING_AZALEA),
                                         new SoundData(Sound.BLOCK_FLOWERING_AZALEA_STEP, Material.FLOWERING_AZALEA)
                                 )),
-                                // --- Fungus Sounds ---
-                                new SoundCategory("Fungus Sounds", Material.CRIMSON_FUNGUS, List.of(
-                                        new SoundData(Sound.BLOCK_FUNGUS_BREAK, Material.CRIMSON_FUNGUS),
-                                        new SoundData(Sound.BLOCK_FUNGUS_FALL, Material.CRIMSON_FUNGUS),
-                                        new SoundData(Sound.BLOCK_FUNGUS_HIT, Material.CRIMSON_FUNGUS),
-                                        new SoundData(Sound.BLOCK_FUNGUS_PLACE, Material.CRIMSON_FUNGUS),
-                                        new SoundData(Sound.BLOCK_FUNGUS_STEP, Material.CRIMSON_FUNGUS)
-                                )),
                                 // --- Eyeblossom Sounds ---
                                 new SoundCategory("Eyeblossom Sounds", Material.OPEN_EYEBLOSSOM, List.of(
                                         new SoundData(Sound.BLOCK_EYEBLOSSOM_CLOSE, Material.CLOSED_EYEBLOSSOM),
@@ -1367,14 +1353,6 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.BLOCK_ROOTED_DIRT_PLACE, Material.ROOTED_DIRT),
                                         new SoundData(Sound.BLOCK_ROOTED_DIRT_STEP, Material.ROOTED_DIRT)
                                 )),
-                                // --- Roots Sounds ---
-                                new SoundCategory("Roots Sounds", Material.CRIMSON_ROOTS, List.of(
-                                        new SoundData(Sound.BLOCK_ROOTS_BREAK, Material.CRIMSON_ROOTS),
-                                        new SoundData(Sound.BLOCK_ROOTS_FALL, Material.CRIMSON_ROOTS),
-                                        new SoundData(Sound.BLOCK_ROOTS_HIT, Material.CRIMSON_ROOTS),
-                                        new SoundData(Sound.BLOCK_ROOTS_PLACE, Material.CRIMSON_ROOTS),
-                                        new SoundData(Sound.BLOCK_ROOTS_STEP, Material.CRIMSON_ROOTS)
-                                )),
                                 // --- Azalea Sounds ---
                                 new SoundCategory("Azalea Sounds", Material.AZALEA, List.of(
                                         new SoundData(Sound.BLOCK_AZALEA_BREAK, Material.AZALEA),
@@ -1408,22 +1386,6 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.BLOCK_SPORE_BLOSSOM_HIT, Material.SPORE_BLOSSOM),
                                         new SoundData(Sound.BLOCK_SPORE_BLOSSOM_PLACE, Material.SPORE_BLOSSOM),
                                         new SoundData(Sound.BLOCK_SPORE_BLOSSOM_STEP, Material.SPORE_BLOSSOM)
-                                )),
-                                // --- Stem Sounds ---
-                                new SoundCategory("Stem Sounds", Material.WARPED_STEM, List.of(
-                                        new SoundData(Sound.BLOCK_STEM_BREAK, Material.WARPED_STEM),
-                                        new SoundData(Sound.BLOCK_STEM_FALL, Material.WARPED_STEM),
-                                        new SoundData(Sound.BLOCK_STEM_HIT, Material.WARPED_STEM),
-                                        new SoundData(Sound.BLOCK_STEM_PLACE, Material.WARPED_STEM),
-                                        new SoundData(Sound.BLOCK_STEM_STEP, Material.WARPED_STEM)
-                                )),
-                                // --- Weeping Vines Sounds ---
-                                new SoundCategory("Weeping Vines Sounds", Material.WEEPING_VINES, List.of(
-                                        new SoundData(Sound.BLOCK_WEEPING_VINES_BREAK, Material.WEEPING_VINES),
-                                        new SoundData(Sound.BLOCK_WEEPING_VINES_FALL, Material.WEEPING_VINES),
-                                        new SoundData(Sound.BLOCK_WEEPING_VINES_HIT, Material.WEEPING_VINES),
-                                        new SoundData(Sound.BLOCK_WEEPING_VINES_PLACE, Material.WEEPING_VINES),
-                                        new SoundData(Sound.BLOCK_WEEPING_VINES_STEP, Material.WEEPING_VINES)
                                 )),
                                 // --- Wet Grass Sounds ---
                                 new SoundCategory("Wet Grass Sounds", Material.SEAGRASS, List.of(
@@ -1664,7 +1626,7 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.BLOCK_NETHER_WOOD_HANGING_SIGN_STEP, Material.CRIMSON_HANGING_SIGN)
                                 )),
                                 // --- Nether Wood Door Sounds ---
-                                new SoundCategory("Nether Wood Door Sounds", Material.CRIMSON_HANGING_SIGN, List.of(
+                                new SoundCategory("Nether Wood Door Sounds", Material.CRIMSON_DOOR, List.of(
                                         new SoundData(Sound.BLOCK_NETHER_WOOD_DOOR_CLOSE, Material.CRIMSON_DOOR),
                                         new SoundData(Sound.BLOCK_NETHER_WOOD_DOOR_OPEN, Material.CRIMSON_DOOR)
                                 )),
@@ -1703,20 +1665,62 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.BLOCK_NETHER_WOOD_FENCE_GATE_OPEN, Material.CRIMSON_FENCE_GATE)
                                 )),
                                 // --- Nether Wood Pressure Plate Sounds ---
-                                new SoundCategory("Nether Wood Pressure Plate Sounds", Material.CRIMSON_FENCE_GATE, List.of(
+                                new SoundCategory("Nether Wood Pressure Plate Sounds", Material.CRIMSON_PRESSURE_PLATE, List.of(
                                         new SoundData(Sound.BLOCK_NETHER_WOOD_PRESSURE_PLATE_CLICK_OFF, Material.CRIMSON_PRESSURE_PLATE),
                                         new SoundData(Sound.BLOCK_NETHER_WOOD_PRESSURE_PLATE_CLICK_ON, Material.CRIMSON_PRESSURE_PLATE)
                                 )),
                                 // --- Nether Wood Trapdoor Sounds ---
-                                new SoundCategory("Nether Wood Trapdoor Sounds", Material.CRIMSON_FENCE_GATE, List.of(
+                                new SoundCategory("Nether Wood Trapdoor Sounds", Material.CRIMSON_TRAPDOOR, List.of(
                                         new SoundData(Sound.BLOCK_NETHER_WOOD_TRAPDOOR_CLOSE, Material.CRIMSON_TRAPDOOR),
                                         new SoundData(Sound.BLOCK_NETHER_WOOD_TRAPDOOR_OPEN, Material.CRIMSON_TRAPDOOR)
+                                )),
+                                // --- Fungus Sounds ---
+                                new SoundCategory("Fungus Sounds", Material.CRIMSON_FUNGUS, List.of(
+                                        new SoundData(Sound.BLOCK_FUNGUS_BREAK, Material.CRIMSON_FUNGUS),
+                                        // new SoundData(Sound.BLOCK_FUNGUS_FALL, Material.CRIMSON_FUNGUS), plays no sound
+                                        // new SoundData(Sound.BLOCK_FUNGUS_HIT, Material.CRIMSON_FUNGUS), plays no sound
+                                        new SoundData(Sound.BLOCK_FUNGUS_PLACE, Material.CRIMSON_FUNGUS),
+                                        new SoundData(Sound.BLOCK_FUNGUS_STEP, Material.CRIMSON_FUNGUS)
+                                )),
+                                // --- Roots Sounds ---
+                                new SoundCategory("Roots Sounds", Material.CRIMSON_ROOTS, List.of(
+                                        new SoundData(Sound.BLOCK_ROOTS_BREAK, Material.CRIMSON_ROOTS),
+                                        new SoundData(Sound.BLOCK_ROOTS_FALL, Material.CRIMSON_ROOTS),
+                                        new SoundData(Sound.BLOCK_ROOTS_HIT, Material.CRIMSON_ROOTS),
+                                        new SoundData(Sound.BLOCK_ROOTS_PLACE, Material.CRIMSON_ROOTS),
+                                        new SoundData(Sound.BLOCK_ROOTS_STEP, Material.CRIMSON_ROOTS)
+                                )),
+                                // --- Stem Sounds ---
+                                new SoundCategory("Stem Sounds", Material.WARPED_STEM, List.of(
+                                        new SoundData(Sound.BLOCK_STEM_BREAK, Material.WARPED_STEM),
+                                        new SoundData(Sound.BLOCK_STEM_FALL, Material.WARPED_STEM),
+                                        new SoundData(Sound.BLOCK_STEM_HIT, Material.WARPED_STEM),
+                                        new SoundData(Sound.BLOCK_STEM_PLACE, Material.WARPED_STEM),
+                                        new SoundData(Sound.BLOCK_STEM_STEP, Material.WARPED_STEM)
+                                )),
+                                // --- Weeping Vines Sounds ---
+                                new SoundCategory("Weeping Vines Sounds", Material.WEEPING_VINES, List.of(
+                                        new SoundData(Sound.BLOCK_WEEPING_VINES_BREAK, Material.WEEPING_VINES),
+                                        new SoundData(Sound.BLOCK_WEEPING_VINES_FALL, Material.WEEPING_VINES),
+                                        new SoundData(Sound.BLOCK_WEEPING_VINES_HIT, Material.WEEPING_VINES),
+                                        new SoundData(Sound.BLOCK_WEEPING_VINES_PLACE, Material.WEEPING_VINES),
+                                        new SoundData(Sound.BLOCK_WEEPING_VINES_STEP, Material.WEEPING_VINES)
                                 ))
                         )),
                         // ********************************
                         // *** FUNCTIONAL BLOCKS SOUNDS ***
                         // ********************************
                         new SoundCategory("Functional Blocks Sounds", Material.FURNACE, List.of(
+                                // --- Stone Button Sounds ---
+                                new SoundCategory("Stone Button Sounds", Material.STONE_BUTTON, List.of(
+                                        new SoundData(Sound.BLOCK_STONE_BUTTON_CLICK_OFF, Material.STONE_BUTTON),
+                                        new SoundData(Sound.BLOCK_STONE_BUTTON_CLICK_ON, Material.STONE_BUTTON)
+                                )),
+                                // --- Stone Pressure Plate Sounds ---
+                                new SoundCategory("Stone Pressure Plate Sounds", Material.STONE_PRESSURE_PLATE, List.of(
+                                        new SoundData(Sound.BLOCK_STONE_PRESSURE_PLATE_CLICK_OFF, Material.STONE_PRESSURE_PLATE),
+                                        new SoundData(Sound.BLOCK_STONE_PRESSURE_PLATE_CLICK_ON, Material.STONE_PRESSURE_PLATE)
+                                )),
                                 // --- Scaffolding Sounds ---
                                 new SoundCategory("Scaffolding Sounds", Material.SCAFFOLDING, List.of(
                                         new SoundData(Sound.BLOCK_SCAFFOLDING_BREAK, Material.SCAFFOLDING),
@@ -1733,7 +1737,7 @@ public class AllSoundsRegistry {
                                         new SoundData(Sound.BLOCK_TRIPWIRE_DETACH, Material.TRIPWIRE_HOOK)
                                 )),
                                 // --- Smithing Table Sound ---
-                                new SoundCategory("Smithing Table SoundS", Material.SMITHING_TABLE, List.of(
+                                new SoundCategory("Smithing Table Sounds", Material.SMITHING_TABLE, List.of(
                                         new SoundData(Sound.BLOCK_SMITHING_TABLE_USE, Material.SMITHING_TABLE)
                                 )),
                                 // --- Smoker Sounds ---
@@ -1938,11 +1942,11 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.ITEM_BUCKET_EMPTY_LAVA, Material.LAVA_BUCKET),
                                 new SoundData(Sound.ITEM_BUCKET_EMPTY_POWDER_SNOW, Material.POWDER_SNOW_BUCKET),
                                 new SoundData(Sound.ITEM_BUCKET_EMPTY_TADPOLE, Material.TADPOLE_BUCKET),
-                                new SoundData(Sound.ITEM_BUCKET_FILL, Material.WATER),
+                                new SoundData(Sound.ITEM_BUCKET_FILL, Material.WATER_BUCKET),
                                 new SoundData(Sound.ITEM_BUCKET_FILL_AXOLOTL, Material.AXOLOTL_BUCKET),
                                 new SoundData(Sound.ITEM_BUCKET_FILL_FISH, Material.COD_BUCKET),
-                                new SoundData(Sound.ITEM_BUCKET_FILL_LAVA, Material.LAVA),
-                                new SoundData(Sound.ITEM_BUCKET_FILL_POWDER_SNOW, Material.POWDER_SNOW),
+                                new SoundData(Sound.ITEM_BUCKET_FILL_LAVA, Material.LAVA_BUCKET),
+                                new SoundData(Sound.ITEM_BUCKET_FILL_POWDER_SNOW, Material.POWDER_SNOW_BUCKET),
                                 new SoundData(Sound.ITEM_BUCKET_FILL_TADPOLE, Material.TADPOLE_BUCKET)
                         )),
                         // --- Bottle Sounds ---
@@ -2053,16 +2057,18 @@ public class AllSoundsRegistry {
                         new SoundData(Sound.BLOCK_NOTE_BLOCK_GUITAR, Material.NOTE_BLOCK),
                         new SoundData(Sound.BLOCK_NOTE_BLOCK_HARP, Material.NOTE_BLOCK),
                         new SoundData(Sound.BLOCK_NOTE_BLOCK_HAT, Material.NOTE_BLOCK),
-                        new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_CREEPER, Material.NOTE_BLOCK),
-                        new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_ENDER_DRAGON, Material.NOTE_BLOCK),
-                        new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_PIGLIN, Material.NOTE_BLOCK),
-                        new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_SKELETON, Material.NOTE_BLOCK),
-                        new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_WITHER_SKELETON, Material.NOTE_BLOCK),
-                        new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_ZOMBIE, Material.NOTE_BLOCK),
-                        new SoundData(Sound.BLOCK_NOTE_BLOCK_IRON_XYLOPHONE, Material.NOTE_BLOCK),
-                        new SoundData(Sound.BLOCK_NOTE_BLOCK_PLING, Material.NOTE_BLOCK),
-                        new SoundData(Sound.BLOCK_NOTE_BLOCK_SNARE, Material.NOTE_BLOCK),
-                        new SoundData(Sound.BLOCK_NOTE_BLOCK_XYLOPHONE, Material.NOTE_BLOCK)
+                        new SoundCategory("Noteblock Imititation Sounds", Material.JUKEBOX, List.of(
+                                new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_CREEPER, Material.NOTE_BLOCK),
+                                new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_ENDER_DRAGON, Material.NOTE_BLOCK),
+                                new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_PIGLIN, Material.NOTE_BLOCK),
+                                new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_SKELETON, Material.NOTE_BLOCK),
+                                new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_WITHER_SKELETON, Material.NOTE_BLOCK),
+                                new SoundData(Sound.BLOCK_NOTE_BLOCK_IMITATE_ZOMBIE, Material.NOTE_BLOCK),
+                                new SoundData(Sound.BLOCK_NOTE_BLOCK_IRON_XYLOPHONE, Material.NOTE_BLOCK),
+                                new SoundData(Sound.BLOCK_NOTE_BLOCK_PLING, Material.NOTE_BLOCK),
+                                new SoundData(Sound.BLOCK_NOTE_BLOCK_SNARE, Material.NOTE_BLOCK),
+                                new SoundData(Sound.BLOCK_NOTE_BLOCK_XYLOPHONE, Material.NOTE_BLOCK)
+                        ))
                 )),
                 // 5th SoundCategory
                 // OTHER SOUNDS:
@@ -2176,9 +2182,9 @@ public class AllSoundsRegistry {
                                 new SoundData(Sound.UI_TOAST_OUT, Material.BREAD)
                         )),
                         // --- Uncategorized Sounds ---
-                        new SoundCategory("Uncategorized Sounds", Material.PUFFERFISH_BUCKET, List.of(
-                                new SoundData(Sound.PARTICLE_SOUL_ESCAPE, Material.CACTUS),
-                                new SoundData(Sound.ENCHANT_THORNS_HIT, Material.ENCHANTED_BOOK)
+                        new SoundCategory("Uncategorized Sounds", Material.SOUL_LANTERN, List.of(
+                                new SoundData(Sound.PARTICLE_SOUL_ESCAPE, Material.SOUL_LANTERN),
+                                new SoundData(Sound.ENCHANT_THORNS_HIT, Material.CACTUS)
                         ))
                 ))
         ));
@@ -2189,7 +2195,7 @@ public class AllSoundsRegistry {
     }
 
     private static void initializeValidGUITitles(SoundCategory category) {
-        VALID_ALL_SOUNDS_GUI_TITLES.add(category.getCategoryName());
+        VALID_ALL_SOUNDS_GUI_TITLES.add(category.getCategoryTitle());
 
         for (Object child : category.getChildren()) {
             if (child instanceof SoundCategory soundCategory) {

@@ -29,6 +29,7 @@ public class AllSoundsGUI {
         gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.ReturnButton());
         gui.setItem(40, favoriteSoundsButton);
+        // TODO: Add a stop sound bottom because some sounds are obnoxiously long
         player.openInventory(gui);
     }
 
@@ -45,18 +46,18 @@ public class AllSoundsGUI {
         if (category == null) return;
 
         for (Object child : category.getChildren()) {
-            if (child instanceof SoundCategory) {
+            if (child instanceof SoundCategory soundCategory) {
                 gui.setItem(slot++, createItemStack(
-                        ((SoundCategory) child).getDisplayMaterial(),
-                        ChatColor.AQUA + "" + ChatColor.BOLD + ((SoundCategory) child).getCategoryName(),
+                        soundCategory.getDisplayMaterial(),
+                        ChatColor.AQUA + "" + ChatColor.BOLD + soundCategory.getCategoryTitle(),
                         null,
                         true,
                         true
                 ));
-            } else if (child instanceof SoundData) {
+            } else if (child instanceof SoundData soundData) {
                 gui.setItem(slot++, createItemStack(
-                        ((SoundData) child).getDisplayMaterial(),
-                        ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(((SoundData) child).getSound()),
+                        soundData.getDisplayMaterial(),
+                        ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(soundData.getSound()),
                         Arrays.asList(
                                 "",
                                 ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ"),
@@ -70,11 +71,13 @@ public class AllSoundsGUI {
     private SoundCategory findCategory(SoundCategory soundCategory) {
         for (Object child : soundCategory.getChildren()) {
             if (child instanceof SoundCategory childCategory) {
-                if (childCategory.getCategoryName().equals(guiTitle)) {
+                if (childCategory.getCategoryTitle().equals(guiTitle)) {
                     return childCategory;
                 } else {
-                    SoundCategory result = findCategory(childCategory);
-                    if (result != null) return result;
+                    SoundCategory foundCategory = findCategory(childCategory);
+                    if (foundCategory != null) {
+                        return foundCategory;
+                    }
                 }
             }
         }

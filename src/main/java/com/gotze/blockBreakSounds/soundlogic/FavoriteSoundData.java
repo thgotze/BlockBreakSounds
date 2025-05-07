@@ -29,7 +29,6 @@ public class FavoriteSoundData extends SoundData {
             if (favoriteSoundsData.getSound() == soundData.getSound()
                     && favoriteSoundsData.getVolume() == soundData.getVolume()
                     && favoriteSoundsData.getPitch() == soundData.getPitch()) {
-                System.out.println(favoriteSoundsData.getSound().toString() + " is the same as " + soundData.getSound().toString());
                 return;
             }
         }
@@ -88,9 +87,10 @@ public class FavoriteSoundData extends SoundData {
         for (Map<?, ?> soundData : favoriteSoundsList) {
             try {
                 Sound sound = Sound.valueOf((String) soundData.get("sound"));
-                float volume = (float) soundData.get("volume");
-                float pitch = (float) soundData.get("pitch");
+                float volume = (float) (double) soundData.get("volume");
+                float pitch = (float) (double) soundData.get("pitch");
                 Material material = Material.valueOf((String) soundData.get("material"));
+
                 favoriteSoundsDataList.add(new SoundData(sound, volume, pitch, material));
             } catch (Exception e) {
                 System.out.println("Failed to load favorite sounds for " + player.getName() + e.getMessage());

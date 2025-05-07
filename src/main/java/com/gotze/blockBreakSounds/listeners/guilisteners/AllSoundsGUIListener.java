@@ -26,7 +26,8 @@ public class AllSoundsGUIListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (!VALID_ALL_SOUNDS_GUI_TITLES.contains(event.getView().getTitle())) return;
+        String inventoryTitle = event.getView().getTitle();
+        if (!VALID_ALL_SOUNDS_GUI_TITLES.contains(inventoryTitle)) return;
         event.setCancelled(true);
         
         Inventory clickedInventory = event.getClickedInventory();
@@ -46,13 +47,13 @@ public class AllSoundsGUIListener implements Listener {
 
             case 36: // Return
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                String inventoryTitle = event.getView().getTitle();
 
                 if (inventoryTitle.equals("All Sounds")) {
                     new BlockBreakSoundsGUI(player);
                 } else {
-                    String parentCategoryTitle = getParentCategoryTitle(AllSoundsRegistry.ALL_SOUNDS, inventoryTitle);
-                    new AllSoundsGUI(player, parentCategoryTitle);
+                    SoundCategory parentCategory = getParentCategory(AllSoundsRegistry.ALL_SOUNDS, inventoryTitle);
+                    if (parentCategory == null) return;
+                    new AllSoundsGUI(player, parentCategory.getCategoryTitle());
                 }
                 return;
 
@@ -64,11 +65,9 @@ public class AllSoundsGUIListener implements Listener {
             default: // Soundcategories and/or Sounds
                 if (slot >= 9 && slot < 36) {
                     ItemStack clickedItem = clickedInventory.getItem(slot);
-                    if (clickedItem == null)
-                        return;
+                    if (clickedItem == null) return;
                     ItemMeta clickedItemMeta = clickedItem.getItemMeta();
-                    if (clickedItemMeta == null)
-                        return;
+                    if (clickedItemMeta == null) return;
 
                     String clickedItemTitle = ChatColor.stripColor(clickedItemMeta.getDisplayName());
 
@@ -76,7 +75,7 @@ public class AllSoundsGUIListener implements Listener {
 
                     if (object instanceof SoundCategory soundCategory) {
                         player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                        new AllSoundsGUI(player, soundCategory.getCategoryName());
+                        new AllSoundsGUI(player, soundCategory.getCategoryTitle());
                         return;
 
                     } else if (object instanceof SoundData soundData) {
@@ -96,13 +95,17 @@ public class AllSoundsGUIListener implements Listener {
         }
     }
 
-    private String getParentCategoryTitle(SoundCategory soundCategory, String inventoryTitle) {
+    private SoundCategory getParentCategory(SoundCategory soundCategory, String inventoryTitle) {
         for (Object child : soundCategory.getChildren()) {
             if (child instanceof SoundCategory childCategory) {
-                if (childCategory.getCategoryName().equals(inventoryTitle)) {
-                    return soundCategory.getCategoryName();
+                if (childCategory.getCategoryTitle().equals(inventoryTitle)) {
+                    return soundCategory;
+                } else {
+                    SoundCategory parentCategory = getParentCategory(childCategory, inventoryTitle);
+                    if (parentCategory != null) {
+                        return parentCategory;
+                    }
                 }
-                getParentCategoryTitle(childCategory, inventoryTitle);
             }
         }
         return null;
@@ -111,10 +114,14 @@ public class AllSoundsGUIListener implements Listener {
     private Object getCategoryOrSoundDataOfClickedItem(SoundCategory soundCategory, String clickedItemTitle) {
         for (Object child : soundCategory.getChildren()) {
             if (child instanceof SoundCategory childCategory) {
-                if (childCategory.getCategoryName().equals(clickedItemTitle)) {
+                if (childCategory.getCategoryTitle().equals(clickedItemTitle)) {
                     return childCategory;
+                } else {
+                    Object object = getCategoryOrSoundDataOfClickedItem(childCategory, clickedItemTitle);
+                    if (object != null) {
+                        return object;
+                    }
                 }
-                getCategoryOrSoundDataOfClickedItem(childCategory, clickedItemTitle);
 
             } else if (child instanceof SoundData soundData) {
                 if (StringUtils.getFormattedSoundName(soundData.getSound()).equals(clickedItemTitle)) {

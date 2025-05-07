@@ -5,18 +5,18 @@ import org.bukkit.Material;
 import java.util.List;
 
 public class SoundCategory {
-    private final String categoryName;
+    private final String categoryTitle;
     private final Material displayMaterial;
     private final List<Object> children;  // Holds either SoundCategories or SoundData
 
-    public SoundCategory(String name, Material displayMaterial, List<Object> children) {
-        this.categoryName = name;
+    public SoundCategory(String categoryTitle, Material displayMaterial, List<Object> children) {
+        this.categoryTitle = categoryTitle;
         this.displayMaterial = displayMaterial;
         this.children = children;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getCategoryTitle() {
+        return categoryTitle;
     }
 
     public Material getDisplayMaterial() {
