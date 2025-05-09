@@ -3,6 +3,7 @@ package com.gotze.blockBreakSounds.listeners.guilisteners;
 import com.gotze.blockBreakSounds.guis.AllSoundsGUI;
 import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
 import com.gotze.blockBreakSounds.guis.FavoriteSoundsGUI;
+import com.gotze.blockBreakSounds.guis.PickSoundGUI;
 import com.gotze.blockBreakSounds.soundlogic.*;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
 import com.gotze.blockBreakSounds.utility.StringUtils;
@@ -49,7 +50,7 @@ public class AllSoundsGUIListener implements Listener {
                 player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
 
                 if (inventoryTitle.equals("All Sounds")) {
-                    new BlockBreakSoundsGUI(player);
+                    new PickSoundGUI(player);
                 } else {
                     SoundCategory parentCategory = getParentCategory(AllSoundsRegistry.ALL_SOUNDS, inventoryTitle);
                     if (parentCategory == null) return;

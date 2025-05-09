@@ -29,7 +29,7 @@ public class PickSoundGUI {
         gui.setItem(9, AmethystBreakSoundButton());
         gui.setItem(10, ItemPickupButton());
         gui.setItem(11, ExperienceOrbPickupButton());
-        gui.setItem(12, ItemFrameRemoveItemButton());
+        gui.setItem(12, ItemSpyglassUseButton());
         gui.setItem(13, PlayerLevelupButton());
         gui.setItem(14, ArmadilloBrushButton());
         gui.setItem(15, DecoratedPotBreakButton());
@@ -156,12 +156,12 @@ public class PickSoundGUI {
         );
     }
 
-    private ItemStack ItemFrameRemoveItemButton() {
+    private ItemStack ItemSpyglassUseButton() {
         return createItemStack(
-                Material.ITEM_FRAME,
-                ChatColor.AQUA + "" + ChatColor.BOLD + "Smack!",
+                Material.SPYGLASS,
+                ChatColor.AQUA + "" + ChatColor.BOLD + "Rattle!",
                 Arrays.asList(
-                        ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ᴇɴᴛɪᴛʏ ɪᴛᴇᴍ ꜰʀᴀᴍᴇ ʀᴇᴍᴏᴠᴇ ɪᴛᴇᴍ",
+                        ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ɪᴛᴇᴍ ѕᴘʏɢʟᴀѕѕ ᴜѕᴇ",
                         ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
                         ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
                         "",

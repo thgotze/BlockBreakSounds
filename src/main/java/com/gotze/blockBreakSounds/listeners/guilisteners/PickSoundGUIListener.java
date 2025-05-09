@@ -58,8 +58,8 @@ public class PickSoundGUIListener implements Listener {
                 pitch = 2.00f;
                 break;
 
-            case 12: // Smack!
-                sound = Sound.ENTITY_ITEM_FRAME_REMOVE_ITEM;
+            case 12: // Rattle!
+                sound = Sound.ITEM_SPYGLASS_USE;
                 break;
 
             case 13: // Glimmer!
