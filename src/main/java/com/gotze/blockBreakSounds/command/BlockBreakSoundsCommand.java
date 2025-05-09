@@ -26,6 +26,10 @@ public final class BlockBreakSoundsCommand implements CommandExecutor {
         // If only typed /blockbreaksounds, then open the GUI as normal
         if (args.length == 0) {
             new BlockBreakSoundsGUI(player);
+            SoundData soundData = CurrentSoundData.currentSound.get(player.getUniqueId());
+            if (soundData != null) {
+                player.playSound(player, soundData.getSound(), soundData.getVolume(), soundData.getPitch());
+            }
             return true;
         }
 
