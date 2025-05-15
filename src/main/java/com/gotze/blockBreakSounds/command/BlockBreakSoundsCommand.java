@@ -3,7 +3,6 @@ package com.gotze.blockBreakSounds.command;
 import com.gotze.blockBreakSounds.guis.BlockBreakSoundsGUI;
 import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
 import com.gotze.blockBreakSounds.soundlogic.SoundData;
-import com.gotze.blockBreakSounds.utility.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -34,13 +33,13 @@ public final class BlockBreakSoundsCommand implements CommandExecutor {
         }
 
         // If the typed argument after /blockbreaksounds is any cancelling key, then remove the sound
-        if (args[0].equalsIgnoreCase("stop") ||
-                args[0].equalsIgnoreCase("disable") ||
-                args[0].equalsIgnoreCase("none") ||
-                args[0].equalsIgnoreCase("off") ||
-                args[0].equalsIgnoreCase("nosound") ||
-                args[0].equalsIgnoreCase("0") ||
-                args[0].equalsIgnoreCase("null")) {
+        if (args[0].equalsIgnoreCase("stop")
+                || args[0].equalsIgnoreCase("disable")
+                || args[0].equalsIgnoreCase("none")
+                || args[0].equalsIgnoreCase("off")
+                || args[0].equalsIgnoreCase("nosound")
+                || args[0].equalsIgnoreCase("0")
+                || args[0].equalsIgnoreCase("null")) {
             CurrentSoundData.currentSound.remove(player.getUniqueId());
             return true;
         }
@@ -52,10 +51,10 @@ public final class BlockBreakSoundsCommand implements CommandExecutor {
                 return false;
             } else {
 
-                String message = ChatColor.GOLD + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7" +
-                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(StringUtils.getFormattedSoundName(currentSoundData.getSound())) +
-                        ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", currentSoundData.getVolume() * 100)) +
-                        ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", currentSoundData.getPitch()));
+                String message = ChatColor.GOLD + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7"
+                        + ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(currentSoundData.getFormattedSoundName())
+                        + ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", currentSoundData.getVolume() * 100))
+                        + ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", currentSoundData.getPitch()));
                 player.sendMessage(message);
                 return true;
             }
