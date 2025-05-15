@@ -11,7 +11,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -57,9 +56,9 @@ public final class GUIUtils {
                             ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", playerCurrentSound.getVolume() * 100)),
                             ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", playerCurrentSound.getPitch())),
                             "",
-                            ChatColor.WHITE + "ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.YELLOW + "" + ChatColor.BOLD + "ᴘʟᴀʏᴛᴇѕᴛ",
-                            ChatColor.WHITE + "ᴅʀᴏᴘ ɪᴛᴇᴍ ᴛᴏ " + ChatColor.RED + "" + ChatColor.BOLD + "ᴄʟᴇᴀʀ",
-                            ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.GREEN + "" + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇ"
+                            ChatColor.WHITE + "ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.YELLOW + ChatColor.BOLD + "ᴘʟᴀʏᴛᴇѕᴛ",
+                            ChatColor.WHITE + "ᴅʀᴏᴘ ɪᴛᴇᴍ ᴛᴏ " + ChatColor.RED + ChatColor.BOLD + "ᴄʟᴇᴀʀ",
+                            ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇ"
                     ),
                     true,
                     true,
@@ -75,15 +74,15 @@ public final class GUIUtils {
         if (clickType == ClickType.DROP) {
             CurrentSoundData.clearCurrentSound(clickedInventory, player, slot);
             return;
-        }
-
-        if (clickType == ClickType.SHIFT_RIGHT) {
+        } else if (clickType == ClickType.SHIFT_RIGHT) {
             FavoriteSoundData.addSoundToFavorites(player, currentSoundData);
             GUIUtils.handleFavoritedLineSound(clickedInventory, slot, player);
             return;
         }
+        ItemStack clickedItem = clickedInventory.getItem(slot);
+        if (clickedItem == null) return;
 
-        if (clickedInventory.getItem(slot).getType() != Material.BARRIER) {
+        if (clickedItem.getType() != Material.BARRIER) {
             player.playSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
         }
     }
@@ -92,10 +91,10 @@ public final class GUIUtils {
         final String SOUND_FAVORITED = ChatColor.GREEN + "" + ChatColor.BOLD + "ѕᴏᴜɴᴅ ꜰᴀᴠᴏʀɪᴛᴇᴅ! ⭐";
         final String MAX_FAVORITED = ChatColor.RED + "" + ChatColor.BOLD + "ᴍᴀх ꜰᴀᴠᴏʀɪᴛᴇѕ ʀᴇᴀᴄʜᴇᴅ!";
 
-        ItemStack item = clickedInventory.getItem(slot);
-        if (item == null || item.getType() == Material.GLASS_PANE) return;
+        ItemStack clickedItem = clickedInventory.getItem(slot);
+        if (clickedItem == null || clickedItem.getType() == Material.GLASS_PANE) return;
 
-        ItemMeta itemMeta = item.getItemMeta();
+        ItemMeta itemMeta = clickedItem.getItemMeta();
         if (itemMeta == null) return;
 
         List<String> lore = itemMeta.getLore();
@@ -112,8 +111,8 @@ public final class GUIUtils {
         }
 
         itemMeta.setLore(lore);
-        item.setItemMeta(itemMeta);
-        clickedInventory.setItem(slot, item);
+        clickedItem.setItemMeta(itemMeta);
+        clickedInventory.setItem(slot, clickedItem);
     }
 
     public static void handlePickedLineSound(Inventory clickedInventory, int pickedSoundIndex) {

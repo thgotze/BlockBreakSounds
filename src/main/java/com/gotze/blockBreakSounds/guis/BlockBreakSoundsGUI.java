@@ -46,7 +46,7 @@ public class BlockBreakSoundsGUI {
     private final ItemStack SettingsButton = createItemStack(
             Material.COMMAND_BLOCK,
             ChatColor.RED + "" + ChatColor.BOLD + "Settings \uD83D\uDD27",
-            Arrays.asList(
+            List.of(
                     ChatColor.WHITE + "ᴍᴏᴅɪꜰʏ ᴀᴅᴅɪᴛɪᴏɴᴀʟ ѕᴇᴛᴛɪɴɢѕ"),
             true,
             true,

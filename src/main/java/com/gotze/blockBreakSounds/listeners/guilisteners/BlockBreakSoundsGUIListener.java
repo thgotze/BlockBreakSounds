@@ -49,9 +49,9 @@ public class BlockBreakSoundsGUIListener implements Listener {
             case 13: // Current Sound
                 GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
 
-                ItemStack itemStack = clickedInventory.getItem(slot);
-                if (itemStack != null) {
-                    if (itemStack.getType() == Material.GLASS_PANE) {
+                ItemStack clickedItem = clickedInventory.getItem(slot);
+                if (clickedItem != null) {
+                    if (clickedItem.getType() == Material.GLASS_PANE) {
                         updateVolumeSlider(player, clickedInventory);
                         updatePitchSlider(player, clickedInventory);
                     }
@@ -114,7 +114,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
                 return;
 
             default:
-                return;
+
         }
     }
 

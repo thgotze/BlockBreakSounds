@@ -44,8 +44,12 @@ public class FavoriteSoundsGUIListener implements Listener {
         switch (slot) {
             case 4: // Current Sound
                 GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
-                if (clickType == ClickType.SHIFT_RIGHT && clickedInventory.getItem(slot).getType() != Material.GLASS_PANE) {
-                    new FavoriteSoundsGUI(player);
+                if (clickType == ClickType.SHIFT_RIGHT) {
+                    ItemStack clickedItem = clickedInventory.getItem(slot);
+                    if (clickedItem == null) return;
+                    if (clickedItem.getType() != Material.GLASS_PANE) {
+                        new FavoriteSoundsGUI(player);
+                    }
                 }
                 return;
 
@@ -56,12 +60,12 @@ public class FavoriteSoundsGUIListener implements Listener {
 
             default: // Favorited Sounds
                 if (slot >= 9 && slot < 36) {
-                    ItemStack item = clickedInventory.getItem(slot);
+                    ItemStack clickedItem = clickedInventory.getItem(slot);
 
-                    if (item == null || item.getType() == Material.PAPER) return;
+                    if (clickedItem == null || clickedItem.getType() == Material.PAPER) return;
 
                     if (clickType == ClickType.DROP) { // Remove sound from favorites
-                        if (item.getType() != Material.BARRIER) {
+                        if (clickedItem.getType() != Material.BARRIER) {
                             ItemStack confirmClearFavoriteSound = createItemStack(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴜɴꜰᴀᴠᴏʀɪᴛᴇ");
                             clickedInventory.setItem(slot, confirmClearFavoriteSound);
 
@@ -71,13 +75,13 @@ public class FavoriteSoundsGUIListener implements Listener {
                                     if (itemAfterDelay == null) return;
 
                                     if (itemAfterDelay.getType() == confirmClearFavoriteSound.getType()) {
-                                        clickedInventory.setItem(slot, item); // item == original item
+                                        clickedInventory.setItem(slot, clickedItem); // item == original item
                                     }
                                 }
                             }.runTaskLater(Main.INSTANCE, 60L);
                         }
 
-                        if (item.getType() == Material.BARRIER) {
+                        if (clickedItem.getType() == Material.BARRIER) {
                             FavoriteSoundData.removeSoundFromFavorites(player, slot - 9);
                             new FavoriteSoundsGUI(player);
                         }
