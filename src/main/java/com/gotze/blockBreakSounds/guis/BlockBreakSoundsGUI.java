@@ -9,6 +9,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStack;
 
@@ -19,16 +20,16 @@ public class BlockBreakSoundsGUI {
     public BlockBreakSoundsGUI(Player player) {
         this.gui = Bukkit.createInventory(null, 45, "Block Break Sounds");
         setFrames();
-        gui.setItem(11, IncreaseVolumeButton());
+        gui.setItem(11, IncreaseVolumeButton);
         gui.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
-        gui.setItem(15, IncreasePitchButton());
-        gui.setItem(20, VolumeButton());
-        gui.setItem(22, PickSoundButton());
-        gui.setItem(24, PitchButton());
-        gui.setItem(26, SettingsButton());
-        gui.setItem(29, DecreaseVolumeButton());
-        gui.setItem(31, FavoriteSoundsButton());
-        gui.setItem(33, DecreasePitchButton());
+        gui.setItem(15, IncreasePitchButton);
+        gui.setItem(20, VolumeButton);
+        gui.setItem(22, PickSoundButton);
+        gui.setItem(24, PitchButton);
+        // gui.setItem(26, SettingsButton); TODO: Settings GUI is currently not implemented
+        gui.setItem(29, DecreaseVolumeButton);
+        gui.setItem(31, FavoriteSoundsButton);
+        gui.setItem(33, DecreasePitchButton);
         player.openInventory(gui);
     }
 
@@ -41,94 +42,78 @@ public class BlockBreakSoundsGUI {
         }
     }
 
-    // Settings Button (Command Block)
-    private ItemStack SettingsButton() {
-        return createItemStack(
-                Material.COMMAND_BLOCK,
-                ChatColor.RED + "" + ChatColor.BOLD + "Settings \uD83D\uDD27",
-                Arrays.asList(
-                        ChatColor.WHITE + "ᴍᴏᴅɪꜰʏ ᴀᴅᴅɪᴛɪᴏɴᴀʟ ѕᴇᴛᴛɪɴɢѕ"),
-                true,
-                true,
-                false
-        );
-    }
+    // Settings Button (Command Block) TODO: Settings GUI is currently not implemented
+    private final ItemStack SettingsButton = createItemStack(
+            Material.COMMAND_BLOCK,
+            ChatColor.RED + "" + ChatColor.BOLD + "Settings \uD83D\uDD27",
+            Arrays.asList(
+                    ChatColor.WHITE + "ᴍᴏᴅɪꜰʏ ᴀᴅᴅɪᴛɪᴏɴᴀʟ ѕᴇᴛᴛɪɴɢѕ"),
+            true,
+            true,
+            false
+    );
+
 
     // Favorite Sounds Button (Nether Star)
-    private ItemStack FavoriteSoundsButton() {
-        return createItemStack(
-                Material.NETHER_STAR,
-                ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
-                Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ")
-        );
-    }
+    private final ItemStack FavoriteSoundsButton = createItemStack(
+            Material.NETHER_STAR,
+            ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
+            List.of(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ")
+    );
+
 
     // Pick Sound Button (Noteblock)
-    private ItemStack PickSoundButton() {
-        return createItemStack(
-                Material.NOTE_BLOCK,
-                ChatColor.AQUA + "" + ChatColor.BOLD + "Pick Sound ♪",
-                Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ᴀ ѕᴏᴜɴᴅ ᴛᴏ ᴘʟᴀʏ",
-                        ChatColor.WHITE + "ᴡʜᴇɴ ʏᴏᴜ ʙʀᴇᴀᴋ ʙʟᴏᴄᴋѕ")
-        );
-    }
+    private final ItemStack PickSoundButton = createItemStack(
+            Material.NOTE_BLOCK,
+            ChatColor.AQUA + "" + ChatColor.BOLD + "Pick Sound ♪",
+            Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ᴀ ѕᴏᴜɴᴅ ᴛᴏ ᴘʟᴀʏ",
+                    ChatColor.WHITE + "ᴡʜᴇɴ ʏᴏᴜ ʙʀᴇᴀᴋ ʙʟᴏᴄᴋѕ")
+    );
 
     // Volume Button (Goat Horn)
-    private ItemStack VolumeButton() {
-        return createItemStack(
-                Material.GOAT_HORN,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "Tweak Volume \uD83D\uDD0A",
-                Arrays.asList(
-                        ChatColor.WHITE + "ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.GREEN + ChatColor.BOLD + "ɪɴᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ",
-                        ChatColor.WHITE + "ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.RED + ChatColor.BOLD + "ᴅᴇᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ",
-                        ChatColor.WHITE + "",
-                        ChatColor.GRAY + "ᴠᴏʟᴜᴍᴇ ᴄᴀɴ ʙᴇ ѕᴇᴛ ʙᴇᴛᴡᴇᴇɴ ₀ ᴀɴᴅ ₁₀₀"),
-                true
-        );
-    }
+    private final ItemStack VolumeButton = createItemStack(
+            Material.GOAT_HORN,
+            ChatColor.YELLOW + "" + ChatColor.BOLD + "Tweak Volume \uD83D\uDD0A",
+            Arrays.asList(
+                    ChatColor.WHITE + "ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.GREEN + ChatColor.BOLD + "ɪɴᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ",
+                    ChatColor.WHITE + "ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.RED + ChatColor.BOLD + "ᴅᴇᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ",
+                    ChatColor.WHITE + "",
+                    ChatColor.GRAY + "ᴠᴏʟᴜᴍᴇ ᴄᴀɴ ʙᴇ ѕᴇᴛ ʙᴇᴛᴡᴇᴇɴ ₀ ᴀɴᴅ ₁₀₀"),
+            true
+    );
 
     // + Increase Volume (Mangrove Button)
-    private ItemStack IncreaseVolumeButton() {
-        return createItemStack(
-                Material.MANGROVE_BUTTON,
-                ChatColor.GREEN + "" + ChatColor.BOLD + "[+] ɪɴᴄʀᴇᴀѕᴇ ᴠᴏʟᴜᴍᴇ"
-        );
-    }
+    private final ItemStack IncreaseVolumeButton = createItemStack(
+            Material.MANGROVE_BUTTON,
+            ChatColor.GREEN + "" + ChatColor.BOLD + "[+] ɪɴᴄʀᴇᴀѕᴇ ᴠᴏʟᴜᴍᴇ"
+    );
 
     // - Decrease Volume (Mangrove Button)
-    private ItemStack DecreaseVolumeButton() {
-        return createItemStack(
-                Material.MANGROVE_BUTTON,
-                ChatColor.RED + "" + ChatColor.BOLD + "[-] ᴅᴇᴄʀᴇᴀꜱᴇ ᴠᴏʟᴜᴍᴇ"
-        );
-    }
+    private final ItemStack DecreaseVolumeButton = createItemStack(
+            Material.MANGROVE_BUTTON,
+            ChatColor.RED + "" + ChatColor.BOLD + "[-] ᴅᴇᴄʀᴇᴀѕᴇ ᴠᴏʟᴜᴍᴇ"
+    );
 
     // Pitch Button (Bell)
-    private ItemStack PitchButton() {
-        return createItemStack(
-                Material.BELL,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + "Tweak Pitch \uD83D\uDD14",
-                Arrays.asList(
-                        ChatColor.WHITE + "ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.GREEN + ChatColor.BOLD + "ɪɴᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴘɪᴛᴄʜ",
-                        ChatColor.WHITE + "ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.RED + ChatColor.BOLD + "ᴅᴇᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴘɪᴛᴄʜ",
-                        ChatColor.WHITE + "",
-                        ChatColor.GRAY + "ᴘɪᴛᴄʜ ᴄᴀɴ ʙᴇ ѕᴇᴛ ʙᴇᴛᴡᴇᴇɴ ₀.₅₀ ᴀɴᴅ ₂.₀₀")
-        );
-    }
+    private final ItemStack PitchButton = createItemStack(
+            Material.BELL,
+            ChatColor.YELLOW + "" + ChatColor.BOLD + "Tweak Pitch \uD83D\uDD14",
+            Arrays.asList(
+                    ChatColor.WHITE + "ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.GREEN + ChatColor.BOLD + "ɪɴᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴘɪᴛᴄʜ",
+                    ChatColor.WHITE + "ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.RED + ChatColor.BOLD + "ᴅᴇᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴘɪᴛᴄʜ",
+                    ChatColor.WHITE + "",
+                    ChatColor.GRAY + "ᴘɪᴛᴄʜ ᴄᴀɴ ʙᴇ ѕᴇᴛ ʙᴇᴛᴡᴇᴇɴ ₀.₅₀ ᴀɴᴅ ₂.₀₀")
+    );
 
     // + Increase Pitch (Mangrove Button)
-    private ItemStack IncreasePitchButton() {
-        return createItemStack(
-                Material.MANGROVE_BUTTON,
-                ChatColor.GREEN + "" + ChatColor.BOLD + "[+] ɪɴᴄʀᴇᴀѕᴇ ᴘɪᴛᴄʜ"
-        );
-    }
+    private final ItemStack IncreasePitchButton = createItemStack(
+            Material.MANGROVE_BUTTON,
+            ChatColor.GREEN + "" + ChatColor.BOLD + "[+] ɪɴᴄʀᴇᴀѕᴇ ᴘɪᴛᴄʜ"
+    );
 
     // - Decrease Pitch (Mangrove Button)
-    private ItemStack DecreasePitchButton() {
-        return createItemStack(
-                Material.MANGROVE_BUTTON,
-                ChatColor.RED + "" + ChatColor.BOLD + "[-] ᴅᴇᴄʀᴇᴀѕᴇ ᴘɪᴛᴄʜ"
-        );
-    }
+    private final ItemStack DecreasePitchButton = createItemStack(
+            Material.MANGROVE_BUTTON,
+            ChatColor.RED + "" + ChatColor.BOLD + "[-] ᴅᴇᴄʀᴇᴀѕᴇ ᴘɪᴛᴄʜ"
+    );
 }

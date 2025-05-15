@@ -2,10 +2,10 @@ package com.gotze.blockBreakSounds.listeners.guilisteners;
 
 import com.gotze.blockBreakSounds.guis.FavoriteSoundsGUI;
 import com.gotze.blockBreakSounds.guis.PickSoundGUI;
-import com.gotze.blockBreakSounds.guis.SettingsGUI;
 import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
 import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
+import com.gotze.blockBreakSounds.utility.ValidClickChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -22,8 +22,7 @@ import static com.gotze.blockBreakSounds.utility.StringUtils.convertToSmallFont;
 
 public class BlockBreakSoundsGUIListener implements Listener {
 
-    public BlockBreakSoundsGUIListener() {
-    }
+    public BlockBreakSoundsGUIListener() {}
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
@@ -33,7 +32,9 @@ public class BlockBreakSoundsGUIListener implements Listener {
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
 
-        if (clickedInventory == null || clickedInventory.equals(player.getInventory())) return;
+        if (ValidClickChecker.hasClickCooldown(player)) return;
+        if (clickedInventory == null) return;
+        if (clickedInventory.equals(player.getInventory())) return;
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
@@ -47,6 +48,14 @@ public class BlockBreakSoundsGUIListener implements Listener {
 
             case 13: // Current Sound
                 GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
+
+                ItemStack itemStack = clickedInventory.getItem(slot);
+                if (itemStack != null) {
+                    if (itemStack.getType() == Material.GLASS_PANE) {
+                        updateVolumeSlider(player, clickedInventory);
+                        updatePitchSlider(player, clickedInventory);
+                    }
+                }
                 return;
 
             case 15: // Increase Pitch
@@ -81,10 +90,11 @@ public class BlockBreakSoundsGUIListener implements Listener {
                 clickedInventory.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
                 return;
 
-            case 26: // Settings
-                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
-                new SettingsGUI(player);
-                return;
+                // TODO: Settings GUI is currently not implemented
+            // case 26: // Settings
+            // player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+            // new SettingsGUI(player);
+            // return;
 
             case 29: // Decrease Volume
                 decreaseVolume(player);
