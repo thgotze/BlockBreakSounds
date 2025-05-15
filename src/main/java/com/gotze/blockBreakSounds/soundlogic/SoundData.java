@@ -62,4 +62,25 @@ public class SoundData {
     public void setDisplayMaterial(Material displayMaterial) {
         this.displayMaterial = displayMaterial;
     }
+
+    // Converts name of a Sound object into a formatted String
+    // Input: ENTITY_PLAYER_LEVELUP (Sound) -> Output: "Entity Player Levelup" (String)
+    public String getFormattedSoundName() {
+        // Step 1: Convert the Sound to a String
+        String soundString = sound.toString();
+
+        // Step 2: Replace underscores and dots with spaces and convert to lowercase
+        String withSpaces = soundString.replace("_", " ").replace(".", " ").toLowerCase();
+
+        // Step 3: Capitalize each word and combine them into a single string
+        StringBuilder capitalized = new StringBuilder();
+        for (String word : withSpaces.split(" ")) {
+            capitalized.append(Character.toUpperCase(word.charAt(0))) // First letter uppercase
+                    .append(word.substring(1))             // Rest of the word
+                    .append(" ");                                     // Add space between words
+        }
+
+        // Step 4: Trim trailing space and return the formatted result
+        return capitalized.toString().trim();
+    }
 }
