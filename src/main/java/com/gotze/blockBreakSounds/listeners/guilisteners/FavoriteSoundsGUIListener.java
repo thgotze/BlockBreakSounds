@@ -7,6 +7,7 @@ import com.gotze.blockBreakSounds.soundlogic.CurrentSoundData;
 import com.gotze.blockBreakSounds.soundlogic.FavoriteSoundData;
 import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
+import com.gotze.blockBreakSounds.utility.ValidClickChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -23,8 +24,7 @@ import static com.gotze.blockBreakSounds.utility.ItemStackCreator.createItemStac
 
 public class FavoriteSoundsGUIListener implements Listener {
 
-    public FavoriteSoundsGUIListener() {
-    }
+    public FavoriteSoundsGUIListener() {}
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
@@ -34,7 +34,9 @@ public class FavoriteSoundsGUIListener implements Listener {
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
 
-        if (clickedInventory == null || clickedInventory.equals(player.getInventory())) return;
+        if (ValidClickChecker.hasClickCooldown(player)) return;
+        if (clickedInventory == null) return;
+        if (clickedInventory.equals(player.getInventory())) return;
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();

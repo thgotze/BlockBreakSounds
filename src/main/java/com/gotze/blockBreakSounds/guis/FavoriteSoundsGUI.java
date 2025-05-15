@@ -28,7 +28,7 @@ public class FavoriteSoundsGUI {
         setFavoriteSoundsToGUI(player);
         gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.ReturnButton());
-        gui.setItem(40, FavoriteSoundsButton());
+        gui.setItem(40, FavoriteSoundsButton);
         player.openInventory(gui);
     }
 
@@ -41,18 +41,6 @@ public class FavoriteSoundsGUI {
         }
     }
 
-    // Favorite Sounds Button (Nether Star)
-    private ItemStack FavoriteSoundsButton() {
-        return createItemStack(
-                Material.NETHER_STAR,
-                ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
-                Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ",
-                        "",
-                        ChatColor.WHITE + "ᴅʀᴏᴘ ѕᴏᴜɴᴅѕ ᴛᴏ " + ChatColor.RED + ChatColor.BOLD + "ᴜɴꜰᴀᴠᴏʀɪᴛᴇ",
-                        ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇ")
-        );
-    }
-
     private void setFavoriteSoundsToGUI(Player player) {
         List<SoundData> playerFavorites = FavoriteSoundData.favoriteSounds.computeIfAbsent(player.getUniqueId(), k -> new ArrayList<>());
         int slot = 9;
@@ -61,11 +49,11 @@ public class FavoriteSoundsGUI {
             gui.setItem(slot, createFavoriteSoundButton(favoriteSoundData, i + 1));
             slot++;
         }
-        for (int i = playerFavorites.size() + 9; i < 36; i ++) {
+        for (int i = playerFavorites.size() + 9; i < 36; i++) {
             gui.clear(i);
         }
         if (gui.getItem(9) == null) {
-            gui.setItem(22, NoSoundsFavoritedYetButton());
+            gui.setItem(22, NoSoundsFavoritedYetButton);
         }
     }
 
@@ -74,7 +62,7 @@ public class FavoriteSoundsGUI {
                 soundData.getDisplayMaterial(),
                 ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sound " + soundNumber + " ⭐",
                 Arrays.asList(
-                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(StringUtils.getFormattedSoundName(soundData.getSound())),
+                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(soundData.getFormattedSoundName()),
                         ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", soundData.getVolume() * 100)),
                         ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", soundData.getPitch())),
                         "",
@@ -86,9 +74,18 @@ public class FavoriteSoundsGUI {
         );
     }
 
-    private ItemStack NoSoundsFavoritedYetButton() {
-        return createItemStack(
-                Material.PAPER,
-                ChatColor.WHITE + convertToSmallFont("You have not favorited any sounds yet!"));
-    }
+    private final ItemStack NoSoundsFavoritedYetButton = createItemStack(
+            Material.PAPER,
+            ChatColor.WHITE + convertToSmallFont("You have not favorited any sounds yet!")
+    );
+
+    // Favorite Sounds Button (Nether Star)
+    private final ItemStack FavoriteSoundsButton = createItemStack(
+            Material.NETHER_STAR,
+            ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
+            Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ",
+                    "",
+                    ChatColor.WHITE + "ᴅʀᴏᴘ ѕᴏᴜɴᴅѕ ᴛᴏ " + ChatColor.RED + ChatColor.BOLD + "ᴜɴꜰᴀᴠᴏʀɪᴛᴇ",
+                    ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇ")
+    );
 }

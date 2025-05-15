@@ -21,9 +21,7 @@ public class FavoriteSoundData extends SoundData {
     public static void addSoundToFavorites(Player player, SoundData soundData) {
         List<SoundData> playerFavorites = favoriteSounds.computeIfAbsent(player.getUniqueId(), k -> new ArrayList<>());
 
-        if (playerFavorites.size() >= 27) {
-            return;
-        }
+        if (playerFavorites.size() >= 27) return;
 
         for (SoundData favoriteSoundsData : playerFavorites) {
             if (favoriteSoundsData.getSound() == soundData.getSound()

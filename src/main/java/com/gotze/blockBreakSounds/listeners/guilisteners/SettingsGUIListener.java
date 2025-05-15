@@ -10,10 +10,9 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-public class SettingsGUIListener implements Listener {
+public class SettingsGUIListener implements Listener { // TODO: Settings GUI is currently not implemented
 
-    public SettingsGUIListener() {
-    }
+    public SettingsGUIListener() {}
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
@@ -23,7 +22,9 @@ public class SettingsGUIListener implements Listener {
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
 
-        if (clickedInventory == null || clickedInventory.equals(player.getInventory())) return;
+        if (ValidClickChecker.hasClickCooldown(player)) return;
+        if (clickedInventory == null) return;
+        if (clickedInventory.equals(player.getInventory())) return;
 
         ClickType clickType = event.getClick();
         int slot = event.getSlot();
