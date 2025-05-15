@@ -4,7 +4,6 @@ import com.gotze.blockBreakSounds.soundlogic.AllSoundsRegistry;
 import com.gotze.blockBreakSounds.soundlogic.SoundCategory;
 import com.gotze.blockBreakSounds.soundlogic.SoundData;
 import com.gotze.blockBreakSounds.utility.GUIUtils;
-import com.gotze.blockBreakSounds.utility.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -29,21 +28,14 @@ public class AllSoundsGUI {
         gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.ReturnButton());
         gui.setItem(40, favoriteSoundsButton);
-        // TODO: Add a stop sound bottom because some sounds are obnoxiously long
         player.openInventory(gui);
     }
 
     private void setCategoryOrSoundButtons() {
-        SoundCategory category;
-        int slot = 9;
-
-        if (guiTitle.equals("All Sounds")) {
-            category = AllSoundsRegistry.ALL_SOUNDS;
-            slot = 20;
-        } else {
-            category = findCategory(AllSoundsRegistry.ALL_SOUNDS);
-        }
+        SoundCategory category = AllSoundsRegistry.CATEGORY_MAP.get(guiTitle);
         if (category == null) return;
+
+        int slot = category.getCategoryTitle().equals("All Sounds") ? 20 : 9;
 
         for (Object child : category.getChildren()) {
             if (child instanceof SoundCategory soundCategory) {
@@ -57,7 +49,7 @@ public class AllSoundsGUI {
             } else if (child instanceof SoundData soundData) {
                 gui.setItem(slot++, createItemStack(
                         soundData.getDisplayMaterial(),
-                        ChatColor.AQUA + "" + ChatColor.BOLD + StringUtils.getFormattedSoundName(soundData.getSound()),
+                        ChatColor.AQUA + "" + ChatColor.BOLD + (soundData.getFormattedSoundName()),
                         Arrays.asList(
                                 "",
                                 ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ"),
@@ -66,22 +58,6 @@ public class AllSoundsGUI {
                 ));
             }
         }
-    }
-
-    private SoundCategory findCategory(SoundCategory soundCategory) {
-        for (Object child : soundCategory.getChildren()) {
-            if (child instanceof SoundCategory childCategory) {
-                if (childCategory.getCategoryTitle().equals(guiTitle)) {
-                    return childCategory;
-                } else {
-                    SoundCategory foundCategory = findCategory(childCategory);
-                    if (foundCategory != null) {
-                        return foundCategory;
-                    }
-                }
-            }
-        }
-        return null;
     }
 
     private void setFrames() {
