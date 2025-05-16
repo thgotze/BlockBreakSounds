@@ -1,0 +1,35 @@
+# Maven
+target/
+dependency-reduced-pom.xml
+
+# IDE files
+*.iml
+.idea/
+.settings/
+.vscode/
+.classpath
+.project
+
+# Compiled files
+*.class
+
+# Package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
