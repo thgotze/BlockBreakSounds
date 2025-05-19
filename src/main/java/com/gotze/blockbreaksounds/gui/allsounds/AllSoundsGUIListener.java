@@ -23,8 +23,7 @@ import java.util.Map;
 
 public class AllSoundsGUIListener implements Listener {
 
-    public AllSoundsGUIListener() {
-    }
+    public AllSoundsGUIListener() {}
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
@@ -64,8 +63,9 @@ public class AllSoundsGUIListener implements Listener {
                 return;
 
             case 40: // Favorite Sounds
-                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
                 new FavoriteSoundsGUI(player);
+                player.stopAllSounds();
+                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
                 return;
 
             default: // Soundcategories and/or Sounds
@@ -78,8 +78,9 @@ public class AllSoundsGUIListener implements Listener {
                     String clickedItemTitle = ChatColor.stripColor(clickedItemMeta.getDisplayName());
 
                     if (AllSoundsRegistry.CATEGORY_MAP.containsKey(clickedItemTitle)) {
-                        player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
                         new AllSoundsGUI(player, clickedItemTitle);
+                        player.stopAllSounds();
+                        player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
 
                     } else {
                         SoundData soundData = AllSoundsRegistry.SOUND_MAP.get(clickedItemTitle);
@@ -103,7 +104,7 @@ public class AllSoundsGUIListener implements Listener {
         String inventoryTitle = event.getView().getTitle();
         Player player = (Player) event.getPlayer();
 
-        if (AllSoundsRegistry.CATEGORY_MAP.containsKey(inventoryTitle) && !inventoryTitle.equals("All Sounds")) {
+        if (AllSoundsRegistry.CATEGORY_MAP.containsKey(inventoryTitle)) {
             player.stopAllSounds();
         }
     }
