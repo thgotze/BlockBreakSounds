@@ -2,7 +2,6 @@ package com.gotze.blockbreaksounds.gui.picksound;
 
 import com.gotze.blockbreaksounds.model.SoundData;
 import com.gotze.blockbreaksounds.util.GUIUtils;
-import com.gotze.blockbreaksounds.util.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

@@ -1,7 +1,6 @@
 package com.gotze.blockbreaksounds.gui.blockbreaksounds;
 
 import com.gotze.blockbreaksounds.util.GUIUtils;
-import com.gotze.blockbreaksounds.util.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

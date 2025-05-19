@@ -7,7 +7,7 @@ public class SoundData {
     private Sound sound;
     private float volume;
     private float pitch;
-    private Material displayMaterial;
+    private final Material displayMaterial;
 
     public SoundData(Sound sound, float volume, float pitch, Material displayMaterial) {
         this.sound = sound;
@@ -57,10 +57,6 @@ public class SoundData {
 
     public Material getDisplayMaterial() {
         return displayMaterial;
-    }
-
-    public void setDisplayMaterial(Material displayMaterial) {
-        this.displayMaterial = displayMaterial;
     }
 
     // Converts name of a Sound object into a formatted String

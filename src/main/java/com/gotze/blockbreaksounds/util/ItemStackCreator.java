@@ -24,26 +24,16 @@ public final class ItemStackCreator {
         ItemStack item = new ItemStack(material);
         ItemMeta itemMeta = item.getItemMeta();
 
-        if (itemMeta != null) {
-            if (displayName != null) {
-                itemMeta.setDisplayName(displayName);
-            }
+        if (itemMeta == null) return item;
 
-            if (lore != null) {
-                itemMeta.setLore(lore);
-            }
+        if (displayName != null) itemMeta.setDisplayName(displayName);
+        if (lore != null) itemMeta.setLore(lore);
+        if (hideAdditionalTooltip) itemMeta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
+        if (hideAttributes) itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        if (hideTooltipBox) itemMeta.setHideTooltip(true);
 
-            if (hideAdditionalTooltip) {
-                itemMeta.addItemFlags(ItemFlag.HIDE_ADDITIONAL_TOOLTIP);
-            }
-            if (hideAttributes) {
-                itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-            }
-            if (hideTooltipBox) {
-                itemMeta.setHideTooltip(true);
-            }
-            item.setItemMeta(itemMeta);
-        }
+        item.setItemMeta(itemMeta);
+
         return item;
     }
 

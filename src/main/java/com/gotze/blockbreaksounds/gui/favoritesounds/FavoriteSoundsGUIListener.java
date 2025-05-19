@@ -20,6 +20,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
+import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
 public class FavoriteSoundsGUIListener implements Listener {
 
@@ -65,7 +66,7 @@ public class FavoriteSoundsGUIListener implements Listener {
 
                     if (clickType == ClickType.DROP) { // Remove sound from favorites
                         if (clickedItem.getType() != Material.BARRIER) {
-                            ItemStack confirmClearFavoriteSound = createItemStack(Material.BARRIER, ChatColor.RED + "ᴅʀᴏᴘ ᴀɢᴀɪɴ ᴛᴏ ᴜɴꜰᴀᴠᴏʀɪᴛᴇ");
+                            ItemStack confirmClearFavoriteSound = createItemStack(Material.BARRIER, ChatColor.RED + convertToSmallFont("drop again to unfavorite"));
                             clickedInventory.setItem(slot, confirmClearFavoriteSound);
 
                             new BukkitRunnable() {

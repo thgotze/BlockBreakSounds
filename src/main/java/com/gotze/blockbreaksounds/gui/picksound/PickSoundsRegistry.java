@@ -68,43 +68,4 @@ public final class PickSoundsRegistry {
             Map.entry(Sound.ENTITY_SNIFFER_EAT, "Monch!"),
             Map.entry(Sound.BLOCK_NETHERITE_BLOCK_BREAK, "Clank!")
     );
-//    private final ItemStack SnifferEatButton = createItemStack(
-//            Material.COOKED_BEEF,
-//            ChatColor.AQUA + "" + ChatColor.BOLD + "Monch!",
-//            Arrays.asList(
-//                    ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ᴇɴᴛɪᴛʏ ѕɴɪꜰꜰᴇʀ ᴇᴀᴛ",
-//                    ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
-//                    ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
-//                    "",
-//                    ChatColor.DARK_GRAY + "ᴇᴀᴛ ᴀᴡᴀʏ ᴛʜᴇ ᴡᴏʀʟᴅ",
-//                    "",
-//                    ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ")
-//    );
-//
-//
-//    private final ItemStack BubbleColumnUpwardsAmbientButton = createItemStack(
-//            Material.CAULDRON,
-//            ChatColor.AQUA + "" + ChatColor.BOLD + "Sizzle!",
-//            Arrays.asList(
-//                    ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ʙʟᴏᴄᴋ ʙᴜʙʙʟᴇ ᴄᴏʟᴜᴍɴ ᴜᴘᴡᴀʀᴅѕ ᴀᴍʙɪᴇɴᴛ",
-//                    ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₅₀%",
-//                    ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₁.₀₀",
-//                    "",
-//                    ChatColor.DARK_GRAY + "ᴡʜᴏ ʟᴇᴛ ʜɪᴍ ᴄᴏᴏᴋ?",
-//                    "",
-//                    ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ")
-//    );
-//
-//    private final ItemStack ExperienceOrbPickupButton = createItemStack(
-//            Material.EXPERIENCE_BOTTLE,
-//            ChatColor.AQUA + "" + ChatColor.BOLD + "Ding!",
-//            Arrays.asList(
-//                    ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + "ᴇɴᴛɪᴛʏ ᴇхᴘᴇʀɪᴇɴᴄᴇ ᴏʀʙ ᴘɪᴄᴋᴜᴘ",
-//                    ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + "₁₀%",
-//                    ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + "₂.₀₀",
-//                    "",
-//                    ChatColor.DARK_GRAY + "ᴀ ʜʏᴘɪᴄᴋʟᴇ ꜰᴀᴠᴏʀɪᴛᴇ",
-//                    "",
-//                    ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ")
-//    );
 }

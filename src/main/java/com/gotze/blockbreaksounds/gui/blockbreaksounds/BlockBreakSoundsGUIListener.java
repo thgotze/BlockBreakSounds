@@ -158,7 +158,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
             } else if (i == paneAmount) {
                 inventory.setItem(volumeSliderSlots[i], yellowPane);
             } else if (i > paneAmount) {
-                inventory.setItem(volumeSliderSlots[i], GUIUtils.Frame());
+                inventory.setItem(volumeSliderSlots[i], GUIUtils.frame);
             }
         }
     }
@@ -199,7 +199,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
             } else if (i == paneAmount) {
                 inventory.setItem(pitchSliderSlots[i], yellowPane);
             } else if (i > paneAmount) {
-                inventory.setItem(pitchSliderSlots[i], GUIUtils.Frame());
+                inventory.setItem(pitchSliderSlots[i], GUIUtils.frame);
             }
         }
     }
