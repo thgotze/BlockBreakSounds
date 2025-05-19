@@ -19,23 +19,29 @@ import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
 public final class GUIUtils {
 
-    public static ItemStack Frame() {
-        return createItemStack(
-                Material.BLACK_STAINED_GLASS_PANE,
-                null,
-                null,
-                false,
-                false,
-                true
-        );
-    }
+    public static final ItemStack frame = createItemStack(
+            Material.BLACK_STAINED_GLASS_PANE,
+            null,
+            null,
+            false,
+            false,
+            true
+    );
 
-    public static ItemStack ReturnButton() {
-        return createItemStack(
-                Material.ARROW,
-                ChatColor.YELLOW + "" + ChatColor.BOLD + convertToSmallFont("← return")
-        );
-    }
+
+    public static final ItemStack returnButton = createItemStack(
+            Material.ARROW,
+            ChatColor.YELLOW + "" + ChatColor.BOLD + convertToSmallFont("← return")
+    );
+
+    public static final ItemStack favoriteSoundsButton = createItemStack(
+            Material.NETHER_STAR,
+            ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
+            Arrays.asList(ChatColor.WHITE + convertToSmallFont("pick from your ") + ChatColor.GREEN + ChatColor.BOLD + convertToSmallFont("favorited ") + ChatColor.WHITE + convertToSmallFont("sounds"),
+                    "",
+                    ChatColor.WHITE + convertToSmallFont("shift right click sounds to ") + ChatColor.GREEN + ChatColor.BOLD + convertToSmallFont("favorite")
+            )
+    );
 
     public static ItemStack CurrentSoundDisplayButton(Player player) {
         SoundData playerCurrentSound = CurrentSoundData.currentSound.get(player.getUniqueId());
