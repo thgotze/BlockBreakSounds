@@ -3,6 +3,7 @@ package com.gotze.blockbreaksounds.gui.favoritesounds;
 import com.gotze.blockbreaksounds.model.FavoriteSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
 import com.gotze.blockbreaksounds.util.GUIUtils;
+import com.gotze.blockbreaksounds.util.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -26,17 +27,17 @@ public class FavoriteSoundsGUI {
         setFrames();
         setFavoriteSoundsToGUI(player);
         gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
-        gui.setItem(36, GUIUtils.ReturnButton());
+        gui.setItem(36, GUIUtils.returnButton);
         gui.setItem(40, FavoriteSoundsButton);
         player.openInventory(gui);
     }
 
     private void setFrames() {
         for (int i = 0; i < 9; i++) {
-            gui.setItem(i, GUIUtils.Frame());
+            gui.setItem(i, GUIUtils.frame);
         }
         for (int i = 36; i < 45; i++) {
-            gui.setItem(i, GUIUtils.Frame());
+            gui.setItem(i, GUIUtils.frame);
         }
     }
 
@@ -65,8 +66,8 @@ public class FavoriteSoundsGUI {
                         ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", soundData.getVolume() * 100)),
                         ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", soundData.getPitch())),
                         "",
-                        ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ",
-                        ChatColor.GREEN + "" + ChatColor.BOLD + "ѕᴏᴜɴᴅ ꜰᴀᴠᴏʀɪᴛᴇᴅ! ⭐"),
+                        ChatColor.YELLOW + convertToSmallFont("click to pick sound"),
+                        ChatColor.GREEN + "" + ChatColor.BOLD + convertToSmallFont("sound favorited! ⭐")),
                 true,
                 true,
                 false
@@ -82,9 +83,10 @@ public class FavoriteSoundsGUI {
     private final ItemStack FavoriteSoundsButton = createItemStack(
             Material.NETHER_STAR,
             ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
-            Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ",
+            Arrays.asList(ChatColor.WHITE + convertToSmallFont("pick from your ") + ChatColor.GREEN + ChatColor.BOLD + convertToSmallFont("favorited ") + ChatColor.WHITE + convertToSmallFont("sounds"),
                     "",
-                    ChatColor.WHITE + "ᴅʀᴏᴘ ѕᴏᴜɴᴅѕ ᴛᴏ " + ChatColor.RED + ChatColor.BOLD + "ᴜɴꜰᴀᴠᴏʀɪᴛᴇ",
-                    ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇ")
+                    ChatColor.WHITE + convertToSmallFont("drop sounds to ") + ChatColor.RED + ChatColor.BOLD + convertToSmallFont("unfavorite"),
+                    ChatColor.WHITE + convertToSmallFont("shift right click sounds to ") + ChatColor.GREEN + ChatColor.BOLD + convertToSmallFont("favorite")
+            )
     );
 }

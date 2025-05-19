@@ -1,6 +1,7 @@
 package com.gotze.blockbreaksounds.gui.blockbreaksounds;
 
 import com.gotze.blockbreaksounds.util.GUIUtils;
+import com.gotze.blockbreaksounds.util.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -12,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
+import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
 public class BlockBreakSoundsGUI {
 
@@ -35,10 +37,10 @@ public class BlockBreakSoundsGUI {
 
     private void setFrames() {
         for (int i = 0; i < 9; i++) {
-            gui.setItem(i, GUIUtils.Frame());
+            gui.setItem(i, GUIUtils.frame);
         }
         for (int i = 36; i < 45; i++) {
-            gui.setItem(i, GUIUtils.Frame());
+            gui.setItem(i, GUIUtils.frame);
         }
     }
 
@@ -53,21 +55,20 @@ public class BlockBreakSoundsGUI {
             false
     );
 
-
     // Favorite Sounds Button (Nether Star)
     private final ItemStack FavoriteSoundsButton = createItemStack(
             Material.NETHER_STAR,
             ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
-            List.of(ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ")
+            List.of(ChatColor.WHITE + convertToSmallFont("pick from your ") + ChatColor.GREEN + ChatColor.BOLD + convertToSmallFont("favorited ") + ChatColor.WHITE + convertToSmallFont("sounds"))
     );
 
-
-    // Pick Sound Button (Noteblock)
+    // Pick Sound Button (Note Block)
     private final ItemStack PickSoundButton = createItemStack(
             Material.NOTE_BLOCK,
             ChatColor.AQUA + "" + ChatColor.BOLD + "Pick Sound ♪",
-            Arrays.asList(ChatColor.WHITE + "ᴘɪᴄᴋ ᴀ ѕᴏᴜɴᴅ ᴛᴏ ᴘʟᴀʏ",
-                    ChatColor.WHITE + "ᴡʜᴇɴ ʏᴏᴜ ʙʀᴇᴀᴋ ʙʟᴏᴄᴋѕ")
+            Arrays.asList(ChatColor.WHITE + convertToSmallFont("pick a sound to play"),
+                    ChatColor.WHITE + convertToSmallFont("when you break blocks")
+            )
     );
 
     // Volume Button (Goat Horn)
@@ -75,23 +76,23 @@ public class BlockBreakSoundsGUI {
             Material.GOAT_HORN,
             ChatColor.YELLOW + "" + ChatColor.BOLD + "Tweak Volume \uD83D\uDD0A",
             Arrays.asList(
-                    ChatColor.WHITE + "ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.GREEN + ChatColor.BOLD + "ɪɴᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ",
-                    ChatColor.WHITE + "ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.RED + ChatColor.BOLD + "ᴅᴇᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ",
+                    ChatColor.WHITE + convertToSmallFont("left click to ") + ChatColor.GREEN + ChatColor.BOLD + convertToSmallFont("increase ") + ChatColor.WHITE + convertToSmallFont("volume"),
+                    ChatColor.WHITE + convertToSmallFont("right click to ") + ChatColor.RED + ChatColor.BOLD + convertToSmallFont("decrease ") + ChatColor.WHITE + convertToSmallFont("volume"),
                     ChatColor.WHITE + "",
-                    ChatColor.GRAY + "ᴠᴏʟᴜᴍᴇ ᴄᴀɴ ʙᴇ ѕᴇᴛ ʙᴇᴛᴡᴇᴇɴ ₀ ᴀɴᴅ ₁₀₀"),
+                    ChatColor.GRAY + convertToSmallFont("volume can be set between 0 and 100")),
             true
     );
 
     // + Increase Volume (Mangrove Button)
     private final ItemStack IncreaseVolumeButton = createItemStack(
             Material.MANGROVE_BUTTON,
-            ChatColor.GREEN + "" + ChatColor.BOLD + "[+] ɪɴᴄʀᴇᴀѕᴇ ᴠᴏʟᴜᴍᴇ"
+            ChatColor.GREEN + "" + ChatColor.BOLD + "[+] " + ChatColor.BOLD + convertToSmallFont("increase volume")
     );
 
     // - Decrease Volume (Mangrove Button)
     private final ItemStack DecreaseVolumeButton = createItemStack(
             Material.MANGROVE_BUTTON,
-            ChatColor.RED + "" + ChatColor.BOLD + "[-] ᴅᴇᴄʀᴇᴀѕᴇ ᴠᴏʟᴜᴍᴇ"
+            ChatColor.RED + "" + ChatColor.BOLD + "[-] " + ChatColor.BOLD + convertToSmallFont("decrease volume")
     );
 
     // Pitch Button (Bell)
@@ -99,21 +100,21 @@ public class BlockBreakSoundsGUI {
             Material.BELL,
             ChatColor.YELLOW + "" + ChatColor.BOLD + "Tweak Pitch \uD83D\uDD14",
             Arrays.asList(
-                    ChatColor.WHITE + "ʟᴇꜰᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.GREEN + ChatColor.BOLD + "ɪɴᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴘɪᴛᴄʜ",
-                    ChatColor.WHITE + "ʀɪɢʜᴛ ᴄʟɪᴄᴋ ᴛᴏ " + ChatColor.RED + ChatColor.BOLD + "ᴅᴇᴄʀᴇᴀѕᴇ " + ChatColor.WHITE + "ᴘɪᴛᴄʜ",
+                    ChatColor.WHITE + convertToSmallFont("left click to ") + ChatColor.GREEN + ChatColor.BOLD + convertToSmallFont("increase ") + ChatColor.WHITE + convertToSmallFont("pitch"),
+                    ChatColor.WHITE + convertToSmallFont("right click to ") + ChatColor.RED + ChatColor.BOLD + convertToSmallFont("decrease ") + ChatColor.WHITE + convertToSmallFont("pitch"),
                     ChatColor.WHITE + "",
-                    ChatColor.GRAY + "ᴘɪᴛᴄʜ ᴄᴀɴ ʙᴇ ѕᴇᴛ ʙᴇᴛᴡᴇᴇɴ ₀.₅₀ ᴀɴᴅ ₂.₀₀")
+                    ChatColor.GRAY + convertToSmallFont("pitch can be set between 0.50 and 2.00"))
     );
 
     // + Increase Pitch (Mangrove Button)
     private final ItemStack IncreasePitchButton = createItemStack(
             Material.MANGROVE_BUTTON,
-            ChatColor.GREEN + "" + ChatColor.BOLD + "[+] ɪɴᴄʀᴇᴀѕᴇ ᴘɪᴛᴄʜ"
+            ChatColor.GREEN + "" + ChatColor.BOLD + "[+] " + ChatColor.BOLD + convertToSmallFont("increase pitch")
     );
 
     // - Decrease Pitch (Mangrove Button)
     private final ItemStack DecreasePitchButton = createItemStack(
             Material.MANGROVE_BUTTON,
-            ChatColor.RED + "" + ChatColor.BOLD + "[-] ᴅᴇᴄʀᴇᴀѕᴇ ᴘɪᴛᴄʜ"
+            ChatColor.RED + "" + ChatColor.BOLD + "[-] " + ChatColor.BOLD + convertToSmallFont("decrease pitch")
     );
 }

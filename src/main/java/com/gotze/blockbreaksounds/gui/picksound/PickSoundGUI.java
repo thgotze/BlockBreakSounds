@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
+import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
 public class PickSoundGUI {
 
@@ -23,8 +24,8 @@ public class PickSoundGUI {
         this.gui = Bukkit.createInventory(null, 45, "Pick Sound");
         setFrames();
         gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
-        gui.setItem(36, GUIUtils.ReturnButton());
-        gui.setItem(40, FavoriteSoundsButton);
+        gui.setItem(36, GUIUtils.returnButton);
+        gui.setItem(40, GUIUtils.favoriteSoundsButton);
         gui.setItem(44, PickFromAllSoundsButton);
         setPickSoundButtons();
         player.openInventory(gui);
@@ -32,10 +33,10 @@ public class PickSoundGUI {
 
     private void setFrames() {
         for (int i = 0; i < 9; i++) {
-            gui.setItem(i, GUIUtils.Frame());
+            gui.setItem(i, GUIUtils.frame);
         }
         for (int i = 36; i < 45; i++) {
-            gui.setItem(i, GUIUtils.Frame());
+            gui.setItem(i, GUIUtils.frame);
         }
     }
 
@@ -43,19 +44,11 @@ public class PickSoundGUI {
             Material.JUKEBOX,
             ChatColor.AQUA + "" + ChatColor.BOLD + "Pick From All Sounds",
             Arrays.asList(
-                    ChatColor.WHITE + "ᴘɪᴄᴋ ᴀ ѕᴏᴜɴᴅ ꜰʀᴏᴍ ᴀʟʟ ѕᴏᴜɴᴅѕ",
-                    ChatColor.WHITE + "ᴀᴠᴀɪʟᴀʙʟᴇ ɪɴ ᴍɪɴᴇᴄʀᴀꜰᴛ!",
+                    ChatColor.WHITE + convertToSmallFont("pick a sound from all sounds"),
+                    ChatColor.WHITE + convertToSmallFont("available in minecraft!"),
                     "",
-                    ChatColor.DARK_GRAY + "... ᴇᴠᴇɴ ᴛʜᴇ ᴡᴇɪʀᴅ ᴏɴᴇѕ ...")
-    );
-
-    private final ItemStack FavoriteSoundsButton = createItemStack(
-            Material.NETHER_STAR,
-            ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
-            Arrays.asList(
-                    ChatColor.WHITE + "ᴘɪᴄᴋ ꜰʀᴏᴍ ʏᴏᴜʀ " + ChatColor.GREEN + ChatColor.BOLD + "ꜰᴀᴠᴏʀɪᴛᴇᴅ " + ChatColor.WHITE + "ѕᴏᴜɴᴅѕ",
-                    "",
-                    ChatColor.WHITE + "ѕʜɪꜰᴛ ʀɪɢʜᴛ ᴄʟɪᴄᴋ ѕᴏᴜɴᴅs ᴛᴏ " + ChatColor.GREEN + "ꜰᴀᴠᴏʀɪᴛᴇ")
+                    ChatColor.DARK_GRAY + convertToSmallFont("... even the weird ones ...")
+            )
     );
 
     private void setPickSoundButtons() {
@@ -66,12 +59,14 @@ public class PickSoundGUI {
                     soundData.getDisplayMaterial(),
                     ChatColor.AQUA + "" + ChatColor.BOLD + PickSoundsRegistry.SOUND_NICKNAMES.get(soundData.getSound()),
                     Arrays.asList(
-                            ChatColor.WHITE + "ѕᴏᴜɴᴅ: " + ChatColor.GRAY + StringUtils.convertToSmallFont(soundData.getFormattedSoundName()),
-                            ChatColor.WHITE + "ᴠᴏʟᴜᴍᴇ: " + ChatColor.GRAY + StringUtils.convertToSmallFont(String.format("%.2f", soundData.getVolume())),
-                            ChatColor.WHITE + "ᴘɪᴛᴄʜ: " + ChatColor.GRAY + StringUtils.convertToSmallFont(String.format("%.2f", soundData.getPitch())),
+                            ChatColor.WHITE + convertToSmallFont("sound: ") + ChatColor.GRAY + convertToSmallFont(soundData.getFormattedSoundName()),
+                            ChatColor.WHITE + convertToSmallFont("volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", soundData.getVolume())),
+                            ChatColor.WHITE + convertToSmallFont("pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", soundData.getPitch())),
                             "",
-                            ChatColor.YELLOW + "ᴄʟɪᴄᴋ ᴛᴏ ᴘɪᴄᴋ ѕᴏᴜɴᴅ"
-                    )
+                            ChatColor.YELLOW + convertToSmallFont("click to pick sound")
+                    ),
+                    true,
+                    true
             ));
         }
     }
