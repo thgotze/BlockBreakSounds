@@ -16,6 +16,8 @@ import java.util.HashMap;
 
 public class PlayerJoinListener implements Listener {
 
+    public PlayerJoinListener() {}
+
     @EventHandler
     public void onJoinEvent(PlayerJoinEvent event) {
         Player player = event.getPlayer();

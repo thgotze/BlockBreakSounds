@@ -9,6 +9,8 @@ import java.util.*;
 
 public final class AllSoundsRegistry {
 
+    private AllSoundsRegistry() {}
+    
     // What is this class' purpose?
     // This class serves as a registry of all Minecraft sounds, neatly organized and categorized.
     // It is used by the "All Sounds" GUI, allowing users to easily navigate through categories to find specific sounds.

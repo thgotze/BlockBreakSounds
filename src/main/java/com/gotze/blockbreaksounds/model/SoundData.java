@@ -39,7 +39,7 @@ public class SoundData {
         if (volume < 0.0f) {
             this.volume = 0.0f;
         } else {
-            this.volume = Math.min(volume, 1.0f);
+            this.volume = Math.min(volume, 1.0F);
         }
     }
 

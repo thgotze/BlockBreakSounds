@@ -9,6 +9,8 @@ import java.util.List;
 
 public final class ItemStackCreator {
 
+    private ItemStackCreator() {}
+
     // Creates an ItemStack with customizable display name, lore, and flags.
 
     // @param material The material type for the ItemStack (e.g. Material.STONE_BLOCK).
@@ -33,35 +35,27 @@ public final class ItemStackCreator {
         if (hideTooltipBox) itemMeta.setHideTooltip(true);
 
         item.setItemMeta(itemMeta);
-
         return item;
     }
 
-    // Constants for default parameter values
-    private static final String DEFAULT_DISPLAY_NAME = null;
-    private static final List<String> DEFAULT_LORE = null;
-    private static final boolean DEFAULT_HIDE_ADDITIONAL_TOOLTIP = false;
-    private static final boolean DEFAULT_HIDE_ATTRIBUTES = false;
-    private static final boolean DEFAULT_HIDE_TOOLTIP_BOX = false;
-
-    // Overloaded methods in descending order of parameters
+    // Overloaded methods in descending order of parameters provided
     public static ItemStack createItemStack(Material material, String displayName, List<String> lore, boolean hideAdditionalTooltip, boolean hideAttributes) {
-        return createItemStack(material, displayName, lore, hideAdditionalTooltip, hideAttributes, DEFAULT_HIDE_TOOLTIP_BOX);
+        return createItemStack(material, displayName, lore, hideAdditionalTooltip, hideAttributes, false);
     }
 
     public static ItemStack createItemStack(Material material, String displayName, List<String> lore, boolean hideAdditionalTooltip) {
-        return createItemStack(material, displayName, lore, hideAdditionalTooltip, DEFAULT_HIDE_ATTRIBUTES, DEFAULT_HIDE_TOOLTIP_BOX);
+        return createItemStack(material, displayName, lore, hideAdditionalTooltip, false, false);
     }
 
     public static ItemStack createItemStack(Material material, String displayName, List<String> lore) {
-        return createItemStack(material, displayName, lore, DEFAULT_HIDE_ADDITIONAL_TOOLTIP, DEFAULT_HIDE_ATTRIBUTES, DEFAULT_HIDE_TOOLTIP_BOX);
+        return createItemStack(material, displayName, lore, false, false, false);
     }
 
     public static ItemStack createItemStack(Material material, String displayName) {
-        return createItemStack(material, displayName, DEFAULT_LORE, DEFAULT_HIDE_ADDITIONAL_TOOLTIP, DEFAULT_HIDE_ATTRIBUTES, DEFAULT_HIDE_TOOLTIP_BOX);
+        return createItemStack(material, displayName, null, false, false, false);
     }
 
     public static ItemStack createItemStack(Material material) {
-        return createItemStack(material, DEFAULT_DISPLAY_NAME, DEFAULT_LORE, DEFAULT_HIDE_ADDITIONAL_TOOLTIP, DEFAULT_HIDE_ATTRIBUTES, DEFAULT_HIDE_TOOLTIP_BOX);
+        return createItemStack(material, null, null, false, false, false);
     }
 }

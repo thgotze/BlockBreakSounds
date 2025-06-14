@@ -51,7 +51,7 @@ public class PickSoundGUI {
     );
 
     private void setPickSoundButtons() {
-        for (Map.Entry<Integer, SoundData> entry : PickSoundsRegistry.PICK_SOUND_MAP.entrySet()) {
+        for (Map.Entry<Integer, SoundData> entry : PickSoundsRegistry. PICK_SOUND_MAP.entrySet()) {
             SoundData soundData = entry.getValue();
 
             gui.setItem(entry.getKey(), createItemStack(
