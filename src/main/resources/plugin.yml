@@ -5,5 +5,5 @@ api-version: '1.21.4'
 commands:
   blockbreaksounds:
     description: Set a sound to play whenever you break a block
-    usage: /blockbreaksounds <sound>
+    usage: /blockbreaksounds
     aliases: bbs
