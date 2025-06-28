@@ -14,25 +14,23 @@ public final class BlockBreakSoundsPlugin extends JavaPlugin {
 
     public static BlockBreakSoundsPlugin INSTANCE;
 
-    private BlockBreakSoundsPlugin() {}
+    public BlockBreakSoundsPlugin() {}
 
     @Override
     public void onEnable() {
         INSTANCE = this;
-        getCommand("blockbreaksounds").setExecutor(new BlockBreakSoundsCommand());
-        registerListeners();
-        getLogger().info("Block Break Sounds Plugin enabled successfully");
-    }
-
-    private void registerListeners() {
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(), this);
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
+
+        getCommand("blockbreaksounds").setExecutor(new BlockBreakSoundsCommand());
 
         getServer().getPluginManager().registerEvents(new BlockBreakSoundsGUIListener(), this);
         getServer().getPluginManager().registerEvents(new PickSoundGUIListener(), this);
         getServer().getPluginManager().registerEvents(new SettingsGUIListener(), this);
         getServer().getPluginManager().registerEvents(new FavoriteSoundsGUIListener(), this);
         getServer().getPluginManager().registerEvents(new AllSoundsGUIListener(), this);
+
+        getLogger().info("Block Break Sounds Plugin enabled successfully");
     }
 
     @Override
