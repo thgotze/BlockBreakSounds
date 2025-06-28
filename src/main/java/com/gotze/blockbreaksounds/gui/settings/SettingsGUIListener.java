@@ -1,8 +1,8 @@
 package com.gotze.blockbreaksounds.gui.settings;
 
 import com.gotze.blockbreaksounds.gui.blockbreaksounds.BlockBreakSoundsGUI;
+import com.gotze.blockbreaksounds.util.SoundUtils;
 import com.gotze.blockbreaksounds.util.ValidClickChecker;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,13 +10,13 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-public class SettingsGUIListener implements Listener { // TODO: Settings GUI is currently not implemented
+public final class SettingsGUIListener implements Listener { // TODO: Settings GUI is currently not implemented
 
     public SettingsGUIListener() {}
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (!event.getView().getTitle().equals("Settings")) return;
+        if (!(event.getInventory().getHolder() instanceof SettingsGUI)) return;
         event.setCancelled(true);
 
         Inventory clickedInventory = event.getClickedInventory();
@@ -31,7 +31,7 @@ public class SettingsGUIListener implements Listener { // TODO: Settings GUI is 
 
         switch (slot) {
             case 36: // Return
-                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                SoundUtils.playUIClickSound(player);
                 new BlockBreakSoundsGUI(player);
                 return;
         }
