@@ -8,7 +8,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,12 +19,17 @@ import java.util.List;
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
 import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
-public class FavoriteSoundsGUI {
+public final class FavoriteSoundsGUI implements InventoryHolder {
 
     private final Inventory gui;
 
+    @Override
+    public @NotNull Inventory getInventory() {
+        return gui;
+    }
+
     public FavoriteSoundsGUI(Player player) {
-        this.gui = Bukkit.createInventory(null, 45, "Favorite Sounds");
+        this.gui = Bukkit.createInventory(this, 45, "Favorite Sounds");
         setFrames();
         setFavoriteSoundsToGUI(player);
         gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
@@ -61,9 +68,9 @@ public class FavoriteSoundsGUI {
                 soundData.getDisplayMaterial(),
                 ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sound " + soundNumber + " ⭐",
                 Arrays.asList(
-                        ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(soundData.getFormattedSoundName()),
-                        ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", soundData.getVolume() * 100)),
-                        ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", soundData.getPitch())),
+                        ChatColor.WHITE + convertToSmallFont("sound: ") + ChatColor.GRAY + convertToSmallFont(soundData.getFormattedSoundName()),
+                        ChatColor.WHITE + convertToSmallFont("volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", soundData.getVolume() * 100)),
+                        ChatColor.WHITE + convertToSmallFont("pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", soundData.getPitch())),
                         "",
                         ChatColor.YELLOW + convertToSmallFont("click to pick sound"),
                         ChatColor.GREEN + "" + ChatColor.BOLD + convertToSmallFont("sound favorited! ⭐")),
