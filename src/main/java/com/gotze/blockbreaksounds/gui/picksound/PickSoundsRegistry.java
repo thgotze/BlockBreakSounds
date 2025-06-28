@@ -6,14 +6,12 @@ import org.bukkit.Sound;
 
 import java.util.Map;
 
-import static org.bukkit.Sound.ENTITY_ITEM_PICKUP;
-
 public final class PickSoundsRegistry {
     private PickSoundsRegistry() {}
 
     public static final Map<Integer, SoundData> PICK_SOUND_MAP = Map.ofEntries(
             Map.entry(9, new SoundData(Sound.BLOCK_AMETHYST_BLOCK_BREAK, 0.5f, 1.25f, Material.AMETHYST_BLOCK)),
-            Map.entry(10, new SoundData(ENTITY_ITEM_PICKUP, Material.PUFFERFISH)),
+            Map.entry(10, new SoundData(Sound.ENTITY_ITEM_PICKUP, Material.PUFFERFISH)),
             Map.entry(11, new SoundData(Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.10f, 2.00f, Material.EXPERIENCE_BOTTLE)),
             Map.entry(12, new SoundData(Sound.ITEM_SPYGLASS_USE, Material.SPYGLASS)),
             Map.entry(13, new SoundData(Sound.ENTITY_PLAYER_LEVELUP, 0.10f, 2.00f, Material.SUNFLOWER)),
