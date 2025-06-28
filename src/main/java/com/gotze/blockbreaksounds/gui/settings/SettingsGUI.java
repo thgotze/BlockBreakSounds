@@ -6,19 +6,26 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
 import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
-public class SettingsGUI { // TODO: Settings GUI is currently not implemented
+public final class SettingsGUI implements InventoryHolder { // TODO: Settings GUI is currently not implemented
 
     private final Inventory gui;
 
+    @Override
+    public @NotNull Inventory getInventory() {
+        return gui;
+    }
+
     public SettingsGUI(Player player) {
-        this.gui = Bukkit.createInventory(null, 45, "Settings");
+        this.gui = Bukkit.createInventory(this, 45, "Settings");
         setFrames();
         gui.setItem(20, PitchVariance);
         gui.setItem(21, ToolSpecificSoundsButton);
