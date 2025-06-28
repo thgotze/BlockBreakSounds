@@ -7,7 +7,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -15,12 +17,17 @@ import java.util.Map;
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
 import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
-public class PickSoundGUI {
+public final class PickSoundGUI implements InventoryHolder {
 
     private final Inventory gui;
 
+    @Override
+    public @NotNull Inventory getInventory() {
+        return gui;
+    }
+
     public PickSoundGUI(Player player) {
-        this.gui = Bukkit.createInventory(null, 45, "Pick Sound");
+        this.gui = Bukkit.createInventory(this, 45, "Pick Sound");
         setFrames();
         gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.returnButton);
