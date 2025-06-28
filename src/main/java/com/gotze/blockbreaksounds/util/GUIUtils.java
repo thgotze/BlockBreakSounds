@@ -1,5 +1,6 @@
 package com.gotze.blockbreaksounds.util;
 
+import com.gotze.blockbreaksounds.BlockBreakSoundsPlugin;
 import com.gotze.blockbreaksounds.model.CurrentSoundData;
 import com.gotze.blockbreaksounds.model.FavoriteSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
@@ -10,6 +11,7 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -59,9 +61,9 @@ public final class GUIUtils {
                     (playerCurrentSound.getDisplayMaterial()),
                     ChatColor.YELLOW + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7",
                     Arrays.asList(
-                            ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(playerCurrentSound.getFormattedSoundName()),
-                            ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", playerCurrentSound.getVolume() * 100)),
-                            ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", playerCurrentSound.getPitch())),
+                            ChatColor.WHITE + convertToSmallFont("sound: ") + ChatColor.GRAY + convertToSmallFont(playerCurrentSound.getFormattedSoundName()),
+                            ChatColor.WHITE + convertToSmallFont("volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", playerCurrentSound.getVolume() * 100)),
+                            ChatColor.WHITE + convertToSmallFont("pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", playerCurrentSound.getPitch())),
                             "",
                             ChatColor.WHITE + convertToSmallFont("click to ") + ChatColor.YELLOW + ChatColor.BOLD + convertToSmallFont("playtest"),
                             ChatColor.WHITE + convertToSmallFont("drop item to ") + ChatColor.RED + ChatColor.BOLD + convertToSmallFont("clear"),
@@ -78,19 +80,58 @@ public final class GUIUtils {
         SoundData currentSoundData = CurrentSoundData.currentSound.get(player.getUniqueId());
         if (currentSoundData == null) return;
 
+        ItemStack clickedItem = clickedInventory.getItem(slot);
+        if (clickedItem == null) return;
+
         if (clickType == ClickType.DROP) {
-            CurrentSoundData.clearCurrentSound(clickedInventory, player, slot);
+            GUIUtils.clearCurrentSound(clickedItem, clickedInventory, player, slot);
+            return;
         }
-        else if (clickType == ClickType.SHIFT_RIGHT) {
+
+        if (clickType == ClickType.SHIFT_RIGHT) {
             FavoriteSoundData.addSoundToFavorites(player, currentSoundData);
             GUIUtils.handleFavoritedLineSound(clickedInventory, slot, player);
+            return;
         }
-        else {
-            ItemStack clickedItem = clickedInventory.getItem(slot);
-            if (clickedItem == null) return;
-            if (clickedItem.getType() != Material.BARRIER) {
-                player.playSound(player, currentSoundData.getSound(), currentSoundData.getVolume(), currentSoundData.getPitch());
-            }
+
+        if (clickedItem.getType() == Material.BARRIER) return;
+
+        currentSoundData.playSoundData(player);
+    }
+
+    private static void clearCurrentSound(ItemStack clickedItem, Inventory gui, Player player, int slot) {
+        Material materialOfCurrentSound = clickedItem.getType();
+
+        switch (materialOfCurrentSound) {
+            case GLASS_PANE:
+                SoundUtils.playErrorSound(player);
+                return;
+
+            case BARRIER:
+                SoundUtils.playErrorSound(player);
+                CurrentSoundData.currentSound.remove(player.getUniqueId());
+                gui.setItem(slot, GUIUtils.CurrentSoundDisplayButton(player));
+                CurrentSoundData.saveCurrentSoundDataToYAML(player);
+                return;
+
+            default:
+                final ItemStack confirmClearCurrentSoundItem = createItemStack(
+                        Material.BARRIER,
+                        ChatColor.RED + convertToSmallFont("drop again to clear")
+                );
+                gui.setItem(slot, confirmClearCurrentSoundItem);
+
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        ItemStack itemStackAfterDelay = gui.getItem(slot);
+                        if (itemStackAfterDelay == null) return;
+
+                        if (itemStackAfterDelay.getType().equals(Material.BARRIER)) {
+                            gui.setItem(slot, clickedItem);
+                        }
+                    }
+                }.runTaskLater(BlockBreakSoundsPlugin.INSTANCE, 60L);
         }
     }
 
