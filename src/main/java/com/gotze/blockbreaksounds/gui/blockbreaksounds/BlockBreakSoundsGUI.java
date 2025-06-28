@@ -6,7 +6,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,12 +16,17 @@ import java.util.List;
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
 import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
-public class BlockBreakSoundsGUI {
+public final class BlockBreakSoundsGUI implements InventoryHolder {
 
     private final Inventory gui;
 
+    @Override
+    public @NotNull Inventory getInventory() {
+        return gui;
+    }
+
     public BlockBreakSoundsGUI(Player player) {
-        this.gui = Bukkit.createInventory(null, 45, "Block Break Sounds");
+        this.gui = Bukkit.createInventory(this, 45, "Block Break Sounds");
         setFrames();
         gui.setItem(11, IncreaseVolumeButton);
         gui.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
@@ -48,7 +55,7 @@ public class BlockBreakSoundsGUI {
             Material.COMMAND_BLOCK,
             ChatColor.RED + "" + ChatColor.BOLD + "Settings \uD83D\uDD27",
             List.of(
-                    ChatColor.WHITE + "ᴍᴏᴅɪꜰʏ ᴀᴅᴅɪᴛɪᴏɴᴀʟ ѕᴇᴛᴛɪɴɢѕ"),
+                    ChatColor.WHITE + convertToSmallFont("modify additional settings")),
             true,
             true,
             false
