@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public class FavoriteSoundData extends SoundData {
+public final class FavoriteSoundData extends SoundData {
 
     public static final Map<UUID, List<SoundData>> favoriteSounds = new HashMap<>();
 
@@ -69,32 +69,5 @@ public class FavoriteSoundData extends SoundData {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void loadFavoriteSoundsDataFromFile(Player player) {
-        File file = new File(BlockBreakSoundsPlugin.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
-        YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(file);
-        String path = "favorite-sounds";
-
-        List<Map<?, ?>> favoriteSoundsList = yamlConfiguration.getMapList(path);
-
-        if (favoriteSoundsList.isEmpty()) return;
-
-        List<SoundData> favoriteSoundsDataList = new ArrayList<>();
-
-        for (Map<?, ?> soundData : favoriteSoundsList) {
-            try {
-                Sound sound = Sound.valueOf((String) soundData.get("sound"));
-                float volume = (float) (double) soundData.get("volume");
-                float pitch = (float) (double) soundData.get("pitch");
-                Material material = Material.valueOf((String) soundData.get("material"));
-
-                favoriteSoundsDataList.add(new SoundData(sound, volume, pitch, material));
-            } catch (Exception e) {
-                System.out.println("Failed to load favorite sounds for " + player.getName() + e.getMessage());
-                return;
-            }
-        }
-        favoriteSounds.put(player.getUniqueId(), favoriteSoundsDataList);
     }
 }
