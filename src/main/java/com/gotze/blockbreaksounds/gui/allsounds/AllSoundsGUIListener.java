@@ -1,14 +1,14 @@
 package com.gotze.blockbreaksounds.gui.allsounds;
 
-import com.gotze.blockbreaksounds.model.CurrentSoundData;
-import com.gotze.blockbreaksounds.model.FavoriteSoundData;
 import com.gotze.blockbreaksounds.gui.favoritesounds.FavoriteSoundsGUI;
 import com.gotze.blockbreaksounds.gui.picksound.PickSoundGUI;
-import com.gotze.blockbreaksounds.model.*;
+import com.gotze.blockbreaksounds.model.FavoriteSoundData;
+import com.gotze.blockbreaksounds.model.SoundCategory;
+import com.gotze.blockbreaksounds.model.SoundData;
 import com.gotze.blockbreaksounds.util.GUIUtils;
+import com.gotze.blockbreaksounds.util.SoundUtils;
 import com.gotze.blockbreaksounds.util.ValidClickChecker;
 import org.bukkit.ChatColor;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,15 +21,18 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Map;
 
-public class AllSoundsGUIListener implements Listener {
+public final class AllSoundsGUIListener implements Listener {
 
     public AllSoundsGUIListener() {}
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        String inventoryTitle = event.getView().getTitle();
-        if (!AllSoundsRegistry.CATEGORY_MAP.containsKey(inventoryTitle)) return;
+        if (!(event.getInventory().getHolder() instanceof AllSoundsGUI)) return;
         event.setCancelled(true);
+
+        String inventoryTitle = event.getView().getTitle();
+
+        if (!AllSoundsRegistry.CATEGORY_MAP.containsKey(inventoryTitle)) return;
 
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
@@ -59,13 +62,13 @@ public class AllSoundsGUIListener implements Listener {
                     }
                 }
                 player.stopAllSounds();
-                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                SoundUtils.playUIClickSound(player);
                 return;
 
             case 40: // Favorite Sounds
                 new FavoriteSoundsGUI(player);
                 player.stopAllSounds();
-                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                SoundUtils.playUIClickSound(player);
                 return;
 
             default: // Soundcategories and/or Sounds
@@ -80,7 +83,7 @@ public class AllSoundsGUIListener implements Listener {
                     if (AllSoundsRegistry.CATEGORY_MAP.containsKey(clickedItemTitle)) {
                         new AllSoundsGUI(player, clickedItemTitle);
                         player.stopAllSounds();
-                        player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                        SoundUtils.playUIClickSound(player);
 
                     } else {
                         SoundData soundData = AllSoundsRegistry.SOUND_MAP.get(clickedItemTitle);
@@ -89,7 +92,7 @@ public class AllSoundsGUIListener implements Listener {
                                 FavoriteSoundData.addSoundToFavorites(player, soundData);
                                 GUIUtils.handleFavoritedLineSound(clickedInventory, slot, player);
                             } else {
-                                CurrentSoundData.setCurrentSound(player, soundData);
+                                soundData.playSoundData(player);
                                 GUIUtils.handlePickedLineSound(clickedInventory, slot);
                                 clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
                             }
@@ -101,11 +104,8 @@ public class AllSoundsGUIListener implements Listener {
 
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event) {
-        String inventoryTitle = event.getView().getTitle();
-        Player player = (Player) event.getPlayer();
-
-        if (AllSoundsRegistry.CATEGORY_MAP.containsKey(inventoryTitle)) {
-            player.stopAllSounds();
+        if (event.getInventory().getHolder() instanceof AllSoundsGUI) {
+            ((Player) event.getPlayer()).stopAllSounds();
         }
     }
 }
