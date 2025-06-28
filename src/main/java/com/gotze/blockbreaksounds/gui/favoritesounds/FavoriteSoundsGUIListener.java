@@ -2,14 +2,13 @@ package com.gotze.blockbreaksounds.gui.favoritesounds;
 
 import com.gotze.blockbreaksounds.BlockBreakSoundsPlugin;
 import com.gotze.blockbreaksounds.gui.blockbreaksounds.BlockBreakSoundsGUI;
-import com.gotze.blockbreaksounds.model.CurrentSoundData;
 import com.gotze.blockbreaksounds.model.FavoriteSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
 import com.gotze.blockbreaksounds.util.GUIUtils;
+import com.gotze.blockbreaksounds.util.SoundUtils;
 import com.gotze.blockbreaksounds.util.ValidClickChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,13 +21,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
 import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
-public class FavoriteSoundsGUIListener implements Listener {
+public final class FavoriteSoundsGUIListener implements Listener {
 
     public FavoriteSoundsGUIListener() {}
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (!event.getView().getTitle().equals("Favorite Sounds")) return;
+        if (!(event.getInventory().getHolder() instanceof FavoriteSoundsGUI)) return;
         event.setCancelled(true);
 
         Inventory clickedInventory = event.getClickedInventory();
@@ -54,7 +53,7 @@ public class FavoriteSoundsGUIListener implements Listener {
                 return;
 
             case 36: // Return
-                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                SoundUtils.playUIClickSound(player);
                 new BlockBreakSoundsGUI(player);
                 return;
 
@@ -92,7 +91,7 @@ public class FavoriteSoundsGUIListener implements Listener {
                         SoundData favoriteSoundData = FavoriteSoundData.favoriteSounds.get(player.getUniqueId()).get(slot - 9);
                         if (favoriteSoundData == null) return;
 
-                        CurrentSoundData.setCurrentSound(player, favoriteSoundData);
+                        favoriteSoundData.playSoundData(player);
                         GUIUtils.handlePickedLineSound(clickedInventory, slot);
                         clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
                     }
