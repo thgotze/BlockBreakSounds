@@ -7,19 +7,26 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
 import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
-public class AllSoundsGUI {
+public final class AllSoundsGUI implements InventoryHolder {
 
     private final Inventory gui;
     private final String guiTitle;
 
+    @Override
+    public @NotNull Inventory getInventory() {
+        return gui;
+    }
+
     public AllSoundsGUI(Player player, String guiTitle) {
-        this.gui = Bukkit.createInventory(null, 45, guiTitle);
+        this.gui = Bukkit.createInventory(this, 45, guiTitle);
         this.guiTitle = guiTitle;
         setFrames();
         setCategoryOrSoundButtons();
