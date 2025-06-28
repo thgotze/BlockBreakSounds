@@ -19,10 +19,8 @@ public final class BlockBreakSoundsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
-        if (!(sender instanceof Player player)) {
-            sender.sendMessage(ChatColor.RED + "This command can only be executed by a player");
-            return false;
-        }
+        if (!(sender instanceof Player player)) return false;
+
         SoundData currentSoundData = CurrentSoundData.currentSound.get(player.getUniqueId());
 
         // If only typed /blockbreaksounds, then open the GUI as normal
@@ -39,9 +37,9 @@ public final class BlockBreakSoundsCommand implements CommandExecutor {
             if (currentSoundData == null) return false;
 
             String message = ChatColor.GOLD + "" + ChatColor.BOLD + "Current Sound \uD83C\uDFA7"
-                    + ChatColor.WHITE + convertToSmallFont("Sound: ") + ChatColor.GRAY + convertToSmallFont(currentSoundData.getFormattedSoundName())
-                    + ChatColor.WHITE + convertToSmallFont("Volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", currentSoundData.getVolume() * 100))
-                    + ChatColor.WHITE + convertToSmallFont("Pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", currentSoundData.getPitch()));
+                    + ChatColor.WHITE + convertToSmallFont("sound: ") + ChatColor.GRAY + convertToSmallFont(currentSoundData.getFormattedSoundName())
+                    + ChatColor.WHITE + convertToSmallFont("volume: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.0f%%", currentSoundData.getVolume() * 100))
+                    + ChatColor.WHITE + convertToSmallFont("pitch: ") + ChatColor.GRAY + convertToSmallFont(String.format("%.2f", currentSoundData.getPitch()));
             player.sendMessage(message);
             return true;
         }
@@ -56,7 +54,6 @@ public final class BlockBreakSoundsCommand implements CommandExecutor {
         }
 
         // If the player typed something that wasn't in the previous methods' parameters send a message saying how to use the command
-        player.sendMessage(ChatColor.RED + "Use command: /blockbreaksound");
         return false;
     }
 }
