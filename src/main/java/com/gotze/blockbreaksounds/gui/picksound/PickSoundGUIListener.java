@@ -3,10 +3,10 @@ package com.gotze.blockbreaksounds.gui.picksound;
 import com.gotze.blockbreaksounds.gui.allsounds.AllSoundsGUI;
 import com.gotze.blockbreaksounds.gui.blockbreaksounds.BlockBreakSoundsGUI;
 import com.gotze.blockbreaksounds.gui.favoritesounds.FavoriteSoundsGUI;
-import com.gotze.blockbreaksounds.model.CurrentSoundData;
 import com.gotze.blockbreaksounds.model.FavoriteSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
 import com.gotze.blockbreaksounds.util.GUIUtils;
+import com.gotze.blockbreaksounds.util.SoundUtils;
 import com.gotze.blockbreaksounds.util.ValidClickChecker;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -16,13 +16,13 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-public class PickSoundGUIListener implements Listener {
+public final class PickSoundGUIListener implements Listener {
 
     public PickSoundGUIListener() {}
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (!event.getView().getTitle().equals("Pick Sound")) return;
+        if (!(event.getInventory().getHolder() instanceof PickSoundGUI)) return;
         event.setCancelled(true);
 
         Inventory clickedInventory = event.getClickedInventory();
@@ -41,17 +41,17 @@ public class PickSoundGUIListener implements Listener {
                 return;
 
             case 36: // Return
-                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                SoundUtils.playUIClickSound(player);
                 new BlockBreakSoundsGUI(player);
                 return;
 
             case 40: // Favorite Sounds
-                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                SoundUtils.playUIClickSound(player);
                 new FavoriteSoundsGUI(player);
                 return;
 
             case 44: // Pick From All Sounds
-                player.playSound(player, Sound.UI_BUTTON_CLICK, 0.25f, 1.0f);
+                SoundUtils.playUIClickSound(player);
                 new AllSoundsGUI(player, "All Sounds");
                 return;
 
@@ -63,7 +63,7 @@ public class PickSoundGUIListener implements Listener {
                     FavoriteSoundData.addSoundToFavorites(player, soundData);
                     GUIUtils.handleFavoritedLineSound(clickedInventory, slot, player);
                 } else { // Pick Sound
-                    CurrentSoundData.setCurrentSound(player, soundData);
+                    soundData.playSoundData(player);
                     GUIUtils.handlePickedLineSound(clickedInventory, slot);
                     clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
                 }
