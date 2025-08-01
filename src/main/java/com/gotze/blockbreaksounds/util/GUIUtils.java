@@ -23,7 +23,7 @@ public final class GUIUtils {
 
     private GUIUtils() {}
 
-    public static final ItemStack frame = createItemStack(
+    public static final ItemStack FRAME = createItemStack(
             Material.BLACK_STAINED_GLASS_PANE,
             null,
             null,
@@ -32,12 +32,12 @@ public final class GUIUtils {
             true
     );
 
-    public static final ItemStack returnButton = createItemStack(
+    public static final ItemStack RETURN_BUTTON = createItemStack(
             Material.ARROW,
             ChatColor.YELLOW + "" + ChatColor.BOLD + convertToSmallFont("← return")
     );
 
-    public static final ItemStack favoriteSoundsButton = createItemStack(
+    public static final ItemStack FAVORITE_SOUNDS_BUTTON = createItemStack(
             Material.NETHER_STAR,
             ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
             Arrays.asList(ChatColor.WHITE + convertToSmallFont("pick from your ") + ChatColor.GREEN + ChatColor.BOLD + convertToSmallFont("favorited ") + ChatColor.WHITE + convertToSmallFont("sounds"),
