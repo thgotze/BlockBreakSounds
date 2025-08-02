@@ -27,25 +27,25 @@ public final class SettingsGUI implements InventoryHolder { // TODO: Settings GU
     public SettingsGUI(Player player) {
         this.gui = Bukkit.createInventory(this, 45, "Settings");
         setFrames();
-        gui.setItem(20, PitchVariance);
-        gui.setItem(21, ToolSpecificSoundsButton);
-        gui.setItem(22, MultiSoundsButton);
-        gui.setItem(23, CombinedSoundsButton);
-        gui.setItem(24, SoundFilterButton);
-        gui.setItem(36, GUIUtils.returnButton);
+        gui.setItem(20, PITCH_VARIANCE_BUTTON);
+        gui.setItem(21, TOOL_SPECIFIC_SOUNDS_BUTTON);
+        gui.setItem(22, MULTI_SOUNDS_BUTTON);
+        gui.setItem(23, COMBINED_SOUNDS_BUTTON);
+        gui.setItem(24, SOUND_FILTER_BUTTON);
+        gui.setItem(36, GUIUtils.FRAME);
         player.openInventory(gui);
     }
 
     private void setFrames() {
         for (int i = 0; i < 9; i++) {
-            gui.setItem(i, GUIUtils.frame);
+            gui.setItem(i, GUIUtils.FRAME);
         }
         for (int i = 36; i < 45; i++) {
-            gui.setItem(i, GUIUtils.frame);
+            gui.setItem(i, GUIUtils.FRAME);
         }
     }
 
-    private final ItemStack ToolSpecificSoundsButton = createItemStack(
+    private static final ItemStack TOOL_SPECIFIC_SOUNDS_BUTTON = createItemStack(
             Material.GOLDEN_SHOVEL,
             ChatColor.RED + "" + ChatColor.BOLD + "Tool Specific Sounds",
             Arrays.asList(ChatColor.WHITE + convertToSmallFont("choose specific block break sounds"),
@@ -57,7 +57,7 @@ public final class SettingsGUI implements InventoryHolder { // TODO: Settings GU
             false
     );
 
-    private final ItemStack CombinedSoundsButton = createItemStack(
+    private static final ItemStack COMBINED_SOUNDS_BUTTON = createItemStack(
             Material.MUSIC_DISC_PRECIPICE,
             ChatColor.RED + "" + ChatColor.BOLD + "Combined Sounds",
             Arrays.asList(ChatColor.WHITE + convertToSmallFont("choose multiple block break sounds to play simultaneously"),
@@ -68,7 +68,7 @@ public final class SettingsGUI implements InventoryHolder { // TODO: Settings GU
             false
     );
 
-    private final ItemStack SoundFilterButton = createItemStack(
+    private static final ItemStack SOUND_FILTER_BUTTON = createItemStack(
             Material.GUSTER_BANNER_PATTERN,
             ChatColor.RED + "" + ChatColor.BOLD + "Sound Filter",
             Arrays.asList(ChatColor.WHITE + convertToSmallFont("filter blocks from playing sounds when broken"),
@@ -79,7 +79,7 @@ public final class SettingsGUI implements InventoryHolder { // TODO: Settings GU
             false
     );
 
-    private final ItemStack MultiSoundsButton = createItemStack(
+    private static final ItemStack MULTI_SOUNDS_BUTTON = createItemStack(
             Material.TNT,
             ChatColor.RED + "" + ChatColor.BOLD + "Multi Sound",
             Arrays.asList(ChatColor.WHITE + convertToSmallFont("toggle whether to play sound multiple times"),
@@ -88,7 +88,7 @@ public final class SettingsGUI implements InventoryHolder { // TODO: Settings GU
                     ChatColor.RED + "" + ChatColor.BOLD + "NOT IMPLEMENTED YET")
     );
 
-    private final ItemStack PitchVariance = createItemStack(
+    private static final ItemStack PITCH_VARIANCE_BUTTON = createItemStack(
             Material.REPEATER,
             ChatColor.RED + "" + ChatColor.BOLD + "Pitch Variance",
             Arrays.asList(ChatColor.WHITE + convertToSmallFont("toggle pitch variance"),

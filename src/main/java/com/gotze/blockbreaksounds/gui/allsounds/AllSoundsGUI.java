@@ -3,6 +3,8 @@ package com.gotze.blockbreaksounds.gui.allsounds;
 import com.gotze.blockbreaksounds.model.SoundCategory;
 import com.gotze.blockbreaksounds.model.SoundData;
 import com.gotze.blockbreaksounds.util.GUIUtils;
+import com.gotze.blockbreaksounds.util.ItemStackCreator;
+import com.gotze.blockbreaksounds.util.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -11,9 +13,6 @@ import org.bukkit.inventory.InventoryHolder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
-
-import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
-import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
 public final class AllSoundsGUI implements InventoryHolder {
 
@@ -31,17 +30,17 @@ public final class AllSoundsGUI implements InventoryHolder {
         setFrames();
         setCategoryOrSoundButtons();
         gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
-        gui.setItem(36, GUIUtils.returnButton);
-        gui.setItem(40, GUIUtils.favoriteSoundsButton);
+        gui.setItem(36, GUIUtils.RETURN_BUTTON);
+        gui.setItem(40, GUIUtils.FAVORITE_SOUNDS_BUTTON);
         player.openInventory(gui);
     }
 
     private void setFrames() {
         for (int i = 0; i < 9; i++) {
-            gui.setItem(i, GUIUtils.frame);
+            gui.setItem(i, GUIUtils.FRAME);
         }
         for (int i = 36; i < 45; i++) {
-            gui.setItem(i, GUIUtils.frame);
+            gui.setItem(i, GUIUtils.FRAME);
         }
     }
 
@@ -53,7 +52,7 @@ public final class AllSoundsGUI implements InventoryHolder {
 
         for (Object child : category.getChildren()) {
             if (child instanceof SoundCategory soundCategory) {
-                gui.setItem(slot++, createItemStack(
+                gui.setItem(slot++, ItemStackCreator.createItemStack(
                         soundCategory.getDisplayMaterial(),
                         ChatColor.AQUA + "" + ChatColor.BOLD + soundCategory.getCategoryTitle(),
                         null,
@@ -61,12 +60,12 @@ public final class AllSoundsGUI implements InventoryHolder {
                         true
                 ));
             } else if (child instanceof SoundData soundData) {
-                gui.setItem(slot++, createItemStack(
+                gui.setItem(slot++, ItemStackCreator.createItemStack(
                         soundData.getDisplayMaterial(),
                         ChatColor.AQUA + "" + ChatColor.BOLD + (soundData.getFormattedSoundName()),
                         Arrays.asList(
                                 "",
-                                ChatColor.YELLOW + convertToSmallFont("click to pick sound")
+                                ChatColor.YELLOW + StringUtils.convertToSmallFont("click to pick sound")
                         ),
                         true,
                         true

@@ -43,10 +43,10 @@ public final class BlockBreakSoundsGUI implements InventoryHolder {
 
     private void setFrames() {
         for (int i = 0; i < 9; i++) {
-            gui.setItem(i, GUIUtils.frame);
+            gui.setItem(i, GUIUtils.FRAME);
         }
         for (int i = 36; i < 45; i++) {
-            gui.setItem(i, GUIUtils.frame);
+            gui.setItem(i, GUIUtils.FRAME);
         }
     }
 

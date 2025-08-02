@@ -6,7 +6,7 @@ import com.gotze.blockbreaksounds.model.CurrentSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
 import com.gotze.blockbreaksounds.util.GUIUtils;
 import com.gotze.blockbreaksounds.util.SoundUtils;
-import com.gotze.blockbreaksounds.util.ValidClickChecker;
+import com.gotze.blockbreaksounds.util.ClickCooldownChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -32,7 +32,7 @@ public final class BlockBreakSoundsGUIListener implements Listener {
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
 
-        if (ValidClickChecker.hasClickCooldown(player)) return;
+        if (ClickCooldownChecker.hasClickCooldown(player)) return;
         if (clickedInventory == null) return;
         if (clickedInventory.equals(player.getInventory())) return;
 
@@ -158,7 +158,7 @@ public final class BlockBreakSoundsGUIListener implements Listener {
             } else if (i == paneAmount) {
                 inventory.setItem(volumeSliderSlots[i], yellowPane);
             } else if (i > paneAmount) {
-                inventory.setItem(volumeSliderSlots[i], GUIUtils.frame);
+                inventory.setItem(volumeSliderSlots[i], GUIUtils.FRAME);
             }
         }
     }
@@ -199,7 +199,7 @@ public final class BlockBreakSoundsGUIListener implements Listener {
             } else if (i == paneAmount) {
                 inventory.setItem(pitchSliderSlots[i], yellowPane);
             } else if (i > paneAmount) {
-                inventory.setItem(pitchSliderSlots[i], GUIUtils.frame);
+                inventory.setItem(pitchSliderSlots[i], GUIUtils.FRAME);
             }
         }
     }

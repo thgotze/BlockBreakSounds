@@ -6,7 +6,6 @@ import com.gotze.blockbreaksounds.model.FavoriteSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
 import com.gotze.blockbreaksounds.util.GUIUtils;
 import com.gotze.blockbreaksounds.util.SoundUtils;
-import com.gotze.blockbreaksounds.util.ValidClickChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -33,7 +32,7 @@ public final class FavoriteSoundsGUIListener implements Listener {
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
 
-        if (ValidClickChecker.hasClickCooldown(player)) return;
+        if (GUIClickCooldownChecker.hasClickCooldown(player)) return;
         if (clickedInventory == null) return;
         if (clickedInventory.equals(player.getInventory())) return;
 

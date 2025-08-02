@@ -33,17 +33,17 @@ public final class FavoriteSoundsGUI implements InventoryHolder {
         setFrames();
         setFavoriteSoundsToGUI(player);
         gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
-        gui.setItem(36, GUIUtils.returnButton);
+        gui.setItem(36, GUIUtils.RETURN_BUTTON);
         gui.setItem(40, FavoriteSoundsButton);
         player.openInventory(gui);
     }
 
     private void setFrames() {
         for (int i = 0; i < 9; i++) {
-            gui.setItem(i, GUIUtils.frame);
+            gui.setItem(i, GUIUtils.FRAME);
         }
         for (int i = 36; i < 45; i++) {
-            gui.setItem(i, GUIUtils.frame);
+            gui.setItem(i, GUIUtils.FRAME);
         }
     }
 

@@ -2,7 +2,7 @@ package com.gotze.blockbreaksounds.gui.settings;
 
 import com.gotze.blockbreaksounds.gui.blockbreaksounds.BlockBreakSoundsGUI;
 import com.gotze.blockbreaksounds.util.SoundUtils;
-import com.gotze.blockbreaksounds.util.ValidClickChecker;
+import com.gotze.blockbreaksounds.util.ClickCooldownChecker;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,7 +22,7 @@ public final class SettingsGUIListener implements Listener { // TODO: Settings G
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
 
-        if (ValidClickChecker.hasClickCooldown(player)) return;
+        if (ClickCooldownChecker.hasClickCooldown(player)) return;
         if (clickedInventory == null) return;
         if (clickedInventory.equals(player.getInventory())) return;
 

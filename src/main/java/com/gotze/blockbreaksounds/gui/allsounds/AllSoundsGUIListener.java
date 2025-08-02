@@ -7,7 +7,7 @@ import com.gotze.blockbreaksounds.model.SoundCategory;
 import com.gotze.blockbreaksounds.model.SoundData;
 import com.gotze.blockbreaksounds.util.GUIUtils;
 import com.gotze.blockbreaksounds.util.SoundUtils;
-import com.gotze.blockbreaksounds.util.ValidClickChecker;
+import com.gotze.blockbreaksounds.util.ClickCooldownChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -37,7 +37,7 @@ public final class AllSoundsGUIListener implements Listener {
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
 
-        if (ValidClickChecker.hasClickCooldown(player)) return;
+        if (ClickCooldownChecker.hasClickCooldown(player)) return;
         if (clickedInventory == null) return;
         if (clickedInventory.equals(player.getInventory())) return;
 
