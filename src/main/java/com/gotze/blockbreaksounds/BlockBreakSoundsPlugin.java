@@ -10,11 +10,9 @@ import com.gotze.blockbreaksounds.listener.BlockBreakListener;
 import com.gotze.blockbreaksounds.listener.PlayerJoinListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class BlockBreakSoundsPlugin extends JavaPlugin {
+public class BlockBreakSoundsPlugin extends JavaPlugin {
 
     public static BlockBreakSoundsPlugin INSTANCE;
-
-    public BlockBreakSoundsPlugin() {}
 
     @Override
     public void onEnable() {

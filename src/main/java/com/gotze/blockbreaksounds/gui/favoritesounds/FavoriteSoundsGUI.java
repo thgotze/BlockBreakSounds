@@ -19,7 +19,7 @@ import java.util.List;
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
 import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
-public final class FavoriteSoundsGUI implements InventoryHolder {
+public class FavoriteSoundsGUI implements InventoryHolder {
 
     private final Inventory gui;
 

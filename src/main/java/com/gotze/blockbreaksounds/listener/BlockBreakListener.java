@@ -9,12 +9,10 @@ import org.bukkit.event.block.BlockBreakEvent;
 
 import java.util.Random;
 
-public final class BlockBreakListener implements Listener {
+public class BlockBreakListener implements Listener {
 
     private static final float[] pitchVariations = {-0.05f, -0.025f, 0.0f, 0.025f, 0.05f};
     private static final Random random = new Random();
-
-    public BlockBreakListener() {}
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {

@@ -17,7 +17,7 @@ import java.util.Map;
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
 import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
-public final class PickSoundGUI implements InventoryHolder {
+public class PickSoundGUI implements InventoryHolder {
 
     private final Inventory gui;
 

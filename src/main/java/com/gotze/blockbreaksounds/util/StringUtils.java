@@ -1,8 +1,6 @@
 package com.gotze.blockbreaksounds.util;
 
-public final class StringUtils {
-
-    private StringUtils() {}
+public class StringUtils {
 
     // Converts a string to a new string using the Minecraft small font
     // "Block Break Sounds is a great plugin!" -> "ʙʟᴏᴄᴋ ʙʀᴇᴀᴋ ѕᴏᴜɴᴅѕ ɪѕ ᴀ ɢʀᴇᴀᴛ ᴘʟᴜɢɪɴ!"

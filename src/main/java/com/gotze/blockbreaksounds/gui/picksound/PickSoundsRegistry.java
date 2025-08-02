@@ -6,7 +6,7 @@ import org.bukkit.Sound;
 
 import java.util.Map;
 
-public final class PickSoundsRegistry {
+public class PickSoundsRegistry {
     private PickSoundsRegistry() {}
 
     public static final Map<Integer, SoundData> PICK_SOUND_MAP = Map.ofEntries(

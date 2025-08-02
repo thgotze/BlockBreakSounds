@@ -15,9 +15,7 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-public final class PickSoundGUIListener implements Listener {
-
-    public PickSoundGUIListener() {}
+public class PickSoundGUIListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {

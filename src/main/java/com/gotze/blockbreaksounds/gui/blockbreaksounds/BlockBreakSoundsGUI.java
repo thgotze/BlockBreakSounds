@@ -16,7 +16,7 @@ import java.util.List;
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
 import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
-public final class BlockBreakSoundsGUI implements InventoryHolder {
+public class BlockBreakSoundsGUI implements InventoryHolder {
 
     private final Inventory gui;
 

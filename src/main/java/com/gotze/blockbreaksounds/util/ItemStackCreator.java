@@ -7,9 +7,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
-public final class ItemStackCreator {
-
-    private ItemStackCreator() {}
+public class ItemStackCreator {
 
     // Creates an ItemStack with customizable display name, lore, and flags.
 

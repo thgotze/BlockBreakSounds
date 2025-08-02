@@ -4,7 +4,7 @@ import org.bukkit.Material;
 
 import java.util.List;
 
-public final class SoundCategory {
+public class SoundCategory {
     private final String categoryTitle;
     private final Material displayMaterial;
     private final List<Object> children;  // Holds either SoundCategories or SoundData

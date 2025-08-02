@@ -21,9 +21,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Map;
 
-public final class AllSoundsGUIListener implements Listener {
-
-    public AllSoundsGUIListener() {}
+public class AllSoundsGUIListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {

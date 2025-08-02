@@ -3,7 +3,7 @@ package com.gotze.blockbreaksounds.util;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-public final class SoundUtils {
+public class SoundUtils {
 
     public static void playErrorSound(Player player) {
         player.playSound(player, Sound.BLOCK_NOTE_BLOCK_BASS, 0.5f, 0.5f);

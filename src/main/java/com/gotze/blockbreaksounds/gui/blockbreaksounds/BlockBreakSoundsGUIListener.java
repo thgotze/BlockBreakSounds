@@ -20,7 +20,7 @@ import org.bukkit.inventory.ItemStack;
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
 import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
-public final class BlockBreakSoundsGUIListener implements Listener {
+public class BlockBreakSoundsGUIListener implements Listener {
 
     public BlockBreakSoundsGUIListener() {}
 

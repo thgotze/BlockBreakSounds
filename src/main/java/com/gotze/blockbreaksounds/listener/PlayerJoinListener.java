@@ -17,11 +17,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public final class PlayerJoinListener implements Listener {
+public class PlayerJoinListener implements Listener {
 
     private final BlockBreakSoundsPlugin blockBreakSoundsPlugin = BlockBreakSoundsPlugin.getPlugin(BlockBreakSoundsPlugin.class);
-
-    public PlayerJoinListener() {}
 
     @EventHandler
     public void onJoinEvent(PlayerJoinEvent event) {

@@ -19,9 +19,7 @@ import java.util.List;
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
 import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
-public final class GUIUtils {
-
-    private GUIUtils() {}
+public class GUIUtils {
 
     public static final ItemStack FRAME = createItemStack(
             Material.BLACK_STAINED_GLASS_PANE,

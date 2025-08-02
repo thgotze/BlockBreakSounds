@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-public final class FavoriteSoundData extends SoundData {
+public class FavoriteSoundData extends SoundData {
 
     public static final Map<UUID, List<SoundData>> favoriteSounds = new HashMap<>();
 

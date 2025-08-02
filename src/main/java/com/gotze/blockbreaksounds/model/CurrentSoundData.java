@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public final class CurrentSoundData extends SoundData {
+public class CurrentSoundData extends SoundData {
 
     public static final Map<UUID, SoundData> currentSound = new HashMap<>();
 

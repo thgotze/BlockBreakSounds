@@ -4,6 +4,7 @@ import com.gotze.blockbreaksounds.BlockBreakSoundsPlugin;
 import com.gotze.blockbreaksounds.gui.blockbreaksounds.BlockBreakSoundsGUI;
 import com.gotze.blockbreaksounds.model.FavoriteSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
+import com.gotze.blockbreaksounds.util.ClickCooldownChecker;
 import com.gotze.blockbreaksounds.util.GUIUtils;
 import com.gotze.blockbreaksounds.util.SoundUtils;
 import org.bukkit.ChatColor;
@@ -20,7 +21,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
 import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
-public final class FavoriteSoundsGUIListener implements Listener {
+public class FavoriteSoundsGUIListener implements Listener {
 
     public FavoriteSoundsGUIListener() {}
 
@@ -32,7 +33,7 @@ public final class FavoriteSoundsGUIListener implements Listener {
         Inventory clickedInventory = event.getClickedInventory();
         Player player = (Player) event.getWhoClicked();
 
-        if (GUIClickCooldownChecker.hasClickCooldown(player)) return;
+        if (ClickCooldownChecker.hasClickCooldown(player)) return;
         if (clickedInventory == null) return;
         if (clickedInventory.equals(player.getInventory())) return;
 

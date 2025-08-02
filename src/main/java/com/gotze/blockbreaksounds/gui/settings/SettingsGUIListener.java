@@ -10,7 +10,7 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 
-public final class SettingsGUIListener implements Listener { // TODO: Settings GUI is currently not implemented
+public class SettingsGUIListener implements Listener { // TODO: Settings GUI is currently not implemented
 
     public SettingsGUIListener() {}
 
