@@ -1,6 +1,6 @@
 package com.gotze.blockbreaksounds.model;
 
-import com.gotze.blockbreaksounds.BlockBreakSoundsPlugin;
+import com.gotze.blockbreaksounds.Main;
 import com.gotze.blockbreaksounds.util.SoundUtils;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -78,7 +78,7 @@ public class CurrentSoundData extends SoundData {
     }
 
     public static void saveCurrentSoundDataToYAML(Player player) {
-        File playerFile = new File(BlockBreakSoundsPlugin.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
+        File playerFile = new File(Main.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(playerFile);
         String path = "current-sound";
 

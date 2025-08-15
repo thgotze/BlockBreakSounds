@@ -1,6 +1,6 @@
 package com.gotze.blockbreaksounds.gui.favoritesounds;
 
-import com.gotze.blockbreaksounds.BlockBreakSoundsPlugin;
+import com.gotze.blockbreaksounds.Main;
 import com.gotze.blockbreaksounds.gui.blockbreaksounds.BlockBreakSoundsGUI;
 import com.gotze.blockbreaksounds.model.FavoriteSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
@@ -77,7 +77,7 @@ public class FavoriteSoundsGUIListener implements Listener {
                                         clickedInventory.setItem(slot, clickedItem); // item == original item
                                     }
                                 }
-                            }.runTaskLater(BlockBreakSoundsPlugin.INSTANCE, 60L);
+                            }.runTaskLater(Main.INSTANCE, 60L);
                         }
 
                         if (clickedItem.getType() == Material.BARRIER) {

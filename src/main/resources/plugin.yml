@@ -1,6 +1,6 @@
 name: BlockBreakSounds
 version: '1.0'
-main: com.gotze.blockbreaksounds.BlockBreakSoundsPlugin
+main: com.gotze.blockbreaksounds.Main
 api-version: '1.21.4'
 commands:
   blockbreaksounds:

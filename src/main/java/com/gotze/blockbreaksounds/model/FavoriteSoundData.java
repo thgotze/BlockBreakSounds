@@ -1,6 +1,6 @@
 package com.gotze.blockbreaksounds.model;
 
-import com.gotze.blockbreaksounds.BlockBreakSoundsPlugin;
+import com.gotze.blockbreaksounds.Main;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -46,7 +46,7 @@ public class FavoriteSoundData extends SoundData {
     }
 
     public static void saveFavoriteSoundsDataToYAML(Player player) {
-        File playerFile = new File(BlockBreakSoundsPlugin.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
+        File playerFile = new File(Main.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(playerFile);
         String path = "favorite-sounds";
 

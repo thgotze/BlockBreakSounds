@@ -1,6 +1,6 @@
 package com.gotze.blockbreaksounds.util;
 
-import com.gotze.blockbreaksounds.BlockBreakSoundsPlugin;
+import com.gotze.blockbreaksounds.Main;
 import com.gotze.blockbreaksounds.model.CurrentSoundData;
 import com.gotze.blockbreaksounds.model.FavoriteSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
@@ -129,7 +129,7 @@ public class GUIUtils {
                             gui.setItem(slot, clickedItem);
                         }
                     }
-                }.runTaskLater(BlockBreakSoundsPlugin.INSTANCE, 60L);
+                }.runTaskLater(Main.INSTANCE, 60L);
         }
     }
 

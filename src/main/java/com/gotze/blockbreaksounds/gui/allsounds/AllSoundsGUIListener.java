@@ -69,7 +69,7 @@ public class AllSoundsGUIListener implements Listener {
                 SoundUtils.playUIClickSound(player);
                 return;
 
-            default: // Soundcategories and/or Sounds
+            default: // Sound categories and/or Sounds
                 if (slot >= 9 && slot < 36) {
                     ItemStack clickedItem = clickedInventory.getItem(slot);
                     if (clickedItem == null) return;

@@ -1,6 +1,6 @@
 package com.gotze.blockbreaksounds.listener;
 
-import com.gotze.blockbreaksounds.BlockBreakSoundsPlugin;
+import com.gotze.blockbreaksounds.Main;
 import com.gotze.blockbreaksounds.model.CurrentSoundData;
 import com.gotze.blockbreaksounds.model.FavoriteSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
@@ -19,13 +19,11 @@ import java.util.*;
 
 public class PlayerJoinListener implements Listener {
 
-    private final BlockBreakSoundsPlugin blockBreakSoundsPlugin = BlockBreakSoundsPlugin.getPlugin(BlockBreakSoundsPlugin.class);
-
     @EventHandler
     public void onJoinEvent(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        File playerFile = new File(blockBreakSoundsPlugin.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
+        File playerFile = new File(Main.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(playerFile);
 
         if (!playerFile.exists()) {
@@ -43,7 +41,7 @@ public class PlayerJoinListener implements Listener {
         try {
             yamlConfiguration.save(playerFile);
         } catch (IOException e) {
-            blockBreakSoundsPlugin.getLogger().severe("Failed to create player data file for " + player.getName());
+            Main.INSTANCE.getLogger().severe("Failed to create player data file for " + player.getName());
             e.printStackTrace();
         }
     }
