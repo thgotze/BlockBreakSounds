@@ -1,6 +1,5 @@
 package com.gotze.blockbreaksounds.model;
 
-import org.bukkit.Input;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -51,6 +50,10 @@ public class SoundData {
 
     public void playSoundData(Player player) {
         player.playSound(player, sound, volume, pitch);
+    }
+
+    public SoundData copy() {
+        return new SoundData(this.sound, this.volume, this.pitch, this.displayMaterial);
     }
 
     // Converts name of a Sound object into a formatted String
