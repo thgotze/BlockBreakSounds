@@ -1,6 +1,6 @@
 ## Block Break Sounds
 
-A Minecraft Spigot plugin that lets you customize sounds that play when breaking blocks, providing satisfying feedback similar to hit markers in FPS games.
+A Minecraft Paper plugin that lets you customize sounds that play when breaking blocks, providing satisfying feedback similar to hit markers in FPS games.
 
 ## Features
 - 🎵 Choose from ***all*** Minecraft sounds
