@@ -1,10 +1,10 @@
 package com.gotze.blockbreaksounds.gui.allsounds;
 
+import com.gotze.blockbreaksounds.model.CurrentSoundData;
 import com.gotze.blockbreaksounds.model.SoundCategory;
 import com.gotze.blockbreaksounds.model.SoundData;
 import com.gotze.blockbreaksounds.util.GUIUtils;
 import com.gotze.blockbreaksounds.util.ItemStackCreator;
-import com.gotze.blockbreaksounds.util.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -13,6 +13,8 @@ import org.bukkit.inventory.InventoryHolder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
+
+import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
 public class AllSoundsGUI implements InventoryHolder {
 
@@ -29,7 +31,7 @@ public class AllSoundsGUI implements InventoryHolder {
         this.guiTitle = guiTitle;
         setFrames();
         setCategoryOrSoundButtons();
-        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
+        gui.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.RETURN_BUTTON);
         gui.setItem(40, GUIUtils.FAVORITE_SOUNDS_BUTTON);
         player.openInventory(gui);
@@ -65,7 +67,7 @@ public class AllSoundsGUI implements InventoryHolder {
                         ChatColor.AQUA + "" + ChatColor.BOLD + (soundData.getFormattedSoundName()),
                         Arrays.asList(
                                 "",
-                                ChatColor.YELLOW + StringUtils.convertToSmallFont("click to pick sound")
+                                ChatColor.YELLOW + convertToSmallFont("click to pick sound")
                         ),
                         true,
                         true

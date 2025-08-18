@@ -12,8 +12,6 @@ import org.bukkit.inventory.Inventory;
 
 public class SettingsGUIListener implements Listener { // TODO: Settings GUI is currently not implemented
 
-    public SettingsGUIListener() {}
-
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         if (!(event.getInventory().getHolder() instanceof SettingsGUI)) return;

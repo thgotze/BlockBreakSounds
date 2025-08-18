@@ -22,7 +22,6 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onJoinEvent(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-
         File playerFile = new File(Main.INSTANCE.getDataFolder() + "/playerdata", player.getUniqueId() + ".yml");
         YamlConfiguration yamlConfiguration = YamlConfiguration.loadConfiguration(playerFile);
 
@@ -51,7 +50,6 @@ public class PlayerJoinListener implements Listener {
 
         String soundName = yamlConfiguration.getString(path + ".sound");
         if (soundName == null) return;
-
         Sound sound = Registry.SOUNDS.match(soundName);
         if (sound == null) return;
 
@@ -61,7 +59,6 @@ public class PlayerJoinListener implements Listener {
 
         String materialName = yamlConfiguration.getString(path + ".material");
         if (materialName == null) return;
-
         Material material = Material.getMaterial(materialName);
         if (material == null) return;
 
@@ -72,7 +69,6 @@ public class PlayerJoinListener implements Listener {
         final String path = "favorite-sounds";
 
         List<Map<?, ?>> favoriteSoundsList = yamlConfiguration.getMapList(path);
-
         if (favoriteSoundsList.isEmpty()) return;
 
         List<SoundData> favoriteSoundsDataList = new ArrayList<>();

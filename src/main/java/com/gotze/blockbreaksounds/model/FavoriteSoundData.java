@@ -2,7 +2,6 @@ package com.gotze.blockbreaksounds.model;
 
 import com.gotze.blockbreaksounds.Main;
 import com.gotze.blockbreaksounds.util.SoundUtils;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;

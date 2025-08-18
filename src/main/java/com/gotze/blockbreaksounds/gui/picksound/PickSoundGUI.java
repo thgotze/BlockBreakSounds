@@ -1,5 +1,6 @@
 package com.gotze.blockbreaksounds.gui.picksound;
 
+import com.gotze.blockbreaksounds.model.CurrentSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
 import com.gotze.blockbreaksounds.util.GUIUtils;
 import org.bukkit.Bukkit;
@@ -29,7 +30,7 @@ public class PickSoundGUI implements InventoryHolder {
     public PickSoundGUI(Player player) {
         this.gui = Bukkit.createInventory(this, 45, "Pick Sound");
         setFrames();
-        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
+        gui.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.RETURN_BUTTON);
         gui.setItem(40, GUIUtils.FAVORITE_SOUNDS_BUTTON);
         gui.setItem(44, PickFromAllSoundsButton);

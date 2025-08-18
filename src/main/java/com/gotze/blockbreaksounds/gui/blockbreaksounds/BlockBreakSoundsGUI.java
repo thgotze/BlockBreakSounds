@@ -1,5 +1,6 @@
 package com.gotze.blockbreaksounds.gui.blockbreaksounds;
 
+import com.gotze.blockbreaksounds.model.CurrentSoundData;
 import com.gotze.blockbreaksounds.util.GUIUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -29,7 +30,7 @@ public class BlockBreakSoundsGUI implements InventoryHolder {
         this.gui = Bukkit.createInventory(this, 45, "Block Break Sounds");
         setFrames();
         gui.setItem(11, IncreaseVolumeButton);
-        gui.setItem(13, GUIUtils.CurrentSoundDisplayButton(player));
+        gui.setItem(13, CurrentSoundData.CurrentSoundDisplayButton(player));
         gui.setItem(15, IncreasePitchButton);
         gui.setItem(20, VolumeButton);
         gui.setItem(22, PickSoundButton);

@@ -10,15 +10,15 @@ public class PickSoundsRegistry {
     private PickSoundsRegistry() {}
 
     public static final Map<Integer, SoundData> PICK_SOUND_MAP = Map.ofEntries(
-            Map.entry(9, new SoundData(Sound.BLOCK_AMETHYST_BLOCK_BREAK, 0.5f, 1.25f, Material.AMETHYST_BLOCK)),
-            Map.entry(10, new SoundData(Sound.ENTITY_ITEM_PICKUP, Material.PUFFERFISH)),
-            Map.entry(11, new SoundData(Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.10f, 2.00f, Material.EXPERIENCE_BOTTLE)),
-            Map.entry(12, new SoundData(Sound.ITEM_SPYGLASS_USE, Material.SPYGLASS)),
-            Map.entry(13, new SoundData(Sound.ENTITY_PLAYER_LEVELUP, 0.10f, 2.00f, Material.SUNFLOWER)),
+            Map.entry(9, new SoundData(Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.10f, 2.00f, Material.EXPERIENCE_BOTTLE)),
+            Map.entry(10, new SoundData(Sound.ENTITY_PLAYER_LEVELUP, 0.10f, 2.00f, Material.SUNFLOWER)),
+            Map.entry(11, new SoundData(Sound.ENTITY_ITEM_PICKUP, Material.PUFFERFISH)),
+            Map.entry(12, new SoundData(Sound.BLOCK_AMETHYST_BLOCK_BREAK, 0.5f, 1.25f, Material.AMETHYST_BLOCK)),
+            Map.entry(13, new SoundData(Sound.BLOCK_BONE_BLOCK_BREAK, Material.BONE_BLOCK)),
             Map.entry(14, new SoundData(Sound.ENTITY_ARMADILLO_BRUSH, Material.BRUSH)),
             Map.entry(15, new SoundData(Sound.BLOCK_DECORATED_POT_BREAK, Material.DECORATED_POT)),
             Map.entry(16, new SoundData(Sound.BLOCK_DECORATED_POT_INSERT, Material.HOPPER)),
-            Map.entry(17, new SoundData(Sound.BLOCK_BONE_BLOCK_BREAK, Material.BONE_BLOCK)),
+            Map.entry(17, new SoundData(Sound.ITEM_SPYGLASS_USE, Material.SPYGLASS)),
             Map.entry(18, new SoundData(Sound.BLOCK_BAMBOO_BREAK, Material.BAMBOO)),
             Map.entry(19, new SoundData(Sound.BLOCK_BEEHIVE_EXIT, Material.BEEHIVE)),
             Map.entry(20, new SoundData(Sound.ENTITY_ENDER_EYE_DEATH, Material.ENDER_EYE)),
