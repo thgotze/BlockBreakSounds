@@ -2,6 +2,7 @@ package com.gotze.blockbreaksounds.gui.favoritesounds;
 
 import com.gotze.blockbreaksounds.Main;
 import com.gotze.blockbreaksounds.gui.blockbreaksounds.BlockBreakSoundsGUI;
+import com.gotze.blockbreaksounds.model.CurrentSoundData;
 import com.gotze.blockbreaksounds.model.FavoriteSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
 import com.gotze.blockbreaksounds.util.ClickCooldownChecker;
@@ -23,8 +24,6 @@ import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
 public class FavoriteSoundsGUIListener implements Listener {
 
-    public FavoriteSoundsGUIListener() {}
-
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         if (!(event.getInventory().getHolder() instanceof FavoriteSoundsGUI)) return;
@@ -42,7 +41,7 @@ public class FavoriteSoundsGUIListener implements Listener {
 
         switch (slot) {
             case 4: // Current Sound
-                GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
+                CurrentSoundData.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
                 if (clickType == ClickType.SHIFT_RIGHT) {
                     ItemStack clickedItem = clickedInventory.getItem(slot);
                     if (clickedItem == null) return;
@@ -91,9 +90,9 @@ public class FavoriteSoundsGUIListener implements Listener {
                         SoundData favoriteSoundData = FavoriteSoundData.favoriteSounds.get(player.getUniqueId()).get(slot - 9);
                         if (favoriteSoundData == null) return;
 
-                        favoriteSoundData.playSoundData(player);
+                        CurrentSoundData.setCurrentSound(player, favoriteSoundData);
                         GUIUtils.handlePickedLineSound(clickedInventory, slot);
-                        clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
+                        clickedInventory.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
                     }
                 }
         }

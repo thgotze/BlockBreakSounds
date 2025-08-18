@@ -1,5 +1,6 @@
 package com.gotze.blockbreaksounds.gui.favoritesounds;
 
+import com.gotze.blockbreaksounds.model.CurrentSoundData;
 import com.gotze.blockbreaksounds.model.FavoriteSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
 import com.gotze.blockbreaksounds.util.GUIUtils;
@@ -32,9 +33,9 @@ public class FavoriteSoundsGUI implements InventoryHolder {
         this.gui = Bukkit.createInventory(this, 45, "Favorite Sounds");
         setFrames();
         setFavoriteSoundsToGUI(player);
-        gui.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
+        gui.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.RETURN_BUTTON);
-        gui.setItem(40, FavoriteSoundsButton);
+        gui.setItem(40, FAVORITE_SOUNDS_BUTTON);
         player.openInventory(gui);
     }
 
@@ -48,18 +49,18 @@ public class FavoriteSoundsGUI implements InventoryHolder {
     }
 
     private void setFavoriteSoundsToGUI(Player player) {
-        List<SoundData> playerFavorites = FavoriteSoundData.favoriteSounds.computeIfAbsent(player.getUniqueId(), k -> new ArrayList<>());
+        List<SoundData> playerFavorites = FavoriteSoundData.favoriteSounds.get(player.getUniqueId());
+
+        if (playerFavorites == null || playerFavorites.isEmpty()) {
+            gui.setItem(22, NO_SOUNDS_FAVORITED_YET_BUTTON);
+            return;
+        }
+
         int slot = 9;
         for (int i = 0; i < playerFavorites.size(); i++) {
             SoundData favoriteSoundData = playerFavorites.get(i);
             gui.setItem(slot, createFavoriteSoundButton(favoriteSoundData, i + 1));
             slot++;
-        }
-        for (int i = playerFavorites.size() + 9; i < 36; i++) {
-            gui.clear(i);
-        }
-        if (gui.getItem(9) == null) {
-            gui.setItem(22, NoSoundsFavoritedYetButton);
         }
     }
 
@@ -80,13 +81,12 @@ public class FavoriteSoundsGUI implements InventoryHolder {
         );
     }
 
-    private final ItemStack NoSoundsFavoritedYetButton = createItemStack(
+    private static final ItemStack NO_SOUNDS_FAVORITED_YET_BUTTON = createItemStack(
             Material.PAPER,
             ChatColor.WHITE + convertToSmallFont("You have not favorited any sounds yet!")
     );
 
-    // Favorite Sounds Button (Nether Star)
-    private final ItemStack FavoriteSoundsButton = createItemStack(
+    private static final ItemStack FAVORITE_SOUNDS_BUTTON = createItemStack(
             Material.NETHER_STAR,
             ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
             Arrays.asList(ChatColor.WHITE + convertToSmallFont("pick from your ") + ChatColor.GREEN + ChatColor.BOLD + convertToSmallFont("favorited ") + ChatColor.WHITE + convertToSmallFont("sounds"),

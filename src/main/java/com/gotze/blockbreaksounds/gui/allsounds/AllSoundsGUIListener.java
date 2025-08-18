@@ -2,6 +2,7 @@ package com.gotze.blockbreaksounds.gui.allsounds;
 
 import com.gotze.blockbreaksounds.gui.favoritesounds.FavoriteSoundsGUI;
 import com.gotze.blockbreaksounds.gui.picksound.PickSoundGUI;
+import com.gotze.blockbreaksounds.model.CurrentSoundData;
 import com.gotze.blockbreaksounds.model.FavoriteSoundData;
 import com.gotze.blockbreaksounds.model.SoundCategory;
 import com.gotze.blockbreaksounds.model.SoundData;
@@ -44,7 +45,7 @@ public class AllSoundsGUIListener implements Listener {
 
         switch (slot) {
             case 4: // Current Sound
-                GUIUtils.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
+                CurrentSoundData.currentSoundButtonHandler(clickedInventory, clickType, player, slot);
                 return;
 
             case 36: // Return
@@ -88,11 +89,11 @@ public class AllSoundsGUIListener implements Listener {
                         if (soundData != null) {
                             if (clickType == ClickType.SHIFT_RIGHT) {
                                 FavoriteSoundData.addSoundToFavorites(player, soundData);
-                                GUIUtils.handleFavoritedLineSound(clickedInventory, slot, player);
+                                FavoriteSoundData.handleFavoritedLineSound(clickedInventory, slot, player);
                             } else {
-                                soundData.playSoundData(player);
+                                CurrentSoundData.setCurrentSound(player, soundData);
                                 GUIUtils.handlePickedLineSound(clickedInventory, slot);
-                                clickedInventory.setItem(4, GUIUtils.CurrentSoundDisplayButton(player));
+                                clickedInventory.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
                             }
                         }
                     }
