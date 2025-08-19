@@ -29,7 +29,7 @@ public class FavoriteSoundsGUI implements InventoryHolder {
     }
 
     public FavoriteSoundsGUI(Player player) {
-        this.gui = Bukkit.createInventory(this, 45, "Favorite Sounds");
+        gui = Bukkit.createInventory(this, 45, "Favorite Sounds");
         GUIUtils.setFrames(gui);
         setFavoriteSoundsToGUI(player);
         gui.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));

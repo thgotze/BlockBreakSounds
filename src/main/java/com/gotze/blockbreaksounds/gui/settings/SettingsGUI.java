@@ -25,7 +25,7 @@ public class SettingsGUI implements InventoryHolder { // TODO: Settings GUI is c
     }
 
     public SettingsGUI(Player player) {
-        this.gui = Bukkit.createInventory(this, 45, "Settings");
+        gui = Bukkit.createInventory(this, 45, "Settings");
         GUIUtils.setFrames(gui);
         gui.setItem(20, PITCH_VARIANCE_BUTTON);
         gui.setItem(21, TOOL_SPECIFIC_SOUNDS_BUTTON);

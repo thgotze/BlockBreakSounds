@@ -27,7 +27,7 @@ public class AllSoundsGUI implements InventoryHolder {
     }
 
     public AllSoundsGUI(Player player, String guiTitle) {
-        this.gui = Bukkit.createInventory(this, 45, guiTitle);
+        gui = Bukkit.createInventory(this, 45, guiTitle);
         this.guiTitle = guiTitle;
         GUIUtils.setFrames(gui);
         setCategoryOrSoundButtons();
