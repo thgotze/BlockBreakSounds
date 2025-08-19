@@ -8,17 +8,16 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.List;
 
 public class ItemStackCreator {
-
-    // Creates an ItemStack with customizable display name, lore, and flags.
-
-    // @param material The material type for the ItemStack (e.g. Material.STONE_BLOCK).
-    // @param displayName The display name of the ItemStack (null if not desired).
-    // @param lore The lore of the ItemStack (null if not desired).
-    // @param hideAdditionalTooltip Flag to hide additional tooltips (e.g., music discs).
-    // @param hideAttributes Flag to hide item attributes (e.g., damage, armor values).
-    // @param hideTooltipBox Flag to hide the tooltip box when hovering over the item.
-    // @return A fully customized ItemStack.
-
+    /**
+    *Creates an ItemStack with customizable display name, lore, and flags.
+    *@param material The material type for the ItemStack
+    *@param displayName The display name of the ItemStack (null if undesired)
+    *@param lore The lore of the ItemStack (null if undesired)
+    *@param hideAdditionalTooltip Flag to hide additional tooltips (e.g., music disc info)
+    *@param hideAttributes Flag to hide item attributes (e.g., damage, armor values)
+    *@param hideTooltipBox Flag to hide the tooltip box when hovering over the item
+    *@return A fully customized ItemStack
+    **/
     public static ItemStack createItemStack(Material material, String displayName, List<String> lore, boolean hideAdditionalTooltip, boolean hideAttributes, boolean hideTooltipBox) {
 
         ItemStack item = new ItemStack(material);
@@ -36,7 +35,7 @@ public class ItemStackCreator {
         return item;
     }
 
-    // Overloaded methods in descending order of parameters provided
+    // Convenience overloaded methods in descending order of parameters provided
     public static ItemStack createItemStack(Material material, String displayName, List<String> lore, boolean hideAdditionalTooltip, boolean hideAttributes) {
         return createItemStack(material, displayName, lore, hideAdditionalTooltip, hideAttributes, false);
     }
