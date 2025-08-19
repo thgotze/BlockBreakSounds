@@ -23,6 +23,15 @@ public class GUIUtils {
             true
     );
 
+    public static void setFrames(Inventory gui) {
+        for (int i = 0; i < 9; i++) {
+            gui.setItem(i, GUIUtils.FRAME);
+        }
+        for (int i = 36; i < 45; i++) {
+            gui.setItem(i, GUIUtils.FRAME);
+        }
+    }
+
     public static final ItemStack RETURN_BUTTON = createItemStack(
             Material.ARROW,
             ChatColor.YELLOW + "" + ChatColor.BOLD + convertToSmallFont("← return")

@@ -28,7 +28,7 @@ public class BlockBreakSoundsGUI implements InventoryHolder {
 
     public BlockBreakSoundsGUI(Player player) {
         this.gui = Bukkit.createInventory(this, 45, "Block Break Sounds");
-        setFrames();
+        GUIUtils.setFrames(gui);
         gui.setItem(11, IncreaseVolumeButton);
         gui.setItem(13, CurrentSoundData.CurrentSoundDisplayButton(player));
         gui.setItem(15, IncreasePitchButton);
@@ -40,15 +40,6 @@ public class BlockBreakSoundsGUI implements InventoryHolder {
         gui.setItem(31, FavoriteSoundsButton);
         gui.setItem(33, DecreasePitchButton);
         player.openInventory(gui);
-    }
-
-    private void setFrames() {
-        for (int i = 0; i < 9; i++) {
-            gui.setItem(i, GUIUtils.FRAME);
-        }
-        for (int i = 36; i < 45; i++) {
-            gui.setItem(i, GUIUtils.FRAME);
-        }
     }
 
     // Settings Button (Command Block) TODO: Settings GUI is currently not implemented

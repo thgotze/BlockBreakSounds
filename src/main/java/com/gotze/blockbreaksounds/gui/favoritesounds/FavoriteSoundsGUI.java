@@ -30,21 +30,12 @@ public class FavoriteSoundsGUI implements InventoryHolder {
 
     public FavoriteSoundsGUI(Player player) {
         this.gui = Bukkit.createInventory(this, 45, "Favorite Sounds");
-        setFrames();
+        GUIUtils.setFrames(gui);
         setFavoriteSoundsToGUI(player);
         gui.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.RETURN_BUTTON);
         gui.setItem(40, FAVORITE_SOUNDS_BUTTON);
         player.openInventory(gui);
-    }
-
-    private void setFrames() {
-        for (int i = 0; i < 9; i++) {
-            gui.setItem(i, GUIUtils.FRAME);
-        }
-        for (int i = 36; i < 45; i++) {
-            gui.setItem(i, GUIUtils.FRAME);
-        }
     }
 
     private void setFavoriteSoundsToGUI(Player player) {

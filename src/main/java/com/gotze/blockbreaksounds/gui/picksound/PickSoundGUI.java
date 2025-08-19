@@ -29,22 +29,13 @@ public class PickSoundGUI implements InventoryHolder {
 
     public PickSoundGUI(Player player) {
         this.gui = Bukkit.createInventory(this, 45, "Pick Sound");
-        setFrames();
+        GUIUtils.setFrames(gui);
         gui.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.RETURN_BUTTON);
         gui.setItem(40, GUIUtils.FAVORITE_SOUNDS_BUTTON);
         gui.setItem(44, PickFromAllSoundsButton);
         setPickSoundButtons();
         player.openInventory(gui);
-    }
-
-    private void setFrames() {
-        for (int i = 0; i < 9; i++) {
-            gui.setItem(i, GUIUtils.FRAME);
-        }
-        for (int i = 36; i < 45; i++) {
-            gui.setItem(i, GUIUtils.FRAME);
-        }
     }
 
     private final ItemStack PickFromAllSoundsButton = createItemStack(

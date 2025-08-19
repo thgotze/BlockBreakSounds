@@ -26,7 +26,7 @@ public class SettingsGUI implements InventoryHolder { // TODO: Settings GUI is c
 
     public SettingsGUI(Player player) {
         this.gui = Bukkit.createInventory(this, 45, "Settings");
-        setFrames();
+        GUIUtils.setFrames(gui);
         gui.setItem(20, PITCH_VARIANCE_BUTTON);
         gui.setItem(21, TOOL_SPECIFIC_SOUNDS_BUTTON);
         gui.setItem(22, MULTI_SOUNDS_BUTTON);
@@ -34,15 +34,6 @@ public class SettingsGUI implements InventoryHolder { // TODO: Settings GUI is c
         gui.setItem(24, SOUND_FILTER_BUTTON);
         gui.setItem(36, GUIUtils.FRAME);
         player.openInventory(gui);
-    }
-
-    private void setFrames() {
-        for (int i = 0; i < 9; i++) {
-            gui.setItem(i, GUIUtils.FRAME);
-        }
-        for (int i = 36; i < 45; i++) {
-            gui.setItem(i, GUIUtils.FRAME);
-        }
     }
 
     private static final ItemStack TOOL_SPECIFIC_SOUNDS_BUTTON = createItemStack(
