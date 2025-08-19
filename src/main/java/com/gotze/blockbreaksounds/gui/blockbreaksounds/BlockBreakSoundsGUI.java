@@ -19,18 +19,13 @@ import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
 public class BlockBreakSoundsGUI implements InventoryHolder {
 
-    @Override
-    public @NotNull Inventory getInventory() {
-        return gui;
-    }
-
     private final Inventory gui;
 
     public BlockBreakSoundsGUI(Player player) {
         gui = Bukkit.createInventory(this, 45, "Block Break Sounds");
         GUIUtils.setFrames(gui);
         gui.setItem(11, INCREASE_VOLUME_BUTTON);
-        gui.setItem(13, CurrentSoundData.CurrentSoundDisplayButton(player));
+        gui.setItem(13, CurrentSoundData.createCurrentSoundButton(player));
         gui.setItem(15, INCREASE_PITCH_BUTTON);
         gui.setItem(20, VOLUME_BUTTON);
         gui.setItem(22, PICK_SOUND_BUTTON);
@@ -40,6 +35,11 @@ public class BlockBreakSoundsGUI implements InventoryHolder {
         gui.setItem(31, FAVORITE_SOUNDS_BUTTON);
         gui.setItem(33, DECREASE_PITCH_BUTTON);
         player.openInventory(gui);
+    }
+
+    @Override
+    public @NotNull Inventory getInventory() {
+        return gui;
     }
 
     private static final ItemStack SETTINGS_BUTTON = createItemStack(

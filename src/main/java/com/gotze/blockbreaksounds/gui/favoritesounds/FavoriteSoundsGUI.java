@@ -23,19 +23,19 @@ public class FavoriteSoundsGUI implements InventoryHolder {
 
     private final Inventory gui;
 
-    @Override
-    public @NotNull Inventory getInventory() {
-        return gui;
-    }
-
     public FavoriteSoundsGUI(Player player) {
         gui = Bukkit.createInventory(this, 45, "Favorite Sounds");
         GUIUtils.setFrames(gui);
-        gui.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
+        gui.setItem(4, CurrentSoundData.createCurrentSoundButton(player));
         gui.setItem(36, GUIUtils.RETURN_BUTTON);
         gui.setItem(40, FAVORITE_SOUNDS_BUTTON);
         setFavoriteSoundsToGUI(player);
         player.openInventory(gui);
+    }
+
+    @Override
+    public @NotNull Inventory getInventory() {
+        return gui;
     }
 
     private void setFavoriteSoundsToGUI(Player player) {
@@ -73,7 +73,7 @@ public class FavoriteSoundsGUI implements InventoryHolder {
 
     private static final ItemStack NO_SOUNDS_FAVORITED_YET_BUTTON = createItemStack(
             Material.PAPER,
-            ChatColor.WHITE + convertToSmallFont("You have not favorited any sounds yet!")
+            ChatColor.WHITE + convertToSmallFont("you have not favorited any sounds yet!")
     );
 
     private static final ItemStack FAVORITE_SOUNDS_BUTTON = createItemStack(

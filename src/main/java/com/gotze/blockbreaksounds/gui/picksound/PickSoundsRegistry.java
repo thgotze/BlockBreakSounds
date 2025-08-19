@@ -7,7 +7,6 @@ import org.bukkit.Sound;
 import java.util.Map;
 
 public class PickSoundsRegistry {
-    private PickSoundsRegistry() {}
 
     public static final Map<Integer, SoundData> PICK_SOUND_MAP = Map.ofEntries(
             Map.entry(9, new SoundData(Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 0.10f, 2.00f, Material.EXPERIENCE_BOTTLE)),

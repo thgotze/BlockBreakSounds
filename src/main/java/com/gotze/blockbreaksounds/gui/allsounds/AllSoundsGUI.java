@@ -21,20 +21,20 @@ public class AllSoundsGUI implements InventoryHolder {
     private final Inventory gui;
     private final String guiTitle;
 
-    @Override
-    public @NotNull Inventory getInventory() {
-        return gui;
-    }
-
     public AllSoundsGUI(Player player, String guiTitle) {
         gui = Bukkit.createInventory(this, 45, guiTitle);
         this.guiTitle = guiTitle;
         GUIUtils.setFrames(gui);
-        gui.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
+        gui.setItem(4, CurrentSoundData.createCurrentSoundButton(player));
         gui.setItem(36, GUIUtils.RETURN_BUTTON);
         gui.setItem(40, GUIUtils.FAVORITE_SOUNDS_BUTTON);
         setCategoryOrSoundButtons();
         player.openInventory(gui);
+    }
+
+    @Override
+    public @NotNull Inventory getInventory() {
+        return gui;
     }
 
     private void setCategoryOrSoundButtons() {

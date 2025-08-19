@@ -17,7 +17,7 @@ public class BlockBreakSoundsCommand implements CommandExecutor {
     private static final String[] CANCEL_KEYS = {"stop", "disable", "none", "off", "nosound", "0", "null"};
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String @NotNull [] args) {
         if (!(sender instanceof Player player)) return true;
 
         // If only typed /blockbreaksounds, then open the GUI as normal

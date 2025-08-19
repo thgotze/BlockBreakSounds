@@ -5,7 +5,9 @@ import com.gotze.blockbreaksounds.model.SoundData;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AllSoundsRegistry {
 

@@ -92,7 +92,7 @@ public class FavoriteSoundsGUIListener implements Listener {
 
                         CurrentSoundData.setCurrentSound(player, favoriteSoundData);
                         GUIUtils.handlePickedLineSound(clickedInventory, slot);
-                        clickedInventory.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
+                        clickedInventory.setItem(4, CurrentSoundData.createCurrentSoundButton(player));
                     }
                 }
         }

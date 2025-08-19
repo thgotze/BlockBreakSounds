@@ -27,7 +27,49 @@ public class CurrentSoundData extends SoundData {
         super(sound, volume, pitch, displayMaterial);
     }
 
-    public static ItemStack CurrentSoundDisplayButton(Player player) {
+    public static void setCurrentSound(Player player, SoundData soundData) {
+        soundData.playSoundData(player);
+        currentSound.put(player.getUniqueId(), soundData);
+        saveCurrentSoundDataToYAML(player);
+    }
+
+    private static void clearCurrentSound(ItemStack clickedItem, Inventory gui, Player player, int slot) {
+        Material materialOfCurrentSound = clickedItem.getType();
+
+        switch (materialOfCurrentSound) {
+            case GLASS_PANE:
+                SoundUtils.playErrorSound(player);
+                return;
+
+            case BARRIER:
+                SoundUtils.playErrorSound(player);
+                CurrentSoundData.currentSound.remove(player.getUniqueId());
+                gui.setItem(slot, createCurrentSoundButton(player));
+                CurrentSoundData.saveCurrentSoundDataToYAML(player);
+                return;
+
+            default:
+                final ItemStack confirmClearCurrentSoundItem = createItemStack(
+                        Material.BARRIER,
+                        ChatColor.RED + convertToSmallFont("drop again to clear")
+                );
+                gui.setItem(slot, confirmClearCurrentSoundItem);
+
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        ItemStack itemStackAfterDelay = gui.getItem(slot);
+                        if (itemStackAfterDelay == null) return;
+
+                        if (itemStackAfterDelay.getType().equals(Material.BARRIER)) {
+                            gui.setItem(slot, clickedItem);
+                        }
+                    }
+                }.runTaskLater(Main.INSTANCE, 60L);
+        }
+    }
+
+    public static ItemStack createCurrentSoundButton(Player player) {
         SoundData playerCurrentSound = currentSound.get(player.getUniqueId());
         if (playerCurrentSound == null) {
             return createItemStack(
@@ -57,12 +99,6 @@ public class CurrentSoundData extends SoundData {
         }
     }
 
-    public static void setCurrentSound(Player player, SoundData soundData) {
-        soundData.playSoundData(player);
-        currentSound.put(player.getUniqueId(), soundData);
-        saveCurrentSoundDataToYAML(player);
-    }
-
     public static void currentSoundButtonHandler(Inventory clickedInventory, ClickType clickType, Player player, int slot) {
         SoundData currentSoundData = CurrentSoundData.currentSound.get(player.getUniqueId());
         if (currentSoundData == null) return;
@@ -84,42 +120,6 @@ public class CurrentSoundData extends SoundData {
         if (clickedItem.getType() == Material.BARRIER) return;
 
         currentSoundData.playSoundData(player);
-    }
-
-    private static void clearCurrentSound(ItemStack clickedItem, Inventory gui, Player player, int slot) {
-        Material materialOfCurrentSound = clickedItem.getType();
-
-        switch (materialOfCurrentSound) {
-            case GLASS_PANE:
-                SoundUtils.playErrorSound(player);
-                return;
-
-            case BARRIER:
-                SoundUtils.playErrorSound(player);
-                CurrentSoundData.currentSound.remove(player.getUniqueId());
-                gui.setItem(slot, CurrentSoundDisplayButton(player));
-                CurrentSoundData.saveCurrentSoundDataToYAML(player);
-                return;
-
-            default:
-                final ItemStack confirmClearCurrentSoundItem = createItemStack(
-                        Material.BARRIER,
-                        ChatColor.RED + convertToSmallFont("drop again to clear")
-                );
-                gui.setItem(slot, confirmClearCurrentSoundItem);
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        ItemStack itemStackAfterDelay = gui.getItem(slot);
-                        if (itemStackAfterDelay == null) return;
-
-                        if (itemStackAfterDelay.getType().equals(Material.BARRIER)) {
-                            gui.setItem(slot, clickedItem);
-                        }
-                    }
-                }.runTaskLater(Main.INSTANCE, 60L);
-        }
     }
 
     public static void increaseVolume(Player player) {

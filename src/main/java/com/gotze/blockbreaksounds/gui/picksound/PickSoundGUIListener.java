@@ -66,7 +66,7 @@ public class PickSoundGUIListener implements Listener {
                 } else { // Pick Sound
                     CurrentSoundData.setCurrentSound(player, soundDataCopy);
                     GUIUtils.handlePickedLineSound(clickedInventory, slot);
-                    clickedInventory.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
+                    clickedInventory.setItem(4, CurrentSoundData.createCurrentSoundButton(player));
                 }
         }
     }

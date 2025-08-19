@@ -2,11 +2,12 @@ package com.gotze.blockbreaksounds.gui.blockbreaksounds;
 
 import com.gotze.blockbreaksounds.gui.favoritesounds.FavoriteSoundsGUI;
 import com.gotze.blockbreaksounds.gui.picksound.PickSoundGUI;
+import com.gotze.blockbreaksounds.gui.settings.SettingsGUI;
 import com.gotze.blockbreaksounds.model.CurrentSoundData;
 import com.gotze.blockbreaksounds.model.SoundData;
+import com.gotze.blockbreaksounds.util.ClickCooldownChecker;
 import com.gotze.blockbreaksounds.util.GUIUtils;
 import com.gotze.blockbreaksounds.util.SoundUtils;
-import com.gotze.blockbreaksounds.util.ClickCooldownChecker;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -41,7 +42,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
             case 11: // Increase Volume
                 CurrentSoundData.increaseVolume(player);
                 updateVolumeSlider(player, clickedInventory);
-                clickedInventory.setItem(13, CurrentSoundData.CurrentSoundDisplayButton(player));
+                clickedInventory.setItem(13, CurrentSoundData.createCurrentSoundButton(player));
                 return;
 
             case 13: // Current Sound
@@ -59,18 +60,17 @@ public class BlockBreakSoundsGUIListener implements Listener {
             case 15: // Increase Pitch
                 CurrentSoundData.increasePitch(player);
                 updatePitchSlider(player, clickedInventory);
-                clickedInventory.setItem(13, CurrentSoundData.CurrentSoundDisplayButton(player));
+                clickedInventory.setItem(13, CurrentSoundData.createCurrentSoundButton(player));
                 return;
 
             case 20: // Tweak Volume
                 if (clickType.isLeftClick()) {
                     CurrentSoundData.increaseVolume(player);
-                }
-                else if (clickType.isRightClick()) {
+                } else if (clickType.isRightClick()) {
                     CurrentSoundData.decreaseVolume(player);
                 }
                 updateVolumeSlider(player, clickedInventory);
-                clickedInventory.setItem(13, CurrentSoundData.CurrentSoundDisplayButton(player));
+                clickedInventory.setItem(13, CurrentSoundData.createCurrentSoundButton(player));
                 return;
 
             case 22: // Pick Sound
@@ -86,19 +86,18 @@ public class BlockBreakSoundsGUIListener implements Listener {
                     CurrentSoundData.decreasePitch(player);
                 }
                 updatePitchSlider(player, clickedInventory);
-                clickedInventory.setItem(13, CurrentSoundData.CurrentSoundDisplayButton(player));
+                clickedInventory.setItem(13, CurrentSoundData.createCurrentSoundButton(player));
                 return;
 
-            // TODO: Settings GUI is currently not implemented
-            // case 26: // Settings
-            // SoundUtils.playUIClickSound(player);
-            // new SettingsGUI(player);
-            // return;
+            case 26: // Settings
+                SoundUtils.playUIClickSound(player);
+                new SettingsGUI(player);
+                return;
 
             case 29: // Decrease Volume
                 CurrentSoundData.decreaseVolume(player);
                 updateVolumeSlider(player, clickedInventory);
-                clickedInventory.setItem(13, CurrentSoundData.CurrentSoundDisplayButton(player));
+                clickedInventory.setItem(13, CurrentSoundData.createCurrentSoundButton(player));
                 return;
 
             case 31: // Favorite Sounds
@@ -109,11 +108,7 @@ public class BlockBreakSoundsGUIListener implements Listener {
             case 33: // Decrease Pitch
                 CurrentSoundData.decreasePitch(player);
                 updatePitchSlider(player, clickedInventory);
-                clickedInventory.setItem(13, CurrentSoundData.CurrentSoundDisplayButton(player));
-                return;
-
-            default:
-
+                clickedInventory.setItem(13, CurrentSoundData.createCurrentSoundButton(player));
         }
     }
 

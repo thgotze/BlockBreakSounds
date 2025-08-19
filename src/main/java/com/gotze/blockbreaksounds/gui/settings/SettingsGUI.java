@@ -19,11 +19,6 @@ public class SettingsGUI implements InventoryHolder {
 
     private final Inventory gui;
 
-    @Override
-    public @NotNull Inventory getInventory() {
-        return gui;
-    }
-
     public SettingsGUI(Player player) {
         gui = Bukkit.createInventory(this, 45, "Settings");
         GUIUtils.setFrames(gui);
@@ -34,6 +29,11 @@ public class SettingsGUI implements InventoryHolder {
         gui.setItem(24, SOUND_FILTER_BUTTON);
         gui.setItem(36, GUIUtils.FRAME);
         player.openInventory(gui);
+    }
+
+    @Override
+    public @NotNull Inventory getInventory() {
+        return gui;
     }
 
     private static final ItemStack TOOL_SPECIFIC_SOUNDS_BUTTON = createItemStack(
