@@ -31,10 +31,10 @@ public class FavoriteSoundsGUI implements InventoryHolder {
     public FavoriteSoundsGUI(Player player) {
         gui = Bukkit.createInventory(this, 45, "Favorite Sounds");
         GUIUtils.setFrames(gui);
-        setFavoriteSoundsToGUI(player);
         gui.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.RETURN_BUTTON);
         gui.setItem(40, FAVORITE_SOUNDS_BUTTON);
+        setFavoriteSoundsToGUI(player);
         player.openInventory(gui);
     }
 
@@ -54,7 +54,7 @@ public class FavoriteSoundsGUI implements InventoryHolder {
         }
     }
 
-    private ItemStack createFavoriteSoundButton(SoundData soundData, int soundNumber) {
+    private static ItemStack createFavoriteSoundButton(SoundData soundData, int soundNumber) {
         return createItemStack(
                 soundData.getDisplayMaterial(),
                 ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sound " + soundNumber + " ⭐",

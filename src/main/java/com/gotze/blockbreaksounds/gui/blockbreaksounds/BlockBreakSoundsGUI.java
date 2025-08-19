@@ -19,31 +19,30 @@ import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
 public class BlockBreakSoundsGUI implements InventoryHolder {
 
-    private final Inventory gui;
-
     @Override
     public @NotNull Inventory getInventory() {
         return gui;
     }
 
+    private final Inventory gui;
+
     public BlockBreakSoundsGUI(Player player) {
         gui = Bukkit.createInventory(this, 45, "Block Break Sounds");
         GUIUtils.setFrames(gui);
-        gui.setItem(11, IncreaseVolumeButton);
+        gui.setItem(11, INCREASE_VOLUME_BUTTON);
         gui.setItem(13, CurrentSoundData.CurrentSoundDisplayButton(player));
-        gui.setItem(15, IncreasePitchButton);
-        gui.setItem(20, VolumeButton);
-        gui.setItem(22, PickSoundButton);
-        gui.setItem(24, PitchButton);
-        // gui.setItem(26, SettingsButton); TODO: Settings GUI is currently not implemented
-        gui.setItem(29, DecreaseVolumeButton);
-        gui.setItem(31, FavoriteSoundsButton);
-        gui.setItem(33, DecreasePitchButton);
+        gui.setItem(15, INCREASE_PITCH_BUTTON);
+        gui.setItem(20, VOLUME_BUTTON);
+        gui.setItem(22, PICK_SOUND_BUTTON);
+        gui.setItem(24, PITCH_BUTTON);
+        gui.setItem(26, SETTINGS_BUTTON);
+        gui.setItem(29, DECREASE_VOLUME_BUTTON);
+        gui.setItem(31, FAVORITE_SOUNDS_BUTTON);
+        gui.setItem(33, DECREASE_PITCH_BUTTON);
         player.openInventory(gui);
     }
 
-    // Settings Button (Command Block) TODO: Settings GUI is currently not implemented
-    private final ItemStack SettingsButton = createItemStack(
+    private static final ItemStack SETTINGS_BUTTON = createItemStack(
             Material.COMMAND_BLOCK,
             ChatColor.RED + "" + ChatColor.BOLD + "Settings \uD83D\uDD27",
             List.of(
@@ -53,15 +52,13 @@ public class BlockBreakSoundsGUI implements InventoryHolder {
             false
     );
 
-    // Favorite Sounds Button (Nether Star)
-    private final ItemStack FavoriteSoundsButton = createItemStack(
+    private static final ItemStack FAVORITE_SOUNDS_BUTTON = createItemStack(
             Material.NETHER_STAR,
             ChatColor.GREEN + "" + ChatColor.BOLD + "Favorite Sounds ⭐",
             List.of(ChatColor.WHITE + convertToSmallFont("pick from your ") + ChatColor.GREEN + ChatColor.BOLD + convertToSmallFont("favorited ") + ChatColor.WHITE + convertToSmallFont("sounds"))
     );
 
-    // Pick Sound Button (Note Block)
-    private final ItemStack PickSoundButton = createItemStack(
+    private static final ItemStack PICK_SOUND_BUTTON = createItemStack(
             Material.NOTE_BLOCK,
             ChatColor.AQUA + "" + ChatColor.BOLD + "Pick Sound ♪",
             Arrays.asList(ChatColor.WHITE + convertToSmallFont("pick a sound to play"),
@@ -69,8 +66,7 @@ public class BlockBreakSoundsGUI implements InventoryHolder {
             )
     );
 
-    // Volume Button (Goat Horn)
-    private final ItemStack VolumeButton = createItemStack(
+    private static final ItemStack VOLUME_BUTTON = createItemStack(
             Material.GOAT_HORN,
             ChatColor.YELLOW + "" + ChatColor.BOLD + "Tweak Volume \uD83D\uDD0A",
             Arrays.asList(
@@ -81,20 +77,17 @@ public class BlockBreakSoundsGUI implements InventoryHolder {
             true
     );
 
-    // + Increase Volume (Mangrove Button)
-    private final ItemStack IncreaseVolumeButton = createItemStack(
+    private static final ItemStack INCREASE_VOLUME_BUTTON = createItemStack(
             Material.MANGROVE_BUTTON,
             ChatColor.GREEN + "" + ChatColor.BOLD + "[+] " + ChatColor.BOLD + convertToSmallFont("increase volume")
     );
 
-    // - Decrease Volume (Mangrove Button)
-    private final ItemStack DecreaseVolumeButton = createItemStack(
+    private static final ItemStack DECREASE_VOLUME_BUTTON = createItemStack(
             Material.MANGROVE_BUTTON,
             ChatColor.RED + "" + ChatColor.BOLD + "[-] " + ChatColor.BOLD + convertToSmallFont("decrease volume")
     );
 
-    // Pitch Button (Bell)
-    private final ItemStack PitchButton = createItemStack(
+    private static final ItemStack PITCH_BUTTON = createItemStack(
             Material.BELL,
             ChatColor.YELLOW + "" + ChatColor.BOLD + "Tweak Pitch \uD83D\uDD14",
             Arrays.asList(
@@ -104,14 +97,12 @@ public class BlockBreakSoundsGUI implements InventoryHolder {
                     ChatColor.GRAY + convertToSmallFont("pitch can be set between 0.50 and 2.00"))
     );
 
-    // + Increase Pitch (Mangrove Button)
-    private final ItemStack IncreasePitchButton = createItemStack(
+    private static final ItemStack INCREASE_PITCH_BUTTON = createItemStack(
             Material.MANGROVE_BUTTON,
             ChatColor.GREEN + "" + ChatColor.BOLD + "[+] " + ChatColor.BOLD + convertToSmallFont("increase pitch")
     );
 
-    // - Decrease Pitch (Mangrove Button)
-    private final ItemStack DecreasePitchButton = createItemStack(
+    private static final ItemStack DECREASE_PITCH_BUTTON = createItemStack(
             Material.MANGROVE_BUTTON,
             ChatColor.RED + "" + ChatColor.BOLD + "[-] " + ChatColor.BOLD + convertToSmallFont("decrease pitch")
     );

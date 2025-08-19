@@ -25,6 +25,13 @@ import java.util.Map;
 public class AllSoundsGUIListener implements Listener {
 
     @EventHandler
+    public void onInventoryClose(InventoryCloseEvent event) {
+        if (event.getInventory().getHolder() instanceof AllSoundsGUI) {
+            ((Player) event.getPlayer()).stopAllSounds();
+        }
+    }
+
+    @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
         if (!(event.getInventory().getHolder() instanceof AllSoundsGUI)) return;
         event.setCancelled(true);
@@ -98,13 +105,6 @@ public class AllSoundsGUIListener implements Listener {
                         }
                     }
                 }
-        }
-    }
-
-    @EventHandler
-    public void onInventoryClose(InventoryCloseEvent event) {
-        if (event.getInventory().getHolder() instanceof AllSoundsGUI) {
-            ((Player) event.getPlayer()).stopAllSounds();
         }
     }
 }

@@ -15,7 +15,7 @@ import java.util.Arrays;
 import static com.gotze.blockbreaksounds.util.ItemStackCreator.createItemStack;
 import static com.gotze.blockbreaksounds.util.StringUtils.convertToSmallFont;
 
-public class SettingsGUI implements InventoryHolder { // TODO: Settings GUI is currently not implemented
+public class SettingsGUI implements InventoryHolder {
 
     private final Inventory gui;
 

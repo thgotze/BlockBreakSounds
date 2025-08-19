@@ -30,10 +30,10 @@ public class AllSoundsGUI implements InventoryHolder {
         gui = Bukkit.createInventory(this, 45, guiTitle);
         this.guiTitle = guiTitle;
         GUIUtils.setFrames(gui);
-        setCategoryOrSoundButtons();
         gui.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
         gui.setItem(36, GUIUtils.RETURN_BUTTON);
         gui.setItem(40, GUIUtils.FAVORITE_SOUNDS_BUTTON);
+        setCategoryOrSoundButtons();
         player.openInventory(gui);
     }
 
