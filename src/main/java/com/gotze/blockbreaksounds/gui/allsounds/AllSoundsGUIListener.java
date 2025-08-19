@@ -63,11 +63,11 @@ public class AllSoundsGUIListener implements Listener {
                     for (Map.Entry<String, SoundCategory> entry : AllSoundsRegistry.CATEGORY_MAP.entrySet()) {
                         if (entry.getValue().getChildren().contains(currentCategory)) {
                             new AllSoundsGUI(player, entry.getKey());
+                            player.stopAllSounds();
                             break;
                         }
                     }
                 }
-                player.stopAllSounds();
                 SoundUtils.playUIClickSound(player);
                 return;
 
@@ -100,7 +100,7 @@ public class AllSoundsGUIListener implements Listener {
                             } else {
                                 CurrentSoundData.setCurrentSound(player, soundData);
                                 GUIUtils.handlePickedLineSound(clickedInventory, slot);
-                                clickedInventory.setItem(4, CurrentSoundData.CurrentSoundDisplayButton(player));
+                                clickedInventory.setItem(4, CurrentSoundData.createCurrentSoundButton(player));
                             }
                         }
                     }

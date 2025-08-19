@@ -30,7 +30,7 @@ public class BlockBreakSoundsGUI implements InventoryHolder {
         gui = Bukkit.createInventory(this, 45, "Block Break Sounds");
         GUIUtils.setFrames(gui);
         gui.setItem(11, INCREASE_VOLUME_BUTTON);
-        gui.setItem(13, CurrentSoundData.CurrentSoundDisplayButton(player));
+        gui.setItem(13, CurrentSoundData.createCurrentSoundButton(player));
         gui.setItem(15, INCREASE_PITCH_BUTTON);
         gui.setItem(20, VOLUME_BUTTON);
         gui.setItem(22, PICK_SOUND_BUTTON);
