@@ -39,15 +39,15 @@ public class PickSoundsRegistry {
     );
 
     public static final Map<Sound, String> SOUND_NICKNAMES = Map.ofEntries(
-            Map.entry(Sound.BLOCK_AMETHYST_BLOCK_BREAK, "Cling!"),
-            Map.entry(Sound.ENTITY_ITEM_PICKUP, "Pickup!"),
             Map.entry(Sound.ENTITY_EXPERIENCE_ORB_PICKUP, "Ding!"),
-            Map.entry(Sound.ITEM_SPYGLASS_USE, "Rattle!"),
             Map.entry(Sound.ENTITY_PLAYER_LEVELUP, "Glimmer!"),
-            Map.entry(Sound.ENTITY_ARMADILLO_BRUSH, "Brushplop!"),
-            Map.entry(Sound.BLOCK_DECORATED_POT_BREAK, "Clonk!"),
-            Map.entry(Sound.BLOCK_DECORATED_POT_INSERT, "Pop!"),
+            Map.entry(Sound.ENTITY_ITEM_PICKUP, "Pickup!"),
+            Map.entry(Sound.BLOCK_AMETHYST_BLOCK_BREAK, "Clonk!"),
             Map.entry(Sound.BLOCK_BONE_BLOCK_BREAK, "Clatter!"),
+            Map.entry(Sound.ENTITY_ARMADILLO_BRUSH, "Brushplop!"),
+            Map.entry(Sound.BLOCK_DECORATED_POT_BREAK, "Clank!"),
+            Map.entry(Sound.BLOCK_DECORATED_POT_INSERT, "Pop!"),
+            Map.entry(Sound.ITEM_SPYGLASS_USE, "Rattle!"),
             Map.entry(Sound.BLOCK_BAMBOO_BREAK, "Bamboo!"),
             Map.entry(Sound.BLOCK_BEEHIVE_EXIT, "Plop!"),
             Map.entry(Sound.ENTITY_ENDER_EYE_DEATH, "Whoosh!"),
@@ -65,6 +65,6 @@ public class PickSoundsRegistry {
             Map.entry(Sound.BLOCK_DEEPSLATE_BREAK, "Grumble!"),
             Map.entry(Sound.ENTITY_VEX_HURT, "Pew!"),
             Map.entry(Sound.ENTITY_SNIFFER_EAT, "Monch!"),
-            Map.entry(Sound.BLOCK_NETHERITE_BLOCK_BREAK, "Clank!")
+            Map.entry(Sound.BLOCK_NETHERITE_BLOCK_BREAK, "Clatter!")
     );
 }

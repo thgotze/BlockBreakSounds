@@ -6,7 +6,7 @@ public class StringUtils {
     // "Block Break Sounds is a great plugin!" -> "ʙʟᴏᴄᴋ ʙʀᴇᴀᴋ ѕᴏᴜɴᴅѕ ɪѕ ᴀ ɢʀᴇᴀᴛ ᴘʟᴜɢɪɴ!"
     public static String convertToSmallFont(String input) {
         StringBuilder newString = new StringBuilder();
-        for (char c : input.toCharArray()) {
+        for (char c : input.toLowerCase().toCharArray()) {
             switch (c) {
                 // Numbers
                 case '0': newString.append('₀'); break;
@@ -63,7 +63,7 @@ public class StringUtils {
                 case 'N': newString.append('ɴ'); break;
                 case 'O': newString.append('ᴏ'); break;
                 case 'P': newString.append('ᴘ'); break;
-                case 'Q': newString.append('Ǫ'); break;
+                case 'Q': newString.append('ǫ'); break;
                 case 'R': newString.append('ʀ'); break;
                 case 'S': newString.append('ѕ'); break;
                 case 'T': newString.append('ᴛ'); break;
